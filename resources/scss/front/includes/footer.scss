@@ -1,0 +1,22 @@
+.front-footer {
+    padding: 15px;
+
+    .footer-head {
+        padding: 5px 0;
+    }
+
+    .footer-sub-link {
+        text-decoration: none;
+        color: $black;
+        padding: 5px 15px;
+        display: inline-block;
+        margin-bottom: 10px;
+        transition: 0.4s all ease-in-out;
+
+        &:hover {
+            background-color: $border-color;
+            font-weight: bold;
+        }
+
+    }
+}

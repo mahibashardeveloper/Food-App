@@ -1,0 +1,92 @@
+.content {
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-color: var(--main-color);
+    padding: 30px;
+    font-size: 13px;
+    font-weight: 600;
+
+    @media screen and (max-width: 600px) {
+        padding: 15px;
+    }
+
+    .inset-shadow {
+        border-radius: 6px;
+        transition: 0.5s all ease-in-out;
+
+        &:hover {
+            box-shadow: 0 0 8px 0 $gray inset;
+        }
+
+    }
+
+    .form-control {
+        border-radius: 5px;
+        height: 50px;
+        font-size: 12px;
+        font-weight: bold;
+        border: none;
+        box-shadow: 0 0 0 0;
+    }
+
+    .form-select {
+        border-radius: 5px;
+        height: 50px;
+        font-size: 12px;
+        border: 1px solid $border-color;
+        box-shadow: 0 0 0 0;
+        cursor: pointer;
+    }
+
+    .error-text {
+        margin-top: 5px;
+        color: $red;
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+    .btn-theme {
+        border-radius: 5px;
+        height: 50px;
+        padding: 0 30px;
+        transition: 0.3s all ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        border: none;
+        outline: none;
+
+        &.add {
+            background-color: $dark-theme-bg !important;
+            color: $white !important;
+        }
+
+        &.create {
+            background-color: $dark-theme-bg !important;
+            color: $white !important;
+        }
+
+        &.cancel {
+            background-color: $gray !important;
+            color: $white !important;
+        }
+
+        &.delete {
+            background-color: $red !important;
+            color: $white !important;
+        }
+
+    }
+
+    @import "pages/global";
+
+    @import "pages/modal";
+
+    @import "pages/profile-content";
+
+    @import "pages/chat-body";
+
+    @import "pages/email-body";
+
+}

@@ -1,0 +1,81 @@
+body{
+    position: relative;
+
+    .bg-color{
+        position: fixed;
+        right: -250px;
+        top: 20%;
+        display: flex;
+        transition: 0.4s all ease-in-out;
+        z-index: 999999;
+
+        &.active{
+            right: 0;
+        }
+
+        .animation{
+            background-color: $white;
+            padding: 15px;
+            display: inline-block;
+            height: 100%;
+            text-decoration: none;
+            color: $black;
+            box-shadow: 0 0 8px 0 $border-color;
+        }
+
+        .bg-color-group{
+            width: 250px;
+            height: auto;
+            background-color: $white;
+            box-shadow: 0 0 8px 0 $border-color;
+
+            .bg-color-box{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                padding: 20px;
+
+                .btn-color{
+                    overflow: hidden;
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                    margin: 5px;
+                    display: inline-block;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+
+                    &.theme-bg-primary{
+                        background-color: $theme-bg-primary;
+                    }
+
+                    &.theme-bg-secondary{
+                        background-color: $theme-bg-secondary;
+                    }
+
+                    &.theme-bg-success{
+                        background-color: $theme-bg-success;
+                    }
+
+                    &.theme-bg-danger{
+                        background-color: $theme-bg-danger;
+                        display: flex;
+                        justify-content:center;
+                        align-items: center;
+                        font-size: 10px;
+                    }
+
+                    &.theme-bg-info{
+                        background-color: $theme-bg-info;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

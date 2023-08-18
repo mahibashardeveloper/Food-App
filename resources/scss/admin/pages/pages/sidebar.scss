@@ -1,0 +1,99 @@
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    border-right: 1px solid $border-color;
+
+    @media screen and (max-width: 991px) {
+        position: fixed;
+        left: -300px;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        background-color: $white;
+        transition: 0.5s all ease-in-out;
+        z-index: 9000;
+
+        &.active {
+            left: 0;
+        }
+
+    }
+
+    .sidebar-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 70px;
+        border-bottom: 1px solid $border-color;
+
+        @media screen and (max-width: 991px) {
+            justify-content: space-between;
+            padding: 0 35px;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: $black;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .close-icon {
+            display: none;
+            text-decoration: none;
+            color: $black;
+            font-size: 15px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: 0.5s all ease-in-out;
+
+            @media screen and (max-width: 991px) {
+                display: inline-block;
+            }
+
+            &:hover {
+                background-color: var(--main-color);
+            }
+
+        }
+
+    }
+
+    .sidebar-body {
+        width: 100%;
+        height: calc(100vh - 70px);
+        padding: 20px;
+        overflow-y: scroll;
+
+        .badge-text {
+            padding: 0 15px;
+            font-size: 12px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: $badge-text;
+        }
+
+        .sidebar-link {
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: $black;
+            display: block;
+            border-radius: 5px;
+            transition: 0.5s all ease-in-out;
+            font-size: 12px;
+            font-weight: 600;
+
+            &.active {
+                background-color: var(--main-color);
+            }
+
+            &:hover {
+                background-color: var(--main-color);
+            }
+
+        }
+
+    }
+
+}

@@ -1,0 +1,228 @@
+.card-body {
+    margin-top: 10px;
+    width: 100%;
+    height: calc(100vh - 230px);
+    background-color: $white;
+    border-radius: 6px;
+    border: none;
+    padding: 30px;
+
+    @media screen and (max-width: 500px){
+        height: calc(100vh - 240px);
+    }
+
+    .page-no-data-found {
+        height: calc(100vh - 420px);
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $gray;
+    }
+
+    .card-header {
+        padding-bottom: 20px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+
+        .select-icon{
+            font-size: 10px;
+            text-decoration: none;
+            color: $black;
+            width: 30px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+
+            &:hover{
+                background-color: var(--main-color);
+            }
+
+        }
+
+    }
+
+    .card-list {
+        height: calc(100vh - 390px);
+        padding-right: 12px;
+        font-size: 13px;
+        overflow-y: scroll;
+
+        @media screen and (max-width: 500px) {
+            height: calc(100vh - 375px);
+        }
+
+        .header-section {
+            padding: 5px 10px;
+            font-weight: 600;
+            @media screen and (max-width: 575px) {
+                display: none;
+            }
+        }
+
+        .body-section {
+            font-weight: 400;
+            padding: 5px 10px;
+            border-bottom: 1px solid $border-color;
+            transition: 0.3s all ease-in-out;
+
+            .form-check-input{
+                box-shadow: 0 0 0 0;
+            }
+
+            &:hover {
+                background-color: var(--main-color);
+                border-bottom: 1px solid var(--main-color);
+            }
+
+            .marge {
+                display: none;
+                @media screen and (max-width: 575px) {
+                    display: block;
+                    margin-bottom: 10px;
+                    font-weight: 600;
+                }
+            }
+
+            .product-image{
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+                border-radius: 50%;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .category-image{
+                    width: 20px;
+                    height: 20px;
+                }
+
+            }
+
+            .form-select{
+                height: 30px;
+                width: 110px;
+                border-radius: 10px;
+            }
+
+        }
+
+        .calender-box {
+            padding: 20px;
+            font-weight: 400;
+
+            @media screen and (max-width: 600px) {
+                padding: 20px 15px;
+            }
+
+            .box-btn {
+                padding: 10px;
+                position: relative;
+
+                .btn-click {
+                    padding: 5px;
+                    text-decoration: none;
+                    color: $black;
+                    display: inline-block;
+                    border-radius: 4px;
+
+                    &:hover {
+                        background-color: var(--main-color);
+                    }
+
+                }
+
+                .calender-dropdown-menu {
+                    position: absolute;
+                    top: 10px;
+                    right: 15px;
+                    width: 100px;
+                    height: auto;
+                    background-color: $white;
+                    border: 1px solid $border-color;
+                    border-radius: 6px;
+                    visibility: hidden;
+                    opacity: 0;
+                    transition: 0.3s all ease-in-out;
+
+                    &.active {
+                        top: 35px;
+                        visibility: visible;
+                        opacity: 1;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: $black;
+                        padding: 5px 10px;
+                        display: block;
+                        margin: 5px;
+                        border-radius: 6px;
+
+                        &:hover {
+                            background-color: var(--main-color);
+                        }
+
+                    }
+
+                }
+
+            }
+
+            .box-header {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .box-body {
+                padding: 10px;
+            }
+
+        }
+
+    }
+
+    .card-footer {
+        padding-top: 15px;
+
+        @media screen and (max-width: 500px) {
+            padding-top: 10px;
+        }
+
+        .pagination {
+            .page-item {
+
+                &.active .page-link {
+                    background-color: $border-color;
+                    border: 1px solid $border-color;
+                }
+
+                .page-link {
+                    width: 35px;
+                    height: 35px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0 0 0 0;
+                    color: $black;
+                    margin: 0 5px;
+                    border-radius: 6px;
+                }
+            }
+        }
+
+    }
+
+}
