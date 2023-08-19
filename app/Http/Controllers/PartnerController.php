@@ -11,6 +11,10 @@ use Illuminate\Routing\Controller as BaseController;
 class PartnerController extends BaseController
 {
 
+    public function partner(){
+        return view('app.front');
+    }
+
     public function create(Request $request){
         $rv = PartnerService::create($request);
         return response()->json($rv, 200);

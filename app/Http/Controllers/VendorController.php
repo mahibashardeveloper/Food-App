@@ -11,6 +11,10 @@ use Illuminate\Routing\Controller as BaseController;
 class VendorController extends BaseController
 {
 
+    public function vendor(){
+        return view('app.front');
+    }
+
     public function create(Request $request){
         $rv = VendorService::create($request);
         return response()->json($rv, 200);
