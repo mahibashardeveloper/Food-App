@@ -11,6 +11,10 @@ use Illuminate\Routing\Controller as BaseController;
 class DeliveryManController extends BaseController
 {
 
+    public function deliveryman(){
+        return view('app.front');
+    }
+
     public function create(Request $request){
         $rv = DeliveryManService::create($request);
         return response()->json($rv, 200);

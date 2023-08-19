@@ -8,11 +8,23 @@
 
 export default {
 
-    data(){ return{} },
+    data(){
 
-    mounted() {  },
+        return{}
 
-    methods: {  }
+    },
+
+    mounted() {
+
+
+
+    },
+
+    methods: {
+
+
+
+    }
 
 }
 

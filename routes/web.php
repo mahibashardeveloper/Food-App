@@ -202,3 +202,36 @@ Route::get('/front/', [FrontController::class, 'index'])->where('any', '.*')->na
 Route::get('/front/{any}', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.front');
 
 Route::get('/', function (){ return redirect()->route('lvs.front','home'); });
+
+/* -------------------------- vendor Controller ------------------------ */
+
+Route::get('/vendor/auth/{any}', [VendorController::class, 'vendor'])->where('any', '.*')->name('lvs.vendor.auth');
+
+Route::get('/vendor/', [VendorController::class, 'vendor'])->where('any', '.*')->name('lvs.vendor');
+
+Route::get('/vendor/{any}', [VendorController::class, 'vendor'])->where('any', '.*')->name('lvs.vendor');
+
+/* -------------------------- merchant Controller ------------------------ */
+
+Route::get('/merchant/auth/{any}', [MerchantController::class, 'merchant'])->where('any', '.*')->name('lvs.merchant.auth');
+
+Route::get('/merchant/', [MerchantController::class, 'merchant'])->where('any', '.*')->name('lvs.merchant');
+
+Route::get('/merchant/{any}', [MerchantController::class, 'merchant'])->where('any', '.*')->name('lvs.merchant');
+
+/* -------------------------- partner Controller ------------------------ */
+
+Route::get('/partner/auth/{any}', [PartnerController::class, 'partner'])->where('any', '.*')->name('lvs.partner.auth');
+
+Route::get('/partner/', [PartnerController::class, 'partner'])->where('any', '.*')->name('lvs.partner');
+
+Route::get('/partner/{any}', [PartnerController::class, 'partner'])->where('any', '.*')->name('lvs.partner');
+
+/* -------------------------- deliveryman Controller ------------------------ */
+
+Route::get('/deliveryman/auth/{any}', [DeliveryManController::class, 'deliveryman'])->where('any', '.*')->name('lvs.deliveryman.auth');
+
+Route::get('/deliveryman/', [DeliveryManController::class, 'deliveryman'])->where('any', '.*')->name('lvs.deliveryman');
+
+Route::get('/deliveryman/{any}', [DeliveryManController::class, 'deliveryman'])->where('any', '.*')->name('lvs.deliveryman');
+
