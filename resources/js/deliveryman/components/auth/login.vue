@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        this is login content
     </div>
 </template>
 

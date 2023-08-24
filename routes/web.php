@@ -235,3 +235,4 @@ Route::get('/deliveryman/', [DeliveryManController::class, 'deliveryman'])->wher
 
 Route::get('/deliveryman/{any}', [DeliveryManController::class, 'deliveryman'])->where('any', '.*')->name('lvs.deliveryman');
 
+Route::get('/deliveryman/', function (){ return redirect()->route('lvs.deliveryman','dashboard'); });
