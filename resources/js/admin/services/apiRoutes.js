@@ -1,124 +1,126 @@
+const apiVersion = '/api/admin';
+
 const apiRoutes = {
 
     // Authentication
 
-    register: '/auth/register',
+    register: apiVersion + '/auth/register',
 
-    login: '/auth/login',
+    login: apiVersion + '/auth/login',
 
-    forgot: '/auth/forgot',
+    forgot: apiVersion + '/auth/forgot',
 
-    reset: '/auth/reset',
-
-    // SubAdmin
-
-    calenderCreate: '/calender/create',
-
-    calenderList: '/calender/list',
-
-    calenderSingle: '/calender/single',
-
-    calenderUpdate: '/calender/update',
-
-    calenderDelete: '/calender/delete',
+    reset: apiVersion + '/auth/reset',
 
     // SubAdmin
 
-    subAdminCreate: '/subAdmin/create',
+    calenderCreate: apiVersion + '/calender/create',
 
-    subAdminList: '/subAdmin/list',
+    calenderList: apiVersion + '/calender/list',
 
-    subAdminSingle: '/subAdmin/single',
+    calenderSingle: apiVersion + '/calender/single',
 
-    subAdminUpdate: '/subAdmin/update',
+    calenderUpdate: apiVersion + '/calender/update',
 
-    subAdminDelete: '/subAdmin/delete',
+    calenderDelete: apiVersion + '/calender/delete',
+
+    // SubAdmin
+
+    subAdminCreate: apiVersion + '/subAdmin/create',
+
+    subAdminList: apiVersion + '/subAdmin/list',
+
+    subAdminSingle: apiVersion + '/subAdmin/single',
+
+    subAdminUpdate: apiVersion + '/subAdmin/update',
+
+    subAdminDelete: apiVersion + '/subAdmin/delete',
 
     // vendor
 
-    vendorCreate: '/vendor/create',
+    vendorCreate: apiVersion + '/vendor/create',
 
-    vendorList: '/vendor/list',
+    vendorList: apiVersion + '/vendor/list',
 
-    vendorSingle: '/vendor/single',
+    vendorSingle: apiVersion + '/vendor/single',
 
-    vendorUpdate: '/vendor/update',
+    vendorUpdate: apiVersion + '/vendor/update',
 
-    vendorDelete: '/vendor/delete',
+    vendorDelete: apiVersion + '/vendor/delete',
 
     // deliveryMan
 
-    deliveryManCreate: '/deliveryMan/create',
+    deliveryManCreate: apiVersion + '/deliveryMan/create',
 
-    deliveryManList: '/deliveryMan/list',
+    deliveryManList: apiVersion + '/deliveryMan/list',
 
-    deliveryManSingle: '/deliveryMan/single',
+    deliveryManSingle: apiVersion + '/deliveryMan/single',
 
-    deliveryManUpdate: '/deliveryMan/update',
+    deliveryManUpdate: apiVersion + '/deliveryMan/update',
 
-    deliveryManDelete: '/deliveryMan/delete',
+    deliveryManDelete: apiVersion + '/deliveryMan/delete',
 
     // partner
 
-    partnerCreate: '/partner/create',
+    partnerCreate: apiVersion + '/partner/create',
 
-    partnerList: '/partner/list',
+    partnerList: apiVersion + '/partner/list',
 
-    partnerSingle: '/partner/single',
+    partnerSingle: apiVersion + '/partner/single',
 
-    partnerUpdate: '/partner/update',
+    partnerUpdate: apiVersion + '/partner/update',
 
-    partnerDelete: '/partner/delete',
+    partnerDelete: apiVersion + '/partner/delete',
 
     // merchant
 
-    merchantCreate: '/merchant/create',
+    merchantCreate: apiVersion + '/merchant/create',
 
-    merchantList: '/merchant/list',
+    merchantList: apiVersion + '/merchant/list',
 
-    merchantSingle: '/merchant/single',
+    merchantSingle: apiVersion + '/merchant/single',
 
-    merchantUpdate: '/merchant/update',
+    merchantUpdate: apiVersion + '/merchant/update',
 
-    merchantDelete: '/merchant/delete',
+    merchantDelete: apiVersion + '/merchant/delete',
 
     // category
 
-    categoryCreate: '/category/create',
+    categoryCreate: apiVersion + '/category/create',
 
-    categoryList: '/category/list',
+    categoryList: apiVersion + '/category/list',
 
-    categorySingle: '/category/single',
+    categorySingle: apiVersion + '/category/single',
 
-    categoryUpdate: '/category/update',
+    categoryUpdate: apiVersion + '/category/update',
 
-    categoryDelete: '/category/delete',
+    categoryDelete: apiVersion + '/category/delete',
 
     // product
 
-    productCreate: '/product/create',
+    productCreate: apiVersion + '/product/create',
 
-    productList: '/product/list',
+    productList: apiVersion + '/product/list',
 
-    productSingle: '/product/single',
+    productSingle: apiVersion + '/product/single',
 
-    productUpdate: '/product/update',
+    productUpdate: apiVersion + '/product/update',
 
-    productDelete: '/product/delete',
+    productDelete: apiVersion + '/product/delete',
 
     // Profile
 
-    profile_details: '/profile/details',
+    profile_details: apiVersion + '/profile/details',
 
-    profile_update: '/profile/update',
+    profile_update: apiVersion + '/profile/update',
 
-    profile_password: '/profile/password',
+    profile_password: apiVersion + '/profile/password',
 
-    logout: '/profile/logout',
+    logout: apiVersion + '/profile/logout',
 
     // Media
 
-    media: '/media/upload',
+    media: apiVersion + '/media/upload',
 
 }
 
