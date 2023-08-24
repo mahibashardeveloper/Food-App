@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SubAdminController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\DeliveryManController;
 use App\Http\Controllers\PartnerController;
@@ -29,6 +30,16 @@ Route::middleware('LoginCheck')->get('/admin/{any}', [AdminController::class, 'i
 
 Route::get('/admin', function (){ return redirect()->route('lvs.admin','dashboard'); });
 
+/* -------------------------- vendor Controller ------------------------ */
+
+Route::middleware('VendorLoginCheck')->get('/vendor/auth/{any}', [VendorController::class, 'vendor'])->where('any', '.*')->name('lvs.vendor.auth');
+
+Route::middleware('VendorLoginCheck')->get('/vendor/', [VendorController::class, 'vendor'])->where('any', '.*')->name('lvs.vendor');
+
+Route::middleware('VendorLoginCheck')->get('/vendor/{any}', [VendorController::class, 'vendor'])->where('any', '.*')->name('lvs.vendor');
+
+Route::get('/vendor', function (){ return redirect()->route('lvs.vendor','dashboard'); });
+
 /* -------------------------- Front controller -----------------------------------*/
 
 Route::get('/front/', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.front');
@@ -37,13 +48,13 @@ Route::get('/front/{any}', [FrontController::class, 'index'])->where('any', '.*'
 
 Route::get('/', function (){ return redirect()->route('lvs.front','home'); });
 
-/* -------------------------- vendor Controller ------------------------ */
+/* -------------------------- subAdmin Controller ------------------------ */
 
-Route::get('/vendor/auth/{any}', [VendorController::class, 'vendor'])->where('any', '.*')->name('lvs.vendor.auth');
+Route::get('/subAdmin/auth/{any}', [SubAdminController::class, 'subAdmin'])->where('any', '.*')->name('lvs.subAdmin.auth');
 
-Route::get('/vendor/', [VendorController::class, 'vendor'])->where('any', '.*')->name('lvs.vendor');
+Route::get('/subAdmin/', [SubAdminController::class, 'subAdmin'])->where('any', '.*')->name('lvs.subAdmin');
 
-Route::get('/vendor/{any}', [VendorController::class, 'vendor'])->where('any', '.*')->name('lvs.vendor');
+Route::get('/subAdmin/{any}', [SubAdminController::class, 'subAdmin'])->where('any', '.*')->name('lvs.subAdmin');
 
 /* -------------------------- merchant Controller ------------------------ */
 

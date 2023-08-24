@@ -5,6 +5,9 @@ namespace App\Http;
 use App\Http\Middleware\AdminAuth;
 use App\Http\Middleware\AdminAuthReq;
 use App\Http\Middleware\LoginCheck;
+use App\Http\Middleware\vendorAuth;
+use App\Http\Middleware\VendorAuthReq;
+use App\Http\Middleware\VendorLoginCheck;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -69,5 +72,8 @@ class Kernel extends HttpKernel
         'AdminAuth' => AdminAuth::class,
         'AdminAuthReq' => AdminAuthReq::class,
         'LoginCheck' => LoginCheck::class,
+        'VendorAuth' => VendorAuth::class,
+        'VendorAuthReq' => VendorAuthReq::class,
+        'VendorLoginCheck' => VendorLoginCheck::class,
     ];
 }
