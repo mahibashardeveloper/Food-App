@@ -4,7 +4,10 @@ namespace App\Http;
 
 use App\Http\Middleware\AdminAuth;
 use App\Http\Middleware\AdminAuthReq;
-use App\Http\Middleware\LoginCheck;
+use App\Http\Middleware\AdminLoginCheck;
+use App\Http\Middleware\SubAdminAuth;
+use App\Http\Middleware\SubAdminAuthReq;
+use App\Http\Middleware\SubAdminLoginCheck;
 use App\Http\Middleware\vendorAuth;
 use App\Http\Middleware\VendorAuthReq;
 use App\Http\Middleware\VendorLoginCheck;
@@ -71,9 +74,12 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'AdminAuth' => AdminAuth::class,
         'AdminAuthReq' => AdminAuthReq::class,
-        'LoginCheck' => LoginCheck::class,
+        'AdminLoginCheck' => AdminLoginCheck::class,
         'VendorAuth' => VendorAuth::class,
         'VendorAuthReq' => VendorAuthReq::class,
         'VendorLoginCheck' => VendorLoginCheck::class,
+        'SubAdminAuth' => SubAdminAuth::class,
+        'SubAdminAuthReq' => SubAdminAuthReq::class,
+        'SubAdminLoginCheck' => SubAdminLoginCheck::class,
     ];
 }

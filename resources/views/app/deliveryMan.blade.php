@@ -8,5 +8,5 @@
     <title>Delivery Man Portal</title>
 </head>
 <body id="app"></body>
-@vite('resources/js/deliveryman/app.js')
+@vite('resources/js/deliveryMan/app.js')
 </html>

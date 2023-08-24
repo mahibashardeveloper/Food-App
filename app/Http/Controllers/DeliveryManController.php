@@ -12,7 +12,7 @@ class DeliveryManController extends BaseController
 {
 
     public function deliveryman(){
-        return view('app.front');
+        return view('app.deliveryMan');
     }
 
     public function create(Request $request){

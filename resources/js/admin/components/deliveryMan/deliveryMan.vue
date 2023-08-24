@@ -166,22 +166,6 @@
 
                         <input type="checkbox" class="form-check-input me-3 d-none d-sm-block" :checked="CheckIfChecked(each.id)" @change="toggleCheck($event,each.id)">
 
-                        <div class="product-image">
-
-                            <span class="w-100 h-100" v-if="each.avatar === null">
-
-                                <img class="img-fluid" :src="'/images/avatar.png'" alt="avatar.png">
-
-                            </span>
-
-                            <span class="w-100 h-100" v-if="each.avatar !== null">
-
-                                <img class="img-fluid" :src="'/storage/media/image/'+each.avatar" alt="person-image">
-
-                            </span>
-
-                        </div>
-
                         {{each.full_name}}
 
                     </div>
@@ -362,40 +346,6 @@
 
                 <div class="modal-body">
 
-                    <div class="mb-3 col-12">
-
-                        <div class="d-flex justify-content-center align-items-center">
-
-                            <label for="file-upload">
-
-                                <input type="file" class="d-none" id="file-upload" @change="attachFile($event)">
-
-                                <span v-if="deliveryManParam.avatar === null" class="modal-avatar">
-
-                                        <span class="text-center">
-
-                                            <span class="mb-2">
-
-                                                <i class="bi bi-card-image"></i>
-
-                                            </span>
-
-                                            Upload Image
-
-                                        </span>
-
-                                    </span>
-
-                                <img class="img-fluid modal-avatar" v-if="deliveryManParam.avatar !== null" :src="'/storage/media/image/'+deliveryManParam.avatar" alt="avatar">
-
-                            </label>
-
-                        </div>
-
-                        <div class="error-text" v-if="error != null && error.avatar !== undefined" v-text="error.avatar[0]"></div>
-
-                    </div>
-
                     <div class="mb-3">
 
                         <label for="full_name" class="form-label">
@@ -550,8 +500,6 @@ export default {
             deliveryManParam: {
 
                 id: '',
-
-                avatar: '',
 
                 full_name: '',
 
@@ -731,7 +679,7 @@ export default {
 
                 this.selected = [];
 
-                this.deliveryManParam = { id: '', avatar: '', full_name: '', email: '', phone_number: '' };
+                this.deliveryManParam = { id: '', full_name: '', email: '', phone_number: '' };
 
                 this.current_page = 1;
 
@@ -749,7 +697,7 @@ export default {
 
             this.error = null;
 
-            this.deliveryManParam = { id: '', avatar: null, full_name: '', email: '', phone_number: '' };
+            this.deliveryManParam = { id: '', full_name: '', email: '', phone_number: '' };
 
             if (type === 1) {
 

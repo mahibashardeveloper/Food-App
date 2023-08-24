@@ -11,6 +11,10 @@ use Illuminate\Routing\Controller as BaseController;
 class SubAdminController extends BaseController
 {
 
+    public function subAdmin(){
+        return view('app.subAdmin');
+    }
+
     public function create(Request $request){
         $rv = SubAdminService::create($request);
         return response()->json($rv, 200);
@@ -33,6 +37,46 @@ class SubAdminController extends BaseController
 
     public function delete(Request $request){
         $rv = SubAdminService::delete($request);
+        return response()->json($rv, 200);
+    }
+
+    public function login(Request $request){
+        $rv = SubAdminService::login($request);
+        return response()->json($rv, 200);
+    }
+    public function forgot(Request $request)
+    {
+        $rv = SubAdminService::forgot($request);
+        return response()->json($rv, 200);
+    }
+
+    public function reset(Request $request)
+    {
+        $rv = SubAdminService::reset($request);
+        return response()->json($rv, 200);
+    }
+
+    public function profile_details(Request $request)
+    {
+        $rv = SubAdminService::profile_details($request);
+        return response()->json($rv, 200);
+    }
+
+    public function profile_update(Request $request)
+    {
+        $rv = SubAdminService::profile_update($request);
+        return response()->json($rv, 200);
+    }
+
+    public function profile_password(Request $request)
+    {
+        $rv = SubAdminService::profile_password($request);
+        return response()->json($rv, 200);
+    }
+
+    public function profile_logout(Request $request)
+    {
+        $rv = SubAdminService::profile_logout($request);
         return response()->json($rv, 200);
     }
 

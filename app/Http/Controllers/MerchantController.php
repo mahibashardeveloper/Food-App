@@ -11,6 +11,10 @@ use Illuminate\Routing\Controller as BaseController;
 class MerchantController extends BaseController
 {
 
+    public function merchant(){
+        return view('app.merchant');
+    }
+
     public function create(Request $request){
         $rv = MerchantService::create($request);
         return response()->json($rv, 200);

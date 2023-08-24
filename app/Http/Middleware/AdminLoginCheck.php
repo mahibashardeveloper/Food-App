@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 
-class LoginCheck
+class AdminLoginCheck
 {
     /**
      * Handle an incoming request.

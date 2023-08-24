@@ -16,7 +16,7 @@ use App\Http\Controllers\MediaController;
 |
 */
 
-/* ------------------------- Auth Admin Controller --------------------------- */
+/* ------------------------- Auth vendor Controller --------------------------- */
 
 Route::group(
 
@@ -34,7 +34,7 @@ Route::group(
 
 );
 
-/* ------------------------- Admin Profile Controller --------------------------- */
+/* ------------------------- vendor Profile Controller --------------------------- */
 
 Route::group(
 

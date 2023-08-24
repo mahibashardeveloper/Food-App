@@ -14,9 +14,13 @@ import layout from "../components/layout/layout.vue";
 
 import dashboard from "../components/dashboard/dashboard.vue";
 
+// profile
+
+import profile from "../components/profile/profile.vue";
+
 // directory ----- ----- ----- ----- ----- ----- ----- ----- -----
 
-const ROOT_URL = "/deliveryman";
+const ROOT_URL = "/deliveryMan";
 
 // route ----- ----- ----- ----- ----- ----- ----- ----- -----
 
@@ -37,6 +41,10 @@ const routes = [
             // dashboard
 
             {path: ROOT_URL + '/dashboard', name: 'dashboard', component: dashboard, meta: {title: 'dashboard'}},
+
+            // profile
+
+            {path: ROOT_URL + '/profile', name: 'profile', component: profile, meta: {title: 'profile'}},
 
         ],
 

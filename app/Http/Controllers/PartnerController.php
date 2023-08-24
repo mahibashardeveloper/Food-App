@@ -12,7 +12,7 @@ class PartnerController extends BaseController
 {
 
     public function partner(){
-        return view('app.front');
+        return view('app.partner');
     }
 
     public function create(Request $request){

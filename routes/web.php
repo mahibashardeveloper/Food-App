@@ -22,13 +22,23 @@ use App\Http\Controllers\MerchantController;
 
 /* -------------------------- Authentication Controller ------------------------ */
 
-Route::middleware('LoginCheck')->get('/admin/auth/{any}', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin.auth');
+Route::middleware('AdminLoginCheck')->get('/admin/auth/{any}', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin.auth');
 
-Route::middleware('LoginCheck')->get('/admin/', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin');
+Route::middleware('AdminLoginCheck')->get('/admin/', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin');
 
-Route::middleware('LoginCheck')->get('/admin/{any}', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin');
+Route::middleware('AdminLoginCheck')->get('/admin/{any}', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin');
 
 Route::get('/admin', function (){ return redirect()->route('lvs.admin','dashboard'); });
+
+/* -------------------------- subAdmin Controller ------------------------ */
+
+Route::middleware('SubAdminLoginCheck')->get('/subAdmin/auth/{any}', [SubAdminController::class, 'subAdmin'])->where('any', '.*')->name('lvs.subAdmin.auth');
+
+Route::middleware('SubAdminLoginCheck')->get('/subAdmin/', [SubAdminController::class, 'subAdmin'])->where('any', '.*')->name('lvs.subAdmin');
+
+Route::middleware('SubAdminLoginCheck')->get('/subAdmin/{any}', [SubAdminController::class, 'subAdmin'])->where('any', '.*')->name('lvs.subAdmin');
+
+Route::get('/subAdmin', function (){ return redirect()->route('lvs.subAdmin','dashboard'); });
 
 /* -------------------------- vendor Controller ------------------------ */
 
@@ -47,14 +57,6 @@ Route::get('/front/', [FrontController::class, 'index'])->where('any', '.*')->na
 Route::get('/front/{any}', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.front');
 
 Route::get('/', function (){ return redirect()->route('lvs.front','home'); });
-
-/* -------------------------- subAdmin Controller ------------------------ */
-
-Route::get('/subAdmin/auth/{any}', [SubAdminController::class, 'subAdmin'])->where('any', '.*')->name('lvs.subAdmin.auth');
-
-Route::get('/subAdmin/', [SubAdminController::class, 'subAdmin'])->where('any', '.*')->name('lvs.subAdmin');
-
-Route::get('/subAdmin/{any}', [SubAdminController::class, 'subAdmin'])->where('any', '.*')->name('lvs.subAdmin');
 
 /* -------------------------- merchant Controller ------------------------ */
 

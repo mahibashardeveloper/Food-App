@@ -126,7 +126,7 @@
 
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 py-2">
 
-                    <div class="d-flex">
+                    <div class="d-flex align-items-center">
 
                         <input type="checkbox" class="form-check-input me-3 d-none d-sm-block" :checked="tableData.length > 0 && tableData.length === selected.length" @change="toggleCheckAll($event)">
 
@@ -165,22 +165,6 @@
                     <div class="d-flex align-items-center">
 
                         <input type="checkbox" class="form-check-input me-3 d-none d-sm-block" :checked="CheckIfChecked(each.id)" @change="toggleCheck($event,each.id)">
-
-                        <div class="product-image">
-
-                            <span class="w-100 h-100" v-if="each.avatar === null">
-
-                                <img class="img-fluid" :src="'/images/avatar.png'" alt="avatar.png">
-
-                            </span>
-
-                            <span class="w-100 h-100" v-if="each.avatar !== null">
-
-                                <img class="img-fluid" :src="'/storage/media/image/'+each.avatar" alt="person-image">
-
-                            </span>
-
-                        </div>
 
                         {{each.full_name}}
 
@@ -364,40 +348,6 @@
 
                     <div class="mb-3">
 
-                        <div class="d-flex justify-content-center align-items-center">
-
-                            <label for="file-upload">
-
-                                <input type="file" class="d-none" id="file-upload" @change="attachFile($event)">
-
-                                <span v-if="subAdminParam.avatar === null" class="modal-avatar">
-
-                                    <span class="text-center">
-
-                                        <span class="mb-2">
-
-                                            <i class="bi bi-card-image"></i>
-
-                                        </span>
-
-                                        Upload Image
-
-                                    </span>
-
-                                </span>
-
-                                <img class="img-fluid modal-avatar" v-if="subAdminParam.avatar !== null" :src="'/storage/media/image/'+subAdminParam.avatar" alt="avatar">
-
-                            </label>
-
-                        </div>
-
-                        <div class="error-text" v-if="error != null && error.avatar !== undefined" v-text="error.avatar[0]"></div>
-
-                    </div>
-
-                    <div class="mb-3">
-
                         <label for="full_name" class="form-label">
 
                             Full Name
@@ -551,8 +501,6 @@
                 subAdminParam: {
 
                     id: '',
-
-                    avatar: '',
 
                     full_name: '',
 
@@ -730,7 +678,7 @@
 
                     this.selected = [];
 
-                    this.subAdminParam = { id: '', avatar: '', full_name: '', email: '', phone_number: '' };
+                    this.subAdminParam = { id: '', full_name: '', email: '', phone_number: '' };
 
                     this.current_page = 1;
 
@@ -748,7 +696,7 @@
 
                 this.error = null;
 
-                this.subAdminParam = { id: '', avatar: null, full_name: '', email: '', phone_number: '' };
+                this.subAdminParam = { id: '', full_name: '', email: '', phone_number: '' };
 
                 if (type === 1) {
 

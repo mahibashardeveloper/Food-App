@@ -15,3 +15,6 @@ export default defineComponent({
     }
 })
 </script>
+<style lang="scss">
+@import "../../scss/deliveryMan/style";
+</style>
