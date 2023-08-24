@@ -24,7 +24,7 @@
 
                 <router-link :to="{name:'dashboard'}" class="logo">
 
-                    {{profile_data.company_name}}
+                    Admin Portal
 
                 </router-link>
 
@@ -146,7 +146,7 @@
 
                             <div class="name">{{profile_data.first_name}} {{profile_data.last_name}}</div>
 
-                            <div class="designation">Admin</div>
+                            <div class="designation">{{profile_data.company_name}}</div>
 
                         </div>
 
