@@ -426,35 +426,6 @@
 
                     <div class="mb-3">
 
-                        <label for="password" class="form-label">
-
-                            password
-
-                        </label>
-
-                        <input type="password" id="password" name="password" class="form-control" v-model="deliveryManParam.password">
-
-                        <div class="error-text" v-if="error != null && error.password !== undefined" v-text="error.password[0]"></div>
-
-                    </div>
-
-                    <div class="mb-3">
-
-                        <label for="confirm_password" class="form-label">
-
-                            Confirm password
-
-                        </label>
-
-
-                        <input type="password" id="confirm_password" name="confirm_password" class="form-control"  v-model="deliveryManParam.password_confirmation">
-
-                        <div class="error-text" v-if="error != null && error.password_confirmation !== undefined" v-text="error.password_confirmation[0]"></div>
-
-                    </div>
-
-                    <div class="mb-3">
-
                         <label for="phone_number" class="form-label">
 
                             Phone Number
@@ -585,10 +556,6 @@ export default {
                 full_name: '',
 
                 email: '',
-
-                password: '',
-
-                password_confirmation: '',
 
                 phone_number: ''
 
@@ -764,7 +731,7 @@ export default {
 
                 this.selected = [];
 
-                this.deliveryManParam = { id: '', avatar: '', full_name: '', email: '', password: '', password_confirmation: '', phone_number: '' };
+                this.deliveryManParam = { id: '', avatar: '', full_name: '', email: '', phone_number: '' };
 
                 this.current_page = 1;
 
@@ -782,7 +749,7 @@ export default {
 
             this.error = null;
 
-            this.deliveryManParam = { id: '', avatar: null, full_name: '', email: '', phone_number: '', password: '', password_confirmation: '' };
+            this.deliveryManParam = { id: '', avatar: null, full_name: '', email: '', phone_number: '' };
 
             if (type === 1) {
 

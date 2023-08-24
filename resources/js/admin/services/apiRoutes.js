@@ -12,6 +12,18 @@ const apiRoutes = {
 
     // SubAdmin
 
+    calenderCreate: '/calender/create',
+
+    calenderList: '/calender/list',
+
+    calenderSingle: '/calender/single',
+
+    calenderUpdate: '/calender/update',
+
+    calenderDelete: '/calender/delete',
+
+    // SubAdmin
+
     subAdminCreate: '/subAdmin/create',
 
     subAdminList: '/subAdmin/list',

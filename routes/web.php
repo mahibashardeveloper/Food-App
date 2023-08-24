@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CalenderController;
 use App\Http\Controllers\SubAdminController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\DeliveryManController;
@@ -77,7 +78,23 @@ Route::group(
 
 /* ------------------------- SubAdmin Controller --------------------------- */
 
-Route::prefix('subAdmin')->group(function () {
+Route::prefix('calender')->group( function () {
+
+    Route::post('/create', [CalenderController::class, 'create'])->name('Calender.Create');
+
+    Route::post('/update', [CalenderController::class, 'update'])->name('Calender.Update');
+
+    Route::post('/list', [CalenderController::class, 'list'])->name('Calender.List');
+
+    Route::post('/single', [CalenderController::class, 'single'])->name('Calender.Single');
+
+    Route::post('/delete', [CalenderController::class, 'delete'])->name('Calender.Delete');
+
+});
+
+/* ------------------------- SubAdmin Controller --------------------------- */
+
+Route::prefix('subAdmin')->group( function () {
 
     Route::post('/create', [SubAdminController::class, 'create'])->name('SubAdmin.Create');
 
@@ -93,7 +110,7 @@ Route::prefix('subAdmin')->group(function () {
 
 /* ------------------------- Vendor Controller --------------------------- */
 
-Route::prefix('vendor')->group(function () {
+Route::prefix('vendor')->group( function () {
 
     Route::post('/create', [VendorController::class, 'create'])->name('Vendor.Create');
 
@@ -109,7 +126,7 @@ Route::prefix('vendor')->group(function () {
 
 /* ------------------------- DeliveryMan Controller --------------------------- */
 
-Route::prefix('deliveryMan')->group(function () {
+Route::prefix('deliveryMan')->group( function () {
 
     Route::post('/create', [DeliveryManController::class, 'create'])->name('DeliveryMan.Create');
 
@@ -125,7 +142,7 @@ Route::prefix('deliveryMan')->group(function () {
 
 /* ------------------------- Partner Controller --------------------------- */
 
-Route::prefix('partner')->group(function () {
+Route::prefix('partner')->group( function () {
 
     Route::post('/create', [PartnerController::class, 'create'])->name('Partner.Create');
 
@@ -141,7 +158,7 @@ Route::prefix('partner')->group(function () {
 
 /* ------------------------- Merchant Controller --------------------------- */
 
-Route::prefix('merchant')->group(function () {
+Route::prefix('merchant')->group( function () {
 
     Route::post('/create', [MerchantController::class, 'create'])->name('Merchant.Create');
 
@@ -157,7 +174,7 @@ Route::prefix('merchant')->group(function () {
 
 /* ------------------------- Category Controller --------------------------- */
 
-Route::prefix('category')->group(function () {
+Route::prefix('category')->group( function () {
 
     Route::post('/create', [CategoryController::class, 'create'])->name('Category.Create');
 
@@ -173,7 +190,7 @@ Route::prefix('category')->group(function () {
 
 /* ------------------------- Product Controller --------------------------- */
 
-Route::prefix('product')->group(function () {
+Route::prefix('product')->group( function () {
 
     Route::post('/create', [ProductController::class, 'create'])->name('Product.Create');
 
@@ -189,7 +206,7 @@ Route::prefix('product')->group(function () {
 
 /* ------------------------- Media Controller --------------------------- */
 
-Route::prefix('media')->group(function () {
+Route::prefix('media')->group( function () {
 
     Route::post('/upload', [MediaController::class, 'upload'])->name('Media.Upload');
 

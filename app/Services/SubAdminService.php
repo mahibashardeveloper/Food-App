@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class SubAdminService
 {
@@ -68,8 +69,6 @@ class SubAdminService
 
                     'phone_number' => 'required|unique:sub_admins,phone_number',
 
-                    'password' => 'required|min:6|confirmed',
-
                 ]
 
             );
@@ -79,6 +78,8 @@ class SubAdminService
                 return ['status' => 500, 'errors' => $validator->errors()];
 
             }
+
+            $hashed_random_password = Str::random(8);
 
             $admin_id = Auth::guard('admins')->id();
 
@@ -94,9 +95,14 @@ class SubAdminService
 
             $subAdmin-> phone_number = $request->phone_number;
 
-            $subAdmin-> password = $request->password;
+            $subAdmin-> password = bcrypt($hashed_random_password);
 
             $subAdmin-> save();
+
+            Mail::send('emails.verify-subAdmin', ['user' => $subAdmin,'password' => $hashed_random_password], function ($message) use ($subAdmin) {
+                $message->to($subAdmin->email, $subAdmin->full_name)->subject(env('APP_NAME') . 'Redishketch');
+                $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+            });
 
             return ['status' => 200, 'msg' => 'data has been saved successfully.'];
 
@@ -171,8 +177,6 @@ class SubAdminService
 
                     'phone_number' => 'required',
 
-                    'password' => 'required|min:6|confirmed',
-
                 ]
 
             );
@@ -198,8 +202,6 @@ class SubAdminService
             $subAdmin->email = $request->email;
 
             $subAdmin->phone_number = $request->phone_number;
-
-            $subAdmin->password = $request->password;
 
             $subAdmin->save();
 

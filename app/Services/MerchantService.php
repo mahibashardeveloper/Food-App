@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class MerchantService
 {
@@ -64,15 +65,13 @@ class MerchantService
 
                 [
 
-                    'company_name' => 'required|unique:partners,company_name',
+                    'company_name' => 'required|unique:merchants,company_name',
 
-                    'full_name' => 'required|unique:partners,full_name',
+                    'full_name' => 'required|unique:merchants,full_name',
 
-                    'email' => 'required|unique:partners,email',
+                    'email' => 'required|unique:merchants,email',
 
-                    'phone_number' => 'required|unique:partners,phone_number',
-
-                    'password' => 'required|min:6|confirmed',
+                    'phone_number' => 'required|unique:merchants,phone_number',
 
                 ]
 
@@ -83,6 +82,8 @@ class MerchantService
                 return ['status' => 500, 'errors' => $validator->errors()];
 
             }
+
+            $hashed_random_password = Str::random(8);
 
             $admin_id = Auth::guard('admins')->id();
 
@@ -100,9 +101,14 @@ class MerchantService
 
             $merchant-> phone_number = $request->phone_number;
 
-            $merchant-> password = $request->password;
+            $merchant-> password = bcrypt($hashed_random_password);
 
             $merchant-> save();
+
+            Mail::send('emails.verify-merchant', ['user' => $merchant,'password' => $hashed_random_password], function ($message) use ($merchant) {
+                $message->to($merchant->email, $merchant->full_name)->subject(env('APP_NAME') . 'Redishketch');
+                $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+            });
 
             return ['status' => 200, 'msg' => 'data has been saved successfully.'];
 
@@ -179,8 +185,6 @@ class MerchantService
 
                     'phone_number' => 'required',
 
-                    'password' => 'required|min:6|confirmed',
-
                 ]
 
             );
@@ -208,8 +212,6 @@ class MerchantService
             $merchant->email = $request->email;
 
             $merchant->phone_number = $request->phone_number;
-
-            $merchant->password = $request->password;
 
             $merchant->save();
 

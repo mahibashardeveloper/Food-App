@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class VendorService
 {
@@ -68,8 +69,6 @@ class VendorService
 
                     'phone_number' => 'required|unique:vendors,phone_number',
 
-                    'password' => 'required|min:6|confirmed',
-
                 ]
 
             );
@@ -79,6 +78,8 @@ class VendorService
                 return ['status' => 500, 'errors' => $validator->errors()];
 
             }
+
+            $hashed_random_password = Str::random(8);
 
             $admin_id = Auth::guard('admins')->id();
 
@@ -94,9 +95,14 @@ class VendorService
 
             $vendor-> phone_number = $request->phone_number;
 
-            $vendor-> password = $request->password;
+            $vendor-> password = bcrypt($hashed_random_password);
 
             $vendor-> save();
+
+            Mail::send('emails.verify-vendor', ['user' => $vendor,'password' => $hashed_random_password], function ($message) use ($vendor) {
+                $message->to($vendor->email, $vendor->full_name)->subject(env('APP_NAME') . 'Redishketch');
+                $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+            });
 
             return ['status' => 200, 'msg' => 'data has been saved successfully.'];
 
@@ -171,8 +177,6 @@ class VendorService
 
                     'phone_number' => 'required',
 
-                    'password' => 'required|min:6|confirmed',
-
                 ]
 
             );
@@ -198,8 +202,6 @@ class VendorService
             $vendor->email = $request->email;
 
             $vendor->phone_number = $request->phone_number;
-
-            $vendor->password = $request->password;
 
             $vendor->save();
 

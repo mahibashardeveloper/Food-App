@@ -2,14 +2,13 @@
 
 namespace App\Services;
 
-use App\Models\deliveryMans;
+use App\Models\Calenders;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
-class DeliveryManService
+class CalenderService
 {
 
     public static function list($request)
@@ -23,17 +22,17 @@ class DeliveryManService
 
             $keyword = $request->q ?? '';
 
-            $results = deliveryMans::where('admin_id', $admin_id)->orderBy('id', 'desc');
+            $results = Calenders::where('admin_id', $admin_id)->orderBy('id', 'desc');
 
             if (isset($keyword) && !empty($keyword)) {
 
                 $results->where(function ($q) use ($keyword) {
 
-                    $q->where('full_name', 'LIKE', '%' . $keyword . '%');
+                    $q->where('topic', 'LIKE', '%' . $keyword . '%');
 
-                    $q->orWhere('email', 'LIKE', '%' . $keyword . '%');
+                    $q->orWhere('date', 'LIKE', '%' . $keyword . '%');
 
-                    $q->orWhere('phone_number', 'LIKE', '%' . $keyword . '%');
+                    $q->orWhere('time', 'LIKE', '%' . $keyword . '%');
 
                 });
 
@@ -63,11 +62,11 @@ class DeliveryManService
 
                 [
 
-                    'full_name' => 'required|unique:delivery_mans,full_name',
+                    'date' => 'required|unique:Calenders,date',
 
-                    'email' => 'required|unique:delivery_mans,email',
+                    'time' => 'required|unique:Calenders,time',
 
-                    'phone_number' => 'required|unique:delivery_mans,phone_number',
+                    'topic' => 'required|unique:Calenders,topic',
 
                 ]
 
@@ -79,30 +78,19 @@ class DeliveryManService
 
             }
 
-            $hashed_random_password = Str::random(8);
-
             $admin_id = Auth::guard('admins')->id();
 
-            $deliveryMan = new deliveryMans();
+            $calender = new Calenders();
 
-            $deliveryMan-> admin_id = $admin_id;
+            $calender-> admin_id = $admin_id;
 
-            $deliveryMan-> avatar = $request->avatar ?? null;
+            $calender-> date = $request->date;
 
-            $deliveryMan-> full_name = $request->full_name;
+            $calender-> time = $request->time;
 
-            $deliveryMan-> email = $request->email;
+            $calender-> topic = $request->topic;
 
-            $deliveryMan-> phone_number = $request->phone_number;
-
-            $deliveryMan-> password = bcrypt($hashed_random_password);
-
-            $deliveryMan-> save();
-
-            Mail::send('emails.verify-deliveryman', ['user' => $deliveryMan,'password' => $hashed_random_password], function ($message) use ($deliveryMan) {
-                $message->to($deliveryMan->email, $deliveryMan->full_name)->subject(env('APP_NAME') . 'Redishketch');
-                $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
-            });
+            $calender-> save();
 
             return ['status' => 200, 'msg' => 'data has been saved successfully.'];
 
@@ -140,15 +128,15 @@ class DeliveryManService
 
             }
 
-            $deliveryMan = deliveryMans::where('admin_id', $admin_id)->where('id', $request->id)->first();
+            $calender = Calenders::where('admin_id', $admin_id)->where('id', $request->id)->first();
 
-            if($deliveryMan == null){
+            if($calender == null){
 
                 return ['status' => 500, 'errors' => 'data not found'];
 
             }
 
-            return ['status' => 200, 'data' => $deliveryMan];
+            return ['status' => 200, 'data' => $calender];
 
         } catch (\Exception $e) {
 
@@ -171,11 +159,11 @@ class DeliveryManService
 
                 [
 
-                    'full_name' => 'required',
+                    'date' => 'required',
 
-                    'email' => 'required',
+                    'time' => 'required',
 
-                    'phone_number' => 'required',
+                    'topic' => 'required',
 
                 ]
 
@@ -187,23 +175,21 @@ class DeliveryManService
 
             }
 
-            $deliveryMan = deliveryMans::where('admin_id', $admin_id)->where('id', $request->id)->first();
+            $calender = Calenders::where('admin_id', $admin_id)->where('id', $request->id)->first();
 
-            if($deliveryMan == null){
+            if($calender == null){
 
                 return ['status' => 500, 'errors' => 'data not found'];
 
             }
 
-            $deliveryMan->avatar = $request->avatar ?? null;
+            $calender->date = $request->date;
 
-            $deliveryMan->full_name = $request->full_name;
+            $calender->time = $request->time;
 
-            $deliveryMan->email = $request->email;
+            $calender->topic = $request->topic;
 
-            $deliveryMan->phone_number = $request->phone_number;
-
-            $deliveryMan->save();
+            $calender->save();
 
             return ['status' => 200, 'msg' => 'data has been updated successfully.'];
 
@@ -220,7 +206,7 @@ class DeliveryManService
 
         try {
 
-            deliveryMans::whereIn('id', $request->ids)->delete();
+            Calenders::whereIn('id', $request->ids)->delete();
 
             return ['status' => 200, 'msg' => 'data has been deleted successfully'];
 

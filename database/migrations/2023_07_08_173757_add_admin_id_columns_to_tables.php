@@ -11,6 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::table('calenders', function (Blueprint $table) {
+            $table->unsignedBigInteger('admin_id')->after('id');
+            $table->foreign('admin_id')->references('id')->on('admins');
+        });
         Schema::table('sub_admins', function (Blueprint $table) {
             $table->unsignedBigInteger('admin_id')->after('id');
             $table->foreign('admin_id')->references('id')->on('admins');
@@ -46,6 +50,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('calenders', function (Blueprint $table) {
+            $table->dropForeign(['admin_id']);
+            $table->dropColumn('admin_id');
+        });
         Schema::table('sub_admins', function (Blueprint $table) {
             $table->dropForeign(['admin_id']);
             $table->dropColumn('admin_id');

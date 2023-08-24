@@ -453,34 +453,6 @@
 
                     <div class="mb-3">
 
-                        <label for="password" class="form-label">
-
-                            password
-
-                        </label>
-
-                        <input type="password" id="password" name="password" class="form-control" v-model="partnerParam.password">
-
-                        <div class="error-text" v-if="error != null && error.password !== undefined" v-text="error.password[0]"></div>
-
-                    </div>
-
-                    <div class="mb-3">
-
-                        <label for="password_confirmation" class="form-label">
-
-                            Confirm password
-
-                        </label>
-
-                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" v-model="partnerParam.password_confirmation">
-
-                        <div class="error-text" v-if="error != null && error.password_confirmation !== undefined" v-text="error.password_confirmation[0]"></div>
-
-                    </div>
-
-                    <div class="mb-3">
-
                         <label for="phone_number" class="form-label">
 
                             Phone Number
@@ -604,10 +576,6 @@
                     full_name: '',
 
                     email: '',
-
-                    password: '',
-
-                    password_confirmation: '',
 
                     phone_number: ''
 
@@ -783,7 +751,7 @@
 
                     this.selected = [];
 
-                    this.partnerParam = { id: '', avatar: '', company_name: '', full_name: '', email: '', password: '', password_confirmation: '', phone_number: '' };
+                    this.partnerParam = { id: '', avatar: '', company_name: '', full_name: '', email: '', phone_number: '' };
 
                     this.current_page = 1;
 
@@ -801,7 +769,7 @@
 
                 this.error = null;
 
-                this.partnerParam = { id: '', avatar: null, company_name: '', full_name: '', email: '', phone_number: '', password: '', password_confirmation: '' };
+                this.partnerParam = { id: '', avatar: null, company_name: '', full_name: '', email: '', phone_number: '' };
 
                 if (type === 1) {
 

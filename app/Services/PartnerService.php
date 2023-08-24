@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class PartnerService
 {
@@ -72,8 +73,6 @@ class PartnerService
 
                     'phone_number' => 'required|unique:partners,phone_number',
 
-                    'password' => 'required|min:6|confirmed',
-
                 ]
 
             );
@@ -83,6 +82,8 @@ class PartnerService
                 return ['status' => 500, 'errors' => $validator->errors()];
 
             }
+
+            $hashed_random_password = Str::random(8);
 
             $admin_id = Auth::guard('admins')->id();
 
@@ -100,9 +101,14 @@ class PartnerService
 
             $partner-> phone_number = $request->phone_number;
 
-            $partner-> password = $request->password;
+            $partner-> password = bcrypt($hashed_random_password);
 
             $partner-> save();
+
+            Mail::send('emails.verify-partner', ['user' => $partner,'password' => $hashed_random_password], function ($message) use ($partner) {
+                $message->to($partner->email, $partner->full_name)->subject(env('APP_NAME') . 'Redishketch');
+                $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+            });
 
             return ['status' => 200, 'msg' => 'data has been saved successfully.'];
 
@@ -179,8 +185,6 @@ class PartnerService
 
                     'phone_number' => 'required',
 
-                    'password' => 'required|min:6|confirmed',
-
                 ]
 
             );
@@ -208,8 +212,6 @@ class PartnerService
             $partner->email = $request->email;
 
             $partner->phone_number = $request->phone_number;
-
-            $partner->password = $request->password;
 
             $partner->save();
 
