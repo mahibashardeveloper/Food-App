@@ -1,16 +1,16 @@
 <template>
 
-    <div class="vendor-wrapper">
-        <div class="vendor-sidebar" :class="{active: isVendorSidebarActive}">
-            <div class="vendor-sidebar-header">
-                <a href="javascript:void(0)" class="vendor-logo-link">
+    <div class="deliveryman-wrapper">
+        <div class="deliveryman-sidebar" :class="{active: isDeliveryManSidebarActive}">
+            <div class="deliveryman-sidebar-header">
+                <a href="javascript:void(0)" class="deliveryman-logo-link">
                     delivery Man Portal
                 </a>
-                <a href="javascript:void(0)" class="vendor-close-btn" @click="remove">
+                <a href="javascript:void(0)" class="deliveryman-close-btn" @click="remove">
                     <i class="bi bi-x-lg"></i>
                 </a>
             </div>
-            <div class="vendor-sidebar-body">
+            <div class="deliveryman-sidebar-body">
                 <router-link :to="{name:'dashboard'}" @click="remove">
                     Dashboard
                 </router-link>
@@ -24,30 +24,30 @@
                     Orders
                 </a>
             </div>
-            <div class="vendor-sidebar-footer">
+            <div class="deliveryman-sidebar-footer">
                 <a href="javascript:void(0)">
                     Logout
                 </a>
             </div>
         </div>
-        <div class="vendor-section">
-            <div class="vendor-header">
-                <a href="javascript:void(0)" class="vendor-close-btn" @click="SidebarController">
+        <div class="deliveryman-section">
+            <div class="deliveryman-header">
+                <a href="javascript:void(0)" class="deliveryman-close-btn" @click="SidebarController">
                     <i class="bi bi-justify-left"></i>
                 </a>
-                <div class="vendor-profile">
+                <div class="deliveryman-profile">
                     <div class="marge" @click="ProfileDropdownController">
-                        <div class="vendor-avatar">
-                            <img class="img-fluid" v-if="!profile_data.avatar" :src="'https://ui-avatars.com/api/?name='+profile_data.first_name" alt="profile-dummy">
+                        <div class="deliveryman-avatar">
+                            <img class="img-fluid" v-if="!profile_data.avatar" :src="'https://ui-avatars.com/api/?name='+profile_data.full_name" alt="profile-dummy">
 
                             <img class="img-fluid" v-else :src="profile_data.media && profile_data.media.full_file_path" alt="profile">
                         </div>
-                        <div class="vendor-info">
+                        <div class="deliveryman-info">
                             <div class="name">{{profile_data.email}}</div>
                             <div class="designation">{{profile_data.full_name}}</div>
                         </div>
                     </div>
-                    <div class="vendor-dropdown-menu" :class="{active: isVendorDropdownActive}">
+                    <div class="deliveryman-dropdown-menu" :class="{active: isDeliveryManDropdownActive}">
                         <router-link :to="{name:'profile'}" @click="remove">
                             <i class="bi bi-person me-2"></i>
                             Profile
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="vendor-content">
+            <div class="deliveryman-content">
                 <router-view/>
             </div>
         </div>
@@ -83,9 +83,9 @@ export default {
 
         return{
 
-            isVendorSidebarActive: false,
+            isDeliveryManSidebarActive: false,
 
-            isVendorDropdownActive: false,
+            isDeliveryManDropdownActive: false,
 
             profile_data: '',
 
@@ -107,23 +107,23 @@ export default {
 
         ProfileDropdownController(){
 
-            this.isVendorDropdownActive = !this.isVendorDropdownActive;
+            this.isDeliveryManDropdownActive = !this.isDeliveryManDropdownActive;
 
-            this.isVendorSidebarActive = false;
+            this.isDeliveryManSidebarActive = false;
 
         },
 
         SidebarController(){
 
-            this.isVendorSidebarActive = !this.isVendorSidebarActive;
+            this.isDeliveryManSidebarActive = !this.isDeliveryManSidebarActive;
 
-            this.isVendorDropdownActive = false;
+            this.isDeliveryManDropdownActive = false;
 
         },
 
         remove(){
-            this.isVendorDropdownActive = false;
-            this.isVendorSidebarActive = false;
+            this.isDeliveryManDropdownActive = false;
+            this.isDeliveryManSidebarActive = false;
         },
 
         logout() {

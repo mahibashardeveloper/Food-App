@@ -18,11 +18,17 @@
                 <div class="profile-body">
                     <div class="d-flex justify-content-center">
                         <div class="avatar">
-                            <img class="img-fluid" v-if="!profile_data.avatar" :src="'https://ui-avatars.com/api/?name='+profile_data.first_name" alt="profile-dummy">
+                            <img class="img-fluid" v-if="!profile_data.avatar" :src="'https://ui-avatars.com/api/?name='+profile_data.full_name" alt="profile-dummy">
                             <img class="img-fluid" v-else :src="profile_data.media && profile_data.media.full_file_path" alt="profile">
                         </div>
                     </div>
                     <div class="pt-3">
+                        <div class="mb-3">
+                            Company Name.
+                        </div>
+                        <div class="mb-3 profile-info">
+                            {{ profile_data.company_name }}
+                        </div>
                         <div class="mb-3">
                             Full Name.
                         </div>
@@ -73,6 +79,13 @@
                                 <img class="img-fluid modal-avatar" v-if="editParam.avatar !== null" :src="editParam.avatarFilePath" alt="profile">
                             </label>
                         </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="company_name" class="form-label">
+                            Company Name
+                        </label>
+                        <input type="text" id="company_name" name="company_name" class="form-control" v-model="editParam.company_name">
+                        <div class="error-text" v-if="error != null && error.company_name !== undefined" v-text="error.company_name[0]"></div>
                     </div>
                     <div class="mb-3">
                         <label for="full_name" class="form-label">
@@ -171,6 +184,8 @@ export default {
             edit: false,
 
             editParam: {
+
+                company_name: '',
 
                 full_name: '',
 

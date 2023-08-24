@@ -52,6 +52,18 @@ return [
             'driver' => 'session',
             'provider' => 'vendors',
         ],
+        'delivery_mans' => [
+            'driver' => 'session',
+            'provider' => 'delivery_mans',
+        ],
+        'merchants' => [
+            'driver' => 'session',
+            'provider' => 'merchants',
+        ],
+        'partners' => [
+            'driver' => 'session',
+            'provider' => 'partners',
+        ],
     ],
 
     /*
@@ -87,6 +99,18 @@ return [
         'vendors' => [
             'driver' => 'eloquent',
             'model' => App\Models\Vendors::class,
+        ],
+        'delivery_mans' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\deliveryMans::class,
+        ],
+        'merchants' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Merchants::class,
+        ],
+        'partners' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Partners::class,
         ],
 
         // 'users' => [

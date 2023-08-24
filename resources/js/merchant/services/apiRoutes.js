@@ -1,4 +1,4 @@
-const apiVersion = '/api/vendor';
+const apiVersion = '/api/merchant';
 
 const apiRoutes = {
 

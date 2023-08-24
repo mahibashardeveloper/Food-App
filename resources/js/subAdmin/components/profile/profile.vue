@@ -18,7 +18,7 @@
                 <div class="profile-body">
                     <div class="d-flex justify-content-center">
                         <div class="avatar">
-                            <img class="img-fluid" v-if="!profile_data.avatar" :src="'https://ui-avatars.com/api/?name='+profile_data.first_name" alt="profile-dummy">
+                            <img class="img-fluid" v-if="!profile_data.avatar" :src="'https://ui-avatars.com/api/?name='+profile_data.full_name" alt="profile-dummy">
                             <img class="img-fluid" v-else :src="profile_data.media && profile_data.media.full_file_path" alt="profile">
                         </div>
                     </div>

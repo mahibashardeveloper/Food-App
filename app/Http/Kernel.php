@@ -11,6 +11,15 @@ use App\Http\Middleware\SubAdminLoginCheck;
 use App\Http\Middleware\vendorAuth;
 use App\Http\Middleware\VendorAuthReq;
 use App\Http\Middleware\VendorLoginCheck;
+use App\Http\Middleware\DeliveryManAuth;
+use App\Http\Middleware\DeliveryManAuthReq;
+use App\Http\Middleware\DeliveryManLoginCheck;
+use App\Http\Middleware\MerchantAuth;
+use App\Http\Middleware\MerchantAuthReq;
+use App\Http\Middleware\MerchantLoginCheck;
+use App\Http\Middleware\PartnerAuth;
+use App\Http\Middleware\PartnerAuthReq;
+use App\Http\Middleware\PartnerLoginCheck;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -75,11 +84,20 @@ class Kernel extends HttpKernel
         'AdminAuth' => AdminAuth::class,
         'AdminAuthReq' => AdminAuthReq::class,
         'AdminLoginCheck' => AdminLoginCheck::class,
-        'VendorAuth' => VendorAuth::class,
-        'VendorAuthReq' => VendorAuthReq::class,
-        'VendorLoginCheck' => VendorLoginCheck::class,
         'SubAdminAuth' => SubAdminAuth::class,
         'SubAdminAuthReq' => SubAdminAuthReq::class,
         'SubAdminLoginCheck' => SubAdminLoginCheck::class,
+        'VendorAuth' => VendorAuth::class,
+        'VendorAuthReq' => VendorAuthReq::class,
+        'VendorLoginCheck' => VendorLoginCheck::class,
+        'DeliveryManAuth' => DeliveryManAuth::class,
+        'DeliveryManAuthReq' => DeliveryManAuthReq::class,
+        'DeliveryManLoginCheck' => DeliveryManLoginCheck::class,
+        'MerchantAuth' => MerchantAuth::class,
+        'MerchantAuthReq' => MerchantAuthReq::class,
+        'MerchantLoginCheck' => MerchantLoginCheck::class,
+        'PartnerAuth' => PartnerAuth::class,
+        'PartnerAuthReq' => PartnerAuthReq::class,
+        'PartnerLoginCheck' => PartnerLoginCheck::class,
     ];
 }
