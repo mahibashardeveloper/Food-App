@@ -70,14 +70,6 @@ Route::middleware('MerchantLoginCheck')->get('/merchant/{any}', [MerchantControl
 
 Route::get('/merchant/', function (){ return redirect()->route('lvs.merchant','dashboard'); });
 
-/* -------------------------- Front controller -----------------------------------*/
-
-Route::get('/front/', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.front');
-
-Route::get('/front/{any}', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.front');
-
-Route::get('/', function (){ return redirect()->route('lvs.front','home'); });
-
 /* -------------------------- partner Controller ------------------------ */
 
 Route::middleware('PartnerLoginCheck')->get('/partner/auth/{any}', [PartnerController::class, 'partner'])->where('any', '.*')->name('lvs.partner.auth');
@@ -87,3 +79,11 @@ Route::middleware('PartnerLoginCheck')->get('/partner/', [PartnerController::cla
 Route::middleware('PartnerLoginCheck')->get('/partner/{any}', [PartnerController::class, 'partner'])->where('any', '.*')->name('lvs.partner');
 
 Route::get('/partner/', function (){ return redirect()->route('lvs.partner','dashboard'); });
+
+/* -------------------------- Front controller -----------------------------------*/
+
+Route::get('/front/', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.front');
+
+Route::get('/front/{any}', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.front');
+
+Route::get('/', function (){ return redirect()->route('lvs.front','home'); });

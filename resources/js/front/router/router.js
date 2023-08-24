@@ -8,21 +8,9 @@ import layout from "../components/layout/layout.vue";
 
 import home from "../components/home/home.vue";
 
-// shop ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-
-import shop from "../components/shop/shop.vue";
-
-// product_details ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-
-import product_details from "../components/product_details/product_details.vue";
-
 // cart ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 import cart from "../components/cart/cart.vue";
-
-// contact ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-
-import contact from "../components/contact/contact.vue";
 
 // login ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
@@ -54,21 +42,9 @@ const routes = [
 
             {path: ROOT_URL + '/home', name: 'home', component: home, meta: {title: 'home'}},
 
-            // shop
-
-            {path: ROOT_URL + '/shop', name: 'shop', component: shop, meta: {title: 'shop'}},
-
             // cart
 
             {path: ROOT_URL + '/cart', name: 'cart', component: cart, meta: {title: 'cart'}},
-
-            // product_details
-
-            {path: ROOT_URL + '/product_details', name: 'product_details', component: product_details, meta: {title: 'product_details'}},
-
-            // contact
-
-            {path: ROOT_URL + '/contact', name: 'contact', component: contact, meta: {title: 'contact'}},
 
             // login
 

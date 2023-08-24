@@ -28,18 +28,6 @@
 
             </router-link>
 
-            <router-link :to="{name:'shop'}" class="menu-link" active-class="active" @click="remove">
-
-                <i class="bi bi-shop me-2"></i> Shop
-
-            </router-link>
-
-            <router-link :to="{name:'contact'}" class="menu-link" active-class="active" @click="remove">
-
-                <i class="bi bi-telephone me-2"></i> Contact
-
-            </router-link>
-
             <a href="javascript:void(0)" class="menu-link" @click="cartInfo">
 
                 <i class="bi bi-cart me-2"></i> Cart

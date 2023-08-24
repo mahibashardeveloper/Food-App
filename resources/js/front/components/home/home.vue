@@ -136,7 +136,7 @@
 
                                     <div class="h4 fw-bold mb-3"> Today Discount </div>
 
-                                    <router-link :to="{name:'shop'}" class="text-success">Shop Now</router-link>
+                                    <a href="javascript:void(0)" class="text-success">Shop Now</a>
 
                                 </div>
 
@@ -158,7 +158,7 @@
 
                                     <div class="h4 fw-bold mb-3"> 1000+ Foods </div>
 
-                                    <router-link :to="{name:'shop'}" class="text-success">Shop Now</router-link>
+                                    <a href="javascript:void(0)" class="text-success">Shop Now</a>
 
                                 </div>
 
