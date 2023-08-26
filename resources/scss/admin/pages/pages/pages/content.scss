@@ -2,6 +2,7 @@
     width: 100%;
     height: calc(100vh - 70px);
     background-color: var(--main-color);
+    box-shadow: 0 0 5px 0 $black inset;
     padding: 30px;
     font-size: 13px;
     font-weight: 600;

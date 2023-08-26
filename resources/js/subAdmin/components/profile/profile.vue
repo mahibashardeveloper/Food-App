@@ -27,7 +27,7 @@
                             Full Name.
                         </div>
                         <div class="mb-3 profile-info">
-                            {{ profile_data.full_name }}
+                            {{ profile_data.full_name }} - {{profile_data.branch_name}} Branch
                         </div>
                         <div class="mb-3">
                             Email.

@@ -35,6 +35,8 @@ class SubAdminService
 
                     $q->orWhere('phone_number', 'LIKE', '%' . $keyword . '%');
 
+                    $q->orWhere('branch', 'LIKE', '%' . $keyword . '%');
+
                 });
 
             }
@@ -69,6 +71,8 @@ class SubAdminService
 
                     'phone_number' => 'required|unique:sub_admins,phone_number',
 
+                    'branch_name' => 'required|unique:sub_admins,branch_name',
+
                 ]
 
             );
@@ -94,6 +98,8 @@ class SubAdminService
             $subAdmin-> email = $request->email;
 
             $subAdmin-> phone_number = $request->phone_number;
+
+            $subAdmin-> branch_name = $request->branch_name;
 
             $subAdmin-> password = bcrypt($hashed_random_password);
 
@@ -177,6 +183,8 @@ class SubAdminService
 
                     'phone_number' => 'required',
 
+                    'branch_name' => 'required',
+
                 ]
 
             );
@@ -202,6 +210,8 @@ class SubAdminService
             $subAdmin->email = $request->email;
 
             $subAdmin->phone_number = $request->phone_number;
+
+            $subAdmin->branch_name = $request->branch;
 
             $subAdmin->save();
 

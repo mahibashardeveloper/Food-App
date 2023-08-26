@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('phone_number');
+            $table->string('branch_name');
             $table->string('avatar')->nullable();
             $table->string('email_verified_at')->nullable();
             $table->string('verified_token')->nullable();

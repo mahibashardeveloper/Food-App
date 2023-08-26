@@ -166,7 +166,7 @@
 
                         <input type="checkbox" class="form-check-input me-3 d-none d-sm-block" :checked="CheckIfChecked(each.id)" @change="toggleCheck($event,each.id)">
 
-                        {{each.full_name}}
+                        {{each.full_name}} {{each.branch}}
 
                     </div>
 
@@ -362,6 +362,20 @@
 
                     <div class="mb-3">
 
+                        <label for="branch_name" class="form-label">
+
+                            Branch Name
+
+                        </label>
+
+                        <input type="text" id="branch_name" name="branch_name" class="form-control" v-model="subAdminParam.branch_name">
+
+                        <div class="error-text" v-if="error != null && error.branch_name !== undefined" v-text="error.branch_name[0]"></div>
+
+                    </div>
+
+                    <div class="mb-3">
+
                         <label for="email" class="form-label">
 
                             Email
@@ -506,7 +520,9 @@
 
                     email: '',
 
-                    phone_number: ''
+                    phone_number: '',
+
+                    branch_name: '',
 
                 },
 
@@ -678,7 +694,7 @@
 
                     this.selected = [];
 
-                    this.subAdminParam = { id: '', full_name: '', email: '', phone_number: '' };
+                    this.subAdminParam = { id: '', full_name: '', branch: '', email: '', phone_number: '' };
 
                     this.current_page = 1;
 
@@ -696,7 +712,7 @@
 
                 this.error = null;
 
-                this.subAdminParam = { id: '', full_name: '', email: '', phone_number: '' };
+                this.subAdminParam = { id: '', full_name: '', branch: '', email: '', phone_number: '' };
 
                 if (type === 1) {
 
