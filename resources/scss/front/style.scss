@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
 $blue: #0d6efd;
 $indigo: #6610f2;
 $purple: #6f42c1;
@@ -14,6 +16,13 @@ $light: white;
 $gray: #6c757d;
 $border-color: #dee2e6;
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Dosis', sans-serif;
+}
+
 ::-webkit-scrollbar {
     background-color: transparent;
     width: 10px;
@@ -22,13 +31,6 @@ $border-color: #dee2e6;
 ::-webkit-scrollbar-thumb {
     background: $border-color;
     height: 20px !important;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Dosis', sans-serif;
 }
 
 @import "includes/preloader";
