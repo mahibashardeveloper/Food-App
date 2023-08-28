@@ -20,8 +20,6 @@
 
                             <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
 
-                            <div class="error-text" v-if="error != null && error.error !== undefined" v-text="error.error"></div>
-
                         </div>
 
                         <div class="mb-3">

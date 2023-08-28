@@ -180,166 +180,26 @@
             <div class="container py-5">
                 <div class="h3 fw-bold">Popular Products</div>
                 <div class="py-3 product-item owl-carousel owl-theme">
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-01.jpg'" class="img-fluid product-image-hover" alt="product-1">
+
+                    <div v-for="product in products" :key="product.id">
+                        <div class="text-start p-3">
+                            <div class="border rounded-2 overflow-hidden product">
+                                <div class="mb-3 overflow-hidden">
+                                    <img :src="product.image" class="img-fluid product-image-hover" alt="product-1">
+                                </div>
+                                <div class="fw-bold ps-3">
+                                    {{product.name}}
+                                </div>
+                                <div class="text-secondary pb-3 pt-2 ps-3">
+                                    {{product.price}} tk
+                                </div>
+                                <a class="btn btn-theme cart-position">
+                                    <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
+                                </a>
                             </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
                         </div>
                     </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-02.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-03.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-05.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-06.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-07.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-08.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-09.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-11.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-12.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -348,166 +208,26 @@
             <div class="container py-5">
                 <div class="h3 fw-bold">Daily Best Sells</div>
                 <div class="py-3 product-item owl-carousel owl-theme">
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-01.jpg'" class="img-fluid product-image-hover" alt="product-1">
+
+                    <div v-for="product in products" :key="product.id">
+                        <div class="text-start p-3">
+                            <div class="border rounded-2 overflow-hidden product">
+                                <div class="mb-3 overflow-hidden">
+                                    <img :src="product.image" class="img-fluid product-image-hover" alt="product-1">
+                                </div>
+                                <div class="fw-bold ps-3">
+                                    {{product.name}}
+                                </div>
+                                <div class="text-secondary pb-3 pt-2 ps-3">
+                                    {{product.price}} tk
+                                </div>
+                                <a class="btn btn-theme cart-position" @click="addToCart">
+                                    <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
+                                </a>
                             </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
                         </div>
                     </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-02.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-03.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-05.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-06.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-07.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-08.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-09.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-11.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-start p-3">
-                        <div class="border rounded-2 overflow-hidden product">
-                            <div class="mb-3 overflow-hidden">
-                                <img :src="'/images/products/p-12.jpg'" class="img-fluid product-image-hover" alt="product-1">
-                            </div>
-                            <div class="fw-bold ps-3">
-                                Product Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2 ps-3">
-                                100 tk
-                            </div>
-                            <a @click="addToCart(product)" class="btn btn-theme cart-position">
-                                <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                            </a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -683,13 +403,22 @@
 
     export default {
 
-
-
         data(){
 
             return{
 
-                product: '',
+                products: [
+                    { id: 1, image: '/images/products/p-01.jpg', name: 'Product 1', price: 10.00 },
+                    { id: 2, image: '/images/products/p-02.jpg', name: 'Product 2', price: 20.00 },
+                    { id: 3, image: '/images/products/p-03.jpg', name: 'Product 3', price: 30.00 },
+                    { id: 4, image: '/images/products/p-05.jpg', name: 'Product 4', price: 40.00 },
+                    { id: 5, image: '/images/products/p-06.jpg', name: 'Product 5', price: 50.00 },
+                    { id: 6, image: '/images/products/p-07.jpg', name: 'Product 6', price: 60.00 },
+                    { id: 7, image: '/images/products/p-08.jpg', name: 'Product 7', price: 70.00 },
+                    { id: 8, image: '/images/products/p-09.jpg', name: 'Product 8', price: 80.00 },
+                    { id: 9, image: '/images/products/p-10.jpg', name: 'Product 9', price: 90.00 },
+                    { id: 10, image: '/images/products/p-11.jpg', name: 'Product 10', price: 100.00 },
+                ],
 
                 cart: [],
 
@@ -749,11 +478,9 @@
 
         methods: {
 
-            addToCart(product) {
+            addToCart(){
 
-                this.cart.push({ ...product });
-
-            },
+            }
 
         }
 

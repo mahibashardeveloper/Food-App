@@ -33,6 +33,13 @@ $border-color: #dee2e6;
     height: 20px !important;
 }
 
+.error-text{
+    margin-top: 5px;
+    color: $red;
+    font-size: 11px;
+    font-weight: bold;
+}
+
 @import "includes/preloader";
 
 @import "includes/global";
@@ -40,6 +47,8 @@ $border-color: #dee2e6;
 @import "includes/header";
 
 @import "pages/home";
+
+@import "pages/cart";
 
 @import "pages/authentication";
 

@@ -24,6 +24,10 @@ import registration from "../components/auth/registration.vue";
 
 import forget from "../components/auth/forget.vue";
 
+// profile ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+import profile from "../components/profile/profile.vue";
+
 // directory ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 const ROOT_URL = "/front";
@@ -31,6 +35,18 @@ const ROOT_URL = "/front";
 // sub directory links ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 const routes = [
+
+    // login
+
+    {path: ROOT_URL + '/auth/login', name: 'login', component: login, meta: {title: 'login'}},
+
+    // registration
+
+    {path: ROOT_URL + '/auth/registration', name: 'registration', component: registration, meta: {title: 'registration'}},
+
+    // forget
+
+    {path: ROOT_URL + '/auth/forget', name: 'forget', component: forget, meta: {title: 'forget'}},
 
         // layout
 
@@ -46,17 +62,9 @@ const routes = [
 
             {path: ROOT_URL + '/cart', name: 'cart', component: cart, meta: {title: 'cart'}},
 
-            // login
+            // profile
 
-            {path: ROOT_URL + '/login', name: 'login', component: login, meta: {title: 'login'}},
-
-            // registration
-
-            {path: ROOT_URL + '/registration', name: 'registration', component: registration, meta: {title: 'registration'}},
-
-            // forget
-
-            {path: ROOT_URL + '/forget', name: 'forget', component: forget, meta: {title: 'forget'}},
+            {path: ROOT_URL + '/profile', name: 'profile', component: profile, meta: {title: 'profile'}},
 
         ],
 

@@ -1,13 +1,20 @@
-import vue from 'vue';
-import vuex from 'vuex';
-
-vue.use(vuex);
-
-export const store = new vuex.Store({
+import { createStore } from 'vuex';
+export default createStore({
     state: {
-        registrations: [],
-        users: [
-
-        ],
+        cart: []
+    },
+    mutations: {
+        addToCart(state, product) {
+            state.cart.push(product);
+        }
+    },
+    actions: {
+        addProductToCart({ commit }, product) {
+            commit('addToCart', product);
+        }
+    },
+    getters: {
+        cartItemCount: state => state.cart.length,
+        cartItems: state => state.cart
     }
 });

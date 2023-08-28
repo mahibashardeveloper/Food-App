@@ -20,6 +20,9 @@ use App\Http\Middleware\MerchantLoginCheck;
 use App\Http\Middleware\PartnerAuth;
 use App\Http\Middleware\PartnerAuthReq;
 use App\Http\Middleware\PartnerLoginCheck;
+use App\Http\Middleware\CustomerAuth;
+use App\Http\Middleware\CustomerAuthReq;
+use App\Http\Middleware\CustomerLoginCheck;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -81,23 +84,34 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
         'AdminAuth' => AdminAuth::class,
         'AdminAuthReq' => AdminAuthReq::class,
         'AdminLoginCheck' => AdminLoginCheck::class,
+
         'SubAdminAuth' => SubAdminAuth::class,
         'SubAdminAuthReq' => SubAdminAuthReq::class,
         'SubAdminLoginCheck' => SubAdminLoginCheck::class,
+
         'VendorAuth' => VendorAuth::class,
         'VendorAuthReq' => VendorAuthReq::class,
         'VendorLoginCheck' => VendorLoginCheck::class,
+
         'DeliveryManAuth' => DeliveryManAuth::class,
         'DeliveryManAuthReq' => DeliveryManAuthReq::class,
         'DeliveryManLoginCheck' => DeliveryManLoginCheck::class,
+
         'MerchantAuth' => MerchantAuth::class,
         'MerchantAuthReq' => MerchantAuthReq::class,
         'MerchantLoginCheck' => MerchantLoginCheck::class,
+
         'PartnerAuth' => PartnerAuth::class,
         'PartnerAuthReq' => PartnerAuthReq::class,
         'PartnerLoginCheck' => PartnerLoginCheck::class,
+
+        'CustomerAuth' => CustomerAuth::class,
+        'CustomerAuthReq' => CustomerAuthReq::class,
+        'CustomerLoginCheck' => CustomerLoginCheck::class,
+
     ];
 }
