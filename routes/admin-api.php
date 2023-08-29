@@ -32,13 +32,13 @@ Route::group(
 
     function () {
 
-        Route::post('/login', [AdminController::class, 'login'])->name('Auth.Login');
+        Route::post('/login', [AdminController::class, 'login'])->name('Admin.Auth.Login');
 
-        Route::post('/register', [AdminController::class, 'register'])->name('Auth.Register');
+        Route::post('/register', [AdminController::class, 'register'])->name('Admin.Auth.Register');
 
-        Route::post('/forgot', [AdminController::class, 'forgot'])->name('Auth.Forgot');
+        Route::post('/forgot', [AdminController::class, 'forgot'])->name('Admin.Auth.Forgot');
 
-        Route::post('/reset', [AdminController::class, 'reset'])->name('Auth.Reset');
+        Route::post('/reset', [AdminController::class, 'reset'])->name('Admin.Auth.Reset');
 
     }
 
@@ -198,6 +198,6 @@ Route::prefix('product')->group( function () {
 
 Route::prefix('media')->group( function () {
 
-    Route::post('/upload', [MediaController::class, 'upload'])->name('Media.Upload');
+    Route::post('/upload', [MediaController::class, 'upload'])->name('Admin.Media.Upload');
 
 });

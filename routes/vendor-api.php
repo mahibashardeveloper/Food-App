@@ -24,11 +24,11 @@ Route::group(
 
     function () {
 
-        Route::post('/login', [vendorController::class, 'login'])->name('Auth.Login');
+        Route::post('/login', [vendorController::class, 'login'])->name('Vendor.Auth.Login');
 
-        Route::post('/forgot', [vendorController::class, 'forgot'])->name('Auth.Forgot');
+        Route::post('/forgot', [vendorController::class, 'forgot'])->name('Vendor.Auth.Forgot');
 
-        Route::post('/reset', [vendorController::class, 'reset'])->name('Auth.Reset');
+        Route::post('/reset', [vendorController::class, 'reset'])->name('Vendor.Auth.Reset');
 
     }
 
@@ -60,6 +60,6 @@ Route::group(
 
 Route::prefix('media')->group( function () {
 
-    Route::post('/upload', [MediaController::class, 'upload'])->name('Media.Upload');
+    Route::post('/upload', [MediaController::class, 'upload'])->name('Vendor.Media.Upload');
 
 });

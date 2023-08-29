@@ -24,11 +24,11 @@ Route::group(
 
     function () {
 
-        Route::post('/login', [MerchantController::class, 'login'])->name('Auth.Login');
+        Route::post('/login', [MerchantController::class, 'login'])->name('Merchant.Auth.Login');
 
-        Route::post('/forgot', [MerchantController::class, 'forgot'])->name('Auth.Forgot');
+        Route::post('/forgot', [MerchantController::class, 'forgot'])->name('Merchant.Auth.Forgot');
 
-        Route::post('/reset', [MerchantController::class, 'reset'])->name('Auth.Reset');
+        Route::post('/reset', [MerchantController::class, 'reset'])->name('Merchant.Auth.Reset');
 
     }
 
@@ -60,6 +60,6 @@ Route::group(
 
 Route::prefix('media')->group( function () {
 
-    Route::post('/upload', [MediaController::class, 'upload'])->name('Media.Upload');
+    Route::post('/upload', [MediaController::class, 'upload'])->name('Merchant.Media.Upload');
 
 });

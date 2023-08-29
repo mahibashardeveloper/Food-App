@@ -23,11 +23,11 @@ Route::group(
 
     function () {
 
-        Route::post('/login', [SubAdminController::class, 'login'])->name('Auth.Login');
+        Route::post('/login', [SubAdminController::class, 'login'])->name('SubAdmin.Auth.Login');
 
-        Route::post('/forgot', [SubAdminController::class, 'forgot'])->name('Auth.Forgot');
+        Route::post('/forgot', [SubAdminController::class, 'forgot'])->name('SubAdmin.Auth.Forgot');
 
-        Route::post('/reset', [SubAdminController::class, 'reset'])->name('Auth.Reset');
+        Route::post('/reset', [SubAdminController::class, 'reset'])->name('SubAdmin.Auth.Reset');
 
     }
 
@@ -59,6 +59,6 @@ Route::group(
 
 Route::prefix('media')->group( function () {
 
-    Route::post('/upload', [SubAdminController::class, 'upload'])->name('Media.Upload');
+    Route::post('/upload', [SubAdminController::class, 'upload'])->name('SubAdmin.Media.Upload');
 
 });
