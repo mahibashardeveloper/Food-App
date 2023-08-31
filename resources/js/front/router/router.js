@@ -36,18 +36,6 @@ const ROOT_URL = "/front";
 
 const routes = [
 
-    // login
-
-    {path: ROOT_URL + '/auth/login', name: 'login', component: login, meta: {title: 'login'}},
-
-    // registration
-
-    {path: ROOT_URL + '/auth/registration', name: 'registration', component: registration, meta: {title: 'registration'}},
-
-    // forget
-
-    {path: ROOT_URL + '/auth/forget', name: 'forget', component: forget, meta: {title: 'forget'}},
-
         // layout
 
         {path: ROOT_URL, name: 'layout', component: layout,
@@ -61,6 +49,18 @@ const routes = [
             // cart
 
             {path: ROOT_URL + '/cart', name: 'cart', component: cart, meta: {title: 'cart'}},
+
+            // login
+
+            {path: ROOT_URL + '/auth/login', name: 'login', component: login, meta: {title: 'login'}},
+
+            // registration
+
+            {path: ROOT_URL + '/auth/registration', name: 'registration', component: registration, meta: {title: 'registration'}},
+
+            // forget
+
+            {path: ROOT_URL + '/auth/forget', name: 'forget', component: forget, meta: {title: 'forget'}},
 
             // profile
 

@@ -24,7 +24,7 @@ class PartnerLoginCheck
         $path = Request::route()->getName();
         if (Auth::guard('partners')->check()) {
             if($path == 'lvs.partner.auth') {
-                return redirect()->route('lvs.partner', 'dashboard');
+                return redirect()->route('lvs.partner.any', 'dashboard');
             } else {
                 return $next($request);
             }

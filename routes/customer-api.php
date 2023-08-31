@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* ------------------------- Auth vendor Controller --------------------------- */
+/* ------------------------- Auth customer Controller --------------------------- */
 
 Route::group(
 
@@ -26,6 +26,8 @@ Route::group(
 
         Route::post('/login', [CustomerController::class, 'login'])->name('Customer.Auth.Login');
 
+        Route::post('/register', [CustomerController::class, 'register'])->name('Customer.Auth.Register');
+
         Route::post('/forgot', [CustomerController::class, 'forgot'])->name('Customer.Auth.Forgot');
 
         Route::post('/reset', [CustomerController::class, 'reset'])->name('Customer.Auth.Reset');
@@ -34,7 +36,7 @@ Route::group(
 
 );
 
-/* ------------------------- vendor Profile Controller --------------------------- */
+/* ------------------------- customer Profile Controller --------------------------- */
 
 Route::group(
 

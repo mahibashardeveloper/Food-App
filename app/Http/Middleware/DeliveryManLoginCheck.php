@@ -24,7 +24,7 @@ class DeliveryManLoginCheck
         $path = Request::route()->getName();
         if (Auth::guard('delivery_mans')->check()) {
             if($path == 'lvs.deliveryMan.auth') {
-                return redirect()->route('lvs.deliveryMan', 'dashboard');
+                return redirect()->route('lvs.deliveryMan.any', 'dashboard');
             } else {
                 return $next($request);
             }

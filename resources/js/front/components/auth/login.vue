@@ -83,19 +83,15 @@ export default {
 
             this.error = null;
 
+            console.log(123123)
+
             apiService.POST(apiRoutes.login, this.loginParam, (res) => {
 
                 this.loginLoading = false;
 
+                console.log(res, 123456)
+
                 if (res.status === 200) {
-
-                    this.$toast.success('Login Successful', {
-
-                        position:
-
-                            "top-right"
-
-                    });
 
                     window.location.reload();
 

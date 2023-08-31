@@ -24,7 +24,7 @@ class AdminLoginCheck
         $path = Request::route()->getName();
         if (Auth::guard('admins')->check()) {
             if($path == 'lvs.admin.auth') {
-                return redirect()->route('lvs.admin', 'dashboard');
+                return redirect()->route('lvs.admin.any', 'dashboard');
             } else {
                 return $next($request);
             }

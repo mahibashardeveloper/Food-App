@@ -188,7 +188,7 @@ class CustomerAuthService
     {
         try {
             Auth::guard('customers')->logout();
-            return ['status' => 200];
+            return ['status' => 200 ];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }

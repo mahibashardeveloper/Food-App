@@ -24,7 +24,7 @@ class MerchantLoginCheck
         $path = Request::route()->getName();
         if (Auth::guard('merchants')->check()) {
             if($path == 'lvs.merchant.auth') {
-                return redirect()->route('lvs.merchant', 'dashboard');
+                return redirect()->route('lvs.merchant.any', 'dashboard');
             } else {
                 return $next($request);
             }

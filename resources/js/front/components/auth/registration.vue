@@ -99,28 +99,17 @@ export default {
                 this.registerLoading = false;
 
                 this.registerParam = {
-
-                    company_name: '',
-
                     full_name: '',
-
                     email: '',
-
-                    phone_number: '',
-
                     password: '',
-
                     password_confirmation: '',
-
+                    phone_number: '',
+                    address: '',
                 }
 
                 if (res.status === 200) {
 
-                    this.$toast.success(res.msg, {
-
-                        position: "top-right"
-
-                    });
+                    window.location.reload();
 
                 } else {
 

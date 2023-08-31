@@ -24,7 +24,7 @@ class SubAdminLoginCheck
         $path = Request::route()->getName();
         if (Auth::guard('sub_admins')->check()) {
             if($path == 'lvs.subAdmin.auth') {
-                return redirect()->route('lvs.subAdmin', 'dashboard');
+                return redirect()->route('lvs.subAdmin.any', 'dashboard');
             } else {
                 return $next($request);
             }

@@ -24,7 +24,7 @@ class VendorLoginCheck
         $path = Request::route()->getName();
         if (Auth::guard('vendors')->check()) {
             if($path == 'lvs.vendor.auth') {
-                return redirect()->route('lvs.vendor', 'dashboard');
+                return redirect()->route('lvs.vendor.any', 'dashboard');
             } else {
                 return $next($request);
             }

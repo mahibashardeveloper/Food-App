@@ -60,6 +60,6 @@ Route::get('/partner', function (){ return redirect()->route('lvs.partner.any','
 
 /* -------------------------- Front controller -----------------------------------*/
 Route::middleware('CustomerLoginCheck')->get('/front/auth/{any}', [CustomerController::class, 'index'])->where('any', '.*')->name('lvs.front.auth');
-Route::middleware('CustomerLoginCheck')->get('/front/', [CustomerController::class, 'index'])->where('any', '.*')->name('lvs.front');
-Route::middleware('CustomerLoginCheck')->get('/front/{any}', [CustomerController::class, 'index'])->where('any', '.*')->name('lvs.front.any');
+Route::get('/front/', [CustomerController::class, 'index'])->where('any', '.*')->name('lvs.front');
+Route::get('/front/{any}', [CustomerController::class, 'index'])->where('any', '.*')->name('lvs.front.any');
 Route::get('/', function (){ return redirect()->route('lvs.front.any','home'); });
