@@ -181,7 +181,7 @@
                 <div class="h3 fw-bold">Popular Products</div>
                 <div class="py-3 product-item owl-carousel owl-theme">
 
-                    <div v-for="product in products" :key="product.id">
+                    <div v-for="(product, index) in products" :key="index">
                         <div class="text-start p-3">
                             <div class="border rounded-2 overflow-hidden product">
                                 <div class="mb-3 overflow-hidden">
@@ -221,7 +221,7 @@
                                 <div class="text-secondary pb-3 pt-2 ps-3">
                                     {{product.price}} tk
                                 </div>
-                                <a class="btn btn-theme cart-position" @click="addToCart">
+                                <a class="btn btn-theme cart-position" @click="addToCart(product)">
                                     <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
                                 </a>
                             </div>
@@ -400,6 +400,7 @@
 </template>
 
 <script>
+import store from "../../store/index.js";
 
     export default {
 
@@ -478,9 +479,9 @@
 
         methods: {
 
-            addToCart(){
-
-            }
+            addToCart(product) {
+                store.dispatch('addToCart', product)
+            },
 
         }
 

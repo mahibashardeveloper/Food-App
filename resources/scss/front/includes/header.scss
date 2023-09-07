@@ -150,7 +150,7 @@
 
         .cart-body{
             width: 100%;
-            height: calc(100vh - 140px);
+            height: calc(100vh - 240px);
 
             .empty{
                 height: 100%;
@@ -162,19 +162,87 @@
                 font-weight: bold;
             }
 
+            .item{
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                img{
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 20px;
+                    border: 1px solid $border-color;
+                }
+
+                .product-info{
+                    margin-left: 10px;
+
+                    button{
+                        width: 30px;
+                        height: 30px;
+                        border: none;
+                        color: $black;
+                        cursor: pointer;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        &:hover{
+                            color: $black;
+                            background-color: $border-color;
+                        }
+
+                    }
+
+                    .quantity{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        .qty{
+                            width: 30px;
+                            text-align: center;
+                        }
+                    }
+
+                }
+
+            }
+
         }
 
         .cart-footer{
             width: 100%;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 270px;
             border-top: 1px solid $border-color;
 
+            .cart-details{
+                width: 100%;
+                height: 100px;
+
+                .cart-flex{
+                    padding: 0 20px;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .cart-desc{
+                        font-weight: bold;
+                    }
+
+                    .cart-amount{
+                        font-weight: bold;
+                    }
+
+                }
+
+            }
+
             .btn-checkout{
-                width: 60%;
-                height: 60%;
+                height: 70px;
                 text-decoration: none;
                 color: $white;
                 background-color: $red;
