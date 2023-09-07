@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FrontController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SubAdminController;
 use App\Http\Controllers\VendorController;
@@ -9,7 +8,6 @@ use App\Http\Controllers\DeliveryManController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\MediaController;
 
 /*
 |--------------------------------------------------------------------------
