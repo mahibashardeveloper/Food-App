@@ -28,6 +28,26 @@ import forget from "../components/auth/forget.vue";
 
 import profile from "../components/profile/profile.vue";
 
+// my account
+
+import my_account from "../components/profile/ChildComponents/my_account.vue";
+
+// edit account
+
+import edit_account from "../components/profile/ChildComponents/edit_account.vue";
+
+// order history
+
+import order_history from "../components/profile/ChildComponents/order_history.vue";
+
+// wishlist
+
+import wishlist from "../components/profile/ChildComponents/wishlist.vue";
+
+// newsletter
+
+import newsletter from "../components/profile/ChildComponents/newsletter.vue";
+
 // directory ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 const ROOT_URL = "/front";
@@ -52,19 +72,35 @@ const routes = [
 
             // login
 
-            {path: ROOT_URL + 'auth/login', name: 'login', component: login, meta: {title: 'login'} },
+            {path: ROOT_URL + '/auth/login', name: 'login', component: login, meta: {title: 'login'} },
 
             // registration
 
-            {path: ROOT_URL + '/registration', name: 'registration', component: registration, meta: {title: 'registration'} },
+            {path: ROOT_URL + '/auth/registration', name: 'registration', component: registration, meta: {title: 'registration'} },
 
             // forget
 
-            {path: ROOT_URL + '/forget', name: 'forget', component: forget, meta: {title: 'forget'} },
+            {path: ROOT_URL + '/auth/forget', name: 'forget', component: forget, meta: {title: 'forget'} },
 
             // profile
 
-            {path: ROOT_URL + "/profile", name: "profile", component: profile, meta: { title: "profile" } },
+            {path: ROOT_URL + "/profile", component: profile,
+
+                children: [
+
+                    {path: ROOT_URL + "/my_account", name: "my_account", component: my_account, meta: { title: "my_account" }},
+
+                    {path: ROOT_URL + "/edit_account", name: "edit_account", component: edit_account, meta: { title: "edit_account" }},
+
+                    {path: ROOT_URL + "/order_history", name: "order_history", component: order_history, meta: { title: "order_history" }},
+
+                    {path: ROOT_URL + "/wishlist", name: "wishlist", component: wishlist, meta: { title: "wishlist" }},
+
+                    {path: ROOT_URL + "/newsletter", name: "newsletter", component: newsletter, meta: { title: "newsletter" }},
+
+                ]
+
+            },
 
         ],
 

@@ -134,15 +134,7 @@
 
                     if (res.status === 200) {
 
-                        this.$toast.success('Login Successful', {
-
-                            position:
-
-                                "top-right"
-
-                        });
-
-                        window.location.reload();
+                        this.$toast.success('Login Successfully', { position: "top-right" });
 
                     } else {
 

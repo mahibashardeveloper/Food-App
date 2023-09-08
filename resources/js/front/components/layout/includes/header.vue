@@ -5,7 +5,7 @@
     </div>
     <div class="front-header fixed-top" :class="{ 'header-scrolled': isHeaderScrolled }">
         <router-link :to="{name:'home'}" class="company_name" @click="remove">
-            Redishketch
+            Food Store
         </router-link>
         <a href="javascript:void(0)" class="menu-icon-btn" @click="rightSidebarController">
             <i class="bi bi-justify-right"></i>
@@ -21,7 +21,7 @@
                 <i class="bi bi-cart me-2"></i> Cart <span class="badge bg-dark p-2 ms-2"> {{ products.length }} </span>
             </a>
             <span v-if="profile_data !== null">
-                <router-link :to="{name:'profile'}" class="menu-link" active-class="active" @click="remove">
+                <router-link :to="{name:'my_account'}" class="menu-link" active-class="active" @click="remove">
                     <i class="bi bi-person-fill me-2"></i> {{profile_data.full_name}}
                 </router-link>
                 <a href="javascript:void(0)" class="menu-link" @click="logout">

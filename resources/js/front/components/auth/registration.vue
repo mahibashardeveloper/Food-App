@@ -109,7 +109,7 @@ export default {
 
                 if (res.status === 200) {
 
-                    window.location.reload();
+                    this.$toast.success('Registration Successfully', { position: "top-right" });
 
                 } else {
 

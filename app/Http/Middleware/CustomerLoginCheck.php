@@ -24,7 +24,7 @@ class CustomerLoginCheck
         $path = Request::route()->getName();
         if (Auth::guard('customers')->check()) {
             if($path == 'lvs.front.auth') {
-                return redirect()->route('lvs.front.any', 'home');
+                return redirect()->route('lvs.front.any', 'profile');
             } else {
                 return $next($request);
             }
