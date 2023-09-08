@@ -1,6 +1,6 @@
 <template>
 
-    <div class="home">
+    <div class="home animation-content">
         <div class="w-100">
             <div class="container py-5">
                 <div class="slider owl-carousel owl-theme">
@@ -248,9 +248,9 @@
                                         <div class="h6"> {{product.name}} </div>
                                         <div class="d-flex align-items-center">
                                             <div class="text-success"> ${{product.price}} </div>
-                                            <del class="text-secondary opacity-25 ms-2"> ${{product.price * 1.5}} </del>
+                                            <del class="text-secondary ms-2"> ${{product.price * 1.5}} </del>
                                         </div>
-                                        <a href="javascript:void(0)" class="btn btn-outline-success" @click="addToCart(product)">
+                                        <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
                                             Add To Cart
                                         </a>
                                     </div>
@@ -272,9 +272,9 @@
                                         <div class="h6"> {{product.name}} </div>
                                         <div class="d-flex align-items-center">
                                             <div class="text-success"> ${{product.price}} </div>
-                                            <del class="text-secondary opacity-25 ms-2"> ${{product.price * 1.5}} </del>
+                                            <del class="text-secondary ms-2"> ${{product.price * 1.5}} </del>
                                         </div>
-                                        <a href="javascript:void(0)" class="btn btn-outline-success" @click="addToCart(product)">
+                                        <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
                                             Add To Cart
                                         </a>
                                     </div>
@@ -296,9 +296,9 @@
                                         <div class="h6"> {{product.name}} </div>
                                         <div class="d-flex align-items-center">
                                             <div class="text-success"> ${{product.price}} </div>
-                                            <del class="text-secondary opacity-25 ms-2"> ${{product.price * 1.5}} </del>
+                                            <del class="text-secondary ms-2"> ${{product.price * 1.5}} </del>
                                         </div>
-                                        <a href="javascript:void(0)" class="btn btn-outline-success" @click="addToCart(product)">
+                                        <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
                                             Add To Cart
                                         </a>
                                     </div>
@@ -343,25 +343,25 @@ import store from "../../store/index.js";
                     { id: 8, image: '/images/products/p-09.jpg', name: 'Product 8', price: 80.00 },
                     { id: 9, image: '/images/products/p-10.jpg', name: 'Product 9', price: 90.00 },
                     { id: 10, image: '/images/products/p-11.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 11, image: '/images/products/p-12.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 12, image: '/images/products/p-13.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 13, image: '/images/products/p-14.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 14, image: '/images/products/p-15.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 15, image: '/images/products/p-16.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 16, image: '/images/products/p-17.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 17, image: '/images/products/p-18.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 18, image: '/images/products/p-19.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 19, image: '/images/products/p-20.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 20, image: '/images/products/p-21.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 21, image: '/images/products/p-22.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 22, image: '/images/products/p-23.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 23, image: '/images/products/p-24.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 24, image: '/images/products/p-25.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 25, image: '/images/products/p-26.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 26, image: '/images/products/p-27.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 27, image: '/images/products/p-28.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 28, image: '/images/products/p-29.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 29, image: '/images/products/p-30.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 11, image: '/images/products/p-12.jpg', name: 'Product 10', price: 110.00 },
+                    { id: 12, image: '/images/products/p-13.jpg', name: 'Product 10', price: 120.00 },
+                    { id: 13, image: '/images/products/p-14.jpg', name: 'Product 10', price: 130.00 },
+                    { id: 14, image: '/images/products/p-15.jpg', name: 'Product 10', price: 140.00 },
+                    { id: 15, image: '/images/products/p-16.jpg', name: 'Product 10', price: 150.00 },
+                    { id: 16, image: '/images/products/p-17.jpg', name: 'Product 10', price: 160.00 },
+                    { id: 17, image: '/images/products/p-18.jpg', name: 'Product 10', price: 170.00 },
+                    { id: 18, image: '/images/products/p-19.jpg', name: 'Product 10', price: 180.00 },
+                    { id: 19, image: '/images/products/p-20.jpg', name: 'Product 10', price: 190.00 },
+                    { id: 20, image: '/images/products/p-21.jpg', name: 'Product 10', price: 200.00 },
+                    { id: 21, image: '/images/products/p-22.jpg', name: 'Product 10', price: 210.00 },
+                    { id: 22, image: '/images/products/p-23.jpg', name: 'Product 10', price: 220.00 },
+                    { id: 23, image: '/images/products/p-24.jpg', name: 'Product 10', price: 230.00 },
+                    { id: 24, image: '/images/products/p-25.jpg', name: 'Product 10', price: 240.00 },
+                    { id: 25, image: '/images/products/p-26.jpg', name: 'Product 10', price: 250.00 },
+                    { id: 26, image: '/images/products/p-27.jpg', name: 'Product 10', price: 260.00 },
+                    { id: 27, image: '/images/products/p-28.jpg', name: 'Product 10', price: 270.00 },
+                    { id: 28, image: '/images/products/p-29.jpg', name: 'Product 10', price: 280.00 },
+                    { id: 29, image: '/images/products/p-30.jpg', name: 'Product 10', price: 290.00 },
                 ],
 
                 cart: [],

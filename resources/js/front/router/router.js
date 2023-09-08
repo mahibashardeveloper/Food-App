@@ -52,15 +52,15 @@ const routes = [
 
             // login
 
-            {path: ROOT_URL + '/auth/login', name: 'login', component: login, meta: {title: 'login'} },
+            {path: ROOT_URL + 'auth/login', name: 'login', component: login, meta: {title: 'login'} },
 
             // registration
 
-            {path: ROOT_URL + '/auth/registration', name: 'registration', component: registration, meta: {title: 'registration'} },
+            {path: ROOT_URL + '/registration', name: 'registration', component: registration, meta: {title: 'registration'} },
 
             // forget
 
-            {path: ROOT_URL + '/auth/forget', name: 'forget', component: forget, meta: {title: 'forget'} },
+            {path: ROOT_URL + '/forget', name: 'forget', component: forget, meta: {title: 'forget'} },
 
             // profile
 

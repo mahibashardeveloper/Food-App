@@ -1,5 +1,5 @@
 <template>
-    <div class="authentication">
+    <div class="authentication animation-content">
         <div class="container">
             <div class="vh-100 row justify-content-center align-items-center p-3">
                 <form @submit.prevent="login" class="border col-12 col-sm-8 col-md-6 col-lg-7 p-3 rounded-4 bg-white shadow">

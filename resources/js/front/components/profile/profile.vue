@@ -1,5 +1,5 @@
 <template>
-    <div class="profile">
+    <div class="profile animation-content">
         <div class="container-fluid">
             <div class="row px-4">
                 <div class="col-md-12">
