@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,6 +57,25 @@ Route::group(
 
     }
 
+);
+
+Route::group(
+
+    ['middleware' => ['CustomerAuthReq'], 'prefix' => 'order'],
+
+    function () {
+
+        Route::post('/create', [OrderController::class, 'create'])->name('Order.Create');
+
+        Route::post('/update', [OrderController::class, 'update'])->name('Order.Update');
+
+        Route::post('/list', [OrderController::class, 'list'])->name('Order.List');
+
+        Route::post('/single', [OrderController::class, 'single'])->name('Order.Single');
+
+        Route::post('/delete', [OrderController::class, 'delete'])->name('Order.Delete');
+
+    }
 );
 
 /* ------------------------- Media Controller --------------------------- */

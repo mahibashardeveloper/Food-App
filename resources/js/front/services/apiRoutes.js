@@ -22,6 +22,18 @@ const apiRoutes = {
 
     logout: apiVersion + '/profile/logout',
 
+    // Order
+
+    OrderCreate: apiVersion + '/order/create',
+
+    OrderUpdate: apiVersion + '/order/update',
+
+    OrderList: apiVersion + '/order/list',
+
+    OrderSingle: apiVersion + '/order/single',
+
+    OrderDelete: apiVersion + '/order/delete',
+
     // Media
 
     media: apiVersion + '/media/upload',
