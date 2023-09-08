@@ -240,7 +240,7 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Trending Products </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom" v-for="(product, index) in getProductsInRange(15, 19)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product, index) in getProductsInRange(15, 19)" :key="product.id">
                                     <div class="col-4 h-100">
                                         <img :src="product.image" class="img-fluid" alt="">
                                     </div>
@@ -251,7 +251,7 @@
                                             <del class="text-secondary opacity-25 ms-2"> ${{product.price * 1.5}} </del>
                                         </div>
                                         <a href="javascript:void(0)" class="btn btn-outline-success" @click="addToCart(product)">
-                                            Add to Cart
+                                            Add To Cart
                                         </a>
                                     </div>
                                 </div>
@@ -264,7 +264,7 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Recently Added </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom" v-for="(product, index) in getProductsInRange(20, 24)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product, index) in getProductsInRange(20, 24)" :key="product.id">
                                     <div class="col-4 h-100">
                                         <img :src="product.image" class="img-fluid" alt="">
                                     </div>
@@ -275,7 +275,7 @@
                                             <del class="text-secondary opacity-25 ms-2"> ${{product.price * 1.5}} </del>
                                         </div>
                                         <a href="javascript:void(0)" class="btn btn-outline-success" @click="addToCart(product)">
-                                            Add to Cart
+                                            Add To Cart
                                         </a>
                                     </div>
                                 </div>
@@ -288,18 +288,18 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Top Rated </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom" v-for="(product, index) in getProductsInRange(25, 29)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product, index) in getProductsInRange(25, 29)" :key="product.id">
                                     <div class="col-4 h-100">
                                         <img :src="product.image" class="img-fluid" alt="">
                                     </div>
                                     <div class="col-8 p-2">
-                                        <p class="fw-bold"> {{product.name}} </p>
+                                        <div class="h6"> {{product.name}} </div>
                                         <div class="d-flex align-items-center">
                                             <div class="text-success"> ${{product.price}} </div>
                                             <del class="text-secondary opacity-25 ms-2"> ${{product.price * 1.5}} </del>
                                         </div>
                                         <a href="javascript:void(0)" class="btn btn-outline-success" @click="addToCart(product)">
-                                            Add to Cart
+                                            Add To Cart
                                         </a>
                                     </div>
                                 </div>
