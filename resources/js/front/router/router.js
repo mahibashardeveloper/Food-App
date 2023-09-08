@@ -44,27 +44,27 @@ const routes = [
 
             // home
 
-            {path: ROOT_URL + '/home', name: 'home', component: home, meta: {title: 'home'}},
+            {path: ROOT_URL + '/home', name: 'home', component: home, meta: {title: 'home'} },
 
             // cart
 
-            {path: ROOT_URL + '/cart', name: 'cart', component: cart, meta: {title: 'cart'}},
+            {path: ROOT_URL + '/cart', name: 'cart', component: cart, meta: {title: 'cart'} },
 
             // login
 
-            {path: ROOT_URL + '/auth/login', name: 'login', component: login, meta: {title: 'login'}},
+            {path: ROOT_URL + '/auth/login', name: 'login', component: login, meta: {title: 'login'} },
 
             // registration
 
-            {path: ROOT_URL + '/auth/registration', name: 'registration', component: registration, meta: {title: 'registration'}},
+            {path: ROOT_URL + '/auth/registration', name: 'registration', component: registration, meta: {title: 'registration'} },
 
             // forget
 
-            {path: ROOT_URL + '/auth/forget', name: 'forget', component: forget, meta: {title: 'forget'}},
+            {path: ROOT_URL + '/auth/forget', name: 'forget', component: forget, meta: {title: 'forget'} },
 
             // profile
 
-            {path: ROOT_URL + '/profile', name: 'profile', component: profile, meta: {title: 'profile'}},
+            {path: ROOT_URL + "/profile", name: "profile", component: profile, meta: { title: "profile" } },
 
         ],
 

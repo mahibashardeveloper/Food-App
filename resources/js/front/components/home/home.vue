@@ -181,7 +181,7 @@
                 <div class="h3 fw-bold">Popular Products</div>
                 <div class="py-3 product-item owl-carousel owl-theme">
 
-                    <div v-for="(product, index) in products" :key="index">
+                    <div v-for="(product, index) in getProductsInRange(1, 10)" :key="product.id">
                         <div class="text-start p-3">
                             <div class="border rounded-2 overflow-hidden product">
                                 <div class="mb-3 overflow-hidden">
@@ -193,7 +193,7 @@
                                 <div class="text-secondary pb-3 pt-2 ps-3">
                                     {{product.price}} tk
                                 </div>
-                                <a class="btn btn-theme cart-position">
+                                <a class="btn btn-theme cart-position" @click="addToCart(product)">
                                     <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
                                 </a>
                             </div>
@@ -209,7 +209,7 @@
                 <div class="h3 fw-bold">Daily Best Sells</div>
                 <div class="py-3 product-item owl-carousel owl-theme">
 
-                    <div v-for="product in products" :key="product.id">
+                    <div v-for="(product, index) in getProductsInRange(11, 20)" :key="product.id">
                         <div class="text-start p-3">
                             <div class="border rounded-2 overflow-hidden product">
                                 <div class="mb-3 overflow-hidden">
@@ -239,51 +239,23 @@
                         <div class="p-3">
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Trending Products </div>
                             <div class="p-2">
-                                <div class="row ps-3 border-bottom">
+
+                                <div class="row ps-3 border-bottom" v-for="(product, index) in getProductsInRange(15, 19)" :key="product.id">
                                     <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-06.jpg'" class="img-fluid" alt="">
+                                        <img :src="product.image" class="img-fluid" alt="">
                                     </div>
                                     <div class="col-8 p-2">
-                                        <div class="h6"> Product Title 1 </div>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
+                                        <div class="h6"> {{product.name}} </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="text-success"> ${{product.price}} </div>
+                                            <del class="text-secondary opacity-25 ms-2"> ${{product.price * 1.5}} </del>
+                                        </div>
+                                        <a href="javascript:void(0)" class="btn btn-outline-success" @click="addToCart(product)">
+                                            Add to Cart
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="row ps-3 border-bottom">
-                                    <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-07.jpg'" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-8 p-2">
-                                        <div class="h6"> Product Title 1 </div>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
-                                    </div>
-                                </div>
-                                <div class="row ps-3 border-bottom">
-                                    <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-08.jpg'" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-8 p-2">
-                                        <div class="h6"> Product Title 1 </div>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
-                                    </div>
-                                </div>
-                                <div class="row ps-3 border-bottom">
-                                    <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-09.jpg'" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-8 p-2">
-                                        <div class="h6"> Product Title 1 </div>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
-                                    </div>
-                                </div>
-                                <div class="row ps-3 border-bottom">
-                                    <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-10.jpg'" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-8 p-2">
-                                        <div class="h6"> Product Title 1 </div>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -291,51 +263,23 @@
                         <div class="p-3">
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Recently Added </div>
                             <div class="p-2">
-                                <div class="row ps-3 border-bottom">
+
+                                <div class="row ps-3 border-bottom" v-for="(product, index) in getProductsInRange(20, 24)" :key="product.id">
                                     <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-11.jpg'" class="img-fluid" alt="">
+                                        <img :src="product.image" class="img-fluid" alt="">
                                     </div>
                                     <div class="col-8 p-2">
-                                        <div class="h6"> Product Title 1 </div>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
+                                        <div class="h6"> {{product.name}} </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="text-success"> ${{product.price}} </div>
+                                            <del class="text-secondary opacity-25 ms-2"> ${{product.price * 1.5}} </del>
+                                        </div>
+                                        <a href="javascript:void(0)" class="btn btn-outline-success" @click="addToCart(product)">
+                                            Add to Cart
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="row ps-3 border-bottom">
-                                    <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-12.jpg'" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-8 p-2">
-                                        <div class="h6"> Product Title 1 </div>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
-                                    </div>
-                                </div>
-                                <div class="row ps-3 border-bottom">
-                                    <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-13.jpg'" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-8 p-2">
-                                        <div class="h6"> Product Title 1 </div>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
-                                    </div>
-                                </div>
-                                <div class="row ps-3 border-bottom">
-                                    <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-14.jpg'" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-8 p-2">
-                                        <div class="h6"> Product Title 1 </div>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
-                                    </div>
-                                </div>
-                                <div class="row ps-3 border-bottom">
-                                    <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-15.jpg'" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-8 p-2">
-                                        <div class="h6"> Product Title 1 </div>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -343,51 +287,23 @@
                         <div class="p-3">
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Top Rated </div>
                             <div class="p-2">
-                                <div class="row ps-3 border-bottom">
+
+                                <div class="row ps-3 border-bottom" v-for="(product, index) in getProductsInRange(25, 29)" :key="product.id">
                                     <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-01.jpg'" class="img-fluid" alt="">
+                                        <img :src="product.image" class="img-fluid" alt="">
                                     </div>
                                     <div class="col-8 p-2">
-                                        <p class="fw-bold"> Product Title 1 </p>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
+                                        <p class="fw-bold"> {{product.name}} </p>
+                                        <div class="d-flex align-items-center">
+                                            <div class="text-success"> ${{product.price}} </div>
+                                            <del class="text-secondary opacity-25 ms-2"> ${{product.price * 1.5}} </del>
+                                        </div>
+                                        <a href="javascript:void(0)" class="btn btn-outline-success" @click="addToCart(product)">
+                                            Add to Cart
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="row ps-3 border-bottom">
-                                    <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-02.jpg'" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-8 p-2">
-                                        <p class="fw-bold"> Product Title 1 </p>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
-                                    </div>
-                                </div>
-                                <div class="row ps-3 border-bottom">
-                                    <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-03.jpg'" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-8 p-2">
-                                        <p class="fw-bold"> Product Title 1 </p>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
-                                    </div>
-                                </div>
-                                <div class="row ps-3 border-bottom">
-                                    <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-05.jpg'" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-8 p-2">
-                                        <p class="fw-bold"> Product Title 1 </p>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
-                                    </div>
-                                </div>
-                                <div class="row ps-3 border-bottom">
-                                    <div class="col-4 h-100">
-                                        <img :src="'/images/products/image-06.jpg'" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-8 p-2">
-                                        <p class="fw-bold"> Product Title 1 </p>
-                                        <div class="d-flex align-items-center"> <div class="text-success"> $22.85 </div> <del class="text-secondary opacity-25 ms-2"> $24.80 </del> </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -404,6 +320,14 @@ import store from "../../store/index.js";
 
     export default {
 
+        computed: {
+            getProductsInRange() {
+                return (startId, endId) => {
+                    return this.products.filter(product => product.id >= startId && product.id <= endId);
+                };
+            },
+        },
+
         data(){
 
             return{
@@ -419,6 +343,25 @@ import store from "../../store/index.js";
                     { id: 8, image: '/images/products/p-09.jpg', name: 'Product 8', price: 80.00 },
                     { id: 9, image: '/images/products/p-10.jpg', name: 'Product 9', price: 90.00 },
                     { id: 10, image: '/images/products/p-11.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 11, image: '/images/products/p-12.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 12, image: '/images/products/p-13.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 13, image: '/images/products/p-14.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 14, image: '/images/products/p-15.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 15, image: '/images/products/p-16.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 16, image: '/images/products/p-17.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 17, image: '/images/products/p-18.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 18, image: '/images/products/p-19.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 19, image: '/images/products/p-20.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 20, image: '/images/products/p-21.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 21, image: '/images/products/p-22.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 22, image: '/images/products/p-23.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 23, image: '/images/products/p-24.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 24, image: '/images/products/p-25.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 25, image: '/images/products/p-26.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 26, image: '/images/products/p-27.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 27, image: '/images/products/p-28.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 28, image: '/images/products/p-29.jpg', name: 'Product 10', price: 100.00 },
+                    { id: 29, image: '/images/products/p-30.jpg', name: 'Product 10', price: 100.00 },
                 ],
 
                 cart: [],
