@@ -22,6 +22,10 @@ const apiRoutes = {
 
     logout: apiVersion + '/profile/logout',
 
+    // category
+
+    globalCategoryList: '/globalCategory/list',
+
     // Order
 
     OrderCreate: apiVersion + '/order/create',

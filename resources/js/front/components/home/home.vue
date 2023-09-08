@@ -94,81 +94,16 @@
             <div class="container py-5">
                 <div class="h3 fw-bold">Featured Categories</div>
                 <div class="py-3 category-item owl-carousel owl-theme">
-                    <div class="text-center p-3">
+                    <div class="text-center p-3" v-for="(category, index) in categories" :key="category.id">
                         <div class="border rounded-3 overflow-hidden">
                             <div class="mb-3">
-                                <img :src="'/images/products/p-01.jpg'" class="img-fluid w-100 h-100" alt="product-1">
+                                <img :src="category.image" class="img-fluid product-image-hover" alt="category">
                             </div>
                             <div class="fw-bold">
-                                Category Title 1
+                                {{category.name}}
                             </div>
                             <div class="text-secondary pb-3 pt-2">
-                                8 Items
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center p-3">
-                        <div class="border rounded-3 overflow-hidden">
-                            <div class="mb-3">
-                                <img :src="'/images/products/p-02.jpg'" class="img-fluid w-100 h-100" alt="product-1">
-                            </div>
-                            <div class="fw-bold">
-                                Category Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2">
-                                12 Items
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center p-3">
-                        <div class="border rounded-3 overflow-hidden">
-                            <div class="mb-3">
-                                <img :src="'/images/products/p-03.jpg'" class="img-fluid w-100 h-100" alt="product-1">
-                            </div>
-                            <div class="fw-bold">
-                                Category Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2">
-                                19 Items
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center p-3">
-                        <div class="border rounded-3 overflow-hidden">
-                            <div class="mb-3">
-                                <img :src="'/images/products/p-05.jpg'" class="img-fluid w-100 h-100" alt="product-1">
-                            </div>
-                            <div class="fw-bold">
-                                Category Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2">
-                                7 Items
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center p-3">
-                        <div class="border rounded-3 overflow-hidden">
-                            <div class="mb-3">
-                                <img :src="'/images/products/p-06.jpg'" class="img-fluid w-100 h-100" alt="product-1">
-                            </div>
-                            <div class="fw-bold">
-                                Category Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2">
-                                2 Items
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center p-3">
-                        <div class="border rounded-3 overflow-hidden">
-                            <div class="mb-3">
-                                <img :src="'/images/products/p-07.jpg'" class="img-fluid w-100 h-100" alt="product-1">
-                            </div>
-                            <div class="fw-bold">
-                                Category Title 1
-                            </div>
-                            <div class="text-secondary pb-3 pt-2">
-                                5 Items
+                                {{category.item}} Items
                             </div>
                         </div>
                     </div>
@@ -332,6 +267,18 @@ import store from "../../store/index.js";
 
             return{
 
+                categories: [
+                    { id: 1, image: '/images/categories/image-01.jpg', name: 'Category 1', item: 1 },
+                    { id: 2, image: '/images/categories/image-02.jpg', name: 'Category 2', item: 2 },
+                    { id: 3, image: '/images/categories/image-03.jpg', name: 'Category 3', item: 3 },
+                    { id: 4, image: '/images/categories/image-05.jpg', name: 'Category 4', item: 4 },
+                    { id: 5, image: '/images/categories/image-06.jpg', name: 'Category 5', item: 5 },
+                    { id: 6, image: '/images/categories/image-07.jpg', name: 'Category 6', item: 6 },
+                    { id: 7, image: '/images/categories/image-08.jpg', name: 'Category 7', item: 7 },
+                    { id: 8, image: '/images/categories/image-09.jpg', name: 'Category 8', item: 8 },
+                    { id: 9, image: '/images/categories/image-10.jpg', name: 'Category 9', item: 9 },
+                ],
+
                 products: [
                     { id: 1, image: '/images/products/p-01.jpg', name: 'Product 1', price: 10.00 },
                     { id: 2, image: '/images/products/p-02.jpg', name: 'Product 2', price: 20.00 },
@@ -343,30 +290,38 @@ import store from "../../store/index.js";
                     { id: 8, image: '/images/products/p-09.jpg', name: 'Product 8', price: 80.00 },
                     { id: 9, image: '/images/products/p-10.jpg', name: 'Product 9', price: 90.00 },
                     { id: 10, image: '/images/products/p-11.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 11, image: '/images/products/p-12.jpg', name: 'Product 10', price: 110.00 },
-                    { id: 12, image: '/images/products/p-13.jpg', name: 'Product 10', price: 120.00 },
-                    { id: 13, image: '/images/products/p-14.jpg', name: 'Product 10', price: 130.00 },
-                    { id: 14, image: '/images/products/p-15.jpg', name: 'Product 10', price: 140.00 },
-                    { id: 15, image: '/images/products/p-16.jpg', name: 'Product 10', price: 150.00 },
-                    { id: 16, image: '/images/products/p-17.jpg', name: 'Product 10', price: 160.00 },
-                    { id: 17, image: '/images/products/p-18.jpg', name: 'Product 10', price: 170.00 },
-                    { id: 18, image: '/images/products/p-19.jpg', name: 'Product 10', price: 180.00 },
-                    { id: 19, image: '/images/products/p-20.jpg', name: 'Product 10', price: 190.00 },
-                    { id: 20, image: '/images/products/p-21.jpg', name: 'Product 10', price: 200.00 },
-                    { id: 21, image: '/images/products/p-22.jpg', name: 'Product 10', price: 210.00 },
-                    { id: 22, image: '/images/products/p-23.jpg', name: 'Product 10', price: 220.00 },
-                    { id: 23, image: '/images/products/p-24.jpg', name: 'Product 10', price: 230.00 },
-                    { id: 24, image: '/images/products/p-25.jpg', name: 'Product 10', price: 240.00 },
-                    { id: 25, image: '/images/products/p-26.jpg', name: 'Product 10', price: 250.00 },
-                    { id: 26, image: '/images/products/p-27.jpg', name: 'Product 10', price: 260.00 },
-                    { id: 27, image: '/images/products/p-28.jpg', name: 'Product 10', price: 270.00 },
-                    { id: 28, image: '/images/products/p-29.jpg', name: 'Product 10', price: 280.00 },
-                    { id: 29, image: '/images/products/p-30.jpg', name: 'Product 10', price: 290.00 },
+                    { id: 11, image: '/images/products/p-12.jpg', name: 'Product 11', price: 110.00 },
+                    { id: 12, image: '/images/products/p-13.jpg', name: 'Product 12', price: 120.00 },
+                    { id: 13, image: '/images/products/p-14.jpg', name: 'Product 13', price: 130.00 },
+                    { id: 14, image: '/images/products/p-15.jpg', name: 'Product 14', price: 140.00 },
+                    { id: 15, image: '/images/products/p-16.jpg', name: 'Product 15', price: 150.00 },
+                    { id: 16, image: '/images/products/p-17.jpg', name: 'Product 16', price: 160.00 },
+                    { id: 17, image: '/images/products/p-18.jpg', name: 'Product 17', price: 170.00 },
+                    { id: 18, image: '/images/products/p-19.jpg', name: 'Product 18', price: 180.00 },
+                    { id: 19, image: '/images/products/p-20.jpg', name: 'Product 19', price: 190.00 },
+                    { id: 20, image: '/images/products/p-21.jpg', name: 'Product 20', price: 200.00 },
+                    { id: 21, image: '/images/products/p-22.jpg', name: 'Product 21', price: 210.00 },
+                    { id: 22, image: '/images/products/p-23.jpg', name: 'Product 22', price: 220.00 },
+                    { id: 23, image: '/images/products/p-24.jpg', name: 'Product 23', price: 230.00 },
+                    { id: 24, image: '/images/products/p-25.jpg', name: 'Product 24', price: 240.00 },
+                    { id: 25, image: '/images/products/p-26.jpg', name: 'Product 25', price: 250.00 },
+                    { id: 26, image: '/images/products/p-27.jpg', name: 'Product 26', price: 260.00 },
+                    { id: 27, image: '/images/products/p-28.jpg', name: 'Product 27', price: 270.00 },
+                    { id: 28, image: '/images/products/p-29.jpg', name: 'Product 28', price: 280.00 },
+                    { id: 29, image: '/images/products/p-30.jpg', name: 'Product 29', price: 290.00 },
                 ],
 
                 cart: [],
 
             }
+
+        },
+
+        methods: {
+
+            addToCart(product) {
+                store.dispatch('addToCart', product)
+            },
 
         },
 
@@ -419,14 +374,6 @@ import store from "../../store/index.js";
             )
 
         },
-
-        methods: {
-
-            addToCart(product) {
-                store.dispatch('addToCart', product)
-            },
-
-        }
 
     }
 

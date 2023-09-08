@@ -334,40 +334,6 @@
 
                 <div class="modal-body">
 
-                    <div class="mb-3 col-12">
-
-                        <div class="d-flex justify-content-center align-items-center">
-
-                            <label for="file-upload">
-
-                                <input type="file" class="d-none" id="file-upload" @change="attachFile($event)">
-
-                                    <span v-if="categoryParam.avatar === null" class="modal-avatar">
-
-                                        <span class="text-center">
-
-                                            <span class="mb-2">
-
-                                                <i class="bi bi-card-image"></i>
-
-                                            </span>
-
-                                            Upload Image
-
-                                        </span>
-
-                                    </span>
-
-                                <img class="img-fluid modal-avatar" v-if="categoryParam.avatar !== null" :src="'/storage/media/image/'+categoryParam.avatar" alt="avatar">
-
-                            </label>
-
-                        </div>
-
-                        <div class="error-text" v-if="error != null && error.avatar !== undefined" v-text="error.avatar[0]"></div>
-
-                    </div>
-
                     <div class="mb-3">
 
                         <label for="category_name" class="form-label">
@@ -535,30 +501,6 @@
         },
 
         methods: {
-
-            attachFile(event) {
-
-                let file = event.target.files[0];
-
-                let formData = new FormData();
-
-                formData.append("file", file)
-
-                formData.append("media_type", 1);
-
-                apiService.UPLOAD(apiRoutes.media, formData, (res) => {
-
-                    event.target.value = '';
-
-                    if (res.status === 200) {
-
-                        this.categoryParam.avatar = res.data.file_path
-
-                    }
-
-                })
-
-            },
 
             toggleCheckAll(e) {
 

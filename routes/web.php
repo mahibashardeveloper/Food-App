@@ -8,6 +8,7 @@ use App\Http\Controllers\DeliveryManController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +67,10 @@ Route::middleware('CustomerLoginCheck')->get('/front/wishlist', [CustomerControl
 Route::middleware('CustomerLoginCheck')->get('/front/newsletter', [CustomerController::class, 'index'])->name('lvs.front.newsletter');
 Route::get('/front/profile/', function (){ return redirect()->route('lvs.front.any','my_account'); });
 
-/* -------------------------- Front controller -----------------------------------*/
+/* -------------------------- Front controller ----------------------------------- */
 Route::get('/front/', [CustomerController::class, 'index'])->where('any', '.*')->name('lvs.front');
 Route::get('/front/{any}', [CustomerController::class, 'index'])->where('any', '.*')->name('lvs.front.any');
 Route::get('/', function (){ return redirect()->route('lvs.front.any','home'); });
+
+Route::prefix('globalCategory')->group(function () { Route::get('/list', [FrontController::class, 'category_list']); } );
+Route::prefix('globalProduct')->group(function () { Route::get('/list', [FrontController::class, 'product_list']); } );
