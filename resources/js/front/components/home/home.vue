@@ -93,20 +93,20 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold">Featured Categories</div>
-                <div class="py-3 category-item owl-carousel owl-theme">
-                    <div class="text-center p-3" v-for="(category, index) in categories" :key="category.id">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+
+                    <div class="text-center p-3" v-for="(category, index) in displayedCategories" :key="category.id">
                         <div class="border rounded-3 overflow-hidden">
-                            <div class="mb-3">
-                                <img :src="category.image" class="img-fluid product-image-hover" alt="category">
+                            <div class="pt-3">
+                                <img :src="category.avatar" v-if="category.avatar !== null" class="img-fluid product-image-hover" alt="category">
+                                <i class="bi bi-tag fs-1" v-if="category.avatar === null"></i>
                             </div>
-                            <div class="fw-bold">
+                            <div class="pb-3 fw-bold">
                                 {{category.name}}
-                            </div>
-                            <div class="text-secondary pb-3 pt-2">
-                                {{category.item}} Items
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -114,13 +114,13 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold">Popular Products</div>
-                <div class="py-3 product-item owl-carousel owl-theme">
+                <div class="py-3 row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
 
                     <div v-for="(product, index) in getProductsInRange(1, 10)" :key="product.id">
                         <div class="text-start p-3">
                             <div class="border rounded-2 overflow-hidden product">
                                 <div class="mb-3 overflow-hidden">
-                                    <img :src="product.image" class="img-fluid product-image-hover" alt="product-1">
+                                    <img :src="'/storage/media/image/' + product.avatar" class="img-fluid product-image-hover" alt="product-1">
                                 </div>
                                 <div class="fw-bold ps-3">
                                     {{product.name}}
@@ -142,13 +142,13 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold">Daily Best Sells</div>
-                <div class="py-3 product-item owl-carousel owl-theme">
+                <div class="py-3 row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
 
                     <div v-for="(product, index) in getProductsInRange(11, 20)" :key="product.id">
                         <div class="text-start p-3">
                             <div class="border rounded-2 overflow-hidden product">
                                 <div class="mb-3 overflow-hidden">
-                                    <img :src="product.image" class="img-fluid product-image-hover" alt="product-1">
+                                    <img :src="'/storage/media/image/' + product.avatar" class="img-fluid product-image-hover" alt="product-1">
                                 </div>
                                 <div class="fw-bold ps-3">
                                     {{product.name}}
@@ -175,9 +175,9 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Trending Products </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product, index) in getProductsInRange(15, 19)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product, index) in getProductsInRange(1, 5)" :key="product.id">
                                     <div class="col-4 h-100">
-                                        <img :src="product.image" class="img-fluid" alt="">
+                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
@@ -199,9 +199,9 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Recently Added </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product, index) in getProductsInRange(20, 24)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product, index) in getProductsInRange(6, 10)" :key="product.id">
                                     <div class="col-4 h-100">
-                                        <img :src="product.image" class="img-fluid" alt="">
+                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
@@ -223,9 +223,9 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Top Rated </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product, index) in getProductsInRange(25, 29)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product, index) in getProductsInRange(11, 15)" :key="product.id">
                                     <div class="col-4 h-100">
-                                        <img :src="product.image" class="img-fluid" alt="">
+                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
@@ -252,10 +252,15 @@
 
 <script>
 import store from "../../store/index.js";
+import apiService from "../../services/apiServices";
+import apiRoutes from "../../services/apiRoutes";
 
     export default {
 
         computed: {
+            displayedCategories() {
+                return this.categories.slice(0, 10);
+            },
             getProductsInRange() {
                 return (startId, endId) => {
                     return this.products.filter(product => product.id >= startId && product.id <= endId);
@@ -267,49 +272,9 @@ import store from "../../store/index.js";
 
             return{
 
-                categories: [
-                    { id: 1, image: '/images/categories/image-01.jpg', name: 'Category 1', item: 1 },
-                    { id: 2, image: '/images/categories/image-02.jpg', name: 'Category 2', item: 2 },
-                    { id: 3, image: '/images/categories/image-03.jpg', name: 'Category 3', item: 3 },
-                    { id: 4, image: '/images/categories/image-05.jpg', name: 'Category 4', item: 4 },
-                    { id: 5, image: '/images/categories/image-06.jpg', name: 'Category 5', item: 5 },
-                    { id: 6, image: '/images/categories/image-07.jpg', name: 'Category 6', item: 6 },
-                    { id: 7, image: '/images/categories/image-08.jpg', name: 'Category 7', item: 7 },
-                    { id: 8, image: '/images/categories/image-09.jpg', name: 'Category 8', item: 8 },
-                    { id: 9, image: '/images/categories/image-10.jpg', name: 'Category 9', item: 9 },
-                ],
+                categories: [],
 
-                products: [
-                    { id: 1, image: '/images/products/p-01.jpg', name: 'Product 1', price: 10.00 },
-                    { id: 2, image: '/images/products/p-02.jpg', name: 'Product 2', price: 20.00 },
-                    { id: 3, image: '/images/products/p-03.jpg', name: 'Product 3', price: 30.00 },
-                    { id: 4, image: '/images/products/p-05.jpg', name: 'Product 4', price: 40.00 },
-                    { id: 5, image: '/images/products/p-06.jpg', name: 'Product 5', price: 50.00 },
-                    { id: 6, image: '/images/products/p-07.jpg', name: 'Product 6', price: 60.00 },
-                    { id: 7, image: '/images/products/p-08.jpg', name: 'Product 7', price: 70.00 },
-                    { id: 8, image: '/images/products/p-09.jpg', name: 'Product 8', price: 80.00 },
-                    { id: 9, image: '/images/products/p-10.jpg', name: 'Product 9', price: 90.00 },
-                    { id: 10, image: '/images/products/p-11.jpg', name: 'Product 10', price: 100.00 },
-                    { id: 11, image: '/images/products/p-12.jpg', name: 'Product 11', price: 110.00 },
-                    { id: 12, image: '/images/products/p-13.jpg', name: 'Product 12', price: 120.00 },
-                    { id: 13, image: '/images/products/p-14.jpg', name: 'Product 13', price: 130.00 },
-                    { id: 14, image: '/images/products/p-15.jpg', name: 'Product 14', price: 140.00 },
-                    { id: 15, image: '/images/products/p-16.jpg', name: 'Product 15', price: 150.00 },
-                    { id: 16, image: '/images/products/p-17.jpg', name: 'Product 16', price: 160.00 },
-                    { id: 17, image: '/images/products/p-18.jpg', name: 'Product 17', price: 170.00 },
-                    { id: 18, image: '/images/products/p-19.jpg', name: 'Product 18', price: 180.00 },
-                    { id: 19, image: '/images/products/p-20.jpg', name: 'Product 19', price: 190.00 },
-                    { id: 20, image: '/images/products/p-21.jpg', name: 'Product 20', price: 200.00 },
-                    { id: 21, image: '/images/products/p-22.jpg', name: 'Product 21', price: 210.00 },
-                    { id: 22, image: '/images/products/p-23.jpg', name: 'Product 22', price: 220.00 },
-                    { id: 23, image: '/images/products/p-24.jpg', name: 'Product 23', price: 230.00 },
-                    { id: 24, image: '/images/products/p-25.jpg', name: 'Product 24', price: 240.00 },
-                    { id: 25, image: '/images/products/p-26.jpg', name: 'Product 25', price: 250.00 },
-                    { id: 26, image: '/images/products/p-27.jpg', name: 'Product 26', price: 260.00 },
-                    { id: 27, image: '/images/products/p-28.jpg', name: 'Product 27', price: 270.00 },
-                    { id: 28, image: '/images/products/p-29.jpg', name: 'Product 28', price: 280.00 },
-                    { id: 29, image: '/images/products/p-30.jpg', name: 'Product 29', price: 290.00 },
-                ],
+                products: [],
 
                 cart: [],
 
@@ -317,15 +282,11 @@ import store from "../../store/index.js";
 
         },
 
-        methods: {
-
-            addToCart(product) {
-                store.dispatch('addToCart', product)
-            },
-
-        },
-
         mounted() {
+
+            this.category_list();
+
+            this.product_list();
 
             $('.slider').owlCarousel(
                 {
@@ -372,6 +333,34 @@ import store from "../../store/index.js";
                     }
                 }
             )
+
+        },
+
+        methods: {
+
+            addToCart(product) {
+                store.dispatch('addToCart', product)
+            },
+
+            category_list() {
+                this.loading = true;
+                apiService.GET(apiRoutes.globalCategoryList, (res) =>{
+                    this.loading = false;
+                    if(res.status === 200) {
+                        this.categories = res.data.data;
+                    }
+                })
+            },
+
+            product_list() {
+                this.loading = true;
+                apiService.GET(apiRoutes.globalProductList, (res) =>{
+                    this.loading = false;
+                    if(res.status === 200) {
+                        this.products = res.data.data;
+                    }
+                })
+            }
 
         },
 

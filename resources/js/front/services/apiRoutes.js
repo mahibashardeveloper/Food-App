@@ -26,6 +26,10 @@ const apiRoutes = {
 
     globalCategoryList: '/globalCategory/list',
 
+    // product
+
+    globalProductList: '/globalProduct/list',
+
     // Order
 
     OrderCreate: apiVersion + '/order/create',

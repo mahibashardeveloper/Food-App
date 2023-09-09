@@ -8,9 +8,9 @@ import layout from "../components/layout/layout.vue";
 
 import home from "../components/home/home.vue";
 
-// cart ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// shop ----- ----- ----- ----- ----- ----- ----- ----- -----
 
-import cart from "../components/cart/cart.vue";
+import shop from "../components/shop/shop.vue";
 
 // login ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
@@ -66,9 +66,9 @@ const routes = [
 
             {path: ROOT_URL + '/home', name: 'home', component: home, meta: {title: 'home'} },
 
-            // cart
+            // shop
 
-            {path: ROOT_URL + '/cart', name: 'cart', component: cart, meta: {title: 'cart'} },
+            {path: ROOT_URL + '/shop', name: 'shop', component: shop, meta: {title: 'shop'} },
 
             // login
 

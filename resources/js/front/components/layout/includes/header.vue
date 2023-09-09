@@ -17,6 +17,9 @@
             <router-link :to="{name:'home'}" class="menu-link" active-class="active" @click="remove">
                 <i class="bi bi-house-door me-2"></i> Home
             </router-link>
+            <router-link :to="{name:'shop'}" class="menu-link" active-class="active" @click="remove">
+                <i class="bi bi-shop me-2"></i> Shop
+            </router-link>
             <a href="javascript:void(0)" class="menu-link" @click="cartInfo">
                 <i class="bi bi-cart me-2"></i> Cart <span class="badge bg-dark p-2 ms-2"> {{ products.length }} </span>
             </a>
@@ -49,7 +52,7 @@
                 </div>
                 <div class="item" v-for="(cartItem, index) in products" :key="index">
                     <span class="d-flex">
-                        <img :src="cartItem.image" class="img-fluid" alt="">
+                        <img :src="'/storage/media/image/' + cartItem.avatar" class="img-fluid" alt="">
                         <span class="product-info">
                             <div class="price mb-2">Price: Per Kg ${{cartItem.price}}</div>
                             <div class="quantity">
