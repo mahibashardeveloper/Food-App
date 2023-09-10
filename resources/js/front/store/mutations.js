@@ -14,3 +14,6 @@ export function removeCart(state, products){
     state.products = [...products]
 }
 
+export function clearFromCart(state, products){
+    state.products = [...products]
+}

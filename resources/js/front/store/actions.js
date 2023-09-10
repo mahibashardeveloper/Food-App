@@ -56,3 +56,14 @@ export function removeFromCart ({commit}, cartItem){
     localStorage.setItem('cart', JSON.stringify(products));
     commit('removeCart', products);
 }
+
+export function clearCart ({commit}, cartItem){
+    let cartItems = [];
+    const storedCartData = localStorage.getItem('cart');
+    if (storedCartData) {
+        cartItems = JSON.parse(storedCartData);
+    }
+    const products = cartItems.filter(product => product.id !== cartItem.id)
+    localStorage.setItem('cart', JSON.stringify(products));
+    commit('clearFromCart', products);
+}

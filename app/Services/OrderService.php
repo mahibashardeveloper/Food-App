@@ -40,11 +40,11 @@ class OrderService
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'order_name' => 'required',
-                    'order_price' => 'required',
-                    'order_quantity' => 'required',
-                    'order_subTotal' => 'required',
-                    'order_status' => 'required',
+                    'name' => 'required',
+                    'price' => 'required',
+                    'quantity' => 'required',
+                    'subTotal' => 'required',
+                    'status' => 'required',
                 ]
             );
             if ($validator->fails()) {
@@ -53,11 +53,11 @@ class OrderService
             $customer_id = Auth::guard('customers')->id();
             $order = new Orders();
             $order-> customer_id = $customer_id;
-            $order-> order_name = $request->order_name;
-            $order-> order_price = $request->order_price;
-            $order-> order_quantity = $request->order_quantity;
-            $order-> order_subTotal = $request->order_subTotal;
-            $order-> order_status = $request->order_status;
+            $order-> name = $request->name;
+            $order-> price = $request->price;
+            $order-> quantity = $request->quantity;
+            $order-> subTotal = $request->subTotal;
+            $order-> status = $request->status;
             $order-> save();
             return ['status' => 200, 'msg' => 'data has been saved successfully.'];
         } catch (\Exception $e) {

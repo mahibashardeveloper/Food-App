@@ -34,12 +34,6 @@ const apiRoutes = {
 
     OrderCreate: apiVersion + '/order/create',
 
-    OrderUpdate: apiVersion + '/order/update',
-
-    OrderList: apiVersion + '/order/list',
-
-    OrderSingle: apiVersion + '/order/single',
-
     OrderDelete: apiVersion + '/order/delete',
 
     // Media

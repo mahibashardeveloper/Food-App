@@ -18,11 +18,11 @@ class Orders extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'order_name',
-        'order_price',
-        'order_quantity',
-        'order_subtotal',
-        'order_status'
+        'name',
+        'price',
+        'quantity',
+        'subtotal',
+        'status'
     ];
 
     /**

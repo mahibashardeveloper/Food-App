@@ -65,6 +65,7 @@
                     </span>
                     <span> ${{ cartItem.price * cartItem.quantity }} </span>
                 </div>
+                <div id="error-message"></div>
             </div>
             <div class="cart-footer">
                 <div class="cart-details">
@@ -82,7 +83,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="javascript:void(0)" class="btn-checkout" @click="remove">
+                <a href="javascript:void(0)" class="btn-checkout" @click="checkout">
                     Checkout
                 </a>
             </div>
@@ -94,11 +95,8 @@
 <script>
 
 import apiService from "../../../services/apiServices";
-
 import apiRoutes from "../../../services/apiRoutes.js";
-
 import store from "../../../store/index";
-
 export default {
 
     computed: {
@@ -112,45 +110,31 @@ export default {
     },
 
     data(){
-
         return{
-
             isRightSidebar: false,
-
             isHeaderScrolled: false,
-
             isCartInfoActive: false,
-
             logoutLoading: false,
-
             profile_data: null,
-
             profileDataLoading: false,
-
+            orderParam: {
+                name: '',
+                price: '',
+                quantity: '',
+            },
         }
-
     },
 
     mounted() {
-
         this.getCartItems();
-
         this.getProfile();
-
         window.addEventListener("scroll", this.onScroll);
-
         setTimeout(() =>{
-
             const preloader = document.getElementById('preloader');
-
             setTimeout(() => {
-
                 document.getElementById('app').removeChild(preloader)
-
             },1000)
-
         },3000);
-
     },
 
     methods: {
@@ -204,47 +188,40 @@ export default {
         },
 
         onScroll() {
-
             const scrollPos = window.scrollY;
-
             this.isHeaderScrolled = scrollPos > 0;
+        },
 
+        checkout() {
+
+            apiService.POST(apiRoutes.OrderCreate, this.orderParam, (res) => {
+                if (res.status === 200) {
+                    store.dispatch('clearCart');
+                } else {
+                    const errorMessageElement = document.getElementById('error-message');
+                    errorMessageElement.innerHTML = 'Error: Failed to create the order.';
+                }
+            });
         },
 
         getProfile() {
-
             this.profileDataLoading = true;
-
             apiService.GET(apiRoutes.profile_details, (res) => {
-
                 this.profileDataLoading = false;
-
                 if (res.status === 200) {
-
                     this.profile_data = res.data;
-
                 }
-
             })
-
         },
 
         logout() {
-
             this.logoutLoading = true;
-
             apiService.GET(apiRoutes.logout, (res) => {
-
                 this.logoutLoading = false;
-
                 if (res.status === 200) {
-
                     window.location.reload();
-
                 }
-
             })
-
         },
 
     }
