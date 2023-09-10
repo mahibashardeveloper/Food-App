@@ -14,7 +14,6 @@
         .shop-sidebar{
             width: 270px;
             height: 75vh;
-            border: 1px solid $border-color;
 
             @media screen and (max-width: 991px) {
                 position: absolute;
@@ -36,7 +35,6 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                border-bottom: 1px solid $border-color;
                 padding: 0 20px;
 
                 @media screen and (max-width: 991px) {
@@ -72,7 +70,7 @@
 
             .shop-sidebar-body{
                 width: 100%;
-                height: calc(75vh - 70px);
+                height: 100%;
                 padding: 20px;
 
                 .sub-link{
@@ -101,8 +99,7 @@
 
         .shop-content{
             width: calc(100% - 270px);
-            height: 75vh;
-            border: 1px solid $border-color;
+            height: auto;
 
             @media screen and (max-width: 991px) {
                 width: 100%;
@@ -114,7 +111,6 @@
                 align-items: center;
                 height: 70px;
                 padding: 0 20px;
-                border-bottom: 1px solid $border-color;
 
                 .btn-controller{
                     padding: 5px 10px;
@@ -135,11 +131,12 @@
 
             .content-inner-content{
                 width: 100%;
-                height: calc(75vh - 70px);
+                height: auto;
                 padding: 20px;
                 overflow-y: scroll;
 
                 .pagination{
+
                     .page-item{
 
                         &.active .page-link{
@@ -168,7 +165,9 @@
                             }
 
                         }
+
                     }
+
                 }
 
             }

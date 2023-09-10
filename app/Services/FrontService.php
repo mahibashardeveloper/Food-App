@@ -39,7 +39,7 @@ class FrontService extends BaseController
 
             $limit = $request->limit ?? 10000;
 
-            $results = Products::orderBy('id', 'asc');
+            $results = Products::with('category_info')->orderBy('id', 'asc');
 
             $paginatedData = $results->paginate($limit);
 
