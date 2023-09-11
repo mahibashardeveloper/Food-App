@@ -17,9 +17,6 @@
             <router-link :to="{name:'home'}" class="menu-link" active-class="active" @click="remove">
                 <i class="bi bi-house-door me-2"></i> Home
             </router-link>
-            <router-link :to="{name:'shop'}" class="menu-link" active-class="active" @click="remove">
-                <i class="bi bi-shop me-2"></i> Shop
-            </router-link>
             <a href="javascript:void(0)" class="menu-link" @click="cartInfo">
                 <i class="bi bi-cart me-2"></i> Cart <span class="badge bg-dark p-2 ms-2"> {{ products.length }} </span>
             </a>
@@ -83,7 +80,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="javascript:void(0)" class="btn-checkout">
+                <a href="javascript:void(0)" class="btn-checkout" @click="checkout">
                     Checkout
                 </a>
             </div>
@@ -117,11 +114,6 @@ export default {
             logoutLoading: false,
             profile_data: null,
             profileDataLoading: false,
-            orderParam: {
-                name: '',
-                price: '',
-                quantity: '',
-            },
         }
     },
 
@@ -138,6 +130,37 @@ export default {
     },
 
     methods: {
+
+        checkout() {
+            const orderItems = [];
+
+            this.products.forEach(cartItem => {
+                const orderItem = {
+                    name: cartItem.name,
+                    price: cartItem.price,
+                    quantity: cartItem.quantity,
+                };
+                orderItems.push(orderItem);
+            });
+
+            const formData = new FormData();
+
+            orderItems.forEach((orderItem, index) => {
+                for (const key in orderItem) {
+                    formData.append(`orderItems[${index}][${key}]`, orderItem[key]);
+                }
+            });
+
+            apiService.POST(apiRoutes.OrderCreate, { orderItems }, (res) => {
+                if (res.status === 200) {
+                    store.dispatch('clearCart');
+                } else {
+                    const errorMessageElement = document.getElementById('error-message');
+                    errorMessageElement.innerHTML = 'Error: Failed to create the order.';
+                }
+            });
+
+        },
 
         getCartItems(){
             store.dispatch('getCartItems')

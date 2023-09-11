@@ -141,6 +141,8 @@
 
                         });
 
+                        window.location.reload();
+
                     } else {
 
                         this.error = res.errors

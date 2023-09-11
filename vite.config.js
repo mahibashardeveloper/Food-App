@@ -11,8 +11,6 @@ export default defineConfig({
                 'resources/js/admin/app.js',
                 'resources/js/deliveryMan/app.js',
                 'resources/js/front/app.js',
-                'resources/js/merchant/app.js',
-                'resources/js/partner/app.js',
                 'resources/js/subAdmin/app.js',
                 'resources/js/vendor/app.js',
             ],

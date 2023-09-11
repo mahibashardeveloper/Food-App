@@ -19,10 +19,8 @@ class Partners extends Authenticatable
      */
     protected $fillable = [
         'company_name',
-        'full_name',
-        'email',
-        'password',
-        'phone_number',
+        'avatar',
+        'website_link',
     ];
 
     /**
@@ -31,9 +29,6 @@ class Partners extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
-        'reset_code',
         'created_at',
         'updated_at',
     ];
@@ -44,8 +39,7 @@ class Partners extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+
     ];
 
     public function media(){

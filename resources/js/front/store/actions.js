@@ -60,10 +60,12 @@ export function removeFromCart ({commit}, cartItem){
 export function clearCart ({commit}, cartItem){
     let cartItems = [];
     const storedCartData = localStorage.getItem('cart');
+
     if (storedCartData) {
-        cartItems = JSON.parse(storedCartData);
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+    }else{
+        localStorage.setItem('cart', JSON.stringify(cartItems));
     }
-    const products = cartItems.filter(product => product.id !== cartItem.id)
-    localStorage.setItem('cart', JSON.stringify(products));
-    commit('clearFromCart', products);
+
+    commit('clearFromCart');
 }

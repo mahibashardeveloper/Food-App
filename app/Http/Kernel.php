@@ -14,12 +14,6 @@ use App\Http\Middleware\VendorLoginCheck;
 use App\Http\Middleware\DeliveryManAuth;
 use App\Http\Middleware\DeliveryManAuthReq;
 use App\Http\Middleware\DeliveryManLoginCheck;
-use App\Http\Middleware\MerchantAuth;
-use App\Http\Middleware\MerchantAuthReq;
-use App\Http\Middleware\MerchantLoginCheck;
-use App\Http\Middleware\PartnerAuth;
-use App\Http\Middleware\PartnerAuthReq;
-use App\Http\Middleware\PartnerLoginCheck;
 use App\Http\Middleware\CustomerAuth;
 use App\Http\Middleware\CustomerAuthReq;
 use App\Http\Middleware\CustomerLoginCheck;
@@ -100,14 +94,6 @@ class Kernel extends HttpKernel
         'DeliveryManAuth' => DeliveryManAuth::class,
         'DeliveryManAuthReq' => DeliveryManAuthReq::class,
         'DeliveryManLoginCheck' => DeliveryManLoginCheck::class,
-
-        'MerchantAuth' => MerchantAuth::class,
-        'MerchantAuthReq' => MerchantAuthReq::class,
-        'MerchantLoginCheck' => MerchantLoginCheck::class,
-
-        'PartnerAuth' => PartnerAuth::class,
-        'PartnerAuthReq' => PartnerAuthReq::class,
-        'PartnerLoginCheck' => PartnerLoginCheck::class,
 
         'CustomerAuth' => CustomerAuth::class,
         'CustomerAuthReq' => CustomerAuthReq::class,

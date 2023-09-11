@@ -123,7 +123,7 @@
 
             <div class="row header-section">
 
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
                     <div class="d-flex">
 
@@ -137,23 +137,17 @@
 
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
-                    Full Name
-
-                </div>
-
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
-
-                    Email
+                    Logo
 
                 </div>
 
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
-                    Phone Number
+                    Link
 
                 </div>
 
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
                     Action
 
@@ -163,7 +157,7 @@
 
             <div class="row border-bottom body-section align-items-center" v-for="(each) in tableData">
 
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
                     <div class="marge">Company Name</div>
 
@@ -179,29 +173,35 @@
 
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
-                    <div class="marge">Full Name</div>
+                    <div class="marge">Logo</div>
 
-                    {{each.full_name}}
+                    <div class="product-image border">
 
-                </div>
+                        <span v-if="each.avatar === null">
 
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
+                            <img class="img-fluid category-image" :src="'/images/category.svg'" alt="category.png">
 
-                    <div class="marge">Email</div>
+                        </span>
 
-                    {{each.email}}
+                        <span class="w-100 h-100" v-if="each.avatar !== null">
+
+                            <img class="img-fluid" :src="'/storage/media/image/'+each.avatar" alt="person-image">
+
+                        </span>
+
+                    </div>
 
                 </div>
 
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
-                    <div class="marge">Phone Number</div>
+                    <div class="marge">Link</div>
 
-                    {{each.phone_number}}
+                    {{each.website_link}}
 
                 </div>
 
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
                     <div class="marge">Action</div>
 
@@ -361,6 +361,29 @@
 
                     <div class="mb-3">
 
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <label for="file-upload">
+                                    <input type="file" class="d-none" id="file-upload" @change="attachFile($event)">
+                                    <span v-if="merchantParam.avatar === null" class="modal-avatar">
+                                    <div class="text-center">
+                                        <div class="mb-2">
+                                            <i class="bi bi-card-image"></i>
+                                        </div>
+                                        Upload Image
+                                    </div>
+                                </span>
+                                    <img class="img-fluid modal-avatar" v-if="merchantParam.avatar !== null" :src="merchantParam.avatarFilePath" alt="profile">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="error-text" v-if="error != null && error.avatar !== undefined" v-text="error.avatar[0]"></div>
+
+                    </div>
+
+                    <div class="mb-3">
+
                         <label for="company_name" class="form-label">
 
                             Company Name
@@ -375,43 +398,15 @@
 
                     <div class="mb-3">
 
-                        <label for="full_name" class="form-label">
+                        <label for="website_link" class="form-label">
 
-                            Full Name
-
-                        </label>
-
-                        <input type="text" id="full_name" name="full_name" class="form-control" v-model="merchantParam.full_name">
-
-                        <div class="error-text" v-if="error != null && error.full_name !== undefined" v-text="error.full_name[0]"></div>
-
-                    </div>
-
-                    <div class="mb-3">
-
-                        <label for="email" class="form-label">
-
-                            Email
+                            Merchant website Link
 
                         </label>
 
-                        <input type="email" id="email" name="email" class="form-control" v-model="merchantParam.email">
+                        <input type="text" id="website_link" name="website_link" class="form-control" v-model="merchantParam.website_link">
 
-                        <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
-
-                    </div>
-
-                    <div class="mb-3">
-
-                        <label for="phone_number" class="form-label">
-
-                            Phone Number
-
-                        </label>
-
-                        <input type="text" id="phone_number" name="phone_number" class="form-control" v-model="merchantParam.phone_number">
-
-                        <div class="error-text" v-if="error != null && error.phone_number !== undefined" v-text="error.phone_number[0]"></div>
+                        <div class="error-text" v-if="error != null && error.website_link !== undefined" v-text="error.website_link[0]"></div>
 
                     </div>
 
@@ -508,59 +503,32 @@ export default {
         return{
 
             loading: false,
-
             createLoading: false,
-
             deleteLoading: false,
-
             merchant: [],
-
             merchantParam: {
-
                 id: '',
-
                 company_name: '',
-
-                full_name: '',
-
-                email: '',
-
-                phone_number: ''
-
+                website_link: '',
+                avatar: '',
+                avatarFilePath: '',
             },
-
             deleteParam: {
-
                 ids: []
-
             },
-
             tableData: [],
-
             formData: {
-
                 limit: 10,
-
                 page: 1
-
             },
-
             total_pages: 0,
-
             current_page: 0,
-
             buttons: [],
-
             searchTimeout: null,
-
             error: null,
-
             responseData: null,
-
             total_data: 0,
-
             selected: [],
-
         }
 
     },
@@ -574,27 +542,17 @@ export default {
     methods: {
 
         attachFile(event) {
-
             let file = event.target.files[0];
-
             let formData = new FormData();
-
             formData.append("file", file)
-
             formData.append("media_type", 1);
-
             apiService.UPLOAD(apiRoutes.media, formData, (res) => {
-
                 event.target.value = '';
-
                 if (res.status === 200) {
-
                     this.merchantParam.avatar = res.data.file_path
-
+                    this.merchantParam.avatarFilePath = res.data.full_file_path
                 }
-
             })
-
         },
 
         toggleCheckAll(e) {
@@ -699,7 +657,7 @@ export default {
 
                 this.selected = [];
 
-                this.merchantParam = { id: '', company_name: '', full_name: '', email: '', phone_number: '' };
+                this.merchantParam = { id: '', company_name: '', website_link: '', avatar: '', avatarFilePath: '' };
 
                 this.current_page = 1;
 
@@ -717,7 +675,7 @@ export default {
 
             this.error = null;
 
-            this.merchantParam = { id: '', company_name: '', full_name: '', email: '', phone_number: '' };
+            this.merchantParam = { id: '', company_name: '', website_link: '', avatar: null, avatarFilePath: '' };
 
             if (type === 1) {
 

@@ -136,6 +136,8 @@
 
                         this.$toast.success('Login Successfully', { position: "top-right" });
 
+                        window.location.reload();
+
                     } else {
 
                         this.error = res.errors;

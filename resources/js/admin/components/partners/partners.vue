@@ -123,7 +123,7 @@
 
             <div class="row header-section">
 
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
                     <div class="d-flex">
 
@@ -137,23 +137,17 @@
 
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
-                    Full Name
-
-                </div>
-
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
-
-                    Email
+                    Logo
 
                 </div>
 
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
-                    Phone Number
+                    Link
 
                 </div>
 
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
                     Action
 
@@ -163,7 +157,7 @@
 
             <div class="row border-bottom body-section align-items-center" v-for="(each) in tableData">
 
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
                     <div class="marge">Company Name</div>
 
@@ -179,29 +173,35 @@
 
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
-                    <div class="marge">Full Name</div>
+                    <div class="marge">Logo</div>
 
-                    {{each.full_name}}
+                    <div class="product-image border">
 
-                </div>
+                        <span v-if="each.avatar === null">
 
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
+                            <img class="img-fluid category-image" :src="'/images/category.svg'" alt="category.png">
 
-                    <div class="marge">Email</div>
+                        </span>
 
-                    {{each.email}}
+                        <span class="w-100 h-100" v-if="each.avatar !== null">
+
+                            <img class="img-fluid" :src="'/storage/media/image/'+each.avatar" alt="person-image">
+
+                        </span>
+
+                    </div>
 
                 </div>
 
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
-                    <div class="marge">Phone Number</div>
+                    <div class="marge">Link</div>
 
-                    {{each.phone_number}}
+                    {{each.website_link}}
 
                 </div>
 
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 py-2">
 
                     <div class="marge">Action</div>
 
@@ -361,6 +361,29 @@
 
                     <div class="mb-3">
 
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <label for="file-upload">
+                                    <input type="file" class="d-none" id="file-upload" @change="attachFile($event)">
+                                    <span v-if="partnerParam.avatar === null" class="modal-avatar">
+                                    <div class="text-center">
+                                        <div class="mb-2">
+                                            <i class="bi bi-card-image"></i>
+                                        </div>
+                                        Upload Image
+                                    </div>
+                                </span>
+                                    <img class="img-fluid modal-avatar" v-if="partnerParam.avatar !== null" :src="partnerParam.avatarFilePath" alt="profile">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="error-text" v-if="error != null && error.avatar !== undefined" v-text="error.avatar[0]"></div>
+
+                    </div>
+
+                    <div class="mb-3">
+
                         <label for="company_name" class="form-label">
 
                             Company Name
@@ -375,43 +398,15 @@
 
                     <div class="mb-3">
 
-                        <label for="full_name" class="form-label">
+                        <label for="website_link" class="form-label">
 
-                            Full Name
-
-                        </label>
-
-                        <input type="text" id="full_name" name="full_name" class="form-control" v-model="partnerParam.full_name">
-
-                        <div class="error-text" v-if="error != null && error.full_name !== undefined" v-text="error.full_name[0]"></div>
-
-                    </div>
-
-                    <div class="mb-3">
-
-                        <label for="email" class="form-label">
-
-                            Email
+                            Partner website Link
 
                         </label>
 
-                        <input type="email" id="email" name="email" class="form-control" v-model="partnerParam.email">
+                        <input type="url" id="website_link" name="website_link" class="form-control" v-model="partnerParam.website_link">
 
-                        <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
-
-                    </div>
-
-                    <div class="mb-3">
-
-                        <label for="phone_number" class="form-label">
-
-                            Phone Number
-
-                        </label>
-
-                        <input type="text" id="phone_number" name="phone_number" class="form-control" v-model="partnerParam.phone_number">
-
-                        <div class="error-text" v-if="error != null && error.phone_number !== undefined" v-text="error.phone_number[0]"></div>
+                        <div class="error-text" v-if="error != null && error.website_link !== undefined" v-text="error.website_link[0]"></div>
 
                     </div>
 
@@ -498,439 +493,242 @@
 <script>
 
     import apiService from "./../../services/apiServices.js";
-
     import apiRoutes from "./../../services/apiRoutes.js";
 
     export default {
 
         data(){
-
             return{
-
                 loading: false,
-
                 createLoading: false,
-
                 deleteLoading: false,
-
                 partner: [],
-
                 partnerParam: {
-
                     id: '',
-
                     company_name: '',
-
-                    full_name: '',
-
-                    email: '',
-
-                    phone_number: ''
-
+                    avatar: '',
+                    website_link: '',
+                    avatarFilePath: '',
                 },
-
                 deleteParam: {
-
                     ids: []
-
                 },
-
                 tableData: [],
-
                 formData: {
-
                     limit: 10,
-
                     page: 1
-
                 },
-
                 total_pages: 0,
-
                 current_page: 0,
-
                 buttons: [],
-
                 searchTimeout: null,
-
                 error: null,
-
                 responseData: null,
-
                 total_data: 0,
-
                 selected: [],
-
             }
-
         },
 
         mounted() {
-
             this.list();
-
         },
 
         methods: {
-
             attachFile(event) {
-
                 let file = event.target.files[0];
-
                 let formData = new FormData();
-
                 formData.append("file", file)
-
                 formData.append("media_type", 1);
-
                 apiService.UPLOAD(apiRoutes.media, formData, (res) => {
-
                     event.target.value = '';
-
                     if (res.status === 200) {
-
                         this.partnerParam.avatar = res.data.file_path
-
+                        this.partnerParam.avatarFilePath = res.data.full_file_path
                     }
-
                 })
-
             },
 
             toggleCheckAll(e) {
-
                 if (e.target.checked) {
-
                     this.tableData.forEach((v) => {
-
                         this.selected.push(v.id);
-
                     });
-
                 } else {
-
                     this.selected = [];
-
                 }
-
             },
 
             toggleCheck(e, id) {
-
                 if (e.target.checked) {
-
                     this.selected.push(id);
-
                 } else {
-
                     let index = this.selected.indexOf(id);
-
                     this.selected.splice(index, 1);
-
                 }
-
             },
 
             CheckIfChecked(id) {
-
                 return this.selected.map(function (id) {
-
                     return id
-
                 }).indexOf(id) > -1;
-
             },
 
             openEditModal() {
-
                 this.getSingle();
-
                 const myModal = new bootstrap.Modal("#manageModal", {keyboard: false});
-
                 myModal.show();
-
             },
 
             deletePartner() {
-
                 this.deleteLoading = true;
-
-                this.selected.forEach((v) => {
-
-                    this.deleteParam.ids.push(v);
-
-                })
-
+                this.selected.forEach((v) => { this.deleteParam.ids.push(v); })
                 apiService.POST(apiRoutes.partnerDelete, this.deleteParam, (res) => {
-
                     this.deleteLoading = false;
-
                     if (res.status === 200) {
-
                         this.$toast.success(res.msg, {position: "bottom-right"});
-
                         this.deleteModal(2, '')
-
                         this.list();
-
                         this.selected = [];
-
                     } else {
-
                         this.error = res.errors;
-
                     }
-
                 })
-
             },
 
             deleteModal(type, id) {
-
                 if (type === 1) {
-
                     this.deleteParam.ids.push(id)
-
                     const myModal = new bootstrap.Modal("#deleteModal", {keyboard: false, backdrop: 'static'});
-
                     myModal.show();
-
                 } else {
-
                     this.selected = [];
-
-                    this.partnerParam = { id: '', company_name: '', full_name: '', email: '', phone_number: '' };
-
+                    this.partnerParam = { id: '', company_name: '', avatar: '', avatarFilePath: '', website_link: '' };
                     this.current_page = 1;
-
                     let myModalEl = document.getElementById('deleteModal');
-
                     let modal = bootstrap.Modal.getInstance(myModalEl)
-
                     modal.hide();
-
                 }
-
             },
 
             manageModal(type, data = null) {
-
                 this.error = null;
-
-                this.partnerParam = { id: '', company_name: '', full_name: '', email: '', phone_number: '' };
-
+                this.partnerParam = { id: '', company_name: '', avatar: null, avatarFilePath: '', website_link: '' };
                 if (type === 1) {
-
                     this.getPartner();
-
                     if (data !== null) {
-
                         this.getSingle(data);
-
                     }
-
                     const myModal = new bootstrap.Modal("#manageModal", {keyboard: false, backdrop: 'static'});
-
                     myModal.show();
-
                 } else {
-
                     this.selected = [];
-
                     const myModal = document.querySelector("#manageModal");
-
                     const modal = bootstrap.Modal.getInstance(myModal);
-
                     modal.hide();
-
                 }
-
             },
 
             getPartner() {
-
                 apiService.POST(apiRoutes.partnerList, '', (res) => {
-
                     if (res.status === 200) {
-
                         this.partner = res.data.data
-
                     }
-
                 })
-
             },
 
             managePartner() {
-
                 if (this.partnerParam.id) {
-
                     this.edit();
-
                 } else {
-
                     this.create();
-
                 }
-
             },
 
             getSingle(id = null) {
-
                 let param = { id: '' }
-
                 if (id != null) { param.id = id } else { param.id = this.selected[0] }
-
                 apiService.POST(apiRoutes.partnerSingle, param, (res) => {
-
                     if (res.status === 200) {
-
                         this.partnerParam = res.data;
-
                     } else {
-
                         this.error = res.errors;
-
                     }
-
                 });
-
             },
 
             create() {
-
                 this.createLoading = true;
-
                 this.error = null;
-
                 apiService.POST(apiRoutes.partnerCreate, this.partnerParam, (res) => {
-
                     this.createLoading = false;
-
                     if (res.status === 200) {
-
                         this.$toast.success(res.msg, {position: "bottom-right"});
-
                         this.manageModal(2, null);
-
                         this.list();
-
                         this.selected = [];
-
                     } else {
-
                         this.error = res.errors;
-
                     }
-
                 });
-
             },
 
             edit() {
-
                 this.createLoading = true;
-
                 this.error = null;
-
                 apiService.POST(apiRoutes.partnerUpdate, this.partnerParam, (res) => {
-
                     this.createLoading = false;
-
                     if (res.status === 200) {
-
                         this.getPartner();
-
                         this.$toast.success(res.msg, {position: "bottom-right"});
-
                         this.manageModal(2, null);
-
                         this.list();
-
                         this.selected = [];
-
                     } else {
-
                         this.error = res.errors;
-
                     }
-
                 });
-
             },
 
             list() {
-
                 this.loading = true;
-
                 this.formData.page = this.current_page;
-
                 apiService.POST(apiRoutes.partnerList, this.formData, (res) => {
-
                     this.loading = false;
-
                     this.selected = [];
-
                     if (res.status === 200) {
-
                         this.tableData = res.data.data;
-
                         this.total_data = res.data.total;
-
                         this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page));
-
                         this.current_page = res.data.current_page;
-
                         this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
-
                     }
-
                 });
-
             },
 
             SearchData() {
-
                 clearTimeout(this.searchTimeout);
-
                 this.searchTimeout = setTimeout(() => {
-
                     this.list();
-
                 }, 500);
-
             },
 
             PrevPage() {
-
                 if (this.current_page > 1) {
-
                     this.current_page = this.current_page - 1;
-
                     this.list()
-
                 }
-
             },
 
             NextPage() {
-
                 if (this.current_page < this.total_pages) {
-
                     this.current_page = this.current_page + 1;
-
                     this.list()
-
                 }
-
             },
 
             pageChange(page) {
-
                 this.current_page = page;
-
                 this.list();
-
             },
 
         }

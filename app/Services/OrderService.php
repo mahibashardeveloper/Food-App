@@ -40,21 +40,30 @@ class OrderService
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'name' => 'required',
-                    'price' => 'required',
-                    'quantity' => 'required',
+                    'orderItems' =>'required|array',
+                    'orderItems.*.name' => 'required',
+                    'orderItems.*.price' => 'required',
+                    'orderItems.*.quantity' => 'required',
+                ],[
+                    'orderItems.*.name.required' => 'name field is required',
+                    'orderItems.*.price.required' => 'price field is required',
+                    'orderItems.*.quantity.required' => 'quantity field is required',
                 ]
             );
             if ($validator->fails()) {
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
+
+            $orderItems = $request->orderItems;
             $customer_id = Auth::guard('customers')->id();
-            $order = new Orders();
-            $order-> customer_id = $customer_id;
-            $order-> name = $request->name;
-            $order-> price = $request->price;
-            $order-> quantity = $request->quantity;
-            $order-> save();
+            foreach ($orderItems as $orderItem){
+                $order = new Orders();
+                $order->name = $orderItem['name'];
+                $order->price = $orderItem['price'];
+                $order->quantity = $orderItem['quantity'];
+                $order->customer_id = $customer_id;
+                $order->save();
+            }
             return ['status' => 200, 'msg' => 'data has been saved successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];

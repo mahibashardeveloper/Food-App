@@ -5,8 +5,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SubAdminController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\DeliveryManController;
-use App\Http\Controllers\PartnerController;
-use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FrontController;
 
@@ -44,18 +42,6 @@ Route::middleware('DeliveryManLoginCheck')->get('/deliveryMan/auth/{any}', [Deli
 Route::middleware('DeliveryManLoginCheck')->get('/deliveryMan/', [DeliveryManController::class, 'deliveryMan'])->where('any', '.*')->name('lvs.deliveryMan');
 Route::middleware('DeliveryManLoginCheck')->get('/deliveryMan/{any}', [DeliveryManController::class, 'deliveryMan'])->where('any', '.*')->name('lvs.deliveryMan.any');
 Route::get('/deliveryMan', function (){ return redirect()->route('lvs.deliveryMan.any','dashboard'); });
-
-/* -------------------------- merchant Controller ------------------------ */
-Route::middleware('MerchantLoginCheck')->get('/merchant/auth/{any}', [MerchantController::class, 'merchant'])->where('any', '.*')->name('lvs.merchant.auth');
-Route::middleware('MerchantLoginCheck')->get('/merchant/', [MerchantController::class, 'merchant'])->where('any', '.*')->name('lvs.merchant');
-Route::middleware('MerchantLoginCheck')->get('/merchant/{any}', [MerchantController::class, 'merchant'])->where('any', '.*')->name('lvs.merchant.any');
-Route::get('/merchant', function (){ return redirect()->route('lvs.merchant.any','dashboard'); });
-
-/* -------------------------- partner Controller ------------------------ */
-Route::middleware('PartnerLoginCheck')->get('/partner/auth/{any}', [PartnerController::class, 'partner'])->where('any', '.*')->name('lvs.partner.auth');
-Route::middleware('PartnerLoginCheck')->get('/partner/', [PartnerController::class, 'partner'])->where('any', '.*')->name('lvs.partner');
-Route::middleware('PartnerLoginCheck')->get('/partner/{any}', [PartnerController::class, 'partner'])->where('any', '.*')->name('lvs.partner.any');
-Route::get('/partner', function (){ return redirect()->route('lvs.partner.any','dashboard'); });
 
 /* -------------------------- customer Controller ------------------------ */
 Route::middleware('CustomerLoginCheck')->get('/front/auth/{any}', [CustomerController::class, 'index'])->where('any', '.*')->name('lvs.front.auth');
