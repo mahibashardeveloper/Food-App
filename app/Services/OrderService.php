@@ -43,8 +43,6 @@ class OrderService
                     'name' => 'required',
                     'price' => 'required',
                     'quantity' => 'required',
-                    'subTotal' => 'required',
-                    'status' => 'required',
                 ]
             );
             if ($validator->fails()) {
@@ -56,8 +54,6 @@ class OrderService
             $order-> name = $request->name;
             $order-> price = $request->price;
             $order-> quantity = $request->quantity;
-            $order-> subTotal = $request->subTotal;
-            $order-> status = $request->status;
             $order-> save();
             return ['status' => 200, 'msg' => 'data has been saved successfully.'];
         } catch (\Exception $e) {

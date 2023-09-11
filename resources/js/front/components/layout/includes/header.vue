@@ -83,7 +83,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="javascript:void(0)" class="btn-checkout" @click="checkout">
+                <a href="javascript:void(0)" class="btn-checkout">
                     Checkout
                 </a>
             </div>
@@ -190,18 +190,6 @@ export default {
         onScroll() {
             const scrollPos = window.scrollY;
             this.isHeaderScrolled = scrollPos > 0;
-        },
-
-        checkout() {
-
-            apiService.POST(apiRoutes.OrderCreate, this.orderParam, (res) => {
-                if (res.status === 200) {
-                    store.dispatch('clearCart');
-                } else {
-                    const errorMessageElement = document.getElementById('error-message');
-                    errorMessageElement.innerHTML = 'Error: Failed to create the order.';
-                }
-            });
         },
 
         getProfile() {

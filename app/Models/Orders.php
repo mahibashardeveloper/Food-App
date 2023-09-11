@@ -21,7 +21,6 @@ class Orders extends Authenticatable
         'name',
         'price',
         'quantity',
-        'subtotal',
         'status'
     ];
 
