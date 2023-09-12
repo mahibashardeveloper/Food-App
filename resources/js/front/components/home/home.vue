@@ -144,7 +144,7 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold">Daily Best Sells</div>
-                <div class="py-3 row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+                <div class="product-item owl-carousel owl-theme">
 
                     <div v-for="(product) in getProductsInRange(11, 20)" :key="product.id">
                         <div class="text-start p-3">
