@@ -30,7 +30,8 @@
 
     <!-- list of order start -->
     <div class="px-3" v-if="tableData.length > 0 && loading === false">
-        <div class="row border">
+
+        <div class="row border mb-3 bg-dark-subtle fw-bold">
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 py-2">
                 Name
             </div>
@@ -44,7 +45,8 @@
                 Action
             </div>
         </div>
-        <div class="row border" v-for="(each) in tableData">
+
+        <div class="row border mb-3 bg-white" v-for="(each) in tableData">
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 py-2">
                 {{each.name}}
             </div>
@@ -60,6 +62,56 @@
                 </a>
             </div>
         </div>
+
+        <div class="d-flex justify-content-center" v-if="tableData.length > 0 && loading === false">
+            <div class="pagination">
+                <div class="page-item" @click="PrevPage">
+                    <a class="page-link" href="javascript:void(0)">
+                        <i class="bi bi-caret-left-fill"></i>
+                    </a>
+                </div>
+                <div v-if="buttons.length <= 6" class="d-flex">
+                    <div v-for="(page) in buttons" class="page-item" :class="{'active': current_page === page}">
+                        <a class="page-link" @click="pageChange(page)" href="javascript:void(0)" v-text="page"></a>
+                    </div>
+                </div>
+                <div v-if="buttons.length > 6" class="d-flex">
+                    <div class="page-item" :class="{'active': current_page === 1}">
+                        <a class="page-link" @click="pageChange(1)" href="javascript:void(0)">1</a>
+                    </div>
+                    <div v-if="current_page > 3" class="page-item">
+                        <a class="page-link" @click="pageChange(current_page - 2)" href="javascript:void(0)">...</a>
+                    </div>
+                    <div v-if="current_page === buttons.length" class="page-item" :class="{'active': current_page === (current_page - 2)}">
+                        <a class="page-link" @click="pageChange(current_page - 2)" href="javascript:void(0)" v-text="current_page - 2"></a>
+                    </div>
+                    <div v-if="current_page > 2" class="page-item" :class="{'active': current_page === (current_page - 1)}">
+                        <a class="page-link" @click="pageChange(current_page - 1)" href="javascript:void(0)" v-text="current_page - 1"></a>
+                    </div>
+                    <div v-if="current_page !== 1 && current_page !== buttons.length" class="page-item active">
+                        <a class="page-link" @click="pageChange(current_page)" href="javascript:void(0)" v-text="current_page"></a>
+                    </div>
+                    <div v-if="current_page < buttons.length - 1" class="page-item" :class="{'active': current_page === (current_page + 1)}">
+                        <a class="page-link" @click="pageChange(current_page + 1)" href="javascript:void(0)" v-text="current_page + 1"></a>
+                    </div>
+                    <div v-if="current_page === 1" class="page-item" :class="{'active': current_page === (current_page + 2)}">
+                        <a class="page-link" @click="pageChange(current_page + 2)" href="javascript:void(0)" v-text="current_page + 2"></a>
+                    </div>
+                    <div v-if="current_page < buttons.length - 2" class="page-item">
+                        <a class="page-link" @click="pageChange(current_page + 2)" href="javascript:void(0)">...</a>
+                    </div>
+                    <div class="page-item" :class="{'active': current_page === (current_page - buttons.length)}">
+                        <a class="page-link" @click="pageChange(buttons.length)" href="javascript:void(0)" v-text="buttons.length"></a>
+                    </div>
+                </div>
+                <div class="page-item" @click="NextPage">
+                    <a class="page-link" href="javascript:void(0)">
+                        <i class="bi bi-caret-right-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
     <!-- list of order end -->
 
@@ -68,7 +120,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-3">
                 <div class="modal-body">
-                    <div class="icon-size text-center fs-1">
+                    <div class="icon-size text-center">
                         <i class="bi bi-archive archive"></i>
                     </div>
                     <div class="delete-text text-center">
@@ -102,7 +154,7 @@ export default {
             customer: [],
             deleteParam: { ids: [] },
             tableData: [],
-            formData: { limit: 10, page: 1 },
+            formData: { limit: 5, page: 1 },
             total_pages: 0,
             current_page: 0,
             buttons: [],
@@ -167,6 +219,25 @@ export default {
                 let modal = bootstrap.Modal.getInstance(myModalEl)
                 modal.hide();
             }
+        },
+
+        PrevPage() {
+            if (this.current_page > 1) {
+                this.current_page = this.current_page - 1;
+                this.list()
+            }
+        },
+
+        NextPage() {
+            if (this.current_page < this.total_pages) {
+                this.current_page = this.current_page + 1;
+                this.list()
+            }
+        },
+
+        pageChange(page) {
+            this.current_page = page;
+            this.list();
         },
 
     }

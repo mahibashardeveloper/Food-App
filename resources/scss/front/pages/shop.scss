@@ -135,40 +135,7 @@
                 padding: 20px;
                 overflow-y: scroll;
 
-                .pagination{
 
-                    .page-item{
-
-                        &.active .page-link{
-                            background-color: $black;
-                            color: $white;
-                            border: 1px solid $black;
-                        }
-
-                        .page-link{
-                            width: 35px;
-                            height: 35px;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            margin: 0 5px;
-                            color: $black;
-                            border: 1px solid $border-color;
-                            box-shadow: 0 0 0 0;
-                            font-weight: bold;
-
-                            @media screen and (max-width: 600px) {
-                                width: 30px;
-                                height: 30px;
-                                font-size: 12px;
-                                margin: 0 2px;
-                            }
-
-                        }
-
-                    }
-
-                }
 
             }
 

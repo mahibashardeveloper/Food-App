@@ -189,6 +189,21 @@
                     }
                 }
 
+                .modal{
+                    .modal-dialog{
+                        .modal-content{
+                            .modal-body{
+                                .icon-size{
+                                    font-size: 90px;
+                                }
+                                .delete-text{
+                                    font-size: 30px;
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
 
         }
