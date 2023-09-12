@@ -60,3 +60,5 @@ Route::get('/', function (){ return redirect()->route('lvs.front.any','home'); }
 
 Route::prefix('globalCategory')->group(function () { Route::get('/list', [FrontController::class, 'category_list']); } );
 Route::prefix('globalProduct')->group(function () { Route::get('/list', [FrontController::class, 'product_list']); } );
+Route::prefix('globalPartner')->group(function () { Route::get('/list', [FrontController::class, 'partner_list']); } );
+Route::prefix('globalMerchant')->group(function () { Route::get('/list', [FrontController::class, 'merchant_list']); } );

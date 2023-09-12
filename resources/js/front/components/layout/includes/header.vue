@@ -102,7 +102,7 @@ export default {
         },
         subTotal: function () {
             const total = this.products.reduce( (prev, current) => (current.price * current.quantity) + prev, 0)
-            return total + 100;
+            return total + 25;
         }
     },
 

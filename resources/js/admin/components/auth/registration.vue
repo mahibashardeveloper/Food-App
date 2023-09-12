@@ -72,7 +72,6 @@
 <script>
 
     import apiService from "../../services/apiServices";
-
     import apiRoutes from "../../services/apiRoutes.js";
 
     export default {
@@ -108,54 +107,29 @@
         methods: {
 
             register() {
-
                 this.registerLoading = true;
-
                 this.error = null;
-
                 apiService.POST(apiRoutes.register, this.registerParam, (res) => {
-
                     this.registerLoading = false;
-
                     this.registerParam = {
-
                         company_name: '',
-
                         full_name: '',
-
                         email: '',
-
                         phone_number: '',
-
                         password: '',
-
                         password_confirmation: '',
-
                     }
-
                     if (res.status === 200) {
-
                         this.$toast.success(res.msg, {
-
                             position: "top-right"
-
                         });
-
-                        window.location.reload();
-
                     } else {
-
                         this.error = res.errors
-
                     }
-
                 })
 
-
             },
-
         }
-
     }
 
 </script>

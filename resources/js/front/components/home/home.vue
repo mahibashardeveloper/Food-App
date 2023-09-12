@@ -93,30 +93,32 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold">Featured Categories</div>
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+                    <div class="category-item owl-carousel owl-theme">
 
-                    <div class="text-center p-3" v-for="(category, index) in displayedCategories" :key="category.id">
-                        <div class="border rounded-3 overflow-hidden">
-                            <div class="pt-3">
-                                <img :src="category.avatar" v-if="category.avatar !== null" class="img-fluid product-image-hover" alt="category">
-                                <i class="bi bi-tag fs-1" v-if="category.avatar === null"></i>
-                            </div>
-                            <div class="pb-3 fw-bold">
-                                {{category.name}}
+                        <div class="item" v-for="(category) in displayedCategories" :key="category.id">
+                            <div class="text-center p-3">
+                                <div class="border rounded-3 overflow-hidden">
+                                    <div class="pt-3">
+                                        <img :src="category.avatar" v-if="category.avatar !== null" class="img-fluid product-image-hover" alt="category">
+                                        <i class="bi bi-tag fs-1" v-if="category.avatar === null"></i>
+                                    </div>
+                                    <div class="pb-3 fw-bold">
+                                        {{category.name}}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
 
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold">Popular Products</div>
-                <div class="py-3 row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+                <div class="product-item owl-carousel owl-theme">
 
-                    <div v-for="(product, index) in getProductsInRange(1, 10)" :key="product.id">
+                    <div v-for="(product) in getProductsInRange(1, 10)" :key="product.id">
                         <div class="text-start p-3">
                             <div class="border rounded-2 overflow-hidden product">
                                 <div class="mb-3 overflow-hidden">
@@ -144,7 +146,7 @@
                 <div class="h3 fw-bold">Daily Best Sells</div>
                 <div class="py-3 row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
 
-                    <div v-for="(product, index) in getProductsInRange(11, 20)" :key="product.id">
+                    <div v-for="(product) in getProductsInRange(11, 20)" :key="product.id">
                         <div class="text-start p-3">
                             <div class="border rounded-2 overflow-hidden product">
                                 <div class="mb-3 overflow-hidden">
@@ -175,7 +177,7 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Trending Products </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product, index) in getProductsInRange(1, 5)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsInRange(1, 5)" :key="product.id">
                                     <div class="col-4 h-100">
                                         <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
                                     </div>
@@ -199,7 +201,7 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Recently Added </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product, index) in getProductsInRange(6, 10)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsInRange(6, 10)" :key="product.id">
                                     <div class="col-4 h-100">
                                         <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
                                     </div>
@@ -223,7 +225,7 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Top Rated </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product, index) in getProductsInRange(11, 15)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsInRange(11, 15)" :key="product.id">
                                     <div class="col-4 h-100">
                                         <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
                                     </div>
@@ -242,6 +244,50 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-100">
+            <div class="container py-5">
+                <div class="h3 fw-bold">Partners</div>
+                <div class="partner-item owl-carousel owl-theme">
+
+                    <div class="item" v-for="(partner) in displayedPartners" :key="partner.id">
+                        <a href="{{partner.website_link}}"></a>
+                        <div class="text-center p-3">
+                            <div class="border rounded-3 overflow-hidden">
+                                <div class="pt-3">
+                                    <img :src="partner.avatar" v-if="partner.avatar !== null" class="img-fluid product-image-hover" alt="partners">
+                                    <i class="bi bi-tag fs-1" v-if="partner.avatar === null"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="w-100">
+            <div class="container py-5">
+                <div class="h3 fw-bold">Merchants</div>
+                <div class="merchant-item owl-carousel owl-theme">
+
+                    <div class="item" v-for="(merchant) in displayedMerchants" :key="merchant.id">
+                        <div class="text-center p-3">
+                            <div class="border rounded-3 overflow-hidden">
+                                <div class="pt-3">
+                                    <img :src="merchant.avatar" v-if="merchant.avatar !== null" class="img-fluid product-image-hover" alt="merchants">
+                                    <i class="bi bi-tag fs-1" v-if="merchant.avatar === null"></i>
+                                </div>
+                                <div class="pb-3 fw-bold">
+                                    {{merchant.name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -266,6 +312,12 @@ import apiRoutes from "../../services/apiRoutes";
                     return this.products.filter(product => product.id >= startId && product.id <= endId);
                 };
             },
+            displayedPartners() {
+                return this.partners.slice(0, 10);
+            },
+            displayedMerchants() {
+                return this.merchants.slice(0, 10);
+            },
         },
 
         data(){
@@ -276,7 +328,13 @@ import apiRoutes from "../../services/apiRoutes";
 
                 products: [],
 
+                partners: [],
+
+                merchants: [],
+
                 cart: [],
+
+                addLoading: false,
 
             }
 
@@ -287,6 +345,10 @@ import apiRoutes from "../../services/apiRoutes";
             this.category_list();
 
             this.product_list();
+
+            this.partner_list();
+
+            this.merchant_list();
 
             $('.slider').owlCarousel(
                 {
@@ -300,36 +362,6 @@ import apiRoutes from "../../services/apiRoutes";
                         0:{ items:1 },
                         600:{ items:1 },
                         1000:{ items:1 }
-                    }
-                }
-            )
-
-            $('.category-item').owlCarousel(
-                {
-                    loop:true,
-                    margin:10,
-                    nav:false,
-                    autoplay:true,
-                    dots: true,
-                    responsive:{
-                        0:{ items:2 },
-                        600:{ items:3 },
-                        1000:{ items:6 }
-                    }
-                }
-            )
-
-            $('.product-item').owlCarousel(
-                {
-                    loop:true,
-                    margin:0,
-                    nav:false,
-                    autoplay:true,
-                    dots: true,
-                    responsive:{
-                        0:{ items:2 },
-                        600:{ items:3 },
-                        1000:{ items:5 }
                     }
                 }
             )
@@ -348,6 +380,22 @@ import apiRoutes from "../../services/apiRoutes";
                     this.loading = false;
                     if(res.status === 200) {
                         this.categories = res.data.data;
+                        setTimeout(() => {
+                            $('.category-item').owlCarousel(
+                                {
+                                    loop:true,
+                                    margin:10,
+                                    nav:false,
+                                    autoplay:true,
+                                    dots: true,
+                                    responsive:{
+                                        0:{ items:2 },
+                                        600:{ items:4 },
+                                        1000:{ items:6 }
+                                    }
+                                }
+                            )
+                        }, 200)
                     }
                 })
             },
@@ -358,6 +406,74 @@ import apiRoutes from "../../services/apiRoutes";
                     this.loading = false;
                     if(res.status === 200) {
                         this.products = res.data.data;
+                        setTimeout(() => {
+                            $('.product-item').owlCarousel(
+                                {
+                                    loop:true,
+                                    margin:0,
+                                    nav:false,
+                                    autoplay:true,
+                                    dots: true,
+                                    responsive:{
+                                        0:{ items:2 },
+                                        600:{ items:3 },
+                                        1000:{ items:5 }
+                                    }
+                                }
+                            )
+                        }, 200)
+                    }
+                })
+            },
+
+            partner_list() {
+                this.loading = true;
+                apiService.GET(apiRoutes.globalPartnerList, (res) =>{
+                    this.loading = false;
+                    if(res.status === 200) {
+                        this.partners = res.data.data;
+                        setTimeout(() => {
+                            $('.partner-item').owlCarousel(
+                                {
+                                    loop:true,
+                                    margin:10,
+                                    nav:false,
+                                    autoplay:true,
+                                    dots: true,
+                                    responsive:{
+                                        0:{ items:2 },
+                                        600:{ items:4 },
+                                        1000:{ items:6 }
+                                    }
+                                }
+                            )
+                        }, 200)
+                    }
+                })
+            },
+
+            merchant_list() {
+                this.loading = true;
+                apiService.GET(apiRoutes.globalMerchantList, (res) =>{
+                    this.loading = false;
+                    if(res.status === 200) {
+                        this.merchants = res.data.data;
+                        setTimeout(() => {
+                            $('.merchant-item').owlCarousel(
+                                {
+                                    loop:true,
+                                    margin:10,
+                                    nav:false,
+                                    autoplay:true,
+                                    dots: true,
+                                    responsive:{
+                                        0:{ items:2 },
+                                        600:{ items:4 },
+                                        1000:{ items:6 }
+                                    }
+                                }
+                            )
+                        }, 200)
                     }
                 })
             }

@@ -17,11 +17,11 @@ class CustomerAuthService
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'full_name' => 'required|unique:customers,full_name',
+                    'full_name' => 'required',
                     'email' => 'required|unique:customers,email',
                     'password' => 'required|min:6|confirmed',
-                    'phone_number' => 'required|unique:customers,phone_number',
-                    'address' => 'required|unique:customers,address',
+                    'phone_number' => 'required',
+                    'address' => 'required',
                 ]
             );
 

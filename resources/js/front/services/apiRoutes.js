@@ -22,14 +22,6 @@ const apiRoutes = {
 
     logout: apiVersion + '/profile/logout',
 
-    // category
-
-    globalCategoryList: '/globalCategory/list',
-
-    // product
-
-    globalProductList: '/globalProduct/list',
-
     // Order
 
     OrderCreate: apiVersion + '/order/create',
@@ -41,6 +33,22 @@ const apiRoutes = {
     // Media
 
     media: apiVersion + '/media/upload',
+
+    // category
+
+    globalCategoryList: '/globalCategory/list',
+
+    // product
+
+    globalProductList: '/globalProduct/list',
+
+    // partner
+
+    globalPartnerList: '/globalPartner/list',
+
+    // merchant
+
+    globalMerchantList: '/globalMerchant/list',
 
 }
 

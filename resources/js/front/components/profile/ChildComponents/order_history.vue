@@ -1,7 +1,6 @@
 <template>
 
     <!-- page loading start -->
-
     <div v-if="loading === true">
         <h6 class="card-text placeholder-glow">
             <span class="p-2">
@@ -69,17 +68,17 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-3">
                 <div class="modal-body">
-                    <div class="icon-size">
+                    <div class="icon-size text-center fs-1">
                         <i class="bi bi-archive archive"></i>
                     </div>
-                    <div class="delete-text">
+                    <div class="delete-text text-center">
                         Are you sure ?
                     </div>
                 </div>
                 <div class="modal-footer border-0 d-flex justify-content-between">
-                    <button type="button" class="btn btn-theme cancel col-5" @click="deleteModal(2,'')">Close</button>
-                    <button type="button" class="btn btn-theme delete col-5" aria-label="Confirm" @click="deleteOrder" v-if="deleteLoading === false">Delete</button>
-                    <button type="button" class="btn btn-theme delete col-5" v-if="deleteLoading === true">Loading...</button>
+                    <button type="button" class="btn btn-secondary col-5" @click="deleteModal(2,'')">Close</button>
+                    <button type="button" class="btn btn-danger delete col-5" aria-label="Confirm" @click="deleteOrder" v-if="deleteLoading === false">Delete</button>
+                    <button type="button" class="btn btn-danger delete col-5" v-if="deleteLoading === true">Loading...</button>
                 </div>
             </div>
         </div>
@@ -98,43 +97,26 @@ export default {
     data(){
 
         return{
-
             loading: false,
-
             deleteLoading: false,
-
             customer: [],
-
             deleteParam: { ids: [] },
-
             tableData: [],
-
             formData: { limit: 10, page: 1 },
-
             total_pages: 0,
-
             current_page: 0,
-
             buttons: [],
-
             searchTimeout: null,
-
             error: null,
-
             responseData: null,
-
             total_data: 0,
-
             selected: [],
-
         }
 
     },
 
     mounted() {
-
         this.list();
-
     },
 
     methods: {
