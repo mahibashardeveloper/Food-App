@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
+import 'animate.css';
 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min';
 window.bootstrap = bootstrap;
 import Toaster from '@meforma/vue-toaster';

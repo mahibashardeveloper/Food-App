@@ -96,6 +96,19 @@ import apiRoutes from "../../../services/apiRoutes.js";
 import store from "../../../store/index";
 export default {
 
+    data(){
+        return{
+            isRightSidebar: false,
+            isHeaderScrolled: false,
+            isCartInfoActive: false,
+            logoutLoading: false,
+            profile_data: null,
+            profileDataLoading: false,
+            core:window.core
+        }
+    },
+
+
     computed: {
         products: function() {
             return store.state.products
@@ -105,21 +118,11 @@ export default {
             return total + 25;
         }
     },
-
-    data(){
-        return{
-            isRightSidebar: false,
-            isHeaderScrolled: false,
-            isCartInfoActive: false,
-            logoutLoading: false,
-            profile_data: null,
-            profileDataLoading: false,
-        }
-    },
-
     mounted() {
         this.getCartItems();
-        this.getProfile();
+        if(this.core.UserInfo != null){
+            this.getProfile();
+        }
         window.addEventListener("scroll", this.onScroll);
         setTimeout(() =>{
             const preloader = document.getElementById('preloader');
