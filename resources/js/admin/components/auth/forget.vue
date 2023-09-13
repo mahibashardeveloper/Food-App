@@ -2,7 +2,10 @@
 
     <div class="authentication">
         <div class="row vh-100 justify-content-center align-items-center">
-            <div class="col-12 col-sm-10 col-lg-8 col-xl-6 col-xxl-5 p-3" v-if="forgotType === 1">
+            <div class="col-12 col-sm-10 col-lg-6 col-xl-4 p-3 d-none d-lg-block">
+                <img :src="'/images/background1.svg'" class="img-fluid" alt="background image">
+            </div>
+            <div class="col-12 col-sm-10 col-lg-6 col-xl-4 p-3" v-if="forgotType === 1">
                 <div class="p-5 bg-white border-radius-15">
                     <div class="h3 mb-4"> Forget password </div>
                     <form @submit.prevent="forgot">
@@ -24,7 +27,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-12 col-sm-10 col-lg-8 col-xl-6 col-xxl-5 p-3" v-if="forgotType === 2">
+            <div class="col-12 col-sm-10 col-lg-6 col-xl-4 p-3" v-if="forgotType === 2">
                 <div class="p-5 bg-white border-radius-15">
                     <div class="h3 mb-4"> Reset your account </div>
                     <form @submit.prevent="reset">

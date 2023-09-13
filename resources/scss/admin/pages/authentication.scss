@@ -1,14 +1,14 @@
 .authentication {
     width: 100%;
     height: 100vh;
-    background-color: $theme-bg;
+    background-color: $white;
     position: relative;
     padding: 0 15px;
     overflow-y: scroll;
 
     .border-radius-15 {
         border-radius: 15px;
-        box-shadow: 0 0 12px 0 $border-color;
+        box-shadow: 0 0 12px 0 $gray;
     }
 
     .form-control {

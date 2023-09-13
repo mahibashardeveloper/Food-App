@@ -254,13 +254,10 @@
                 <div class="partner-item owl-carousel owl-theme">
 
                     <div class="item" v-for="(partner) in displayedPartners" :key="partner.id">
-                        <a href="{{partner.website_link}}"></a>
                         <div class="text-center p-3">
-                            <div class="border rounded-3 overflow-hidden">
-                                <div class="pt-3">
-                                    <img :src="partner.avatar" v-if="partner.avatar !== null" class="img-fluid product-image-hover" alt="partners">
-                                    <i class="bi bi-tag fs-1" v-if="partner.avatar === null"></i>
-                                </div>
+                            <div class="pt-3">
+                                <img :src="'/storage/media/image/' + partner.avatar" v-if="partner.avatar !== null" class="img-fluid product-image-hover" alt="partners">
+                                <i class="bi bi-tag fs-1" v-if="partner.avatar === null"></i>
                             </div>
                         </div>
                     </div>
@@ -276,14 +273,9 @@
 
                     <div class="item" v-for="(merchant) in displayedMerchants" :key="merchant.id">
                         <div class="text-center p-3">
-                            <div class="border rounded-3 overflow-hidden">
-                                <div class="pt-3">
-                                    <img :src="merchant.avatar" v-if="merchant.avatar !== null" class="img-fluid product-image-hover" alt="merchants">
-                                    <i class="bi bi-tag fs-1" v-if="merchant.avatar === null"></i>
-                                </div>
-                                <div class="pb-3 fw-bold">
-                                    {{merchant.name}}
-                                </div>
+                            <div class="pt-3">
+                                <img :src="'/storage/media/image/' + merchant.avatar" v-if="merchant.avatar !== null" class="img-fluid product-image-hover" alt="merchants">
+                                <i class="bi bi-tag fs-1" v-if="merchant.avatar === null"></i>
                             </div>
                         </div>
                     </div>
