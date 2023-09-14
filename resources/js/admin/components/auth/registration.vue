@@ -7,7 +7,7 @@
             </div>
             <div class="col-12 col-sm-10 col-lg-6 col-xl-4 p-3">
                 <div class="p-5 bg-white border-radius-15">
-                    <div class="h3 mb-4"> Create New Account </div>
+                    <div class="h3 mb-4"> Create New admin Account </div>
                     <form @submit.prevent="register">
                         <div class="row">
                             <div class="col-12 col-md-6">

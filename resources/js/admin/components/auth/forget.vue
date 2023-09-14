@@ -7,7 +7,7 @@
             </div>
             <div class="col-12 col-sm-10 col-lg-6 col-xl-4 p-3" v-if="forgotType === 1">
                 <div class="p-5 bg-white border-radius-15">
-                    <div class="h3 mb-4"> Forget password </div>
+                    <div class="h3 mb-4"> Admin forget password </div>
                     <form @submit.prevent="forgot">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
@@ -29,7 +29,7 @@
             </div>
             <div class="col-12 col-sm-10 col-lg-6 col-xl-4 p-3" v-if="forgotType === 2">
                 <div class="p-5 bg-white border-radius-15">
-                    <div class="h3 mb-4"> Reset your account </div>
+                    <div class="h3 mb-4"> Reset your admin account </div>
                     <form @submit.prevent="reset">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div class="col-12 col-sm-10 col-lg-8 col-xl-6 col-xxl-5 py-5 text-center bg-white" v-if="forgotType === 3">
-                <div class="pb-3">Your account has been reset</div>
+                <div class="pb-3">Your admin account has been reset</div>
                 <router-link :to="{name: 'login'}" class="mt-3 text-decoration-none text-secondary">
                     Go to login page
                 </router-link>

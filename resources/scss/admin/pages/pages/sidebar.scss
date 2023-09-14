@@ -32,7 +32,7 @@
         .logo {
             text-decoration: none;
             color: $black;
-            font-size: 15px;
+            font-size: 20px;
             font-weight: bold;
         }
 
@@ -83,12 +83,10 @@
             font-weight: 600;
 
             &.active {
-                box-shadow: 0 0 5px 0 $black inset;
                 background-color: var(--main-color);
             }
 
             &:hover {
-                box-shadow: 0 0 5px 0 $black inset;
                 background-color: var(--main-color);
             }
 

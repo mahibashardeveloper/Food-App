@@ -87,6 +87,21 @@
             </div>
         </div>
 
+        <div class="modal fade" id="manageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" v-if="!core.UserInfo">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content p-3">
+                    <div class="modal-header border-bottom-0">
+                        <button type="button" class="btn-close shadow-none" @click="closeCheckoutModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="py-5 text-center fw-bold">
+                            Please login first. <br> After you can checkout your product.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </template>
 
 <script>
@@ -134,35 +149,45 @@ export default {
 
     methods: {
 
+        openCheckoutModal(){
+            const myModal = new bootstrap.Modal("#manageModal", {keyboard: false});
+            myModal.show();
+        },
+
+        closeCheckoutModal(){
+            const myModal = document.querySelector("#manageModal");
+            const modal = bootstrap.Modal.getInstance(myModal);
+            modal.hide();
+        },
+
         checkout() {
-            const orderItems = [];
-
-            this.products.forEach(cartItem => {
-                const orderItem = {
-                    name: cartItem.name,
-                    price: cartItem.price,
-                    quantity: cartItem.quantity,
-                };
-                orderItems.push(orderItem);
-            });
-
-            const formData = new FormData();
-
-            orderItems.forEach((orderItem, index) => {
-                for (const key in orderItem) {
-                    formData.append(`orderItems[${index}][${key}]`, orderItem[key]);
-                }
-            });
-
-            apiService.POST(apiRoutes.OrderCreate, { orderItems }, (res) => {
-                if (res.status === 200) {
-                    store.dispatch('clearCart');
-                } else {
-                    const errorMessageElement = document.getElementById('error-message');
-                    errorMessageElement.innerHTML = 'Error: Failed to create the order.';
-                }
-            });
-
+            if (this.core.UserInfo != null) {
+                const orderItems = [];
+                this.products.forEach(cartItem => {
+                    const orderItem = {
+                        name: cartItem.name,
+                        price: cartItem.price,
+                        quantity: cartItem.quantity,
+                    };
+                    orderItems.push(orderItem);
+                });
+                const formData = new FormData();
+                orderItems.forEach((orderItem, index) => {
+                    for (const key in orderItem) {
+                        formData.append(`orderItems[${index}][${key}]`, orderItem[key]);
+                    }
+                });
+                apiService.POST(apiRoutes.OrderCreate, { orderItems }, (res) => {
+                    if (res.status === 200) {
+                        store.dispatch('clearCart');
+                    } else {
+                        const errorMessageElement = document.getElementById('error-message');
+                        errorMessageElement.innerHTML = 'Error: Failed to create the order.';
+                    }
+                });
+            } else {
+                this.openCheckoutModal();
+            }
         },
 
         getCartItems(){

@@ -289,6 +289,7 @@
 </template>
 
 <script>
+
 import store from "../../store/index.js";
 import apiService from "../../services/apiServices";
 import apiRoutes from "../../services/apiRoutes";
@@ -296,20 +297,25 @@ import apiRoutes from "../../services/apiRoutes";
     export default {
 
         computed: {
+
             displayedCategories() {
                 return this.categories.slice(0, 10);
             },
+
             getProductsInRange() {
                 return (startId, endId) => {
                     return this.products.filter(product => product.id >= startId && product.id <= endId);
                 };
             },
+
             displayedPartners() {
                 return this.partners.slice(0, 10);
             },
+
             displayedMerchants() {
                 return this.merchants.slice(0, 10);
             },
+
         },
 
         data(){
@@ -342,29 +348,13 @@ import apiRoutes from "../../services/apiRoutes";
 
             this.merchant_list();
 
-            $('.slider').owlCarousel(
-                {
-                    loop:true,
-                    margin:10,
-                    nav:false,
-                    autoplay:true,
-                    dots: true,
-                    animateOut: 'fadeOut',
-                    responsive:{
-                        0:{ items:1 },
-                        600:{ items:1 },
-                        1000:{ items:1 }
-                    }
-                }
-            )
+            $('.slider').owlCarousel( { loop:true, margin:10, nav:false, autoplay:true, dots: true, animateOut: 'fadeOut', responsive:{ 0:{ items:1 }, 600:{ items:1 }, 1000:{ items:1 } } } )
 
         },
 
         methods: {
 
-            addToCart(product) {
-                store.dispatch('addToCart', product)
-            },
+            addToCart(product) { store.dispatch('addToCart', product) },
 
             category_list() {
                 this.loading = true;
@@ -372,22 +362,13 @@ import apiRoutes from "../../services/apiRoutes";
                     this.loading = false;
                     if(res.status === 200) {
                         this.categories = res.data.data;
+
                         setTimeout(() => {
-                            $('.category-item').owlCarousel(
-                                {
-                                    loop:true,
-                                    margin:10,
-                                    nav:false,
-                                    autoplay:true,
-                                    dots: true,
-                                    responsive:{
-                                        0:{ items:2 },
-                                        600:{ items:4 },
-                                        1000:{ items:6 }
-                                    }
-                                }
-                            )
+
+                            $('.category-item').owlCarousel( { loop:true, margin:10, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:4 }, 1000:{ items:6 } } } )
+
                         }, 200)
+
                     }
                 })
             },
@@ -398,22 +379,13 @@ import apiRoutes from "../../services/apiRoutes";
                     this.loading = false;
                     if(res.status === 200) {
                         this.products = res.data.data;
+
                         setTimeout(() => {
-                            $('.product-item').owlCarousel(
-                                {
-                                    loop:true,
-                                    margin:0,
-                                    nav:false,
-                                    autoplay:true,
-                                    dots: true,
-                                    responsive:{
-                                        0:{ items:2 },
-                                        600:{ items:3 },
-                                        1000:{ items:5 }
-                                    }
-                                }
-                            )
+
+                            $('.product-item').owlCarousel( { loop:true, margin:0, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:3 }, 1000:{ items:5 } } } )
+
                         }, 200)
+
                     }
                 })
             },
@@ -424,22 +396,13 @@ import apiRoutes from "../../services/apiRoutes";
                     this.loading = false;
                     if(res.status === 200) {
                         this.partners = res.data.data;
+
                         setTimeout(() => {
-                            $('.partner-item').owlCarousel(
-                                {
-                                    loop:true,
-                                    margin:10,
-                                    nav:false,
-                                    autoplay:true,
-                                    dots: true,
-                                    responsive:{
-                                        0:{ items:2 },
-                                        600:{ items:4 },
-                                        1000:{ items:6 }
-                                    }
-                                }
-                            )
+
+                            $('.partner-item').owlCarousel( { loop:true, margin:10, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:4 }, 1000:{ items:6 } } } )
+
                         }, 200)
+
                     }
                 })
             },
@@ -450,22 +413,13 @@ import apiRoutes from "../../services/apiRoutes";
                     this.loading = false;
                     if(res.status === 200) {
                         this.merchants = res.data.data;
+
                         setTimeout(() => {
-                            $('.merchant-item').owlCarousel(
-                                {
-                                    loop:true,
-                                    margin:10,
-                                    nav:false,
-                                    autoplay:true,
-                                    dots: true,
-                                    responsive:{
-                                        0:{ items:2 },
-                                        600:{ items:4 },
-                                        1000:{ items:6 }
-                                    }
-                                }
-                            )
+
+                            $('.merchant-item').owlCarousel( { loop:true, margin:10, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:4 }, 1000:{ items:6 } } } )
+
                         }, 200)
+
                     }
                 })
             }

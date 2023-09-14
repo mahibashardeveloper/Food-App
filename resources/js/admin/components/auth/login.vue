@@ -7,7 +7,7 @@
             </div>
             <div class="col-12 col-sm-10 col-lg-6 col-xl-4 p-3">
                 <div class="p-5 bg-white border-radius-15">
-                    <div class="h3 mb-4"> Welcome to your account </div>
+                    <div class="h3 mb-4"> Welcome to your Admin account </div>
                     <form @submit.prevent="login">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
