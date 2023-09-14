@@ -28,10 +28,6 @@ import profile from "../components/profile/profile.vue";
 
 import my_account from "../components/profile/ChildComponents/my_account.vue";
 
-// edit account
-
-import edit_account from "../components/profile/ChildComponents/edit_account.vue";
-
 // order history
 
 import order_history from "../components/profile/ChildComponents/order_history.vue";
@@ -81,8 +77,6 @@ const routes = [
                 children: [
 
                     {path: ROOT_URL + "/my_account", name: "my_account", component: my_account, meta: { title: "my_account" }},
-
-                    {path: ROOT_URL + "/edit_account", name: "edit_account", component: edit_account, meta: { title: "edit_account" }},
 
                     {path: ROOT_URL + "/order_history", name: "order_history", component: order_history, meta: { title: "order_history" }},
 
