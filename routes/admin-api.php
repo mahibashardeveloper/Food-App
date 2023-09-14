@@ -12,6 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MerchantController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -191,6 +192,14 @@ Route::prefix('product')->group( function () {
     Route::post('/single', [ProductController::class, 'single'])->name('Product.Single');
 
     Route::post('/delete', [ProductController::class, 'delete'])->name('Product.Delete');
+
+});
+
+/* ------------------------- Order Controller --------------------------- */
+
+Route::prefix('order')->group( function () {
+
+    Route::post('/list', [OrderController::class, 'order_list'])->name('Order.list');
 
 });
 

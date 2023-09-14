@@ -135,4 +135,16 @@ class OrderService
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
     }
+
+    public static function order_list($request)
+    {
+        try {
+            $limit = $request->limit ?? 10000;
+            $results = Orders::orderBy('id', 'asc');
+            $paginatedData = $results->paginate($limit);
+            return ['status' => 200, 'data' => $paginatedData];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
 }

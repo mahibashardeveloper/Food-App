@@ -36,4 +36,9 @@ class OrderController extends BaseController
         return response()->json($rv, 200);
     }
 
+    public function order_list(Request $request){
+        $rv = OrderService::order_list($request);
+        return response()->json($rv, 200);
+    }
+
 }

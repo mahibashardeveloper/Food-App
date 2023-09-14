@@ -116,11 +116,26 @@
 
 <script>
 
+import apiService from "../../services/apiServices.js";
+import apiRoutes from "../../services/apiRoutes.js";
+
 export default {
 
     data() {
 
-        return {}
+        return {
+
+            loading: false,
+
+            formData: {
+                limit: 10,
+                page: 1,
+            },
+
+            select: [],
+
+
+        }
 
     },
 
@@ -130,6 +145,48 @@ export default {
     },
 
     methods: {
+
+        list() {
+            this.loading = true;
+            this.formData.page = this.current_page;
+            apiService.POST(apiRoutes.orderList, this.formData, (res) => {
+                this.loading = false;
+                this.selected = [];
+                if (res.status === 200) {
+                    this.tableData = res.data.data;
+                    this.total_data = res.data.total;
+                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page));
+                    this.current_page = res.data.current_page;
+                    this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
+                }
+            });
+        },
+
+        SearchData() {
+            clearTimeout(this.searchTimeout);
+            this.searchTimeout = setTimeout(() => {
+                this.list();
+            }, 500);
+        },
+
+        PrevPage() {
+            if (this.current_page > 1) {
+                this.current_page = this.current_page - 1;
+                this.list()
+            }
+        },
+
+        NextPage() {
+            if (this.current_page < this.total_pages) {
+                this.current_page = this.current_page + 1;
+                this.list()
+            }
+        },
+
+        pageChange(page) {
+            this.current_page = page;
+            this.list();
+        },
 
     }
 

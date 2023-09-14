@@ -99,7 +99,7 @@
                             <div class="text-center p-3">
                                 <div class="border rounded-3 overflow-hidden">
                                     <div class="pt-3">
-                                        <img :src="category.avatar" v-if="category.avatar !== null" class="img-fluid product-image-hover" alt="category">
+                                        <img :src="'/storage/media/image/' + category.avatar" v-if="category.avatar !== null" class="img-fluid product-image-hover" alt="category">
                                         <i class="bi bi-tag fs-1" v-if="category.avatar === null"></i>
                                     </div>
                                     <div class="pb-3 fw-bold">

@@ -27,6 +27,7 @@ class Categories extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
+        'admin_id',
         'created_at',
         'updated_at',
     ];
