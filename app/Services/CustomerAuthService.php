@@ -194,4 +194,22 @@ class CustomerAuthService
         }
     }
 
+    public static function customer_list($request)
+    {
+        try {
+            $limit = $request->limit ?? 10000;
+            $keyword = $request->q ?? '';
+            $results = Customers::orderBy('id', 'desc');
+            if (isset($keyword) && !empty($keyword)) {
+                $results->where(function ($q) use ($keyword) {
+                    $q->where('full_name', 'LIKE', '%' . $keyword . '%');
+                });
+            }
+            $paginatedData = $results->paginate($limit);
+            return ['status' => 200, 'data' => $paginatedData];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
 }

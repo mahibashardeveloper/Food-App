@@ -97,7 +97,7 @@
 
                         <div class="item" v-for="(category) in displayedCategories" :key="category.id">
                             <div class="text-center p-3">
-                                <div class="border rounded-3 overflow-hidden">
+                                <div class="overflow-hidden">
                                     <div class="pt-3">
                                         <img :src="'/storage/media/image/' + category.avatar" v-if="category.avatar !== null" class="img-fluid product-image-hover" alt="category">
                                         <i class="bi bi-tag fs-1" v-if="category.avatar === null"></i>
@@ -116,11 +116,12 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold">Popular Products</div>
-                <div class="product-item owl-carousel owl-theme">
+<!--                <div class="product-item owl-carousel owl-theme">-->
 
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                     <div v-for="(product) in getProductsInRange(1, 10)" :key="product.id">
                         <div class="text-start p-3">
-                            <div class="border rounded-2 overflow-hidden product">
+                            <div class="overflow-hidden product">
                                 <div class="mb-3 overflow-hidden">
                                     <img :src="'/storage/media/image/' + product.avatar" class="img-fluid product-image-hover" alt="product-1">
                                 </div>
@@ -136,8 +137,9 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
+
+<!--                </div>-->
             </div>
         </div>
 

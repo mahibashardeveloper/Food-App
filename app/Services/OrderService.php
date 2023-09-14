@@ -140,7 +140,13 @@ class OrderService
     {
         try {
             $limit = $request->limit ?? 10000;
-            $results = Orders::orderBy('id', 'asc');
+            $keyword = $request->q ?? '';
+            $results = Orders::with('customer_info')->orderBy('id', 'desc');
+            if (isset($keyword) && !empty($keyword)) {
+                $results->where(function ($q) use ($keyword) {
+                    $q->where('name', 'LIKE', '%' . $keyword . '%');
+                });
+            }
             $paginatedData = $results->paginate($limit);
             return ['status' => 200, 'data' => $paginatedData];
         } catch (\Exception $e) {

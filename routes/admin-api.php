@@ -13,6 +13,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -199,7 +200,7 @@ Route::prefix('product')->group( function () {
 
 Route::prefix('order')->group( function () {
 
-    Route::post('/list', [OrderController::class, 'order_list'])->name('Order.list');
+    Route::get('/list', [OrderController::class, 'order_list'])->name('Order.list');
 
 });
 

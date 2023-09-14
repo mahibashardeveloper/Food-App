@@ -43,4 +43,8 @@ class Orders extends Authenticatable
 
     ];
 
+    public function customer_info(){
+        return $this->hasOne(Customers::class, 'id', 'customer_id');
+    }
+
 }
