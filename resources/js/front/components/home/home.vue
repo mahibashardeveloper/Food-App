@@ -120,7 +120,7 @@
 
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                     <div v-for="(product) in getProductsInRange(1, 10)" :key="product.id">
-                        <div class="text-start p-3">
+                        <div class="text-start p-3 border">
                             <div class="overflow-hidden product">
                                 <div class="mb-3 overflow-hidden">
                                     <img :src="'/storage/media/image/' + product.avatar" class="img-fluid product-image-hover" alt="product-1">

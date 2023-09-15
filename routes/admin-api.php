@@ -198,11 +198,29 @@ Route::prefix('product')->group( function () {
 
 /* ------------------------- Order Controller --------------------------- */
 
-Route::prefix('order')->group( function () {
+Route::group(
 
-    Route::get('/list', [OrderController::class, 'order_list'])->name('Order.list');
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'order'],
 
-});
+    function () {
+
+        Route::post('/update', [OrderController::class, 'update'])->name('Order.Update');
+
+        Route::post('/list', [OrderController::class, 'order_list'])->name('Order.List');
+
+    }
+);
+
+Route::group(
+
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'customer'],
+
+    function () {
+
+        Route::post('/list', [CustomerController::class, 'customer_list'])->name('Customer_list.List');
+
+    }
+);
 
 /* ------------------------- Media Controller --------------------------- */
 

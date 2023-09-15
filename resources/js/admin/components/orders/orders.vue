@@ -164,29 +164,20 @@ export default {
     data() {
 
         return {
-
-            customer: [],
-
             loading: false,
-
+            deleteLoading: false,
+            customer: [],
+            deleteParam: { ids: [] },
             tableData: [],
-
-            formData: {
-                limit: 10,
-                page: 1
-            },
-
+            formData: { limit: 5, page: 1 },
             total_pages: 0,
-
             current_page: 0,
-
             buttons: [],
-
             searchTimeout: null,
-
             error: null,
-
             responseData: null,
+            total_data: 0,
+            selected: [],
 
         }
 
@@ -195,6 +186,7 @@ export default {
     mounted() {
 
         this.list();
+        this.getCustomer();
 
     },
 
@@ -203,8 +195,9 @@ export default {
         list() {
             this.loading = true;
             this.formData.page = this.current_page;
-            apiService.GET(apiRoutes.orderList, this.formData, (res) => {
+            apiService.POST(apiRoutes.orderList, this.formData, (res) => {
                 this.loading = false;
+                this.selected = [];
                 if (res.status === 200) {
                     this.tableData = res.data.data;
                     this.total_data = res.data.total;
@@ -213,6 +206,14 @@ export default {
                     this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
                 }
             });
+        },
+
+        getCustomer() {
+            apiService.POST(apiRoutes.customerList, '', (res) =>{
+                if(res.status === 200) {
+                    this.customer = res.data.data
+                }
+            })
         },
 
         SearchData() {

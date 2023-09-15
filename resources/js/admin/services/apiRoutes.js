@@ -118,6 +118,10 @@ const apiRoutes = {
 
     logout: apiVersion + '/profile/logout',
 
+    // customer
+
+    customerList: apiVersion + '/customer/list',
+
     // Order
 
     orderList: apiVersion + '/order/list',
