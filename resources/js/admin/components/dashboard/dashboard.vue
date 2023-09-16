@@ -70,7 +70,7 @@
             <div class="p-3 bg-white inset-shadow">
                     <div class="btn btn-dark disabled border"> <i class="bi bi-cart"></i> </div>
                 <div class="pt-3">Orders</div>
-                <div class="pt-3">Count No. not implement</div>
+                <div class="pt-3">Count No. <span v-if="order_total_data != null"> {{order_total_data.total}} </span></div>
             </div>
         </div>
     </div>
@@ -90,7 +90,8 @@
                 partner_total_data: '0',
                 merchant_total_data: '0',
                 category_total_data: '0',
-                product_total_data: '0'
+                product_total_data: '0',
+                order_total_data: '0',
             }
         },
         mounted() {
@@ -101,6 +102,7 @@
             this.getMerchantCount();
             this.getCategoryCount();
             this.getProductCount();
+            this.getOrderCount();
         },
         methods: {
             getSubAdminCount() {
@@ -163,6 +165,15 @@
                     this.loading = false;
                     if (parseInt(res.status) === 200) {
                         this.product_total_data = res.data
+                    }
+                });
+            },
+            getOrderCount() {
+                this.loading = true;
+                apiService.POST(apiRoutes.orderList, this.formData, (res) => {
+                    this.loading = false;
+                    if (parseInt(res.status) === 200) {
+                        this.order_total_data = res.data
                     }
                 });
             },

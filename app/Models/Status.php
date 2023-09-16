@@ -39,13 +39,6 @@ class Status extends Authenticatable
      * @var array<string, string>
      */
 
-    public static $pending = 'pending';
-    public static $processing = 'processing';
-    public static $shipped = 'shipped';
-    public static $delivered = 'delivered';
-    public static $undelivered = 'undelivered';
-    public static $cancelled = 'cancelled';
-
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',

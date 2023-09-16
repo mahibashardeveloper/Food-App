@@ -28,8 +28,6 @@ const apiRoutes = {
 
     OrderList: apiVersion + '/order/list',
 
-    OrderDelete: apiVersion + '/order/delete',
-
     // Media
 
     media: apiVersion + '/media/upload',

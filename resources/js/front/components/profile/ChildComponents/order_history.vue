@@ -57,9 +57,13 @@
                 {{each.quantity}}
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 py-2">
-                <a href="javascript:void(0)" class="text-decoration-none text-danger" @click="deleteModal(1, each.id)">
-                    <i class="bi bi-trash2-fill"></i>
-                </a>
+                <span v-if="each.status === 1">Pending</span>
+                <span v-if="each.status === 2">processing</span>
+                <span v-if="each.status === 3">shipped</span>
+                <span v-if="each.status === 4">delivered</span>
+                <span v-if="each.status === 5">undelivered</span>
+                <span v-if="each.status === 6">returned</span>
+                <span v-if="each.status === 7">cancelled</span>
             </div>
         </div>
 
@@ -187,23 +191,6 @@ export default {
                     this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
                 }
             });
-        },
-
-        deleteOrder() {
-            this.deleteLoading = true;
-            this.selected.forEach((v) => {
-                this.deleteParam.ids.push(v);
-            })
-            apiService.POST(apiRoutes.OrderDelete, this.deleteParam, (res) => {
-                this.deleteLoading = false;
-                if (res.status === 200) {
-                    this.deleteModal(2, '')
-                    this.list();
-                    this.selected = [];
-                } else {
-                    this.error = res.errors;
-                }
-            })
         },
 
         deleteModal(type, id) {
