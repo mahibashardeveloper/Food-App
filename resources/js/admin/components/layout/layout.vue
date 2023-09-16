@@ -46,58 +46,6 @@
 
                 </router-link>
 
-                <div class="badge-text">Apps</div>
-
-                <router-link :to="{name:'calender'}" class="sidebar-link" active-class="active" @click="remove">
-
-                    Calender
-
-                </router-link>
-
-                <router-link :to="{name:'chat'}" class="sidebar-link" active-class="active" @click="remove">
-
-                    Chat
-
-                </router-link>
-
-                <router-link :to="{name:'email'}" class="sidebar-link" active-class="active" @click="remove">
-
-                    Email
-
-                </router-link>
-
-                <div class="badge-text">Components</div>
-
-                <router-link :to="{name:'subAdmin'}" class="sidebar-link" active-class="active" @click="remove">
-
-                    Sub Admins
-
-                </router-link>
-
-                <router-link :to="{name:'vendors'}" class="sidebar-link" active-class="active" @click="remove">
-
-                    Vendors
-
-                </router-link>
-
-                <router-link :to="{name:'deliveryMan'}" class="sidebar-link" active-class="active" @click="remove">
-
-                    Delivery Man
-
-                </router-link>
-
-                <router-link :to="{name:'partners'}" class="sidebar-link" active-class="active" @click="remove">
-
-                    Partners
-
-                </router-link>
-
-                <router-link :to="{name:'merchants'}" class="sidebar-link" active-class="active" @click="remove">
-
-                    Merchants
-
-                </router-link>
-
                 <router-link :to="{name:'category'}" class="sidebar-link" active-class="active" @click="remove">
 
                     Categories
@@ -107,6 +55,12 @@
                 <router-link :to="{name:'product'}" class="sidebar-link" active-class="active" @click="remove">
 
                     Products
+
+                </router-link>
+
+                <router-link :to="{name:'customers'}" class="sidebar-link" active-class="active" @click="remove">
+
+                    Customers
 
                 </router-link>
 

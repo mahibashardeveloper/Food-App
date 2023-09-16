@@ -40,14 +40,6 @@ const apiRoutes = {
 
     globalProductList: '/globalProduct/list',
 
-    // partner
-
-    globalPartnerList: '/globalPartner/list',
-
-    // merchant
-
-    globalMerchantList: '/globalMerchant/list',
-
 }
 
 export default apiRoutes;

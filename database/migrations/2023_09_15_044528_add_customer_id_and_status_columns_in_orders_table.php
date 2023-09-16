@@ -15,7 +15,6 @@ return new class extends Migration
             $table->tinyInteger('status')->default(1)->comment('1. pending, 2. processing,, 3. shipped, 4. delivered, 5. undelivered, 6. returned, 7. cancelled');
             $table->unsignedInteger('customer_id')->nullable();
         });
-
     }
 
     /**

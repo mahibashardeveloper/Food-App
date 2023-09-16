@@ -67,11 +67,11 @@ Route::group(
 
         Route::post('/create', [OrderController::class, 'create'])->name('Order.Create');
 
-        Route::post('/list', [OrderController::class, 'list'])->name('Order.List');
+        Route::post('/list', [OrderController::class, 'list'])->name('Order.History_List');
 
         Route::post('/delete', [OrderController::class, 'delete'])->name('Order.Delete');
 
-        Route::post('/status/change', [OrderController::class, 'changeStatus'])->name('Order.ChangeStatus');
+        Route::post('/status/change', [OrderController::class, 'changeStatus'])->name('Order.Status');
 
     }
 );

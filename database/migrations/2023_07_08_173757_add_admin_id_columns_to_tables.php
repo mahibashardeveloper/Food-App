@@ -11,30 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('calenders', function (Blueprint $table) {
-            $table->unsignedBigInteger('admin_id')->after('id');
-            $table->foreign('admin_id')->references('id')->on('admins');
-        });
-        Schema::table('sub_admins', function (Blueprint $table) {
-            $table->unsignedBigInteger('admin_id')->after('id');
-            $table->foreign('admin_id')->references('id')->on('admins');
-        });
-        Schema::table('vendors', function (Blueprint $table) {
-            $table->unsignedBigInteger('admin_id')->after('id');
-            $table->foreign('admin_id')->references('id')->on('admins');
-        });
-        Schema::table('delivery_mans', function (Blueprint $table) {
-            $table->unsignedBigInteger('admin_id')->after('id');
-            $table->foreign('admin_id')->references('id')->on('admins');
-        });
-        Schema::table('partners', function (Blueprint $table) {
-            $table->unsignedBigInteger('admin_id')->after('id');
-            $table->foreign('admin_id')->references('id')->on('admins');
-        });
-        Schema::table('merchants', function (Blueprint $table) {
-            $table->unsignedBigInteger('admin_id')->after('id');
-            $table->foreign('admin_id')->references('id')->on('admins');
-        });
         Schema::table('categories', function (Blueprint $table) {
             $table->unsignedBigInteger('admin_id')->after('id');
             $table->foreign('admin_id')->references('id')->on('admins');
@@ -50,30 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('calenders', function (Blueprint $table) {
-            $table->dropForeign(['admin_id']);
-            $table->dropColumn('admin_id');
-        });
-        Schema::table('sub_admins', function (Blueprint $table) {
-            $table->dropForeign(['admin_id']);
-            $table->dropColumn('admin_id');
-        });
-        Schema::table('vendors', function (Blueprint $table) {
-            $table->dropForeign(['admin_id']);
-            $table->dropColumn('admin_id');
-        });
-        Schema::table('delivery_mans', function (Blueprint $table) {
-            $table->dropForeign(['admin_id']);
-            $table->dropColumn('admin_id');
-        });
-        Schema::table('partners', function (Blueprint $table) {
-            $table->dropForeign(['admin_id']);
-            $table->dropColumn('admin_id');
-        });
-        Schema::table('merchants', function (Blueprint $table) {
-            $table->dropForeign(['admin_id']);
-            $table->dropColumn('admin_id');
-        });
         Schema::table('categories', function (Blueprint $table) {
             $table->dropForeign(['admin_id']);
             $table->dropColumn('admin_id');

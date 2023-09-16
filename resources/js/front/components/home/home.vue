@@ -93,32 +93,29 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold">Featured Categories</div>
-                    <div class="category-item owl-carousel owl-theme">
+                <div class="category-item owl-carousel owl-theme">
 
-                        <div class="item" v-for="(category) in displayedCategories" :key="category.id">
-                            <div class="text-center p-3">
-                                <div class="overflow-hidden">
-                                    <div class="pt-3">
-                                        <img :src="'/storage/media/image/' + category.avatar" v-if="category.avatar !== null" class="img-fluid product-image-hover" alt="category">
-                                        <i class="bi bi-tag fs-1" v-if="category.avatar === null"></i>
-                                    </div>
-                                    <div class="pb-3 fw-bold">
-                                        {{category.name}}
-                                    </div>
+                    <div class="item" v-for="(category) in displayedCategories" :key="category.id">
+                        <div class="text-center p-3">
+                            <div class="overflow-hidden">
+                                <div class="pt-3">
+                                    <img :src="'/storage/media/image/' + category.avatar" v-if="category.avatar !== null" class="img-fluid product-image-hover" alt="category">
+                                    <i class="bi bi-tag fs-1" v-if="category.avatar === null"></i>
                                 </div>
+                                <div class="pb-3 fw-bold"> {{category.name}} </div>
                             </div>
                         </div>
-
                     </div>
+
                 </div>
             </div>
+        </div>
 
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold">Popular Products</div>
-<!--                <div class="product-item owl-carousel owl-theme">-->
-
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+                <div class="product-item owl-carousel owl-theme">
+<!--                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">-->
                     <div v-for="(product) in getProductsInRange(1, 10)" :key="product.id">
                         <div class="text-start p-3 border">
                             <div class="overflow-hidden product">
@@ -137,9 +134,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
 <!--                </div>-->
+                </div>
             </div>
         </div>
 
@@ -250,42 +246,6 @@
             </div>
         </div>
 
-        <div class="w-100">
-            <div class="container py-5">
-                <div class="h3 fw-bold">Partners</div>
-                <div class="partner-item owl-carousel owl-theme">
-
-                    <div class="item" v-for="(partner) in displayedPartners" :key="partner.id">
-                        <div class="text-center p-3">
-                            <div class="pt-3">
-                                <img :src="'/storage/media/image/' + partner.avatar" v-if="partner.avatar !== null" class="img-fluid product-image-hover" alt="partners">
-                                <i class="bi bi-tag fs-1" v-if="partner.avatar === null"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="w-100">
-            <div class="container py-5">
-                <div class="h3 fw-bold">Merchants</div>
-                <div class="merchant-item owl-carousel owl-theme">
-
-                    <div class="item" v-for="(merchant) in displayedMerchants" :key="merchant.id">
-                        <div class="text-center p-3">
-                            <div class="pt-3">
-                                <img :src="'/storage/media/image/' + merchant.avatar" v-if="merchant.avatar !== null" class="img-fluid product-image-hover" alt="merchants">
-                                <i class="bi bi-tag fs-1" v-if="merchant.avatar === null"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
     </div>
 
 </template>
@@ -310,14 +270,6 @@ import apiRoutes from "../../services/apiRoutes";
                 };
             },
 
-            displayedPartners() {
-                return this.partners.slice(0, 10);
-            },
-
-            displayedMerchants() {
-                return this.merchants.slice(0, 10);
-            },
-
         },
 
         data(){
@@ -327,10 +279,6 @@ import apiRoutes from "../../services/apiRoutes";
                 categories: [],
 
                 products: [],
-
-                partners: [],
-
-                merchants: [],
 
                 cart: [],
 
@@ -345,10 +293,6 @@ import apiRoutes from "../../services/apiRoutes";
             this.category_list();
 
             this.product_list();
-
-            this.partner_list();
-
-            this.merchant_list();
 
             $('.slider').owlCarousel( { loop:true, margin:10, nav:false, autoplay:true, dots: true, animateOut: 'fadeOut', responsive:{ 0:{ items:1 }, 600:{ items:1 }, 1000:{ items:1 } } } )
 
@@ -391,40 +335,6 @@ import apiRoutes from "../../services/apiRoutes";
                     }
                 })
             },
-
-            partner_list() {
-                this.loading = true;
-                apiService.GET(apiRoutes.globalPartnerList, (res) =>{
-                    this.loading = false;
-                    if(res.status === 200) {
-                        this.partners = res.data.data;
-
-                        setTimeout(() => {
-
-                            $('.partner-item').owlCarousel( { loop:true, margin:10, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:4 }, 1000:{ items:6 } } } )
-
-                        }, 200)
-
-                    }
-                })
-            },
-
-            merchant_list() {
-                this.loading = true;
-                apiService.GET(apiRoutes.globalMerchantList, (res) =>{
-                    this.loading = false;
-                    if(res.status === 200) {
-                        this.merchants = res.data.data;
-
-                        setTimeout(() => {
-
-                            $('.merchant-item').owlCarousel( { loop:true, margin:10, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:4 }, 1000:{ items:6 } } } )
-
-                        }, 200)
-
-                    }
-                })
-            }
 
         },
 

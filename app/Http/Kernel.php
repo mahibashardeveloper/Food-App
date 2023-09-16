@@ -5,15 +5,6 @@ namespace App\Http;
 use App\Http\Middleware\AdminAuth;
 use App\Http\Middleware\AdminAuthReq;
 use App\Http\Middleware\AdminLoginCheck;
-use App\Http\Middleware\SubAdminAuth;
-use App\Http\Middleware\SubAdminAuthReq;
-use App\Http\Middleware\SubAdminLoginCheck;
-use App\Http\Middleware\vendorAuth;
-use App\Http\Middleware\VendorAuthReq;
-use App\Http\Middleware\VendorLoginCheck;
-use App\Http\Middleware\DeliveryManAuth;
-use App\Http\Middleware\DeliveryManAuthReq;
-use App\Http\Middleware\DeliveryManLoginCheck;
 use App\Http\Middleware\CustomerAuth;
 use App\Http\Middleware\CustomerAuthReq;
 use App\Http\Middleware\CustomerLoginCheck;
@@ -82,18 +73,6 @@ class Kernel extends HttpKernel
         'AdminAuth' => AdminAuth::class,
         'AdminAuthReq' => AdminAuthReq::class,
         'AdminLoginCheck' => AdminLoginCheck::class,
-
-        'SubAdminAuth' => SubAdminAuth::class,
-        'SubAdminAuthReq' => SubAdminAuthReq::class,
-        'SubAdminLoginCheck' => SubAdminLoginCheck::class,
-
-        'VendorAuth' => VendorAuth::class,
-        'VendorAuthReq' => VendorAuthReq::class,
-        'VendorLoginCheck' => VendorLoginCheck::class,
-
-        'DeliveryManAuth' => DeliveryManAuth::class,
-        'DeliveryManAuthReq' => DeliveryManAuthReq::class,
-        'DeliveryManLoginCheck' => DeliveryManLoginCheck::class,
 
         'CustomerAuth' => CustomerAuth::class,
         'CustomerAuthReq' => CustomerAuthReq::class,

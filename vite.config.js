@@ -7,12 +7,8 @@ export default defineConfig({
         vuePlugin(),
         laravel({
             input: [
-                'resources/css/app.css',
-                'resources/js/admin/app.js',
-                'resources/js/deliveryMan/app.js',
-                'resources/js/front/app.js',
-                'resources/js/subAdmin/app.js',
-                'resources/js/vendor/app.js',
+                'resources/scss/admin/style.scss', 'resources/scss/front/style.scss',
+                'resources/js/admin/app.js', 'resources/js/front/app.js',
             ],
             refresh: true,
         }),
