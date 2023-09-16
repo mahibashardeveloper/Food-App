@@ -153,4 +153,30 @@ class OrderService
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
     }
+
+    public static function changeStatus($request)
+    {
+            try {
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'id' => 'required',
+                        'status' => 'required',
+                    ]
+                );
+                if ($validator->fails()) {
+                    return ['status' => 500, 'errors' => $validator->errors()];
+                }
+                $order = Orders::where('id', $request->id)->first();
+                if($order == null){
+                    return ['status' => 500, 'errors' => 'data not found'];
+                }
+                $order->status = $request->status;
+                $order->save();
+                return ['status' => 200, 'msg' => 'data has been updated successfully.'];
+        }catch (\Exception $e){
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
 }

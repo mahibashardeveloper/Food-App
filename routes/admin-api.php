@@ -137,6 +137,7 @@ Route::group(
     function () {
         Route::post('/update', [OrderController::class, 'update'])->name('Order.Update');
         Route::post('/list', [OrderController::class, 'order_list'])->name('Order.List');
+        Route::post('/status/change', [OrderController::class, 'changeStatus'])->name('Order.ChangeStatus');
     }
 );
 
@@ -150,13 +151,6 @@ Route::group(
 );
 
 /* ------------------------- Status Controller --------------------------- */
-
-Route::group(
-    ['middleware' => ['AdminAuthReq'], 'prefix' => 'status'],
-    function () {
-        Route::post('/pending', [OrderController::class, 'pending'])->name('status.pending');
-    }
-);
 
 /* ------------------------- Media Controller --------------------------- */
 

@@ -41,4 +41,9 @@ class OrderController extends BaseController
         return response()->json($rv, 200);
     }
 
+    public function changeStatus(Request $request){
+        $rv = OrderService::changeStatus($request);
+        return response()->json($rv, 200);
+    }
+
 }

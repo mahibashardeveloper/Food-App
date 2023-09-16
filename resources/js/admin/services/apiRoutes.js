@@ -126,6 +126,8 @@ const apiRoutes = {
 
     orderList: apiVersion + '/order/list',
 
+    orderStatus: apiVersion + '/order/status/change',
+
     // Media
 
     media: apiVersion + '/media/upload',

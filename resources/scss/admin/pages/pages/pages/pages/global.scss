@@ -74,6 +74,11 @@
                 box-shadow: 0 0 0 0;
             }
 
+            .status-control{
+                width: 120px;
+                height: 30px;
+            }
+
             &:hover {
                 background-color: var(--main-color);
                 border-bottom: 1px solid var(--main-color);

@@ -50,7 +50,7 @@
         <!-- no data end -->
 
         <div class="card-list" v-if="tableData.length > 0 && loading === false">
-            <div class="row header-section">
+            <div class="row align-middle align-items-center header-section">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     Customer Name
                 </div>
@@ -70,7 +70,7 @@
                     Status
                 </div>
             </div>
-            <div class="row border-bottom body-section" v-for="(each) in tableData">
+            <div class="row align-middle align-items-center border-bottom body-section" v-for="(each) in tableData">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     <div class="marge">Customer Name</div>
                     {{each.customer_info.full_name}}
@@ -93,7 +93,15 @@
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     <div class="marge">Status</div>
-                    <a href="javascript:void(0)" class="text-decoration-none text-success bg-success-subtle py-2 px-4 rounded"> Delivered </a>
+                    <select name="status" class="form-select status-control" v-model="each.status" @change="orderStatus(each.id, each.status)">
+                        <option value="1">Pending</option>
+                        <option value="2">Processing</option>
+                        <option value="3">Shipped</option>
+                        <option value="4">Delivered</option>
+                        <option value="5">UnDelivered</option>
+                        <option value="6">Return</option>
+                        <option value="7">Cancelled</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -206,6 +214,15 @@ export default {
                     this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
                 }
             });
+        },
+
+        orderStatus(id, status) {
+            let param = { id:id, status:status }
+            apiService.POST(apiRoutes.orderStatus, param, (res) => {
+                if (res.status === 200) {
+                    this.$toast.success('Order Status Update', { position: "top-right" });
+                }
+            })
         },
 
         getCustomer() {
