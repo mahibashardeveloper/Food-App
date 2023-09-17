@@ -38,11 +38,17 @@
 
             <div class="sidebar-body">
 
-                <div class="badge-text">Menu</div>
-
                 <router-link :to="{name:'dashboard'}" class="sidebar-link" active-class="active" @click="remove">
 
                     Dashboard
+
+                </router-link>
+
+                <div class="badge-text">Components</div>
+
+                <router-link :to="{name:'slider'}" class="sidebar-link" active-class="active" @click="remove">
+
+                    sliders
 
                 </router-link>
 

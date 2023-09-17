@@ -195,7 +195,7 @@
                                         Upload Image
                                     </div>
                                 </span>
-                                    <img class="img-fluid modal-avatar" v-if="categoryParam.avatar !== null" :src="categoryParam.avatarFilePath" alt="profile">
+                                    <img class="img-fluid modal-avatar" v-if="categoryParam.avatar !== null" :src="'/storage/media/image/'+categoryParam.avatar" alt="profile">
                                 </label>
                             </div>
                         </div>
@@ -274,7 +274,6 @@
                     id: '',
                     name: '',
                     avatar: '',
-                    avatarFilePath: '',
                 },
 
                 deleteParam: {
@@ -323,7 +322,6 @@
                     event.target.value = '';
                     if (res.status === 200) {
                         this.categoryParam.avatar = res.data.file_path
-                        this.categoryParam.avatarFilePath = res.data.full_file_path
                     }
                 })
             },

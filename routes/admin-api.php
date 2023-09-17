@@ -2,17 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\VendorController;
-use App\Http\Controllers\DeliveryManController;
-use App\Http\Controllers\PartnerController;
-use App\Http\Controllers\CalenderController;
-use App\Http\Controllers\SubAdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MediaController;
-use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerController;
+use \App\Http\Controllers\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,64 +45,14 @@ Route::group(
     }
 );
 
-/* ------------------------- SubAdmin Controller --------------------------- */
+/* ------------------------- slider Controller --------------------------- */
 
-Route::prefix('calender')->group( function () {
-    Route::post('/create', [CalenderController::class, 'create'])->name('Calender.Create');
-    Route::post('/update', [CalenderController::class, 'update'])->name('Calender.Update');
-    Route::post('/list', [CalenderController::class, 'list'])->name('Calender.List');
-    Route::post('/single', [CalenderController::class, 'single'])->name('Calender.Single');
-    Route::post('/delete', [CalenderController::class, 'delete'])->name('Calender.Delete');
-});
-
-/* ------------------------- SubAdmin Controller --------------------------- */
-
-Route::prefix('subAdmin')->group( function () {
-    Route::post('/create', [SubAdminController::class, 'create'])->name('SubAdmin.Create');
-    Route::post('/update', [SubAdminController::class, 'update'])->name('SubAdmin.Update');
-    Route::post('/list', [SubAdminController::class, 'list'])->name('SubAdmin.List');
-    Route::post('/single', [SubAdminController::class, 'single'])->name('SubAdmin.Single');
-    Route::post('/delete', [SubAdminController::class, 'delete'])->name('SubAdmin.Delete');
-});
-
-/* ------------------------- Vendor Controller --------------------------- */
-
-Route::prefix('vendor')->group( function () {
-    Route::post('/create', [VendorController::class, 'create'])->name('Vendor.Create');
-    Route::post('/update', [VendorController::class, 'update'])->name('Vendor.Update');
-    Route::post('/list', [VendorController::class, 'list'])->name('Vendor.List');
-    Route::post('/single', [VendorController::class, 'single'])->name('Vendor.Single');
-    Route::post('/delete', [VendorController::class, 'delete'])->name('Vendor.Delete');
-});
-
-/* ------------------------- DeliveryMan Controller --------------------------- */
-
-Route::prefix('deliveryMan')->group( function () {
-    Route::post('/create', [DeliveryManController::class, 'create'])->name('DeliveryMan.Create');
-    Route::post('/update', [DeliveryManController::class, 'update'])->name('DeliveryMan.Update');
-    Route::post('/list', [DeliveryManController::class, 'list'])->name('DeliveryMan.List');
-    Route::post('/single', [DeliveryManController::class, 'single'])->name('DeliveryMan.Single');
-    Route::post('/delete', [DeliveryManController::class, 'delete'])->name('DeliveryMan.Delete');
-});
-
-/* ------------------------- Partner Controller --------------------------- */
-
-Route::prefix('partner')->group( function () {
-    Route::post('/create', [PartnerController::class, 'create'])->name('Partner.Create');
-    Route::post('/update', [PartnerController::class, 'update'])->name('Partner.Update');
-    Route::post('/list', [PartnerController::class, 'list'])->name('Partner.List');
-    Route::post('/single', [PartnerController::class, 'single'])->name('Partner.Single');
-    Route::post('/delete', [PartnerController::class, 'delete'])->name('Partner.Delete');
-});
-
-/* ------------------------- Merchant Controller --------------------------- */
-
-Route::prefix('merchant')->group( function () {
-    Route::post('/create', [MerchantController::class, 'create'])->name('Merchant.Create');
-    Route::post('/update', [MerchantController::class, 'update'])->name('Merchant.Update');
-    Route::post('/list', [MerchantController::class, 'list'])->name('Merchant.List');
-    Route::post('/single', [MerchantController::class, 'single'])->name('Merchant.Single');
-    Route::post('/delete', [MerchantController::class, 'delete'])->name('Merchant.Delete');
+Route::prefix('slider')->group( function () {
+    Route::post('/create', [SliderController::class, 'create'])->name('Slider.Create');
+    Route::post('/update', [SliderController::class, 'update'])->name('Slider.Update');
+    Route::post('/list', [SliderController::class, 'list'])->name('Slider.List');
+    Route::post('/single', [SliderController::class, 'single'])->name('Slider.Single');
+    Route::post('/delete', [SliderController::class, 'delete'])->name('Slider.Delete');
 });
 
 /* ------------------------- Category Controller --------------------------- */

@@ -16,6 +16,10 @@ import layout from "../components/layout/layout.vue";
 
 import dashboard from "../components/dashboard/dashboard.vue";
 
+// slider
+
+import slider from "../components/slider/slider.vue";
+
 // category
 
 import category from "../components/category/category.vue";
@@ -62,13 +66,17 @@ const routes = [
 
             {path: ROOT_URL + '/dashboard', name: 'dashboard', component: dashboard, meta: {title: 'dashboard'}},
 
+            // slider
+
+            {path: ROOT_URL + '/sliders', name: 'slider', component: slider, meta: {title: 'sliders'}},
+
             // category
 
-            {path: ROOT_URL + '/category', name: 'category', component: category, meta: {title: 'category'}},
+            {path: ROOT_URL + '/categories', name: 'category', component: category, meta: {title: 'categories'}},
 
             // product
 
-            {path: ROOT_URL + '/product', name: 'product', component: product, meta: {title: 'product'}},
+            {path: ROOT_URL + '/products', name: 'product', component: product, meta: {title: 'products'}},
 
             // orders
 

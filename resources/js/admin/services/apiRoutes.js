@@ -12,6 +12,18 @@ const apiRoutes = {
 
     reset: apiVersion + '/auth/reset',
 
+    // slider
+
+    sliderCreate: apiVersion + '/slider/create',
+
+    sliderList: apiVersion + '/slider/list',
+
+    sliderSingle: apiVersion + '/slider/single',
+
+    sliderUpdate: apiVersion + '/slider/update',
+
+    sliderDelete: apiVersion + '/slider/delete',
+
     // category
 
     categoryCreate: apiVersion + '/category/create',

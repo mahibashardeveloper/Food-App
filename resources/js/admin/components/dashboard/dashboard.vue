@@ -19,6 +19,13 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-4" v-if="loading === false">
         <div class="p-3">
             <div class="p-3 bg-white inset-shadow">
+                <div class="btn btn-info disabled border"> <i class="bi bi-link-45deg"></i> </div>
+                <div class="pt-3">Sliders</div>
+                <div class="pt-3">Count No. <span v-if="slider_total_data != null"> {{slider_total_data.total}} </span></div>
+            </div>
+        </div>
+        <div class="p-3">
+            <div class="p-3 bg-white inset-shadow">
                     <div class="btn btn-info disabled border"> <i class="bi bi-link-45deg"></i> </div>
                 <div class="pt-3">Categories</div>
                 <div class="pt-3">Count No. <span v-if="category_total_data != null"> {{category_total_data.total}} </span></div>
@@ -29,6 +36,13 @@
                     <div class="btn btn-light disabled border"> <i class="bi bi-bag"></i> </div>
                 <div class="pt-3">Products</div>
                 <div class="pt-3">Count No. <span v-if="product_total_data != null"> {{product_total_data.total}} </span></div>
+            </div>
+        </div>
+        <div class="p-3">
+            <div class="p-3 bg-white inset-shadow">
+                <div class="btn btn-dark disabled border"> <i class="bi bi-cart"></i> </div>
+                <div class="pt-3">Customers</div>
+                <div class="pt-3">Count No. <span v-if="customer_total_data != null"> {{customer_total_data.total}} </span></div>
             </div>
         </div>
         <div class="p-3">
@@ -49,17 +63,30 @@
         data(){
             return{
                 loading: false,
+                slider_total_data: '0',
                 category_total_data: '0',
                 product_total_data: '0',
+                customer_total_data: '0',
                 order_total_data: '0',
             }
         },
         mounted() {
+            this.getSliderCount();
             this.getCategoryCount();
             this.getProductCount();
+            this.getCustomerCount();
             this.getOrderCount();
         },
         methods: {
+            getSliderCount() {
+                this.loading = true;
+                apiService.POST(apiRoutes.sliderList, this.formData, (res) => {
+                    this.loading = false;
+                    if (parseInt(res.status) === 200) {
+                        this.slider_total_data = res.data
+                    }
+                });
+            },
             getCategoryCount() {
                 this.loading = true;
                 apiService.POST(apiRoutes.categoryList, this.formData, (res) => {
@@ -75,6 +102,15 @@
                     this.loading = false;
                     if (parseInt(res.status) === 200) {
                         this.product_total_data = res.data
+                    }
+                });
+            },
+            getCustomerCount() {
+                this.loading = true;
+                apiService.POST(apiRoutes.customerList, this.formData, (res) => {
+                    this.loading = false;
+                    if (parseInt(res.status) === 200) {
+                        this.customer_total_data = res.data
                     }
                 });
             },
