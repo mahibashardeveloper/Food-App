@@ -1,6 +1,11 @@
 .home {
     padding: 40px 0;
 
+    .slider{
+        height: 500px;
+        object-fit: cover;
+    }
+
     .product {
         position: relative;
 

@@ -14,6 +14,11 @@ class FrontController extends BaseController
         return view('app.front');
     }
 
+    public function slider_list(Request $request){
+        $rv = FrontService::slider_list($request);
+        return response()->json($rv, 200);
+    }
+
     public function category_list(Request $request){
         $rv = FrontService::category_list($request);
         return response()->json($rv, 200);

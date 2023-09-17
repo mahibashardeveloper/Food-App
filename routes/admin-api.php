@@ -100,7 +100,5 @@ Route::group(
 /* ------------------------- Media Controller --------------------------- */
 
 Route::prefix('media')->group( function () {
-
     Route::post('/upload', [MediaController::class, 'upload'])->name('Admin.Media.Upload');
-
 });

@@ -3,12 +3,9 @@
     <div class="home animation-content">
         <div class="w-100">
             <div class="container py-5">
-                <div class="slider owl-carousel owl-theme">
-                    <div class="item">
-                        <img :src="'/images/banner/banner-1.png'" class="img-fluid" alt="banner-1">
-                    </div>
-                    <div class="item">
-                        <img :src="'/images/banner/banner-2.png'" class="img-fluid" alt="banner-2">
+                <div class="owl-carousel owl-theme slider-item">
+                    <div class="item" v-for="(slider) in sliders" :key="slider.id">
+                        <img :src="'/storage/media/image/' + slider.avatar" class="img-fluid slider" alt="banner-1">
                     </div>
                 </div>
             </div>
@@ -93,8 +90,6 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold">Featured Categories</div>
-                <div class="category-item owl-carousel owl-theme">
-
                     <div class="item" v-for="(category) in displayedCategories" :key="category.id">
                         <div class="text-center p-3">
                             <div class="overflow-hidden">
@@ -106,16 +101,13 @@
                             </div>
                         </div>
                     </div>
-
-                </div>
             </div>
         </div>
 
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold">Popular Products</div>
-                <div class="product-item owl-carousel owl-theme">
-<!--                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">-->
+                <div class="owl-carousel owl-theme product-item">
                     <div v-for="(product) in getProductsInRange(1, 10)" :key="product.id">
                         <div class="text-start p-3 border">
                             <div class="overflow-hidden product">
@@ -134,7 +126,6 @@
                             </div>
                         </div>
                     </div>
-<!--                </div>-->
                 </div>
             </div>
         </div>
@@ -142,8 +133,7 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold">Daily Best Sells</div>
-                <div class="product-item owl-carousel owl-theme">
-
+                <div class="owl-carousel owl-theme product-item">
                     <div v-for="(product) in getProductsInRange(11, 20)" :key="product.id">
                         <div class="text-start p-3">
                             <div class="border rounded-2 overflow-hidden product">
@@ -162,7 +152,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -278,6 +267,8 @@ import apiRoutes from "../../services/apiRoutes";
 
                 categories: [],
 
+                sliders: [],
+
                 products: [],
 
                 cart: [],
@@ -290,17 +281,34 @@ import apiRoutes from "../../services/apiRoutes";
 
         mounted() {
 
+            this.slider_list();
+
             this.category_list();
 
             this.product_list();
-
-            $('.slider').owlCarousel( { loop:true, margin:10, nav:false, autoplay:true, dots: true, animateOut: 'fadeOut', responsive:{ 0:{ items:1 }, 600:{ items:1 }, 1000:{ items:1 } } } )
 
         },
 
         methods: {
 
             addToCart(product) { store.dispatch('addToCart', product) },
+
+            slider_list() {
+                this.loading = true;
+                apiService.GET(apiRoutes.globalSliderList, (res) =>{
+                    this.loading = false;
+                    if(res.status === 200) {
+                        this.sliders = res.data.data;
+
+                        setTimeout(() => {
+
+                            $('.slider-item').owlCarousel( { loop:true, margin:10, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:1 }, 600:{ items:1 }, 1000:{ items:1 } } } )
+
+                        }, 200)
+
+                    }
+                })
+            },
 
             category_list() {
                 this.loading = true;

@@ -32,6 +32,10 @@ const apiRoutes = {
 
     media: apiVersion + '/media/upload',
 
+    // slider
+
+    globalSliderList: '/globalSlider/list',
+
     // category
 
     globalCategoryList: '/globalCategory/list',
