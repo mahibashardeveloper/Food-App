@@ -60,35 +60,6 @@
 
         <div class="w-100">
             <div class="container py-5">
-                <div class="row">
-                    <div class="col-sm-6 py-3">
-                        <div class="position-relative">
-                            <img :src="'/images/banner/image-16.jpg'" class="img-fluid rounded-3" alt="banner">
-                            <div class="position-absolute start-0 top-0 h-100 d-flex align-items-center">
-                                <div class="ps-4">
-                                    <div class="h4 fw-bold mb-3"> Today Discount </div>
-                                    <a href="javascript:void(0)" class="text-success">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 py-3">
-                        <div class="position-relative">
-                            <img :src="'/images/banner/image-17.jpg'" class="img-fluid rounded-3" alt="banner">
-                            <div class="position-absolute start-0 top-0 h-100 d-flex align-items-center">
-                                <div class="ps-4">
-                                    <div class="h4 fw-bold mb-3"> 1000+ Foods </div>
-                                    <a href="javascript:void(0)" class="text-success">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="w-100">
-            <div class="container py-5">
                 <div class="h3 fw-bold">Featured Categories</div>
                     <div class="item" v-for="(category) in displayedCategories" :key="category.id">
                         <div class="text-center p-3">
