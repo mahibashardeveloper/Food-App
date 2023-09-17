@@ -16,15 +16,15 @@
     <!-- page loading start -->
     <div v-if="loading === true">
         <h6 class="card-text placeholder-glow">
-                <span class="p-2">
-                    <span class="placeholder col-12 py-3 mb-3"></span>
-                </span>
             <span class="p-2">
-                    <span class="placeholder col-10 py-3 mb-3"></span>
-                </span>
+                <span class="placeholder col-12 py-3 mb-3"></span>
+            </span>
             <span class="p-2">
-                    <span class="placeholder col-7 py-3 mb-3"></span>
-                </span>
+                <span class="placeholder col-10 py-3 mb-3"></span>
+            </span>
+            <span class="p-2">
+                <span class="placeholder col-7 py-3 mb-3"></span>
+            </span>
         </h6>
     </div>
     <!-- page loading end -->
@@ -43,14 +43,18 @@
 
     <!-- data list start -->
     <div class="container-fluid" v-if="tableData.length > 0 && loading === false">
-        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2">
+
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
+
             <div class="p-2" v-for="(each) in tableData">
+
                 <span v-if="each.avatar === null">
                     No Data
                 </span>
+
                 <span class="w-100 h-100" v-if="each.avatar !== null">
                     <div class="bg-white p-3">
-                        <img class="img-fluid h-100 mb-3" :src="'/storage/media/image/'+each.avatar" alt="slider image">
+                        <img class="img-fluid slider mb-3" :src="'/storage/media/image/'+each.avatar" alt="slider image">
                         <div class="row justify-content-between align-items-center px-3">
                             <button type="button" class="col-5 btn rounded-0 btn-secondary" @click="manageModal(1, each.id)">
                                 Edit
@@ -61,8 +65,11 @@
                         </div>
                     </div>
                 </span>
+
             </div>
+
         </div>
+
     </div>
     <!-- data list end -->
 
@@ -88,7 +95,7 @@
                                 <label for="file-upload" class="w-100 border">
                                     <input type="file" class="d-none" id="file-upload" @change="attachFile($event)">
                                     <span v-if="sliderParam.avatar === null">
-                                    <div class="text-center py-5">
+                                    <div class="text-center py-5 cursor-pointer">
                                         <div class="mb-2">
                                             <i class="bi bi-card-image"></i>
                                         </div>
@@ -146,213 +153,217 @@
 
 <script>
 
-import apiService from "./../../services/apiServices.js";
-import apiRoutes from "./../../services/apiRoutes.js";
+    import apiService from "./../../services/apiServices.js";
 
-export default {
+    import apiRoutes from "./../../services/apiRoutes.js";
 
-    data(){
+    export default {
 
-        return{
+        data(){
 
-            loading: false,
+            return{
 
-            createLoading: false,
+                loading: false,
 
-            deleteLoading: false,
+                createLoading: false,
 
-            slider: [],
+                deleteLoading: false,
 
-            sliderParam: {
-                id: '',
-                avatar: '',
-                avatarFilePath: '',
+                slider: [],
+
+                sliderParam: {
+                    id: '',
+                    avatar: '',
+                    avatarFilePath: '',
+                },
+
+                deleteParam: {
+                    ids: []
+                },
+
+                tableData: [],
+
+                formData: {
+                    limit: 10,
+                    page: 1
+                },
+
+                total_pages: 0,
+
+                current_page: 0,
+
+                buttons: [],
+
+                searchTimeout: null,
+
+                error: null,
+
+                responseData: null,
+
+                total_data: 0,
+
+                selected: [],
+
+            }
+
+        },
+
+        mounted() {
+
+            this.list();
+
+        },
+
+        methods: {
+
+            attachFile(event) {
+                let file = event.target.files[0];
+                let formData = new FormData();
+                formData.append("file", file)
+                formData.append("media_type", 1);
+                apiService.UPLOAD(apiRoutes.media, formData, (res) => {
+                    event.target.value = '';
+                    if (res.status === 200) {
+                        this.sliderParam.avatar = res.data.file_path
+                    }
+                })
             },
 
-            deleteParam: {
-                ids: []
+            openEditModal() {
+                this.getSingle();
+                const myModal = new bootstrap.Modal("#manageModal", {keyboard: false});
+                myModal.show();
             },
 
-            tableData: [],
-
-            formData: {
-                limit: 10,
-                page: 1
+            deleteSlider() {
+                this.deleteLoading = true;
+                this.selected.forEach((v) => {
+                    this.deleteParam.ids.push(v);
+                })
+                apiService.POST(apiRoutes.sliderDelete, this.deleteParam, (res) => {
+                    this.deleteLoading = false;
+                    if (res.status === 200) {
+                        this.$toast.success(res.msg, {position: "bottom-right"});
+                        this.deleteModal(2, '')
+                        this.list();
+                        this.selected = [];
+                    } else {
+                        this.error = res.errors;
+                    }
+                })
             },
 
-            total_pages: 0,
+            deleteModal(type, id) {
+                if (type === 1) {
+                    this.deleteParam.ids.push(id)
+                    const myModal = new bootstrap.Modal("#deleteModal", {keyboard: false, backdrop: 'static'});
+                    myModal.show();
+                } else {
+                    this.selected = [];
+                    this.sliderParam = { id: '', avatar: '' };
+                    this.current_page = 1;
+                    let myModalEl = document.getElementById('deleteModal');
+                    let modal = bootstrap.Modal.getInstance(myModalEl)
+                    modal.hide();
+                }
+            },
 
-            current_page: 0,
+            manageModal(type, data = null) {
+                this.error = null;
+                this.sliderParam = { id: '', avatar: null };
+                if (type === 1) {
+                    this.getSlider();
+                    if (data !== null) {
+                        this.getSingle(data);
+                    }
+                    const myModal = new bootstrap.Modal("#manageModal", {keyboard: false, backdrop: 'static'});
+                    myModal.show();
+                } else {
+                    const myModal = document.querySelector("#manageModal");
+                    const modal = bootstrap.Modal.getInstance(myModal);
+                    modal.hide();
+                }
+            },
 
-            buttons: [],
+            getSlider() {
+                apiService.POST(apiRoutes.sliderList, '', (res) => {
+                    if (res.status === 200) {
+                        this.slider = res.data.data
+                    }
+                })
+            },
 
-            searchTimeout: null,
+            manageSlider() {
+                if (this.sliderParam.id) {
+                    this.edit();
+                } else {
+                    this.create();
+                }
+            },
 
-            error: null,
+            getSingle(id = null) {
+                let param = { id: '' }
+                if (id != null) { param.id = id } else { param.id = this.selected[0] }
+                apiService.POST(apiRoutes.sliderSingle, param, (res) => {
+                    if (res.status === 200) {
+                        this.sliderParam = res.data;
+                    } else {
+                        this.error = res.errors;
+                    }
+                });
+            },
 
-            responseData: null,
+            create() {
+                this.createLoading = true;
+                this.error = null;
+                apiService.POST(apiRoutes.sliderCreate, this.sliderParam, (res) => {
+                    this.createLoading = false;
+                    if (res.status === 200) {
+                        this.$toast.success(res.msg, {position: "bottom-right"});
+                        this.manageModal(2, null);
+                        this.list();
+                        this.selected = [];
+                    } else {
+                        this.error = res.errors;
+                    }
+                });
+            },
 
-            total_data: 0,
+            edit() {
+                this.createLoading = true;
+                this.error = null;
+                apiService.POST(apiRoutes.sliderUpdate, this.sliderParam, (res) => {
+                    this.createLoading = false;
+                    if (res.status === 200) {
+                        this.getSlider();
+                        this.$toast.success(res.msg, {position: "bottom-right"});
+                        this.manageModal(2, null);
+                        this.list();
+                        this.selected = [];
+                    } else {
+                        this.error = res.errors;
+                    }
+                });
+            },
 
-            selected: [],
+            list() {
+                this.loading = true;
+                this.formData.page = this.current_page;
+                apiService.POST(apiRoutes.sliderList, this.formData, (res) => {
+                    this.loading = false;
+                    this.selected = [];
+                    if (res.status === 200) {
+                        this.tableData = res.data.data;
+                        this.total_data = res.data.total;
+                        this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page));
+                        this.current_page = res.data.current_page;
+                        this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
+                    }
+                });
+            },
 
         }
 
-    },
-
-    mounted() {
-        this.list();
-    },
-
-    methods: {
-
-        attachFile(event) {
-            let file = event.target.files[0];
-            let formData = new FormData();
-            formData.append("file", file)
-            formData.append("media_type", 1);
-            apiService.UPLOAD(apiRoutes.media, formData, (res) => {
-                event.target.value = '';
-                if (res.status === 200) {
-                    this.sliderParam.avatar = res.data.file_path
-                }
-            })
-        },
-
-        openEditModal() {
-            this.getSingle();
-            const myModal = new bootstrap.Modal("#manageModal", {keyboard: false});
-            myModal.show();
-        },
-
-        deleteSlider() {
-            this.deleteLoading = true;
-            this.selected.forEach((v) => {
-                this.deleteParam.ids.push(v);
-            })
-            apiService.POST(apiRoutes.sliderDelete, this.deleteParam, (res) => {
-                this.deleteLoading = false;
-                if (res.status === 200) {
-                    this.$toast.success(res.msg, {position: "bottom-right"});
-                    this.deleteModal(2, '')
-                    this.list();
-                    this.selected = [];
-                } else {
-                    this.error = res.errors;
-                }
-            })
-        },
-
-        deleteModal(type, id) {
-            if (type === 1) {
-                this.deleteParam.ids.push(id)
-                const myModal = new bootstrap.Modal("#deleteModal", {keyboard: false, backdrop: 'static'});
-                myModal.show();
-            } else {
-                this.selected = [];
-                this.sliderParam = { id: '', avatar: '' };
-                this.current_page = 1;
-                let myModalEl = document.getElementById('deleteModal');
-                let modal = bootstrap.Modal.getInstance(myModalEl)
-                modal.hide();
-            }
-        },
-
-        manageModal(type, data = null) {
-            this.error = null;
-            this.sliderParam = { id: '', avatar: null };
-            if (type === 1) {
-                this.getSlider();
-                if (data !== null) {
-                    this.getSingle(data);
-                }
-                const myModal = new bootstrap.Modal("#manageModal", {keyboard: false, backdrop: 'static'});
-                myModal.show();
-            } else {
-                const myModal = document.querySelector("#manageModal");
-                const modal = bootstrap.Modal.getInstance(myModal);
-                modal.hide();
-            }
-        },
-
-        getSlider() {
-            apiService.POST(apiRoutes.sliderList, '', (res) => {
-                if (res.status === 200) {
-                    this.slider = res.data.data
-                }
-            })
-        },
-
-        manageSlider() {
-            if (this.sliderParam.id) {
-                this.edit();
-            } else {
-                this.create();
-            }
-        },
-
-        getSingle(id = null) {
-            let param = { id: '' }
-            if (id != null) { param.id = id } else { param.id = this.selected[0] }
-            apiService.POST(apiRoutes.sliderSingle, param, (res) => {
-                if (res.status === 200) {
-                    this.sliderParam = res.data;
-                } else {
-                    this.error = res.errors;
-                }
-            });
-        },
-
-        create() {
-            this.createLoading = true;
-            this.error = null;
-            apiService.POST(apiRoutes.sliderCreate, this.sliderParam, (res) => {
-                this.createLoading = false;
-                if (res.status === 200) {
-                    this.$toast.success(res.msg, {position: "bottom-right"});
-                    this.manageModal(2, null);
-                    this.list();
-                    this.selected = [];
-                } else {
-                    this.error = res.errors;
-                }
-            });
-        },
-
-        edit() {
-            this.createLoading = true;
-            this.error = null;
-            apiService.POST(apiRoutes.sliderUpdate, this.sliderParam, (res) => {
-                this.createLoading = false;
-                if (res.status === 200) {
-                    this.getSlider();
-                    this.$toast.success(res.msg, {position: "bottom-right"});
-                    this.manageModal(2, null);
-                    this.list();
-                    this.selected = [];
-                } else {
-                    this.error = res.errors;
-                }
-            });
-        },
-
-        list() {
-            this.loading = true;
-            this.formData.page = this.current_page;
-            apiService.POST(apiRoutes.sliderList, this.formData, (res) => {
-                this.loading = false;
-                this.selected = [];
-                if (res.status === 200) {
-                    this.tableData = res.data.data;
-                    this.total_data = res.data.total;
-                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page));
-                    this.current_page = res.data.current_page;
-                    this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
-                }
-            });
-        },
-
     }
-}
 
 </script>

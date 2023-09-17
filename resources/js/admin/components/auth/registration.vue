@@ -1,10 +1,13 @@
 <template>
 
     <div class="authentication">
+
         <div class="row vh-100 justify-content-center align-items-center">
+
             <div class="col-12 col-sm-10 col-lg-6 col-xl-4 p-3 d-none d-lg-block">
                 <img :src="'/images/background1.svg'" class="img-fluid" alt="background image">
             </div>
+
             <div class="col-12 col-sm-10 col-lg-6 col-xl-4 p-3">
                 <div class="p-5 bg-white border-radius-15">
                     <div class="h3 mb-4"> Create New admin Account </div>
@@ -69,7 +72,9 @@
                     </form>
                 </div>
             </div>
+
         </div>
+
     </div>
 
 </template>
@@ -77,6 +82,7 @@
 <script>
 
     import apiService from "../../services/apiServices";
+
     import apiRoutes from "../../services/apiRoutes.js";
 
     export default {
@@ -132,9 +138,10 @@
                         this.error = res.errors
                     }
                 })
-
             },
+
         }
+
     }
 
 </script>

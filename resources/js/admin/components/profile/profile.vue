@@ -1,7 +1,11 @@
 <template>
+
     <div class="row justify-content-center align-items-center mt-3">
+
         <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-6 col-xxl-6 p-3">
+
             <div class="bg-white profile-content">
+
                 <div class="profile-header">
                     <div class="card-title">
                         Profile
@@ -15,6 +19,7 @@
                         </a>
                     </div>
                 </div>
+
                 <div class="profile-body">
                     <div class="d-flex justify-content-center">
                         <div class="avatar">
@@ -49,8 +54,11 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
         </div>
+
     </div>
 
     <!-- edit profile modal start -->
@@ -172,231 +180,142 @@
 
 <script>
 
-import apiService from "../../services/apiServices";
+    import apiService from "../../services/apiServices";
 
-import apiRoutes from "../../services/apiRoutes.js";
+    import apiRoutes from "../../services/apiRoutes.js";
 
-export default {
+    export default {
 
-    data() {
+        data() {
 
-        return {
-            profileDataLoading: false,
+            return {
+                profileDataLoading: false,
 
-            profile_data: '',
+                profile_data: '',
 
-            updateProfileLoading: false,
+                updateProfileLoading: false,
 
-            error: null,
+                error: null,
 
-            edit: false,
+                edit: false,
 
-            editParam: {
+                editParam: {
+                    company_name: '',
+                    first_name: '',
+                    last_name: '',
+                    email: '',
+                    phone_number: '',
+                    avatar: '',
+                },
 
-                company_name: '',
+                passwordParam: {
+                    password: '',
+                    password_confirmation: '',
+                },
 
-                first_name: '',
+            }
 
-                last_name: '',
+        },
 
-                email: '',
+        mounted() {
 
-                phone_number: '',
+            this.getProfile();
 
-                avatar: '',
+        },
 
+        methods: {
+
+            attachFile(event) {
+                let file = event.target.files[0];
+                let formData = new FormData();
+                formData.append("file", file)
+                formData.append("media_type", 1);
+                apiService.UPLOAD(apiRoutes.media, formData, (res) => {
+                    event.target.value = '';
+                    if (res.status === 200) {
+                        this.editParam.avatarFilePath = res.data.full_file_path
+                        this.editParam.avatar = res.data.id
+                    }
+                })
             },
 
-            passwordParam: {
+            openEditProfileModal() {
+                const modal = new bootstrap.Modal("#editProfileModal", {keyboard: false, backdrop: 'static'});
+                modal.show();
+                this.edit = true;
+                this.editParam = JSON.parse(JSON.stringify(this.profile_data));
+                this.editParam.avatarFilePath = this.editParam.media != null ? this.editParam.media.full_file_path : null
+            },
 
-                password: '',
+            closeEditProfileModal() {
+                this.edit = false;
+                this.error = null;
+                let myModalEl = document.getElementById('editProfileModal');
+                let modal = bootstrap.Modal.getInstance(myModalEl);
+                modal.hide();
+            },
 
-                password_confirmation: '',
+            openEditPasswordModal() {
+                const modal = new bootstrap.Modal("#editPasswordModal", {keyboard: false, backdrop: 'static'});
+                modal.show();
+                this.edit = true;
+                this.editParam = JSON.parse(JSON.stringify(this.profile_data));
+            },
 
+            closeEditPasswordModal() {
+                this.edit = false;
+                this.passwordParam = {password: "", password_confirmation: ""};
+                this.error = null;
+                let myModalEl = document.getElementById('editPasswordModal');
+                let modal = bootstrap.Modal.getInstance(myModalEl);
+                modal.hide();
+            },
+
+            getProfile() {
+                this.profileDataLoading = true;
+                apiService.GET(apiRoutes.profile_details, (res) => {
+                    this.profileDataLoading = false;
+                    if (res.status === 200) {
+                        this.profile_data = res.data;
+                    }
+                })
+            },
+
+            updateProfile() {
+                this.updateProfileLoading = true;
+                this.error = null;
+                apiService.POST(apiRoutes.profile_update, this.editParam, (res) => {
+                    this.updateProfileLoading = false;
+                    if (res.status === 200) {
+                        this.getProfile();
+                        this.edit = false;
+                        this.$toast.success('Your Profile has been updated successfully.', { position: "top-right" });
+                        this.closeEditProfileModal();
+                        window.location.reload();
+                    } else {
+                        this.error = res.errors;
+                    }
+                })
+            },
+
+            updatePassword() {
+                this.updateProfileLoading = true;
+                this.error = null;
+                apiService.POST(apiRoutes.profile_password, this.passwordParam, (res) => {
+                    this.updateProfileLoading = false;
+                    if (res.status === 200) {
+                        this.getProfile();
+                        this.edit = false;
+                        this.$toast.success('Your password has been updated successfully.', { position: "top-right" });
+                        this.closeEditPasswordModal();
+                    } else {
+                        this.error = res.errors;
+                    }
+                })
             },
 
         }
 
-    },
-
-    mounted() {
-        this.getProfile()
-    },
-
-    methods: {
-
-        attachFile(event) {
-
-            let file = event.target.files[0];
-
-            let formData = new FormData();
-
-            formData.append("file", file)
-
-            formData.append("media_type", 1);
-
-            apiService.UPLOAD(apiRoutes.media, formData, (res) => {
-
-                event.target.value = '';
-
-                if (res.status === 200) {
-
-                    this.editParam.avatarFilePath = res.data.full_file_path
-
-                    this.editParam.avatar = res.data.id
-
-                }
-
-            })
-
-        },
-
-        openEditProfileModal() {
-
-            const modal = new bootstrap.Modal("#editProfileModal", {keyboard: false, backdrop: 'static'});
-
-            modal.show();
-
-            this.edit = true;
-
-            this.editParam = JSON.parse(JSON.stringify(this.profile_data));
-
-            this.editParam.avatarFilePath = this.editParam.media != null ? this.editParam.media.full_file_path : null
-
-        },
-
-        closeEditProfileModal() {
-
-            this.edit = false;
-
-            this.error = null;
-
-            let myModalEl = document.getElementById('editProfileModal');
-
-            let modal = bootstrap.Modal.getInstance(myModalEl);
-
-            modal.hide();
-
-        },
-
-        openEditPasswordModal() {
-
-            const modal = new bootstrap.Modal("#editPasswordModal", {keyboard: false, backdrop: 'static'});
-
-            modal.show();
-
-            this.edit = true;
-
-            this.editParam = JSON.parse(JSON.stringify(this.profile_data));
-
-        },
-
-        closeEditPasswordModal() {
-
-            this.edit = false;
-
-            this.passwordParam = {password: "", password_confirmation: ""};
-
-            this.error = null;
-
-            let myModalEl = document.getElementById('editPasswordModal');
-
-            let modal = bootstrap.Modal.getInstance(myModalEl);
-
-            modal.hide();
-
-        },
-
-        getProfile() {
-
-            this.profileDataLoading = true;
-
-            apiService.GET(apiRoutes.profile_details, (res) => {
-
-                this.profileDataLoading = false;
-
-                if (res.status === 200) {
-
-                    this.profile_data = res.data;
-
-                }
-
-            })
-
-        },
-
-        updateProfile() {
-
-            this.updateProfileLoading = true;
-
-            this.error = null;
-
-            apiService.POST(apiRoutes.profile_update, this.editParam, (res) => {
-
-                this.updateProfileLoading = false;
-
-                if (res.status === 200) {
-
-                    this.getProfile();
-
-                    this.edit = false;
-
-                    this.$toast.success('Your Profile has been updated successfully.', {
-
-                        position: "top-right"
-
-                    });
-
-                    this.closeEditProfileModal();
-
-                    window.location.reload();
-
-                } else {
-
-                    this.error = res.errors;
-
-                }
-
-            })
-
-        },
-
-        updatePassword() {
-
-            this.updateProfileLoading = true;
-
-            this.error = null;
-
-            apiService.POST(apiRoutes.profile_password, this.passwordParam, (res) => {
-
-                this.updateProfileLoading = false;
-
-                if (res.status === 200) {
-
-                    this.getProfile();
-
-                    this.edit = false;
-
-                    this.$toast.success('Your password has been updated successfully.', {
-
-                        position: "top-right"
-
-                    });
-
-                    this.closeEditPasswordModal();
-
-                } else {
-
-                    this.error = res.errors;
-
-                }
-
-            })
-
-        },
-
     }
-
-}
 
 </script>

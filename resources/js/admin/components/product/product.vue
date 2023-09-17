@@ -1,6 +1,7 @@
 <template>
 
     <div class="row justify-content-between">
+
         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
 
             <!-- search from start -->
@@ -24,10 +25,12 @@
             <!-- add modal controller end -->
 
         </div>
+
     </div>
 
     <!-- card body start -->
     <div class="card-body">
+
         <div class="card-header">
             Products
             <span class="d-flex align-items-center ms-3" v-if="tableData.length > 0 && loading === false && selected.length > 0">
@@ -39,6 +42,7 @@
                 </a>
             </span>
         </div>
+
         <!-- page loading start -->
         <div v-if="loading === true">
             <h6 class="card-text placeholder-glow">
@@ -68,6 +72,7 @@
         <!-- no data end -->
 
         <div class="card-list" v-if="tableData.length > 0 && loading === false">
+
             <div class="row header-section">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 py-2">
                     <div class="d-flex">
@@ -85,6 +90,7 @@
                     Action
                 </div>
             </div>
+
             <div class="row border-bottom body-section align-items-center" v-for="(each) in tableData">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 py-2">
                     <div class="marge">Name</div>
@@ -116,6 +122,7 @@
                     </a>
                 </div>
             </div>
+
         </div>
 
         <div class="card-footer">
@@ -170,6 +177,7 @@
             </div>
 
         </div>
+
     </div>
     <!-- card body end -->
 
@@ -284,6 +292,7 @@
 <script>
 
     import apiService from "./../../services/apiServices.js";
+
     import apiRoutes from "./../../services/apiRoutes.js";
 
     export default {
@@ -345,8 +354,11 @@
         },
 
         mounted() {
+
             this.list();
+
             this.getCategory();
+
         },
 
         methods: {
@@ -558,6 +570,7 @@
             },
 
         }
+
     }
 
 </script>

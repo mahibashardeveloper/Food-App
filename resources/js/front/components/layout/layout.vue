@@ -10,21 +10,21 @@
 
 <script>
 
-import Header from "./includes/header.vue";
+    import Header from "./includes/header.vue";
 
-import Footer from "./includes/footer.vue";
+    import Footer from "./includes/footer.vue";
 
-export default {
+    export default {
 
-    components: { Header,Footer },
+        components: { Header,Footer },
 
-    data() { return {  } },
+        data() { return {  } },
 
-    mounted() {  },
+        mounted() {  },
 
-    methods: {  }
+        methods: {  }
 
-}
+    }
 
 </script>
 

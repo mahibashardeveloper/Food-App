@@ -1,5 +1,7 @@
 <template>
+
     <div class="profile animation-content">
+
         <div class="container-fluid">
             <div class="customer-wrapper">
                 <div class="customer-sidebar" :class="{active: isCustomerSideBarActive}">
@@ -43,66 +45,57 @@
                 </div>
             </div>
         </div>
+
     </div>
+
 </template>
 
 <script>
 
-import apiService from "../../services/apiServices.js";
-import apiRoutes from "../../services/apiRoutes.js";
+    import apiService from "../../services/apiServices.js";
 
-export default {
+    import apiRoutes from "../../services/apiRoutes.js";
 
-    data(){
+    export default {
 
-        return{
+        data(){
 
-            isCustomerSideBarActive: false,
+            return{
 
-            profile_data: '',
+                isCustomerSideBarActive: false,
 
-            profileDataLoading: false,
+                profile_data: '',
+
+                profileDataLoading: false,
+
+            }
+
+        },
+
+        mounted() {  },
+
+        methods: {
+
+            customerSideBarController(){
+                this.isCustomerSideBarActive = !this.isCustomerSideBarActive;
+            },
+
+            removeController(){
+                this.isCustomerSideBarActive = false;
+            },
+
+            logout() {
+                this.logoutLoading = true;
+                apiService.GET(apiRoutes.logout, (res) => {
+                    this.logoutLoading = false;
+                    if (res.status === 200) {
+                        window.location.reload();
+                    }
+                })
+            },
 
         }
 
-    },
-
-    mounted() {  },
-
-    methods: {
-
-        customerSideBarController(){
-
-            this.isCustomerSideBarActive = !this.isCustomerSideBarActive;
-
-        },
-
-        removeController(){
-
-            this.isCustomerSideBarActive = false;
-
-        },
-
-        logout() {
-
-            this.logoutLoading = true;
-
-            apiService.GET(apiRoutes.logout, (res) => {
-
-                this.logoutLoading = false;
-
-                if (res.status === 200) {
-
-                    window.location.reload();
-
-                }
-
-            })
-
-        },
-
     }
-
-}
 
 </script>

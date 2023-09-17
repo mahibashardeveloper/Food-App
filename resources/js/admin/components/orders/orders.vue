@@ -50,6 +50,7 @@
         <!-- no data end -->
 
         <div class="card-list" v-if="tableData.length > 0 && loading === false">
+
             <div class="row align-middle align-items-center header-section">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     Customer Name
@@ -70,6 +71,7 @@
                     Status
                 </div>
             </div>
+
             <div class="row align-middle align-items-center border-bottom body-section" v-for="(each) in tableData">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     <div class="marge">Customer Name</div>
@@ -104,6 +106,7 @@
                     </select>
                 </div>
             </div>
+
         </div>
         <div class="card-footer">
 
@@ -157,6 +160,7 @@
             </div>
 
         </div>
+
     </div>
     <!-- card body end -->
 
@@ -164,103 +168,119 @@
 
 <script>
 
-import apiService from "../../services/apiServices.js";
-import apiRoutes from "../../services/apiRoutes.js";
+    import apiService from "../../services/apiServices.js";
 
-export default {
+    import apiRoutes from "../../services/apiRoutes.js";
 
-    data() {
+    export default {
 
-        return {
-            loading: false,
-            deleteLoading: false,
-            customer: [],
-            deleteParam: { ids: [] },
-            tableData: [],
-            formData: { limit: 5, page: 1 },
-            total_pages: 0,
-            current_page: 0,
-            buttons: [],
-            searchTimeout: null,
-            error: null,
-            responseData: null,
-            total_data: 0,
-            selected: [],
+        data() {
+
+            return {
+
+                loading: false,
+
+                deleteLoading: false,
+
+                customer: [],
+
+                deleteParam: { ids: [] },
+
+                tableData: [],
+
+                formData: { limit: 5, page: 1 },
+
+                total_pages: 0,
+
+                current_page: 0,
+
+                buttons: [],
+
+                searchTimeout: null,
+
+                error: null,
+
+                responseData: null,
+
+                total_data: 0,
+
+                selected: [],
+
+            }
+
+        },
+
+        mounted() {
+
+            this.list();
+
+            this.getCustomer();
+
+        },
+
+        methods: {
+
+            list() {
+                this.loading = true;
+                this.formData.page = this.current_page;
+                apiService.POST(apiRoutes.orderList, this.formData, (res) => {
+                    this.loading = false;
+                    this.selected = [];
+                    if (res.status === 200) {
+                        this.tableData = res.data.data;
+                        this.total_data = res.data.total;
+                        this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page));
+                        this.current_page = res.data.current_page;
+                        this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
+                    }
+                });
+            },
+
+            orderStatus(id, status) {
+                let param = { id:id, status:status }
+                apiService.POST(apiRoutes.orderStatus, param, (res) => {
+                    if (res.status === 200) {
+                        this.$toast.success('Order Status Update', { position: "top-right" });
+                    }
+                })
+            },
+
+            getCustomer() {
+                apiService.POST(apiRoutes.customerList, '', (res) =>{
+                    if(res.status === 200) {
+                        this.customer = res.data.data
+                    }
+                })
+            },
+
+            SearchData() {
+                clearTimeout(this.searchTimeout);
+                this.searchTimeout = setTimeout(() => {
+                    this.list();
+                }, 500);
+            },
+
+            PrevPage() {
+                if (this.current_page > 1) {
+                    this.current_page = this.current_page - 1;
+                    this.list()
+                }
+            },
+
+            NextPage() {
+                if (this.current_page < this.total_pages) {
+                    this.current_page = this.current_page + 1;
+                    this.list()
+                }
+            },
+
+            pageChange(page) {
+                this.current_page = page;
+                this.list();
+            },
 
         }
 
-    },
-
-    mounted() {
-
-        this.list();
-        this.getCustomer();
-
-    },
-
-    methods: {
-
-        list() {
-            this.loading = true;
-            this.formData.page = this.current_page;
-            apiService.POST(apiRoutes.orderList, this.formData, (res) => {
-                this.loading = false;
-                this.selected = [];
-                if (res.status === 200) {
-                    this.tableData = res.data.data;
-                    this.total_data = res.data.total;
-                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page));
-                    this.current_page = res.data.current_page;
-                    this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
-                }
-            });
-        },
-
-        orderStatus(id, status) {
-            let param = { id:id, status:status }
-            apiService.POST(apiRoutes.orderStatus, param, (res) => {
-                if (res.status === 200) {
-                    this.$toast.success('Order Status Update', { position: "top-right" });
-                }
-            })
-        },
-
-        getCustomer() {
-            apiService.POST(apiRoutes.customerList, '', (res) =>{
-                if(res.status === 200) {
-                    this.customer = res.data.data
-                }
-            })
-        },
-
-        SearchData() {
-            clearTimeout(this.searchTimeout);
-            this.searchTimeout = setTimeout(() => {
-                this.list();
-            }, 500);
-        },
-
-        PrevPage() {
-            if (this.current_page > 1) {
-                this.current_page = this.current_page - 1;
-                this.list()
-            }
-        },
-
-        NextPage() {
-            if (this.current_page < this.total_pages) {
-                this.current_page = this.current_page + 1;
-                this.list()
-            }
-        },
-
-        pageChange(page) {
-            this.current_page = page;
-            this.list();
-        },
-
     }
-
-}
 
 </script>

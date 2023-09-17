@@ -270,13 +270,9 @@ import apiRoutes from "../../services/apiRoutes";
                     this.loading = false;
                     if(res.status === 200) {
                         this.sliders = res.data.data;
-
                         setTimeout(() => {
-
                             $('.slider-item').owlCarousel( { loop:true, margin:10, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:1 }, 600:{ items:1 }, 1000:{ items:1 } } } )
-
                         }, 200)
-
                     }
                 })
             },
@@ -287,13 +283,9 @@ import apiRoutes from "../../services/apiRoutes";
                     this.loading = false;
                     if(res.status === 200) {
                         this.categories = res.data.data;
-
                         setTimeout(() => {
-
                             $('.category-item').owlCarousel( { loop:true, margin:10, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:4 }, 1000:{ items:6 } } } )
-
                         }, 200)
-
                     }
                 })
             },
@@ -304,13 +296,9 @@ import apiRoutes from "../../services/apiRoutes";
                     this.loading = false;
                     if(res.status === 200) {
                         this.products = res.data.data;
-
                         setTimeout(() => {
-
                             $('.product-item').owlCarousel( { loop:true, margin:0, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:3 }, 1000:{ items:5 } } } )
-
                         }, 200)
-
                     }
                 })
             },

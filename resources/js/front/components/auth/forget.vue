@@ -1,11 +1,15 @@
 <template>
 
     <div class="authentication animation-content">
+
         <div class="container">
+
             <div class="vh-100 row justify-content-center align-items-center p-3">
+
                 <div class="col-12 col-sm-10 col-lg-6 col-xl-5 p-3 d-none d-lg-block">
                     <img :src="'/images/background1.svg'" class="img-fluid" alt="background image">
                 </div>
+
                 <div class="col-12 col-sm-10 col-lg-6 col-xl-5 p-3">
                     <form @submit.prevent="forgot" method="post" class="border rounded-4 px-4 py-5 bg-white shadow" v-if="forgotType === 1">
                         <div class="form-group fw-bold h4">
@@ -75,89 +79,89 @@
                         </router-link>
                     </div>
                 </div>
+
             </div>
+
         </div>
+
     </div>
 
 </template>
 
 <script>
 
-import apiService from "../../services/apiServices.js";
-import apiRoutes from "../../services/apiRoutes.js";
+    import apiService from "../../services/apiServices.js";
 
-export default {
+    import apiRoutes from "../../services/apiRoutes.js";
 
-    data(){
+    export default {
 
-        return{
+        data(){
 
-            resetLoading: false,
+            return{
 
-            resetParam: {
-                email: '',
-                code: '',
-                password: '',
-                password_confirmation: '',
+                resetLoading: false,
+
+                resetParam: {
+                    email: '',
+                    code: '',
+                    password: '',
+                    password_confirmation: '',
+                },
+
+                forgotType: 1,
+
+                error: null,
+
+                forgotLoading: false,
+
+                forgotParam: {
+                    email: ''
+                }
+
+            }
+
+        },
+
+        mounted() {
+
+
+
+        },
+
+        methods: {
+
+            forgot() {
+                this.forgotLoading = true;
+                this.error = null;
+                apiService.POST(apiRoutes.forgot, this.forgotParam, (res) => {
+                    this.forgotLoading = false
+                    if (res.status === 200) {
+                        this.forgotType = 2;
+                        this.resetParam.email = this.forgotParam.email;
+                        this.$toast.success('The verification code has been sent to your email.', { position: "top-right" });
+                    } else {
+                        this.error = res.error;
+                    }
+                })
             },
 
-            forgotType: 1,
-
-            error: null,
-
-            forgotLoading: false,
-
-            forgotParam: {
-                email: ''
-            }
+            reset() {
+                this.resetLoading = true;
+                this.error = null;
+                apiService.POST(apiRoutes.reset, this.resetParam, (res) => {
+                    this.resetLoading = false;
+                    if (res.status === 200) {
+                        this.$toast.success('Password has been reset successfully.', { position: "top-right" });
+                        this.forgotType = 3;
+                    } else {
+                        this.error = res.error;
+                    }
+                })
+            },
 
         }
 
-    },
-
-    mounted() {
-
-
-
-    },
-
-    methods: {
-
-        forgot() {
-            this.forgotLoading = true;
-            this.error = null;
-            apiService.POST(apiRoutes.forgot, this.forgotParam, (res) => {
-                this.forgotLoading = false
-                if (res.status === 200) {
-                    this.forgotType = 2;
-                    this.resetParam.email = this.forgotParam.email;
-                    this.$toast.success('The verification code has been sent to your email.', {
-                        position: "top-right"
-                    });
-                } else {
-                    this.error = res.error;
-                }
-            })
-        },
-
-        reset() {
-            this.resetLoading = true;
-            this.error = null;
-            apiService.POST(apiRoutes.reset, this.resetParam, (res) => {
-                this.resetLoading = false;
-                if (res.status === 200) {
-                    this.$toast.success('Password has been reset successfully.', {
-                        position: "top-right"
-                    });
-                    this.forgotType = 3;
-                } else {
-                    this.error = res.error;
-                }
-            })
-        },
-
     }
-
-}
 
 </script>

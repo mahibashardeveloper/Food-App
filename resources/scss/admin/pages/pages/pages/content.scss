@@ -10,14 +10,8 @@
         padding: 15px;
     }
 
-    .inset-shadow {
-        border-radius: 6px;
-        transition: 0.5s all ease-in-out;
-
-        &:hover {
-            box-shadow: 0 0 8px 0 $gray inset;
-        }
-
+    .cursor-pointer{
+        cursor: pointer;
     }
 
     .form-control {

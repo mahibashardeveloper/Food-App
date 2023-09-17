@@ -17,67 +17,150 @@
     <!-- page loading end -->
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-4" v-if="loading === false">
+
         <div class="p-3">
             <div class="p-3 bg-white inset-shadow">
-                <div class="btn btn-info disabled border"> <i class="bi bi-link-45deg"></i> </div>
-                <div class="pt-3">Sliders</div>
-                <div class="pt-3">Count No. <span v-if="slider_total_data != null"> {{slider_total_data.total}} </span></div>
+
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="ms-3">Sliders</div>
+                    <div class="btn btn-light disabled border-0"> <i class="bi bi-sliders"></i> </div>
+                </div>
+
+                <hr>
+
+                <div class="pt-3">Items.
+                    <span v-if="slider_total_data != null">
+                        {{slider_total_data.total}}
+                    </span>
+                </div>
+
             </div>
         </div>
+
         <div class="p-3">
             <div class="p-3 bg-white inset-shadow">
-                    <div class="btn btn-info disabled border"> <i class="bi bi-link-45deg"></i> </div>
-                <div class="pt-3">Categories</div>
-                <div class="pt-3">Count No. <span v-if="category_total_data != null"> {{category_total_data.total}} </span></div>
+
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="ms-3">Categories</div>
+                    <div class="btn btn-light disabled border-0"> <i class="bi bi-link-45deg"></i> </div>
+                </div>
+
+                <hr>
+
+                <div class="pt-3">Items.
+                    <span v-if="category_total_data != null">
+                        {{category_total_data.total}}
+                    </span>
+                </div>
+
             </div>
         </div>
+
         <div class="p-3">
             <div class="p-3 bg-white inset-shadow">
-                    <div class="btn btn-light disabled border"> <i class="bi bi-bag"></i> </div>
-                <div class="pt-3">Products</div>
-                <div class="pt-3">Count No. <span v-if="product_total_data != null"> {{product_total_data.total}} </span></div>
+
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="ms-3">Products</div>
+                    <div class="btn btn-light disabled border-0"> <i class="bi bi-bag"></i> </div>
+                </div>
+
+                <hr>
+
+                <div class="pt-3">Items.
+                    <span v-if="product_total_data != null">
+                        {{product_total_data.total}}
+                    </span>
+                </div>
+
             </div>
         </div>
+
         <div class="p-3">
             <div class="p-3 bg-white inset-shadow">
-                <div class="btn btn-dark disabled border"> <i class="bi bi-cart"></i> </div>
-                <div class="pt-3">Customers</div>
-                <div class="pt-3">Count No. <span v-if="customer_total_data != null"> {{customer_total_data.total}} </span></div>
+
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="ms-3">Customers</div>
+                    <div class="btn btn-light disabled border-0"> <i class="bi bi-people"></i> </div>
+                </div>
+
+                <hr>
+
+                <div class="pt-3">Items.
+                    <span v-if="customer_total_data != null">
+                        {{customer_total_data.total}}
+                    </span>
+                </div>
+
             </div>
         </div>
+
         <div class="p-3">
             <div class="p-3 bg-white inset-shadow">
-                    <div class="btn btn-dark disabled border"> <i class="bi bi-cart"></i> </div>
-                <div class="pt-3">Orders</div>
-                <div class="pt-3">Count No. <span v-if="order_total_data != null"> {{order_total_data.total}} </span></div>
+
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="ms-3">Orders</div>
+                    <div class="btn btn-light disabled border-0"> <i class="bi bi-cart"></i> </div>
+                </div>
+
+                <hr>
+
+                <div class="pt-3">Items.
+                    <span v-if="order_total_data != null">
+                        {{order_total_data.total}}
+                    </span>
+                </div>
+
             </div>
         </div>
+
     </div>
 
 </template>
 
 <script>
+
     import apiService from "../../services/apiServices.js";
+
     import apiRoutes from "../../services/apiRoutes.js";
+
     export default {
+
         data(){
+
             return{
+
                 loading: false,
+
                 slider_total_data: '0',
+
                 category_total_data: '0',
+
                 product_total_data: '0',
+
                 customer_total_data: '0',
+
                 order_total_data: '0',
+
             }
+
         },
+
         mounted() {
+
             this.getSliderCount();
+
             this.getCategoryCount();
+
             this.getProductCount();
+
             this.getCustomerCount();
+
             this.getOrderCount();
+
         },
+
         methods: {
+
             getSliderCount() {
                 this.loading = true;
                 apiService.POST(apiRoutes.sliderList, this.formData, (res) => {
@@ -87,6 +170,7 @@
                     }
                 });
             },
+
             getCategoryCount() {
                 this.loading = true;
                 apiService.POST(apiRoutes.categoryList, this.formData, (res) => {
@@ -96,6 +180,7 @@
                     }
                 });
             },
+
             getProductCount() {
                 this.loading = true;
                 apiService.POST(apiRoutes.productList, this.formData, (res) => {
@@ -105,6 +190,7 @@
                     }
                 });
             },
+
             getCustomerCount() {
                 this.loading = true;
                 apiService.POST(apiRoutes.customerList, this.formData, (res) => {
@@ -114,6 +200,7 @@
                     }
                 });
             },
+
             getOrderCount() {
                 this.loading = true;
                 apiService.POST(apiRoutes.orderList, this.formData, (res) => {
@@ -123,7 +210,9 @@
                     }
                 });
             },
+
         }
+
     }
 
 </script>

@@ -3,6 +3,7 @@
     <div id="preloader">
         <img :src="'/images/loading.gif'" class="img-fluid" alt="">
     </div>
+
     <div class="front-header fixed-top" :class="{ 'header-scrolled': isHeaderScrolled }">
         <router-link :to="{name:'home'}" class="company_name" @click="remove">
             Food Store
@@ -106,165 +107,177 @@
 
 <script>
 
-import apiService from "../../../services/apiServices";
-import apiRoutes from "../../../services/apiRoutes.js";
-import store from "../../../store/index";
-export default {
+    import apiService from "../../../services/apiServices";
 
-    data(){
-        return{
-            isRightSidebar: false,
-            isHeaderScrolled: false,
-            isCartInfoActive: false,
-            logoutLoading: false,
-            profile_data: null,
-            profileDataLoading: false,
-            core:window.core
-        }
-    },
+    import apiRoutes from "../../../services/apiRoutes.js";
 
+    import store from "../../../store/index";
 
-    computed: {
-        products: function() {
-            return store.state.products
-        },
-        subTotal: function () {
-            const total = this.products.reduce( (prev, current) => (current.price * current.quantity) + prev, 0)
-            return total + 25;
-        }
-    },
-    mounted() {
-        this.getCartItems();
-        if(this.core.UserInfo != null){
-            this.getProfile();
-        }
-        window.addEventListener("scroll", this.onScroll);
-        setTimeout(() =>{
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                document.getElementById('app').removeChild(preloader)
-            },1000)
-        },3000);
-    },
+    export default {
 
-    methods: {
+        data(){
 
-        openCheckoutModal(){
-            const myModal = new bootstrap.Modal("#manageModal", {keyboard: false});
-            myModal.show();
+            return{
+
+                isRightSidebar: false,
+
+                isHeaderScrolled: false,
+
+                isCartInfoActive: false,
+
+                logoutLoading: false,
+
+                profile_data: null,
+
+                profileDataLoading: false,
+
+                core:window.core
+
+            }
+
         },
 
-        closeCheckoutModal(){
-            const myModal = document.querySelector("#manageModal");
-            const modal = bootstrap.Modal.getInstance(myModal);
-            modal.hide();
+
+        computed: {
+
+            products: function() {
+                return store.state.products
+            },
+
+            subTotal: function () {
+                const total = this.products.reduce( (prev, current) => (current.price * current.quantity) + prev, 0)
+                return total + 25;
+            }
+
         },
 
-        checkout() {
-            if (this.core.UserInfo != null) {
-                const orderItems = [];
-                this.products.forEach(cartItem => {
-                    const orderItem = {
-                        name: cartItem.name,
-                        price: cartItem.price,
-                        quantity: cartItem.quantity,
-                    };
-                    orderItems.push(orderItem);
-                });
-                const formData = new FormData();
-                orderItems.forEach((orderItem, index) => {
-                    for (const key in orderItem) {
-                        formData.append(`orderItems[${index}][${key}]`, orderItem[key]);
-                    }
-                });
-                apiService.POST(apiRoutes.OrderCreate, { orderItems }, (res) => {
+        mounted() {
+
+            this.getCartItems();
+
+            if(this.core.UserInfo != null){
+                this.getProfile();
+            }
+
+            window.addEventListener("scroll", this.onScroll);
+
+            setTimeout(() =>{
+                const preloader = document.getElementById('preloader');
+                setTimeout(() => {
+                    document.getElementById('app').removeChild(preloader)
+                },1000)
+            },3000);
+
+        },
+
+        methods: {
+
+            openCheckoutModal(){
+                const myModal = new bootstrap.Modal("#manageModal", {keyboard: false});
+                myModal.show();
+            },
+
+            closeCheckoutModal(){
+                const myModal = document.querySelector("#manageModal");
+                const modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+            },
+
+            checkout() {
+                if (this.core.UserInfo != null) {
+                    const orderItems = [];
+                    this.products.forEach(cartItem => {
+                        const orderItem = {
+                            name: cartItem.name,
+                            price: cartItem.price,
+                            quantity: cartItem.quantity,
+                        };
+                        orderItems.push(orderItem);
+                    });
+                    const formData = new FormData();
+                    orderItems.forEach((orderItem, index) => {
+                        for (const key in orderItem) {
+                            formData.append(`orderItems[${index}][${key}]`, orderItem[key]);
+                        }
+                    });
+                    apiService.POST(apiRoutes.OrderCreate, { orderItems }, (res) => {
+                        if (res.status === 200) {
+                            store.dispatch('clearCart');
+                        } else {
+                            const errorMessageElement = document.getElementById('error-message');
+                            errorMessageElement.innerHTML = 'Error: Failed to create the order.';
+                        }
+                    });
+                } else {
+                    this.openCheckoutModal();
+                }
+            },
+
+            getCartItems(){
+                store.dispatch('getCartItems')
+            },
+
+            decrementQuantity(cartItem) {
+                if (cartItem.quantity > 1) {
+                    cartItem.quantity--;
+                }
+                this.subTotal -= cartItem.price
+                store.dispatch('decrementCartItem', cartItem)
+            },
+
+            incrementQuantity(cartItem) {
+                cartItem.quantity++;
+                this.subTotal += cartItem.price
+                store.dispatch('addToCart', cartItem)
+            },
+
+            removeFromCart(cartItem) {
+                store.dispatch('removeFromCart', cartItem)
+            },
+
+            rightSidebarController(){
+                this.isRightSidebar = !this.isRightSidebar;
+                this.isCartInfoActive = false;
+            },
+
+            cartInfo(){
+                this.isCartInfoActive = !this.isCartInfoActive;
+                this.isRightSidebar = false;
+            },
+
+            remove(){
+                this.isRightSidebar = false;
+                this.isCartInfoActive = false
+                window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            },
+
+            onScroll() {
+                const scrollPos = window.scrollY;
+                this.isHeaderScrolled = scrollPos > 0;
+            },
+
+            getProfile() {
+                this.profileDataLoading = true;
+                apiService.GET(apiRoutes.profile_details, (res) => {
+                    this.profileDataLoading = false;
                     if (res.status === 200) {
-                        store.dispatch('clearCart');
-                    } else {
-                        const errorMessageElement = document.getElementById('error-message');
-                        errorMessageElement.innerHTML = 'Error: Failed to create the order.';
+                        this.profile_data = res.data;
                     }
-                });
-            } else {
-                this.openCheckoutModal();
-            }
-        },
+                })
+            },
 
-        getCartItems(){
-            store.dispatch('getCartItems')
-        },
+            logout() {
+                this.logoutLoading = true;
+                apiService.GET(apiRoutes.logout, (res) => {
+                    this.logoutLoading = false;
+                    if (res.status === 200) {
+                        window.location.reload();
+                    }
+                })
+            },
 
-        decrementQuantity(cartItem) {
-            if (cartItem.quantity > 1) {
-                cartItem.quantity--;
-            }
-            this.subTotal -= cartItem.price
-            store.dispatch('decrementCartItem', cartItem)
-        },
-
-        incrementQuantity(cartItem) {
-            cartItem.quantity++;
-            this.subTotal += cartItem.price
-            store.dispatch('addToCart', cartItem)
-        },
-
-        removeFromCart(cartItem) {
-            store.dispatch('removeFromCart', cartItem)
-        },
-
-        rightSidebarController(){
-
-            this.isRightSidebar = !this.isRightSidebar;
-
-            this.isCartInfoActive = false;
-
-        },
-
-        cartInfo(){
-
-            this.isCartInfoActive = !this.isCartInfoActive;
-
-            this.isRightSidebar = false;
-
-        },
-
-        remove(){
-
-            this.isRightSidebar = false;
-
-            this.isCartInfoActive = false
-
-            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-
-        },
-
-        onScroll() {
-            const scrollPos = window.scrollY;
-            this.isHeaderScrolled = scrollPos > 0;
-        },
-
-        getProfile() {
-            this.profileDataLoading = true;
-            apiService.GET(apiRoutes.profile_details, (res) => {
-                this.profileDataLoading = false;
-                if (res.status === 200) {
-                    this.profile_data = res.data;
-                }
-            })
-        },
-
-        logout() {
-            this.logoutLoading = true;
-            apiService.GET(apiRoutes.logout, (res) => {
-                this.logoutLoading = false;
-                if (res.status === 200) {
-                    window.location.reload();
-                }
-            })
-        },
+        }
 
     }
-
-}
 
 </script>

@@ -153,26 +153,43 @@ export default {
     data(){
 
         return{
+
             loading: false,
+
             deleteLoading: false,
+
             customer: [],
+
             deleteParam: { ids: [] },
+
             tableData: [],
+
             formData: { limit: 5, page: 1 },
+
             total_pages: 0,
+
             current_page: 0,
+
             buttons: [],
+
             searchTimeout: null,
+
             error: null,
+
             responseData: null,
+
             total_data: 0,
+
             selected: [],
+
         }
 
     },
 
     mounted() {
+
         this.list();
+
     },
 
     methods: {

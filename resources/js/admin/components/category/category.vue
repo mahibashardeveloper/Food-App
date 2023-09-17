@@ -86,6 +86,7 @@
             </div>
 
             <div class="row border-bottom body-section align-items-center" v-for="(each) in tableData">
+
                 <div class="col-12 col-sm-9 py-2">
                     <div class="marge">Category Name</div>
                     <div class="d-flex align-items-center">
@@ -101,6 +102,7 @@
                         {{each.name}}
                     </div>
                 </div>
+
                 <div class="col-12 col-sm-3 py-2">
                     <div class="marge">Action</div>
                     <a href="javascript:void(0)" class="text-decoration-none text-secondary me-3" @click="manageModal(1, each.id)">
@@ -110,9 +112,13 @@
                         <i class="bi bi-trash2"></i>
                     </a>
                 </div>
+
             </div>
+
         </div>
+
         <div class="card-footer">
+
             <div class="d-flex justify-content-center" v-if="tableData.length > 0 && loading === false">
                 <div class="pagination">
                     <div class="page-item" @click="PrevPage">
@@ -163,6 +169,7 @@
             </div>
 
         </div>
+
     </div>
     <!-- card body end -->
 
@@ -254,6 +261,7 @@
 <script>
 
     import apiService from "./../../services/apiServices.js";
+
     import apiRoutes from "./../../services/apiRoutes.js";
 
     export default {
@@ -511,6 +519,7 @@
             },
 
         }
+
     }
 
 </script>
