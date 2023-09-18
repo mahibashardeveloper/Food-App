@@ -61,6 +61,7 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold">Featured Categories</div>
+                <div class="owl-carousel owl-theme category-item">
                     <div class="item" v-for="(category) in displayedCategories" :key="category.id">
                         <div class="text-center p-3">
                             <div class="overflow-hidden">
@@ -72,6 +73,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
 
@@ -132,7 +134,7 @@
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3">
                     <div class="p-1">
                         <div class="p-3">
-                            <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Trending Products </div>
+                            <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Recently Added </div>
                             <div class="p-2">
 
                                 <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsInRange(1, 5)" :key="product.id">
@@ -156,7 +158,7 @@
                     </div>
                     <div class="p-1">
                         <div class="p-3">
-                            <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Recently Added </div>
+                            <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Trending Products </div>
                             <div class="p-2">
 
                                 <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsInRange(6, 10)" :key="product.id">
