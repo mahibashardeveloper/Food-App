@@ -117,19 +117,23 @@
 
         mounted() {
 
+            function setThemeColor(color) {
+                document.querySelector(':root').style.setProperty('--main-color', color);
+            }
+
+            function handleButtonClick(event) {
+                let dataColor = event.target.getAttribute('data-color');
+                setThemeColor(dataColor);
+                localStorage.setItem('selectedColor', dataColor);
+            }
             let themeButtons = document.querySelectorAll('.btn-color');
-
             themeButtons.forEach(color => {
-
-                color.addEventListener('click', () => {
-
-                    let dataColor = color.getAttribute('data-color');
-
-                    document.querySelector(':root').style.setProperty('--main-color', dataColor);
-
-                })
-
-            })
+                color.addEventListener('click', handleButtonClick);
+            });
+            const storedColor = localStorage.getItem('selectedColor');
+            if (storedColor) {
+                setThemeColor(storedColor);
+            }
 
             this.getProfile();
 

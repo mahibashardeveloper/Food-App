@@ -28,7 +28,7 @@
 
                 <hr>
 
-                <div class="pt-3">Items.
+                <div class="pt-3 ps-3">Items.
                     <span v-if="slider_total_data != null">
                         {{slider_total_data.total}}
                     </span>
@@ -47,7 +47,7 @@
 
                 <hr>
 
-                <div class="pt-3">Items.
+                <div class="pt-3 ps-3">Items.
                     <span v-if="category_total_data != null">
                         {{category_total_data.total}}
                     </span>
@@ -66,7 +66,7 @@
 
                 <hr>
 
-                <div class="pt-3">Items.
+                <div class="pt-3 ps-3">Items.
                     <span v-if="product_total_data != null">
                         {{product_total_data.total}}
                     </span>
@@ -85,7 +85,7 @@
 
                 <hr>
 
-                <div class="pt-3">Items.
+                <div class="pt-3 ps-3">Items.
                     <span v-if="customer_total_data != null">
                         {{customer_total_data.total}}
                     </span>
@@ -104,7 +104,7 @@
 
                 <hr>
 
-                <div class="pt-3">Items.
+                <div class="pt-3 ps-3">Items.
                     <span v-if="order_total_data != null">
                         {{order_total_data.total}}
                     </span>

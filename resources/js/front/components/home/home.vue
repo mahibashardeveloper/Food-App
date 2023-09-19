@@ -63,7 +63,7 @@
                 <div class="h3 fw-bold">Featured Categories</div>
                 <div class="owl-carousel owl-theme category-item">
                     <div class="item" v-for="(category) in displayedCategories" :key="category.id">
-                        <div class="text-center p-3">
+                        <div class="text-center p-3 border">
                             <div class="overflow-hidden">
                                 <div class="pt-3">
                                     <img :src="'/storage/media/image/' + category.avatar" v-if="category.avatar !== null" class="img-fluid product-image-hover" alt="category">
