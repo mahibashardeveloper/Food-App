@@ -14,12 +14,12 @@
                     <form @submit.prevent="login">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control shadow-none border-secondary-subtle" v-model="loginParam.email">
+                            <input type="email" name="email" class="form-control shadow-none border-secondary-subtle" v-model="loginParam.email" required>
                             <div class="error-text" v-if="error != null && error.email !== undefined" v-text="error.email[0]"></div>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control shadow-none border-secondary-subtle" v-model="loginParam.password">
+                            <input type="password" name="password" class="form-control shadow-none border-secondary-subtle" v-model="loginParam.password" required>
                             <div class="error-text" v-if="error != null && error.password !== undefined" v-text="error.password[0]"></div>
                         </div>
                         <div class="row align-items-center">
@@ -36,12 +36,6 @@
                                     </router-link>
                                 </div>
                             </div>
-                        </div>
-                        <div class="text-start">
-                            Have an account
-                            <router-link :to="{name:'registration'}" class="text-decoration-none text-info">
-                                Registration
-                            </router-link>
                         </div>
                     </form>
                 </div>
@@ -91,6 +85,9 @@
                         this.$toast.success('Login Successfully', { position: "top-right" });
                         window.location.reload();
                     } else {
+                        if(res.status === 500) {
+                            this.$toast.success('This account does not exist', { position: "top-right" });
+                        }
                         this.error = res.errors;
                     }
                 })

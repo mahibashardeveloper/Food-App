@@ -20,9 +20,6 @@
                         <router-link :to="{name: 'order_history'}" class="sub-link" @click="removeController">
                             Order History
                         </router-link>
-                        <router-link :to="{name: 'wishlist'}" class="sub-link" @click="removeController">
-                            WishList
-                        </router-link>
                         <router-link :to="{name: 'newsletter'}" class="sub-link" @click="removeController">
                             NewsLetter
                         </router-link>

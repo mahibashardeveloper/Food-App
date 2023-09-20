@@ -80,7 +80,6 @@ Route::prefix('product')->group( function () {
 Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'order'],
     function () {
-        Route::post('/update', [OrderController::class, 'update'])->name('Order.Update');
         Route::post('/list', [OrderController::class, 'order_list'])->name('Order.List');
         Route::post('/status/change', [OrderController::class, 'changeStatus'])->name('Order.ChangeStatus');
     }
@@ -94,8 +93,6 @@ Route::group(
         Route::post('/list', [CustomerController::class, 'customer_list'])->name('Customer_list.List');
     }
 );
-
-/* ------------------------- Status Controller --------------------------- */
 
 /* ------------------------- Media Controller --------------------------- */
 

@@ -6,7 +6,7 @@
             <!-- search from start -->
             <form class="my-2">
                 <div class="position-relative">
-                    <input type="search" name="" class="form-control ps-5" placeholder="Search here" v-model="formData.q" @keyup="SearchData">
+                    <input type="text" name="" class="form-control ps-5" placeholder="Search here" v-model="formData.q" @keyup="SearchData">
                     <div class="position-absolute start-0 top-50 translate-middle-y ps-3">
                         <i class="bi bi-search"></i>
                     </div>

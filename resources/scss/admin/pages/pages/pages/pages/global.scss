@@ -234,7 +234,7 @@
 
 .slider-page-no-data-found{
     width: 100%;
-    height: calc(100vh - 215px);
+    height: calc(100vh - 275px);
     background-color: $white;
     text-align: center;
     display: flex;
@@ -242,6 +242,15 @@
     align-items: center;
     color: $gray;
     border-radius: 10px;
+}
+
+.slider-card-body{
+    width: 100%;
+    height: calc(100vh - 215px);
+    background-color: $white;
+    border-radius: 10px;
+    padding: 30px;
+    overflow-y: scroll;
 }
 
 .slider{

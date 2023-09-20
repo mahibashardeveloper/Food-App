@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 
 class RemoveUnnecessaryFiles extends Command
 {
-    protected $signature = 'remove:unnecessary-files';
+    protected $signature = 'remove:all-files';
     protected $description = 'Remove unnecessary files, folders, or images';
 
     public function __construct()

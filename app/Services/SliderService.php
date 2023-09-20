@@ -5,6 +5,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Sliders;
+use Illuminate\Support\Facades\Storage;
 
 class SliderService extends BaseController
 {
@@ -104,6 +105,13 @@ class SliderService extends BaseController
     {
         try {
             Sliders::whereIn('id', $request->ids)->delete();
+            foreach ($request->ids as $sliderId) {
+                $slider = Sliders::find($sliderId);
+                if ($slider && $slider->avatar) {
+                    $avatarPath = $slider->avatar;
+                    Storage::delete($avatarPath);
+                }
+            }
             return ['status' => 200, 'msg' => 'data has been deleted successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];

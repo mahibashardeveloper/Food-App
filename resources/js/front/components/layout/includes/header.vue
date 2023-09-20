@@ -73,7 +73,7 @@
                                 Gross SubTotal
                             </div>
                             <div class="badge d-block ps-0 mt-2 text-dark">
-                                Delivery Charge $100
+                                COD Charge $25
                             </div>
                         </span>
                         <span class="cart-amount">

@@ -44,27 +44,37 @@ class AdminAuthService
     }
 
     // login
-    public static function login($request)
+    public static function Login($request)
     {
         try {
-            $validator = Validator::make(
-                $request->all(),
-                [
-                    'email' => 'required|email|exists:admins,email',
-                    'password' => 'required|min:6'
-                ]
-            );
+            $input = $request->input();
+            $validator = Validator::make($input, [
+                'email' => 'required|email',
+                'password' => 'required'
+            ]);
             if ($validator->fails()) {
-                return ['status' => 500, 'errors' => $validator->errors()];
+                return ['status' => 500, 'error' => $validator->errors()];
             }
-            $credential = ['email' => $request->email, 'password' => $request->password];
-            if (Auth::guard('admins')->attempt($credential, $request->remember)) {
-                return ['status' => 200, 'data' => Auth::guard('admins')->user()];
+            $userInfo = Admins::where('email', $input['email'])->first();
+            if ($userInfo == null) {
+                return ['status' => 500, 'error' => ['email' => ['Email is not exist. Please re-check your email address.']]];
+            }
+            if (Hash::check($input['password'], $userInfo['password'])) {
+                $credential = [
+                    'email' => $input['email'],
+                    'password' => $input['password']
+                ];
+                $remember = isset($input['remember']) && $input['remember'] == 1 ? true : false;
+                if (Auth::guard('admins')->attempt($credential, $remember)) {
+                    return ['status' => 200, 'msg' => 'Login Successful!'];
+                } else {
+                    return ['status' => 500, 'error' => ['email' => 'Invalid credentials! Please try again.']];
+                }
             } else {
-                return ['status' => 500, 'errors' => ['error' => 'Invalid Credentials! Please try again']];
+                return ['status' => 500, 'error' => ['password' => ['Invalid credentials! Please try again.']]];
             }
         } catch (\Exception $e) {
-            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+            return ['status' => 500, 'error' => $e->getMessage()];
         }
     }
 

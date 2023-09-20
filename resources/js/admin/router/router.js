@@ -4,8 +4,6 @@ import {createRouter, createWebHistory} from "vue-router";
 
 import login from "../components/auth/login.vue";
 
-import registration from "../components/auth/registration.vue";
-
 import forget from "../components/auth/forget.vue";
 
 // layout ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -51,8 +49,6 @@ const routes = [
     // authentication
 
     {path: ROOT_URL + '/auth/login', name: 'login', component: login, meta: {title: 'login'}},
-
-    {path: ROOT_URL + '/auth/registration', name: 'registration', component: registration, meta: {title: 'registration'}},
 
     {path: ROOT_URL + '/auth/forget', name: 'forget', component: forget, meta: {title: 'forget'}},
 

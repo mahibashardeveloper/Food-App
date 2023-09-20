@@ -5,7 +5,7 @@
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-end">
 
             <!-- add modal controller start -->
-            <a href="javascript:void(0)" class="btn btn-theme create my-2" @click="manageModal(1, null)" :class="tableData.length === 4 && 'd-none'">
+            <a href="javascript:void(0)" class="btn btn-theme create my-2" @click="manageModal(1, null)">
                 <i class="bi bi-plus-lg me-2"></i> Add
             </a>
             <!-- add modal controller end -->
@@ -13,65 +13,67 @@
         </div>
     </div>
 
-    <!-- page loading start -->
-    <div v-if="loading === true">
-        <h6 class="card-text placeholder-glow">
+    <div class="slider-card-body mt-3">
+
+        <!-- page loading start -->
+        <div v-if="loading === true">
+            <h6 class="card-text placeholder-glow">
             <span class="p-2">
                 <span class="placeholder col-12 py-3 mb-3"></span>
             </span>
-            <span class="p-2">
+                <span class="p-2">
                 <span class="placeholder col-10 py-3 mb-3"></span>
             </span>
-            <span class="p-2">
+                <span class="p-2">
                 <span class="placeholder col-7 py-3 mb-3"></span>
             </span>
-        </h6>
-    </div>
-    <!-- page loading end -->
-
-    <!-- no data start -->
-    <div class="slider-page-no-data-found" v-if="tableData.length === 0 && loading === false">
-        <div class="text-center">
-            <div class="mb-3">
-                <i class="bi bi-exclamation-circle fs-1"></i>
-            </div>
-            <div class="mb-3">There are no data founded.</div>
-            <span>Click “Add” to create new data.</span>
+            </h6>
         </div>
-    </div>
-    <!-- no data end -->
+        <!-- page loading end -->
 
-    <!-- data list start -->
-    <div class="container-fluid" v-if="tableData.length > 0 && loading === false">
+        <!-- no data start -->
+        <div class="slider-page-no-data-found" v-if="tableData.length === 0 && loading === false">
+            <div class="text-center">
+                <div class="mb-3">
+                    <i class="bi bi-exclamation-circle fs-1"></i>
+                </div>
+                <div class="mb-3">There are no data founded.</div>
+                <span>Click “Add” to create new data.</span>
+            </div>
+        </div>
+        <!-- no data end -->
 
-        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
+        <!-- data list start -->
+        <div class="container-fluid" v-if="tableData.length > 0 && loading === false">
 
-            <div class="p-2" v-for="(each) in tableData">
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
+
+                <div class="p-2" v-for="(each) in tableData">
 
                 <span v-if="each.avatar === null">
                     No Data
                 </span>
 
-                <span class="w-100 h-100" v-if="each.avatar !== null">
-                    <div class="bg-white p-3">
-                        <img class="img-fluid slider mb-3" :src="'/storage/media/image/'+each.avatar" alt="slider image">
-                        <div class="row justify-content-between align-items-center px-3">
-                            <button type="button" class="col-5 btn rounded-0 btn-secondary" @click="manageModal(1, each.id)">
-                                Edit
-                            </button>
-                            <button type="button" class="col-5 btn rounded-0 btn-danger" @click="deleteModal(1, each.id)">
-                                Delete
-                            </button>
-                        </div>
+                <div class="w-100 h-100" v-if="each.avatar !== null">
+                    <img class="img-fluid slider mb-3" :src="'/storage/media/image/'+each.avatar" alt="slider image">
+                    <div class="row justify-content-between align-items-center px-3">
+                        <button type="button" class="col-5 btn rounded-0 btn-secondary" @click="manageModal(1, each.id)">
+                            Edit
+                        </button>
+                        <button type="button" class="col-5 btn rounded-0 btn-danger" @click="deleteModal(1, each.id)">
+                            Delete
+                        </button>
                     </div>
-                </span>
+                </div>
+
+                </div>
 
             </div>
 
         </div>
+        <!-- data list end -->
 
     </div>
-    <!-- data list end -->
 
     <!-- manage modal start -->
     <div class="modal fade" id="manageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

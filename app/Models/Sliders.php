@@ -41,8 +41,9 @@ class Sliders extends Authenticatable
 
     ];
 
-    public function media(){
-        return  $this->hasOne(Media::class, 'id', 'avatar');
+    public function media()
+    {
+        return $this->hasOne(Media::class, 'id', 'avatar');
     }
 
 }

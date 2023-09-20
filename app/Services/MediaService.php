@@ -52,4 +52,26 @@ class MediaService
             return ['status' => 500, 'error' => $e->getMessage()];
         }
     }
+
+    public static function delete($request)
+    {
+        try {
+            // Get the media items by their IDs
+            $mediaItems = Media::whereIn('id', $request->ids)->get();
+
+            // Loop through each media item and delete its associated file
+            foreach ($mediaItems as $mediaItem) {
+                // Delete the associated file from storage if it exists
+                if (Storage::disk('public')->exists($mediaItem->file_path)) {
+                    Storage::disk('public')->delete($mediaItem->file_path);
+                }
+                // Delete the media item from the database
+                $mediaItem->delete();
+            }
+
+            return ['status' => 200, 'msg' => 'Data and associated media files have been deleted successfully'];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
 }

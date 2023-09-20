@@ -27,7 +27,6 @@ Route::middleware('CustomerLoginCheck')->get('/front/auth/{any}', [CustomerContr
 Route::middleware('CustomerLoginCheck')->get('/front/profile', [CustomerController::class, 'index'])->name('lvs.front.profile');
 Route::middleware('CustomerLoginCheck')->get('/front/my_account', [CustomerController::class, 'index'])->name('lvs.front.my_account');
 Route::middleware('CustomerLoginCheck')->get('/front/order_history', [CustomerController::class, 'index'])->name('lvs.front.order_history');
-Route::middleware('CustomerLoginCheck')->get('/front/wishlist', [CustomerController::class, 'index'])->name('lvs.front.wishlist');
 Route::middleware('CustomerLoginCheck')->get('/front/newsletter', [CustomerController::class, 'index'])->name('lvs.front.newsletter');
 Route::get('/front/profile/', function (){ return redirect()->route('lvs.front.any','my_account'); });
 Route::get('/front/{any}', [CustomerController::class, 'index'])->where('any', '.*')->name('lvs.front.any');

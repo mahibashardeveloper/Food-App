@@ -30,7 +30,7 @@
                                 <i class="bi bi-recycle fs-1 text-teal"></i>
                             </div>
                             <div class="fw-bold">
-                                Free Delivery
+                                Easy Return
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                                 <i class="bi bi-box-seam fs-1 text-teal"></i>
                             </div>
                             <div class="fw-bold">
-                                Easy Return
+                                Free Delivery
                             </div>
                         </div>
                     </div>
@@ -60,9 +60,9 @@
 
         <div class="w-100">
             <div class="container py-5">
-                <div class="h3 fw-bold">Featured Categories</div>
+                <div class="h3 fw-bold pb-3">Featured Categories</div>
                 <div class="owl-carousel owl-theme category-item">
-                    <div class="item" v-for="(category) in displayedCategories" :key="category.id">
+                    <div v-for="(category) in displayedCategories" :key="category.id">
                         <div class="text-center p-3 border">
                             <div class="overflow-hidden">
                                 <div class="pt-3">
@@ -79,7 +79,7 @@
 
         <div class="w-100">
             <div class="container py-5">
-                <div class="h3 fw-bold">Popular Products</div>
+                <div class="h3 fw-bold pb-3">Popular Products</div>
                 <div class="owl-carousel owl-theme product-item">
                     <div v-for="(product) in getProductsInRange(1, 10)" :key="product.id">
                         <div class="text-start p-3 border">
@@ -105,11 +105,11 @@
 
         <div class="w-100">
             <div class="container py-5">
-                <div class="h3 fw-bold">Daily Best Sells</div>
+                <div class="h3 fw-bold pb-3">Daily Best Sells</div>
                 <div class="owl-carousel owl-theme product-item">
                     <div v-for="(product) in getProductsInRange(11, 20)" :key="product.id">
-                        <div class="text-start p-3">
-                            <div class="border rounded-2 overflow-hidden product">
+                        <div class="text-start p-3 border">
+                            <div class="overflow-hidden product">
                                 <div class="mb-3 overflow-hidden">
                                     <img :src="'/storage/media/image/' + product.avatar" class="img-fluid product-image-hover" alt="product-1">
                                 </div>
@@ -286,7 +286,7 @@ import apiRoutes from "../../services/apiRoutes";
                     if(res.status === 200) {
                         this.categories = res.data.data;
                         setTimeout(() => {
-                            $('.category-item').owlCarousel( { loop:true, margin:10, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:4 }, 1000:{ items:6 } } } )
+                            $('.category-item').owlCarousel( { loop:true, margin:0, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:4 }, 1000:{ items:6 } } } )
                         }, 200)
                     }
                 })
@@ -299,7 +299,7 @@ import apiRoutes from "../../services/apiRoutes";
                     if(res.status === 200) {
                         this.products = res.data.data;
                         setTimeout(() => {
-                            $('.product-item').owlCarousel( { loop:true, margin:0, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:3 }, 1000:{ items:5 } } } )
+                            $('.product-item').owlCarousel( { loop:true, margin:0, nav:false, autoplay:false, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:3 }, 1000:{ items:5 } } } )
                         }, 200)
                     }
                 })
