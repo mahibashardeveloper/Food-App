@@ -43,12 +43,12 @@ class GenerateAdmin extends Command
             'first_name' => 'Mahi Bashar',
             'last_name' => 'Akash',
             'phone_number' => '01645820007',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('12345678'),
+            'email' => 'mahibashar2023@gmail.com',
+            'password' => bcrypt('123123'),
         );
         Admins::insert([$admin]);
         print_r(PHP_EOL.PHP_EOL);
         print_r("Admin Email : ".$admin['email'].PHP_EOL);
-        print_r("Admin password : 12345678".PHP_EOL.PHP_EOL);
+        print_r("Admin password : 123123".PHP_EOL.PHP_EOL);
     }
 }

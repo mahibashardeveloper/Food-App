@@ -12,6 +12,10 @@ import home from "../components/home/home.vue";
 
 import cart from "../components/cart/cart.vue";
 
+// shop
+
+import shop from "../components/shop/shop.vue";
+
 // login ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 import login from "../components/auth/login.vue";
@@ -61,6 +65,10 @@ const routes = [
             // cart
 
             {path: ROOT_URL + '/cart', name: 'cart', component: cart, meta: {title: 'cart'} },
+
+            //shop
+
+            {path: ROOT_URL + '/shop', name: 'shop', component: shop, meta: {title: 'shop'}},
 
             // login
 

@@ -18,6 +18,9 @@
             <router-link :to="{name:'home'}" class="menu-link" active-class="active" @click="remove">
                 <i class="bi bi-house-door me-2"></i> Home
             </router-link>
+            <router-link :to="{name:'shop'}" class="menu-link" active-class="active" @click="remove">
+                <i class="bi bi-house-door me-2"></i> Shop
+            </router-link>
             <a href="javascript:void(0)" class="menu-link" @click="cartInfo">
                 <i class="bi bi-cart me-2"></i> Cart <span class="badge bg-dark p-2 ms-2"> {{ products.length }} </span>
             </a>
@@ -73,7 +76,7 @@
                                 Gross SubTotal
                             </div>
                             <div class="badge d-block ps-0 mt-2 text-dark">
-                                COD Charge $25
+                                COD Charge $50
                             </div>
                         </span>
                         <span class="cart-amount">
@@ -81,7 +84,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="javascript:void(0)" class="btn-checkout" @click="checkout">
+                <a href="javascript:void(0)" class="btn-checkout" @click="checkout" v-if="products.length > 1">
                     Checkout
                 </a>
             </div>
@@ -96,7 +99,14 @@
                     </div>
                     <div class="modal-body">
                         <div class="py-5 text-center fw-bold">
-                            Please login first. <br> After you can checkout your product.
+                            <div class="mb-4">
+                                Please login first. <br>
+                                After you can checkout your product. <br>
+                                Into your customer portal
+                            </div>
+                            <router-link :to="{name: 'login'}" class="btn btn-theme" @click="closeCheckoutModal">
+                                Sign In
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -112,7 +122,6 @@
     import apiRoutes from "../../../services/apiRoutes.js";
 
     import store from "../../../store/index";
-
     export default {
 
         data(){
@@ -130,6 +139,8 @@
                 profile_data: null,
 
                 profileDataLoading: false,
+
+                deliveryValue: 1,
 
                 core:window.core
 
