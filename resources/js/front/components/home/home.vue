@@ -91,7 +91,7 @@
                                     {{product.name}}
                                 </div>
                                 <div class="text-secondary pb-3 pt-2 ps-3">
-                                    {{product.price}} tk
+                                    ${{product.price}}
                                 </div>
                                 <a class="btn btn-theme cart-position" @click="addToCart(product)">
                                     <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
@@ -191,7 +191,7 @@
                                     {{product.name}}
                                 </div>
                                 <div class="text-secondary pb-3 pt-2 ps-3">
-                                    {{product.price}} tk
+                                    ${{product.price}}
                                 </div>
                                 <a class="btn btn-theme cart-position" @click="addToCart(product)">
                                     <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
