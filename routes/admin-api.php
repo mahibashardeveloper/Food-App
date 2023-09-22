@@ -45,7 +45,9 @@ Route::group(
     }
 );
 
-/* ------------------------- slider Controller --------------------------- */
+/* -------------------------
+slider Controller
+--------------------------- */
 
 Route::prefix('slider')->group( function () {
     Route::post('/create', [SliderController::class, 'create'])->name('Slider.Create');
@@ -55,7 +57,9 @@ Route::prefix('slider')->group( function () {
     Route::post('/delete', [SliderController::class, 'delete'])->name('Slider.Delete');
 });
 
-/* ------------------------- Category Controller --------------------------- */
+/* -------------------------
+Category Controller
+--------------------------- */
 
 Route::prefix('category')->group( function () {
     Route::post('/create', [CategoryController::class, 'create'])->name('Category.Create');
@@ -65,7 +69,9 @@ Route::prefix('category')->group( function () {
     Route::post('/delete', [CategoryController::class, 'delete'])->name('Category.Delete');
 });
 
-/* ------------------------- Product Controller --------------------------- */
+/* -------------------------
+Product Controller
+--------------------------- */
 
 Route::prefix('product')->group( function () {
     Route::post('/create', [ProductController::class, 'create'])->name('Product.Create');
@@ -75,7 +81,9 @@ Route::prefix('product')->group( function () {
     Route::post('/delete', [ProductController::class, 'delete'])->name('Product.Delete');
 });
 
-/* ------------------------- Order Controller --------------------------- */
+/* -------------------------
+Order Controller
+--------------------------- */
 
 Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'order'],
@@ -85,7 +93,9 @@ Route::group(
     }
 );
 
-/* ------------------------- Customer Controller --------------------------- */
+/* -------------------------
+Customer Controller
+--------------------------- */
 
 Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'customer'],
@@ -94,7 +104,9 @@ Route::group(
     }
 );
 
-///* ------------------------- Media Controller --------------------------- *///
+/* -------------------------
+Media Controller
+--------------------------- */
 
 Route::prefix('media')->group( function () {
     Route::post('/upload', [MediaController::class, 'upload'])->name('Admin.Media.Upload');
