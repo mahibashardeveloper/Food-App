@@ -103,11 +103,6 @@
 
     }
 
-    &.header-scrolled {
-        box-shadow: 0 0 8px 6px $gray;
-        transition: 0.3s all ease-in-out;
-    }
-
     .cart-right-box{
         position: fixed;
         right: -300px;

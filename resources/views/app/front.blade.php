@@ -17,9 +17,9 @@
 <script>
     window.core = {
         @if(\Illuminate\Support\Facades\Auth::guard('customers')->check())
-        UserInfo: {!! \Illuminate\Support\Facades\Auth::guard('customers')->user() !!},
+            UserInfo: {!! \Illuminate\Support\Facades\Auth::guard('customers')->user() !!},
         @else
-        UserInfo: null
+            UserInfo: null
         @endif
     }
 </script>

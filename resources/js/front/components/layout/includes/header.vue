@@ -4,7 +4,7 @@
         <img :src="'/images/loading.gif'" class="img-fluid" alt="">
     </div>
 
-    <div class="front-header bg-light fixed-top" :class="{ 'header-scrolled': isHeaderScrolled }">
+    <div class="front-header bg-light fixed-top">
         <router-link :to="{name:'home'}" class="company_name" @click="remove">
             Food Store
         </router-link>
