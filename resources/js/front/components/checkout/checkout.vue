@@ -75,8 +75,8 @@
                         </a>
                     </div>
                 </span>
-                <span v-if="profile_data === null">
-                    <router-link :to="{name:'login'}" class="d-block text-decoration-none text-success p-3 border">
+                <span v-if="profile_data === null" class="d-block p-3 border">
+                    <router-link :to="{name: 'login'}" class="d-inline-block text-decoration-none text-success">
                         <i class="bi bi-box-arrow-right me-2"></i> Sign In First
                     </router-link>
                 </span>
