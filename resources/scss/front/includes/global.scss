@@ -1,4 +1,4 @@
-.btn-theme{
+.btn-theme {
     padding: 5px 15px;
     display: inline-block;
     text-decoration: none;
@@ -7,21 +7,19 @@
     outline: none;
 }
 
-.text-teal{
+.text-teal {
     color: $teal;
 }
 
-.pagination{
-
-    .page-item{
-
-        &.active .page-link{
+.pagination {
+    .page-item {
+        &.active .page-link {
             background-color: $black;
             color: $white;
             border: 1px solid $black;
         }
 
-        .page-link{
+        .page-link {
             width: 35px;
             height: 35px;
             display: flex;
@@ -33,16 +31,12 @@
             box-shadow: 0 0 0 0;
             font-weight: bold;
             border-radius: 6px;
-
             @media screen and (max-width: 600px) {
                 width: 30px;
                 height: 30px;
                 font-size: 12px;
                 margin: 0 2px;
             }
-
         }
-
     }
-
 }
