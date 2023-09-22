@@ -72,41 +72,16 @@
                             <div class="mb-1">
                                 Gross SubTotal
                             </div>
-                            <div class="badge d-block ps-0 mt-2 text-dark">
-                                COD Charge $50
-                            </div>
                         </span>
                         <span class="cart-amount">
                             ${{subTotal}}
                         </span>
                     </div>
                 </div>
-                <a href="javascript:void(0)" class="btn-checkout" @click="checkout" v-if="products.length > 1">
+                <router-link :to="{name: 'checkout'}" class="btn-checkout" @click="remove">
                     Checkout
-                </a>
+                </router-link>
             </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="manageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" v-if="!core.UserInfo">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content p-3">
-                    <div class="modal-header border-bottom-0">
-                        <button type="button" class="btn-close shadow-none" @click="closeCheckoutModal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="py-5 text-center fw-bold">
-                            <div class="mb-4">
-                                Please login first. <br>
-                                After you can checkout your product. <br>
-                                Into your customer portal
-                            </div>
-                            <router-link :to="{name: 'login'}" class="btn btn-theme" @click="closeCheckoutModal">
-                                Sign In
-                            </router-link>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -119,6 +94,7 @@
     import apiRoutes from "../../../services/apiRoutes.js";
 
     import store from "../../../store/index";
+
     export default {
 
         data(){
@@ -137,8 +113,6 @@
 
                 profileDataLoading: false,
 
-                deliveryValue: 1,
-
                 core:window.core
 
             }
@@ -154,7 +128,7 @@
 
             subTotal: function () {
                 const total = this.products.reduce( (prev, current) => (current.price * current.quantity) + prev, 0)
-                return total + 25;
+                return total;
             }
 
         },
@@ -179,47 +153,6 @@
         },
 
         methods: {
-
-            openCheckoutModal(){
-                const myModal = new bootstrap.Modal("#manageModal", {keyboard: false});
-                myModal.show();
-            },
-
-            closeCheckoutModal(){
-                const myModal = document.querySelector("#manageModal");
-                const modal = bootstrap.Modal.getInstance(myModal);
-                modal.hide();
-            },
-
-            checkout() {
-                if (this.core.UserInfo != null) {
-                    const orderItems = [];
-                    this.products.forEach(cartItem => {
-                        const orderItem = {
-                            name: cartItem.name,
-                            price: cartItem.price,
-                            quantity: cartItem.quantity,
-                        };
-                        orderItems.push(orderItem);
-                    });
-                    const formData = new FormData();
-                    orderItems.forEach((orderItem, index) => {
-                        for (const key in orderItem) {
-                            formData.append(`orderItems[${index}][${key}]`, orderItem[key]);
-                        }
-                    });
-                    apiService.POST(apiRoutes.OrderCreate, { orderItems }, (res) => {
-                        if (res.status === 200) {
-                            store.dispatch('clearCart');
-                        } else {
-                            const errorMessageElement = document.getElementById('error-message');
-                            errorMessageElement.innerHTML = 'Error: Failed to create the order.';
-                        }
-                    });
-                } else {
-                    this.openCheckoutModal();
-                }
-            },
 
             getCartItems(){
                 store.dispatch('getCartItems')

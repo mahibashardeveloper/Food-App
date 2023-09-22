@@ -106,6 +106,7 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3">
+
                     <div class="p-1">
                         <div class="p-3">
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Recently Added </div>
@@ -117,10 +118,7 @@
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="text-success"> ${{product.price}} </div>
-                                            <del class="text-secondary ms-2"> ${{product.price * 1.5}} </del>
-                                        </div>
+                                        <div class="text-success"> ${{product.price}} </div>
                                         <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
                                             Add To Cart
                                         </a>
@@ -130,6 +128,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="p-1">
                         <div class="p-3">
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Trending Products </div>
@@ -141,10 +140,7 @@
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="text-success"> ${{product.price}} </div>
-                                            <del class="text-secondary ms-2"> ${{product.price * 1.5}} </del>
-                                        </div>
+                                        <div class="text-success"> ${{product.price}} </div>
                                         <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
                                             Add To Cart
                                         </a>
@@ -154,6 +150,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="p-1">
                         <div class="p-3">
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Top Rated </div>
@@ -165,10 +162,7 @@
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="text-success"> ${{product.price}} </div>
-                                            <del class="text-secondary ms-2"> ${{product.price * 1.5}} </del>
-                                        </div>
+                                        <div class="text-success"> ${{product.price}} </div>
                                         <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
                                             Add To Cart
                                         </a>
@@ -178,6 +172,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -211,6 +206,7 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3">
+
                     <div class="p-1">
                         <div class="p-3">
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Arrivals </div>
@@ -235,6 +231,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="p-1">
                         <div class="p-3">
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Products </div>
@@ -259,6 +256,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="p-1">
                         <div class="p-3">
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Recommended Products </div>
@@ -283,6 +281,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
