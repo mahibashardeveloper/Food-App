@@ -11,8 +11,7 @@
 <body>
 <div class="text-center">.
     <div>Hello, <strong>{{$userInfo->name}}</strong></div>
-    <h5></h5>
-    Your Reset code is:
+    <h5>Your Reset code is:</h5>
     <h1>{{$userInfo->reset_code}}</h1>
 </div>
 </body>
