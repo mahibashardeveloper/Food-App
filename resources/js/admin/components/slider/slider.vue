@@ -57,10 +57,10 @@
                 <div class="w-100 h-100" v-if="each.avatar !== null">
                     <img class="img-fluid slider mb-3 rounded-5 overflow-hidden" :src="'/storage/media/image/'+each.avatar" alt="slider image">
                     <div class="row justify-content-between align-items-center px-3">
-                        <button type="button" class="col-5 btn rounded-0 btn-secondary" @click="manageModal(1, each.id)">
+                        <button type="button" class="col-5 btn rounded-4 btn-secondary" @click="manageModal(1, each.id)">
                             Edit
                         </button>
-                        <button type="button" class="col-5 btn rounded-0 btn-danger" @click="deleteModal(1, each.id)">
+                        <button type="button" class="col-5 btn rounded-4 btn-danger" @click="deleteModal(1, each.id)">
                             Delete
                         </button>
                     </div>
