@@ -105,32 +105,6 @@
 
         <div class="w-100">
             <div class="container py-5">
-                <div class="h3 fw-bold pb-3">Daily Best Sells</div>
-                <div class="owl-carousel owl-theme product-item">
-                    <div v-for="(product) in getProductsInRange(11, 20)" :key="product.id">
-                        <div class="text-start p-3 border">
-                            <div class="overflow-hidden product">
-                                <div class="mb-3 overflow-hidden">
-                                    <img :src="'/storage/media/image/' + product.avatar" class="img-fluid product-image-hover" alt="product-1">
-                                </div>
-                                <div class="fw-bold ps-3">
-                                    {{product.name}}
-                                </div>
-                                <div class="text-secondary pb-3 pt-2 ps-3">
-                                    {{product.price}} tk
-                                </div>
-                                <a class="btn btn-theme cart-position" @click="addToCart(product)">
-                                    <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="w-100">
-            <div class="container py-5">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3">
                     <div class="p-1">
                         <div class="p-3">
@@ -208,6 +182,111 @@
             </div>
         </div>
 
+        <div class="w-100">
+            <div class="container py-5">
+                <div class="h3 fw-bold pb-3">Best Selling Products</div>
+                <div class="owl-carousel owl-theme product-item">
+                    <div v-for="(product) in getProductsInRange(11, 20)" :key="product.id">
+                        <div class="text-start p-3 border">
+                            <div class="overflow-hidden product">
+                                <div class="mb-3 overflow-hidden">
+                                    <img :src="'/storage/media/image/' + product.avatar" class="img-fluid product-image-hover" alt="product-1">
+                                </div>
+                                <div class="fw-bold ps-3">
+                                    {{product.name}}
+                                </div>
+                                <div class="text-secondary pb-3 pt-2 ps-3">
+                                    {{product.price}} tk
+                                </div>
+                                <a class="btn btn-theme cart-position" @click="addToCart(product)">
+                                    <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-100">
+            <div class="container py-5">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3">
+                    <div class="p-1">
+                        <div class="p-3">
+                            <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Arrivals </div>
+                            <div class="p-2">
+
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(1, 5)" :key="product.id">
+                                    <div class="col-4 h-100">
+                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="col-8 p-2">
+                                        <div class="h6"> {{product.name}} </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="text-success"> ${{product.price}} </div>
+                                            <del class="text-secondary ms-2"> ${{product.price * 1.5}} </del>
+                                        </div>
+                                        <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
+                                            Add To Cart
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-1">
+                        <div class="p-3">
+                            <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Products </div>
+                            <div class="p-2">
+
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(6, 10)" :key="product.id">
+                                    <div class="col-4 h-100">
+                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="col-8 p-2">
+                                        <div class="h6"> {{product.name}} </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="text-success"> ${{product.price}} </div>
+                                            <del class="text-secondary ms-2"> ${{product.price * 1.5}} </del>
+                                        </div>
+                                        <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
+                                            Add To Cart
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-1">
+                        <div class="p-3">
+                            <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Recommended Products </div>
+                            <div class="p-2">
+
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(11, 15)" :key="product.id">
+                                    <div class="col-4 h-100">
+                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="col-8 p-2">
+                                        <div class="h6"> {{product.name}} </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="text-success"> ${{product.price}} </div>
+                                            <del class="text-secondary ms-2"> ${{product.price * 1.5}} </del>
+                                        </div>
+                                        <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
+                                            Add To Cart
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </template>
@@ -227,6 +306,12 @@ import apiRoutes from "../../services/apiRoutes";
             },
 
             getProductsInRange() {
+                return (startId, endId) => {
+                    return this.products.filter(product => product.id >= startId && product.id <= endId);
+                };
+            },
+
+            getProductsReversRand() {
                 return (startId, endId) => {
                     return this.products.filter(product => product.id >= startId && product.id <= endId);
                 };

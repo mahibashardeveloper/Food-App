@@ -164,7 +164,7 @@ export default {
 
             tableData: [],
 
-            formData: { limit: 5, page: 1 },
+            formData: { limit: 8, page: 1 },
 
             total_pages: 0,
 

@@ -75,8 +75,8 @@
             <div class="row align-middle align-items-center border-bottom body-section" v-for="(each) in tableData">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     <div class="marge">Customer Name</div>
-                    {{each.customer_info.full_name}}
-                </div>
+                        {{each.customer_info.full_name}}
+                    </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     <div class="marge">Product Name</div>
                     {{each.name}}
@@ -188,7 +188,7 @@
 
                 tableData: [],
 
-                formData: { limit: 5, page: 1 },
+                formData: { limit: 10, page: 1 },
 
                 total_pages: 0,
 

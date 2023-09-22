@@ -4,7 +4,7 @@
         <img :src="'/images/loading.gif'" class="img-fluid" alt="">
     </div>
 
-    <div class="front-header fixed-top" :class="{ 'header-scrolled': isHeaderScrolled }">
+    <div class="front-header bg-light fixed-top" :class="{ 'header-scrolled': isHeaderScrolled }">
         <router-link :to="{name:'home'}" class="company_name" @click="remove">
             Food Store
         </router-link>
@@ -17,9 +17,6 @@
             </a>
             <router-link :to="{name:'home'}" class="menu-link" active-class="active" @click="remove">
                 <i class="bi bi-house-door me-2"></i> Home
-            </router-link>
-            <router-link :to="{name:'shop'}" class="menu-link" active-class="active" @click="remove">
-                <i class="bi bi-house-door me-2"></i> Shop
             </router-link>
             <a href="javascript:void(0)" class="menu-link" @click="cartInfo">
                 <i class="bi bi-cart me-2"></i> Cart <span class="badge bg-dark p-2 ms-2"> {{ products.length }} </span>

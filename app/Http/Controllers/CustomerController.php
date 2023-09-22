@@ -62,4 +62,10 @@ class CustomerController extends BaseController
         return response()->json($rv, 200);
     }
 
+    public function customer_single(Request $request)
+    {
+        $rv = CustomerAuthService::customer_single($request);
+        return response()->json($rv, 200);
+    }
+
 }

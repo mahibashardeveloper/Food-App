@@ -90,7 +90,7 @@ Route::group(
 Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'customer'],
     function () {
-        Route::post('/list', [CustomerController::class, 'customer_list'])->name('Customer_list.List');
+        Route::post('/list', [CustomerController::class, 'customer_list'])->name('Customer_List.List');
     }
 );
 
