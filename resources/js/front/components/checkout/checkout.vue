@@ -2,21 +2,21 @@
 
     <div class="container cart">
         <div class="row">
-            <div class="col-md-8 p-3">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 p-3">
                 <div class="border px-4">
                     <div class="row border-bottom fw-bold">
-                        <div class="col-md-3 p-3"> Name </div>
-                        <div class="col-md-3 p-3"> Price </div>
-                        <div class="col-md-3 p-3"> Quantity </div>
-                        <div class="col-md-3 p-3"> SubTotal </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 p-3"> Name </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 p-3"> Price </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 p-3"> Quantity </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 p-3"> SubTotal </div>
                     </div>
                     <div class="row border-bottom" v-for="(cartItem, index) in products" :key="index">
-                        <div class="col-md-3 p-3"> {{cartItem.name}} </div>
-                        <div class="col-md-3 p-3"> {{cartItem.price}} </div>
-                        <div class="col-md-3 p-3"> {{cartItem.quantity}} </div>
-                        <div class="col-md-3 p-3"> ${{ cartItem.price * cartItem.quantity }} </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 p-3"> {{cartItem.name}} </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 p-3"> {{cartItem.price}} </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 p-3"> {{cartItem.quantity}} </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 p-3"> ${{ cartItem.price * cartItem.quantity }} </div>
                     </div>
-                    <div class="row" v-if="products.length > 1">
+                    <div class="row fw-bold" v-if="products.length > 1">
                         <div class="col-md-9 p-3">
                             Gross SubTotal:
                         </div>
@@ -29,17 +29,17 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 p-3">
-                <div class="border px-4">
-                    <div class="row border-bottom fw-bold">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 p-3">
+                <div class="border px-2 overflow-hidden border-dark-subtle mb-5">
+                    <div class="row border-bottom fw-bold border-dark-subtle">
                         <div class="col-6 p-3">Description</div>
                         <div class="col-6 p-3 text-end">Amount</div>
                     </div>
-                    <div class="row border-bottom">
+                    <div class="row border-bottom border-dark-subtle">
                         <div class="col-6 p-3">Gross SubTotal</div>
                         <div class="col-6 p-3 text-end">${{subTotal}}</div>
                     </div>
-                    <div class="row border-bottom">
+                    <div class="row border-bottom border-dark-subtle">
                         <div class="col-6 p-3">Delivery Charge</div>
                         <div class="col-6 p-3">
                             <select class="p-0 form-select border-0 shadow-none rounded-0" v-model="SelectOption">
@@ -48,31 +48,33 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row fw-bold">
                         <div class="col-6 p-3">Total Amount</div>
-                        <div class="col-6 p-3">${{totalAmount}}</div>
+                        <div class="col-6 p-3 text-end">${{totalAmount}}</div>
                     </div>
                 </div>
                 <span v-if="profile_data !== null">
-                    <div class="p-3 border">
-                        Name: {{profile_data.full_name}}
-                    </div>
-                    <div class="p-3 border">
-                        Phone Number: {{profile_data.phone_number}}
-                    </div>
-                    <div class="p-3 border">
-                        Address: <br> {{profile_data.address}}
-                    </div>
-                    <div class="p-3 border text-end">
-                        <router-link :to="{name:'home'}" class="d-inline-block text-decoration-none text-secondary" v-if="products.length === 0">
-                            Shopping Continue
-                        </router-link>
-                        <a href="javascript:void(0)" class="d-inline-block text-decoration-none text-success" v-if="products.length > 1 && submitLoading === false" @click="checkout">
-                            <i class="bi bi-arrow-right me-2"></i> Confirm Order
-                        </a>
-                        <a href="javascript:void(0)" class="d-inline-block text-decoration-none text-success" v-if="submitLoading === true">
-                            Order Submitted SuccessFully
-                        </a>
+                    <div class="border border-dark-subtle">
+                        <div class="p-3 border-bottom border-dark-subtle">
+                            Name: {{profile_data.full_name}}
+                        </div>
+                        <div class="p-3 border-bottom border-dark-subtle">
+                            Phone Number: {{profile_data.phone_number}}
+                        </div>
+                        <div class="p-3 border-bottom border-dark-subtle">
+                            Address: {{profile_data.address}}
+                        </div>
+                        <div class="p-3 text-end fw-bold">
+                            <router-link :to="{name:'home'}" class="d-inline-block text-decoration-none text-secondary" v-if="products.length === 0">
+                                Shopping Continue
+                            </router-link>
+                            <a href="javascript:void(0)" class="d-inline-block text-decoration-none text-success" v-if="products.length >= 1 && submitLoading === false" @click="checkout">
+                                <i class="bi bi-arrow-right me-2"></i> Confirm Order
+                            </a>
+                            <a href="javascript:void(0)" class="d-inline-block text-decoration-none text-success" v-if="submitLoading === true">
+                                Order Submitted SuccessFully
+                            </a>
+                        </div>
                     </div>
                 </span>
                 <span v-if="profile_data === null" class="d-block p-3 border">

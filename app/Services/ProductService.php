@@ -19,6 +19,9 @@ class ProductService
                 $results->where(function ($q) use ($keyword) {
                     $q->where('name', 'LIKE', '%' . $keyword . '%');
                     $q->orWhere('price', 'LIKE', '%' . $keyword . '%');
+                    $q->orWhereHas('category_info', function ($q) use ($keyword) {
+                        $q->where('name', 'LIKE', '%' . $keyword . '%');
+                    });
                 });
             }
             $paginatedData = $results->paginate($limit);

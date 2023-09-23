@@ -11,38 +11,6 @@ use Illuminate\Support\Facades\Validator;
 class AdminAuthService
 {
 
-    // register
-    public static function register($request)
-    {
-        try {
-            $validator = Validator::make(
-                $request->all(),
-                [
-                    'company_name' => 'required',
-                    'first_name' => 'required|unique:admins,first_name',
-                    'last_name' => 'required|unique:admins,last_name',
-                    'email' => 'required|unique:admins,email',
-                    'phone_number' => 'required|unique:admins,phone_number',
-                    'password' => 'required|min:6|confirmed',
-                ]
-            );
-            if ($validator->fails()) {
-                return ['status' => 500, 'errors' => $validator->errors()];
-            }
-            $user = new Admins();
-            $user->company_name = $request->company_name;
-            $user->first_name = $request->first_name;
-            $user->last_name = $request->last_name;
-            $user->email = $request->email;
-            $user->phone_number = $request->phone_number;
-            $user->password = bcrypt($request->password);
-            $user->save();
-            return ['status' => 200, 'msg' => 'Registration Complete.'];
-        } catch (\Exception $e) {
-            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
-        }
-    }
-
     // login
     public static function Login($request)
     {
@@ -64,8 +32,7 @@ class AdminAuthService
                     'email' => $input['email'],
                     'password' => $input['password']
                 ];
-                $remember = isset($input['remember']) && $input['remember'] == 1 ? true : false;
-                if (Auth::guard('admins')->attempt($credential, $remember)) {
+                if (Auth::guard('admins')->attempt($credential)) {
                     return ['status' => 200, 'msg' => 'Login Successful!'];
                 } else {
                     return ['status' => 500, 'error' => ['email' => 'Invalid credentials! Please try again.']];
