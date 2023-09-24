@@ -45,6 +45,14 @@ Route::group(
     }
 );
 
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'settings'],
+    function () {
+        Route::get('/details', [AdminController::class, 'settings_details'])->name('Admin.Settings.Details');
+        Route::post('/update', [AdminController::class, 'settings_update'])->name('Admin.Settings.Update');
+    }
+);
+
 /* -------------------------
 slider Controller
 --------------------------- */

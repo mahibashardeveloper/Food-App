@@ -61,4 +61,16 @@ class AdminController extends BaseController
         return response()->json($rv, 200);
     }
 
+    public function settings_details(Request $request)
+    {
+        $rv = AdminAuthService::settings_details($request);
+        return response()->json($rv, 200);
+    }
+
+    public function settings_update(Request $request)
+    {
+        $rv = AdminAuthService::settings_update($request);
+        return response()->json($rv, 200);
+    }
+
 }

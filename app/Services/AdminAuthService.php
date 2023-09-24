@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Admins;
+use App\Models\Settings;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -178,4 +179,47 @@ class AdminAuthService
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
     }
+
+    // settings details
+    public static function settings_details($request)
+    {
+        try {
+            $user_id = Auth::guard('admins')->id();
+            $user = Settings::where('id', $user_id)->first();
+            return ['status' => 200, 'data' => $user];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+    // settings update
+    public static function settings_update($request)
+    {
+        try {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'facebook' => 'required',
+                    'twitter' => 'required',
+                    'instagram' => 'required',
+                    'linkedin' => 'required',
+                    'youtube' => 'required',
+                ]
+            );
+            if ($validator->fails()) {
+                return ['status' => 500, 'errors' => $validator->errors()];
+            }
+            $user = Settings::where('id', Auth::guard('admins')->id())->first();
+            $user->facebook = $request->facebook;
+            $user->twitter = $request->twitter;
+            $user->instagram = $request->instagram;
+            $user->linkedin = $request->linkedin;
+            $user->youtube = $request->youtube;
+            $user->save();
+            return ['status' => 200,];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
 }

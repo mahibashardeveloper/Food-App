@@ -58,6 +58,12 @@ const apiRoutes = {
 
     logout: apiVersion + '/profile/logout',
 
+    // settings
+
+    settings_details: apiVersion + '/settings/details',
+
+    settings_update: apiVersion + '/settings/update',
+
     // customer
 
     customerList: apiVersion + '/customer/list',

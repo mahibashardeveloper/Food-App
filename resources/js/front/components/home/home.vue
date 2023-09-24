@@ -212,7 +212,7 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Arrivals </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(20, 25)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(20, 24)" :key="product.id">
                                     <div class="col-4 h-100">
                                         <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
                                     </div>
@@ -237,7 +237,7 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Products </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(26, 30)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(25, 29)" :key="product.id">
                                     <div class="col-4 h-100">
                                         <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
                                     </div>
@@ -262,7 +262,7 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Recommended Products </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(31, 36)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(30, 35)" :key="product.id">
                                     <div class="col-4 h-100">
                                         <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
                                     </div>

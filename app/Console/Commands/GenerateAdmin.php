@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Admins;
+use App\Models\Settings;
 use Illuminate\Console\Command;
 
 class GenerateAdmin extends Command
@@ -50,5 +51,13 @@ class GenerateAdmin extends Command
         print_r(PHP_EOL.PHP_EOL);
         print_r("Admin Email : ".$admin['email'].PHP_EOL);
         print_r("Admin password : 123123".PHP_EOL.PHP_EOL);
+        $settings = array(
+            'facebook' => 'https://www.facebook.com/',
+            'twitter' => 'https://www.twitter.com/',
+            'instagram' => 'https://www.instagram.com/',
+            'linkedin' => 'https://www.linkedin.com/',
+            'youtube' => 'https://www.youtube.com/',
+        );
+        Settings::insert([$settings]);
     }
 }
