@@ -1,9 +1,9 @@
 <template>
 
-    <div class="container cart">
+    <div class="container cart px-3">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-8 p-3">
-                <div class="border px-4">
+                <div class="border px-2 mb-4 border-dark-subtle overflow-hidden">
                     <div class="row border-bottom fw-bold">
                         <div class="col-6 col-sm-6 col-md-6 col-lg-3 p-3"> Name </div>
                         <div class="col-6 col-sm-6 col-md-6 col-lg-3 p-3"> Price </div>
@@ -16,7 +16,7 @@
                         <div class="col-6 col-sm-6 col-md-6 col-lg-3 p-3"> {{cartItem.quantity}} </div>
                         <div class="col-6 col-sm-6 col-md-6 col-lg-3 p-3"> ${{ cartItem.price * cartItem.quantity }} </div>
                     </div>
-                    <div class="row fw-bold" v-if="products.length > 1">
+                    <div class="row fw-bold" v-if="products.length >= 1">
                         <div class="col-md-9 p-3">
                             Gross SubTotal:
                         </div>
@@ -26,6 +26,38 @@
                     </div>
                     <div class="empty" v-if="products.length === 0">
                         No Cart Item Added
+                    </div>
+                </div>
+                <div class="col-12 border p-3 border-dark-subtle" v-if="profile_data !== null && products.length >= 1">
+                    <div class="p-3 border">
+                        <div class="text-secondary">Cash on Delivery</div>
+                    </div>
+                    <div class="p-3 border">
+                        <span class="fw-bold"> Present Address: </span> {{profile_data.address}}
+                    </div>
+                    <div class="px-2">
+                        <div class="row px-1">
+                            <div class="col-12 col-sm-6 border p-3">
+                                <div class="pb-3">
+                                    <div class="text-secondary">Mobile Banking</div>
+                                </div>
+                                <div class="pb-3">
+                                    First send payment into this number 01645820007 <br> to take OTP
+                                </div>
+                                <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle mb-2" placeholder="Nagad or Bkash">
+                                <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle" placeholder="OTP">
+                            </div>
+                            <div class="col-12 col-sm-6 border p-3">
+                                <div class="pb-3">
+                                    Online Banking
+                                </div>
+                                <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle mb-2" placeholder="Card Holder Name">
+                                <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle mb-2" placeholder="Card Number">
+                                <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle mb-2" placeholder="Expiry Date(MM/YY)">
+                                <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle mb-2" placeholder="PIN">
+                                <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle mb-2" disabled :value="totalAmount">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -60,9 +92,6 @@
                         </div>
                         <div class="p-3 border-bottom border-dark-subtle">
                             Phone Number: {{profile_data.phone_number}}
-                        </div>
-                        <div class="p-3 border-bottom border-dark-subtle">
-                            Address: {{profile_data.address}}
                         </div>
                         <div class="p-3 text-end fw-bold">
                             <router-link :to="{name:'home'}" class="d-inline-block text-decoration-none text-secondary" v-if="products.length === 0">

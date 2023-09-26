@@ -16,11 +16,6 @@ class AdminController extends BaseController
 
     }
 
-    public function register(Request $request){
-        $rv = AdminAuthService::register($request);
-        return response()->json($rv, 200);
-    }
-
     public function login(Request $request){
         $rv = AdminAuthService::login($request);
         return response()->json($rv, 200);

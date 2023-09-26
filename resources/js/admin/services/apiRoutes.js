@@ -4,8 +4,6 @@ const apiRoutes = {
 
     // Authentication
 
-    register: apiVersion + '/auth/register',
-
     login: apiVersion + '/auth/login',
 
     forgot: apiVersion + '/auth/forgot',

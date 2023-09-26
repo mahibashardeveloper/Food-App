@@ -10,10 +10,21 @@
     <link rel="stylesheet" href="{{asset('source-code/owl.carousel/dist/assets/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('source-code/owl.carousel/dist/assets/owl.theme.default.min.css')}}">
     <script src="{{asset('source-code/owl.carousel/dist/owl.carousel.min.js')}}"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body id="app"></body>
 @vite('resources/js/front/app.js')
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
+    window.onload = function (){
+        AOS.init({
+            delay: 70,
+            duration: 1000,
+            offset: 120,
+            disable: 'mobile',
+        });
+    };
+
     window.core = {
         @if(\Illuminate\Support\Facades\Auth::guard('customers')->check())
             UserInfo: {!! \Illuminate\Support\Facades\Auth::guard('customers')->user() !!},

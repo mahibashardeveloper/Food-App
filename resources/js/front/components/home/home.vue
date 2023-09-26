@@ -61,7 +61,7 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold pb-3">Featured Categories</div>
-                <div class="owl-carousel owl-theme category-item">
+                <div class="owl-carousel owl-theme category-item" data-aos="fade-up">
                     <div v-for="(category) in displayedCategories" :key="category.id">
                         <div class="text-center p-3 border">
                             <div class="pt-3">
@@ -82,7 +82,7 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold pb-3">Popular Products</div>
-                <div class="owl-carousel owl-theme product-item">
+                <div class="owl-carousel owl-theme product-item" data-aos="fade-up">
                     <div v-for="(product) in getProductsInRange(1, 10)" :key="product.id">
                         <div class="text-start p-3 border">
                             <div class="overflow-hidden product">
@@ -105,7 +105,7 @@
             </div>
         </div>
 
-        <div class="w-100">
+        <div class="w-100" data-aos="fade-up">
             <div class="container py-5">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3">
 
@@ -182,7 +182,7 @@
         <div class="w-100">
             <div class="container py-5">
                 <div class="h3 fw-bold pb-3">Best Selling Products</div>
-                <div class="owl-carousel owl-theme product-item">
+                <div class="owl-carousel owl-theme product-item" data-aos="fade-up">
                     <div v-for="(product) in getProductsInRange(11, 20)" :key="product.id">
                         <div class="text-start p-3 border">
                             <div class="overflow-hidden product">
@@ -206,7 +206,7 @@
         </div>
 
         <div class="w-100">
-            <div class="container py-5">
+            <div class="container py-5" data-aos="fade-up">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3">
 
                     <div class="p-1">
@@ -214,7 +214,7 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Arrivals </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(20, 24)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(15, 19)" :key="product.id">
                                     <div class="col-4 h-100">
                                         <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
                                     </div>
@@ -239,7 +239,7 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Products </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(25, 29)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(20, 24)" :key="product.id">
                                     <div class="col-4 h-100">
                                         <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
                                     </div>
@@ -264,7 +264,7 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Recommended Products </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(30, 35)" :key="product.id">
+                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(25, 29)" :key="product.id">
                                     <div class="col-4 h-100">
                                         <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
                                     </div>
@@ -345,6 +345,8 @@ import apiRoutes from "../../services/apiRoutes";
             this.category_list();
 
             this.product_list();
+
+
 
         },
 

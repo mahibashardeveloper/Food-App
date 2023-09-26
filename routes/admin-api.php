@@ -26,7 +26,6 @@ Route::group(
     ['middleware' => ['AdminAuth'], 'prefix' => 'auth'],
     function () {
         Route::post('/login', [AdminController::class, 'login'])->name('Admin.Auth.Login');
-        Route::post('/register', [AdminController::class, 'register'])->name('Admin.Auth.Register');
         Route::post('/forgot', [AdminController::class, 'forgot'])->name('Admin.Auth.Forgot');
         Route::post('/reset', [AdminController::class, 'reset'])->name('Admin.Auth.Reset');
     }
