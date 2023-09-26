@@ -68,9 +68,6 @@
                         <router-link :to="{name:'profile'}" class="profile-link" active-class="active" @click="remove">
                             <i class="bi bi-person me-2"></i> Profile
                         </router-link>
-                        <router-link :to="{name:'settings'}" class="profile-link" active-class="active" @click="remove">
-                            <i class="bi bi-person me-2"></i> Settings
-                        </router-link>
                         <a href="javascript:void(0)" class="profile-link" @click="logout">
                             <span v-if="logoutLoading === false">
                                 <i class="bi bi-box-arrow-in-right me-2"></i> Logout

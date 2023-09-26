@@ -38,10 +38,6 @@ import customers from "../components/customers/customers.vue";
 
 import profile from "../components/profile/profile.vue";
 
-// settings
-
-import settings from "../components/settings/settings.vue";
-
 // directory ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 const ROOT_URL = "/admin";
@@ -89,10 +85,6 @@ const routes = [
             // profile
 
             {path: ROOT_URL + '/profile', name: 'profile', component: profile, meta: {title: 'profile'}},
-
-            // settings
-
-            {path: ROOT_URL + '/settings', name: 'settings', component: settings, meta: {title: 'settings'}},
 
         ],
 

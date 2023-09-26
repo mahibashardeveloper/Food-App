@@ -64,13 +64,15 @@
                 <div class="owl-carousel owl-theme category-item">
                     <div v-for="(category) in displayedCategories" :key="category.id">
                         <div class="text-center p-3 border">
-                            <div class="overflow-hidden">
-                                <div class="pt-3">
-                                    <img :src="'/storage/media/image/' + category.avatar" v-if="category.avatar !== null" class="img-fluid product-image-hover" alt="category">
-                                    <i class="bi bi-tag fs-1" v-if="category.avatar === null"></i>
+                            <div class="pt-3">
+                                <div class="d-flex justify-content-center">
+                                    <div class="col-6 overflow-hidden product">
+                                        <img :src="'/storage/media/image/' + category.avatar" v-if="category.avatar !== null" class="img-fluid product-image-hover" alt="category">
+                                    </div>
                                 </div>
-                                <div class="pb-3 fw-bold"> {{category.name}} </div>
+                                <i class="bi bi-tag fs-1" v-if="category.avatar === null"></i>
                             </div>
+                            <div class="pb-3 fw-bold mt-4"> {{category.name}} </div>
                         </div>
                     </div>
                 </div>

@@ -199,11 +199,11 @@ class AdminAuthService
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'facebook' => 'required',
-                    'twitter' => 'required',
-                    'instagram' => 'required',
-                    'linkedin' => 'required',
-                    'youtube' => 'required',
+                    'facebook' => 'required|url',
+                    'twitter' => 'required|url',
+                    'instagram' => 'required|url',
+                    'linkedin' => 'required|url',
+                    'youtube' => 'required|url',
                 ]
             );
             if ($validator->fails()) {

@@ -11,6 +11,9 @@
                         Profile
                     </div>
                     <div class="d-flex">
+                        <a href="javascript:void(0)" class="btn btn-theme profile me-3" @click="openSettingsModal">
+                            <i class="bi bi-patch-check"></i>
+                        </a>
                         <a href="javascript:void(0)" class="btn btn-theme profile me-3" @click="openEditProfileModal">
                             <i class="bi bi-pencil-square"></i>
                         </a>
@@ -51,6 +54,16 @@
                         </div>
                         <div class="mb-3 profile-info">
                             {{ profile_data.phone_number }}
+                        </div>
+                        <div class="mb-3">
+                            Social Media:
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center">
+                            <a :href="settings_data.facebook" target="_blank"> <i class="bi bi-facebook btn btn-secondary mx-1"></i> </a>
+                            <a :href="settings_data.twitter" target="_blank"> <i class="bi bi-twitter btn btn-secondary mx-1"></i> </a>
+                            <a :href="settings_data.instagram" target="_blank"> <i class="bi bi-instagram btn btn-secondary mx-1"></i> </a>
+                            <a :href="settings_data.linkedin" target="_blank"> <i class="bi bi-linkedin btn btn-secondary mx-1"></i> </a>
+                            <a :href="settings_data.youtube" target="_blank"> <i class="bi bi-youtube btn btn-secondary mx-1"></i> </a>
                         </div>
                     </div>
                 </div>
@@ -176,6 +189,65 @@
     </div>
     <!-- change password modal end -->
 
+    <!-- edit social media modal start -->
+    <div class="modal fade" id="editSettingsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fw-bold fs-5" id="exampleModalLabel">
+                        Edit Settings
+                    </h1>
+                    <button type="button" class="btn-close" @click="closeEditSettingsModal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="facebook" class="form-label">
+                            Facebook Link
+                        </label>
+                        <input type="text" id="facebook" name="facebook" class="form-control" v-model="editParam.facebook">
+                        <div class="error-text" v-if="error != null && error.facebook !== undefined" v-text="error.facebook[0]"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">
+                            Twitter Link
+                        </label>
+                        <input type="text" id="twitter" name="twitter" class="form-control" v-model="editParam.twitter">
+                        <div class="error-text" v-if="error != null && error.twitter !== undefined" v-text="error.twitter[0]"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">
+                            Instagram Link
+                        </label>
+                        <input type="text" id="instagram" name="instagram" class="form-control" v-model="editParam.instagram">
+                        <div class="error-text" v-if="error != null && error.instagram !== undefined" v-text="error.instagram[0]"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone_number" class="form-label">
+                            Linkedin Link
+                        </label>
+                        <input type="text" id="linkedin" name="linkedin" class="form-control" v-model="editParam.linkedin">
+                        <div class="error-text" v-if="error != null && error.linkedin !== undefined" v-text="error.linkedin[0]"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="youtube" class="form-label">
+                            Youtube Link
+                        </label>
+                        <input type="text" id="youtube" name="youtube" class="form-control" v-model="editParam.youtube">
+                        <div class="error-text" v-if="error != null && error.youtube !== undefined" v-text="error.youtube[0]"></div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-theme cancel" @click="closeEditSettingsModal"> Close </button>
+                    <button type="button" class="btn btn-theme create" @click="updateSettings">
+                        <span v-if="updateSettingsLoading === false">Edit</span>
+                        <span v-if="updateSettingsLoading === true">Loading...</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- edit social media modal end -->
+
 </template>
 
 <script>
@@ -213,6 +285,20 @@
                     password_confirmation: '',
                 },
 
+                settingsLoading: false,
+
+                settings_data: '',
+
+                updateSettingsLoading: false,
+
+                editSettingsParam: {
+                    facebook: '',
+                    twitter: '',
+                    instagram: '',
+                    linkedin: '',
+                    youtube: '',
+                },
+
             }
 
         },
@@ -220,6 +306,8 @@
         mounted() {
 
             this.getProfile();
+
+            this.getSettings();
 
         },
 
@@ -308,6 +396,47 @@
                         this.edit = false;
                         this.$toast.success('Your password has been updated successfully.', { position: "top-right" });
                         this.closeEditPasswordModal();
+                    } else {
+                        this.error = res.errors;
+                    }
+                })
+            },
+
+            openSettingsModal() {
+                const modal = new bootstrap.Modal("#editSettingsModal", {keyboard: false, backdrop: 'static'});
+                modal.show();
+                this.edit = true;
+                this.editParam = JSON.parse(JSON.stringify(this.settings_data));
+            },
+
+            closeEditSettingsModal() {
+                this.edit = false;
+                this.error = null;
+                let myModalEl = document.getElementById('editSettingsModal');
+                let modal = bootstrap.Modal.getInstance(myModalEl);
+                modal.hide();
+            },
+
+            getSettings() {
+                this.settingsLoading = true;
+                apiService.GET(apiRoutes.settings_details, (res) => {
+                    this.settingsLoading = false;
+                    if (res.status === 200) {
+                        this.settings_data = res.data;
+                    }
+                })
+            },
+
+            updateSettings() {
+                this.updateSettingsLoading = true;
+                this.error = null;
+                apiService.POST(apiRoutes.settings_update, this.editSettingsParam, (res) => {
+                    this.updateSettingsLoading = false;
+                    if (res.status === 200) {
+                        this.getSettings();
+                        this.edit = false;
+                        this.$toast.success('Your Settings has been updated successfully.', { position: "top-right" });
+                        this.closeEditSettingsModal();
                     } else {
                         this.error = res.errors;
                     }
