@@ -140,11 +140,10 @@ class CustomerAuthService
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'full_name' => 'required|unique:customers,full_name',
-                    'email' => 'required|email|unique:customers,email,' . $request->email . ',email',
-                    'phone_number' => 'required|unique:customers,phone_number',
-                    'address' => 'required|unique:customers,address',
-                    'avatar' => 'required',
+                    'full_name' => 'required',
+                    'email' => 'required|email',
+                    'phone_number' => 'required',
+                    'address' => 'required',
                 ]
             );
             if ($validator->fails()) {
@@ -155,7 +154,6 @@ class CustomerAuthService
             $user->email = $request->email;
             $user->phone_number = $request->phone_number;
             $user->address = $request->address;
-            $user->avatar = $request->avatar ?? null;
             $user->save();
             return ['status' => 200,];
         } catch (\Exception $e) {

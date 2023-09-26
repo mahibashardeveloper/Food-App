@@ -30,7 +30,12 @@
                 </div>
                 <div class="col-12 border p-3 border-dark-subtle" v-if="profile_data !== null && products.length >= 1">
                     <div class="p-3 border">
-                        <div class="text-secondary">Cash on Delivery</div>
+                        <div class="text-secondary">
+                            <label for="payment3" class="d-flex align-items-center">
+                                <input id="payment3" type="radio" name="payment" class="form-check-checkbox me-2">
+                                Cash on Delivery
+                            </label>
+                        </div>
                     </div>
                     <div class="p-3 border">
                         <span class="fw-bold"> Present Address: </span> {{profile_data.address}}
@@ -39,7 +44,12 @@
                         <div class="row px-1">
                             <div class="col-12 col-sm-6 border p-3">
                                 <div class="pb-3">
-                                    <div class="text-secondary">Mobile Banking</div>
+                                    <div class="text-secondary">
+                                        <label for="payment1" class="d-flex align-items-center">
+                                            <input id="payment1" type="radio" name="payment" class="form-check-checkbox me-2">
+                                            Mobile Banking
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="pb-3">
                                     First send payment into this number 01645820007 <br> to take OTP
@@ -49,7 +59,10 @@
                             </div>
                             <div class="col-12 col-sm-6 border p-3">
                                 <div class="pb-3">
-                                    Online Banking
+                                    <label for="payment2" class="d-flex align-items-center">
+                                        <input id="payment2" type="radio" name="payment" class="form-check-checkbox me-2">
+                                        Online Banking
+                                    </label>
                                 </div>
                                 <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle mb-2" placeholder="Card Holder Name">
                                 <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle mb-2" placeholder="Card Number">
