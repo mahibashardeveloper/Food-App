@@ -77,11 +77,11 @@
                 <div class="col-12 col-sm-6 col-md-4 py-2">
                     <div class="d-flex">
                         <input type="checkbox" class="form-check-input me-3 d-none d-sm-block" :checked="tableData.length > 0 && tableData.length === selected.length" @change="toggleCheckAll($event)">
-                        Delivery Charge Name
+                        Name
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-4">
-                    Delivery Charge Amount
+                    Amount ($)
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 py-2">
                     Action

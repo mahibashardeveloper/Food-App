@@ -7,11 +7,11 @@
         <div class="bg-color-group">
             <div class="fw-bold ps-4 pt-3">Background Color:</div>
             <div class="bg-color-box">
-                <span data-color="#DC354533" class="btn-color theme-bg-danger" @click="remove"></span>
-                <span data-color="#0D6EFD33" class="btn-color theme-bg-primary" @click="remove"></span>
-                <span data-color="#6C757D33" class="btn-color theme-bg-secondary" @click="remove"></span>
-                <span data-color="#19875433" class="btn-color theme-bg-success" @click="remove"></span>
-                <span data-color="#0DCAF033" class="btn-color theme-bg-info" @click="remove"></span>
+                <span data-color="#DC354533" style="background-color: #DC354533;" class="btn-color" @click="remove"></span>
+                <span data-color="#0D6EFD33" style="background-color: #0D6EFD33;" class="btn-color" @click="remove"></span>
+                <span data-color="#6C757D33" style="background-color: #6C757D33;" class="btn-color" @click="remove"></span>
+                <span data-color="#19875433" style="background-color: #19875433;" class="btn-color" @click="remove"></span>
+                <span data-color="#0DCAF033" style="background-color: #0DCAF033;" class="btn-color" @click="remove"></span>
             </div>
         </div>
     </div>

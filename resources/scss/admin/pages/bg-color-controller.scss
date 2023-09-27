@@ -45,31 +45,6 @@ body{
                     border: none;
                     outline: none;
                     cursor: pointer;
-
-                    &.theme-bg-primary{
-                        background-color: $theme-bg-primary;
-                    }
-
-                    &.theme-bg-secondary{
-                        background-color: $theme-bg-secondary;
-                    }
-
-                    &.theme-bg-success{
-                        background-color: $theme-bg-success;
-                    }
-
-                    &.theme-bg-danger{
-                        background-color: $theme-bg-danger;
-                        display: flex;
-                        justify-content:center;
-                        align-items: center;
-                        font-size: 10px;
-                    }
-
-                    &.theme-bg-info{
-                        background-color: $theme-bg-info;
-                    }
-
                 }
 
             }

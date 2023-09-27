@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-4 p-3">
-                <div class="border px-2 overflow-hidden border-dark-subtle mb-5">
+                <div class="border px-2 overflow-hidden border-dark-subtle mb-4">
                     <div class="row border-bottom fw-bold border-dark-subtle">
                         <div class="col-6 p-3">Description</div>
                         <div class="col-6 p-3 text-end">Amount</div>
@@ -88,7 +88,10 @@
                         <div class="col-6 p-3">Delivery Charge</div>
                         <div class="col-6 p-3">
                             <select class="p-0 form-select border-0 shadow-none rounded-0" v-model="SelectOption">
-                                <option v-for="(charge) in deliveryCharge" :value="charge.deliveryChargeAmount">{{charge.deliveryChargeName}} {{charge.deliveryChargeAmount}}</option>
+                                <option value="0" selected>Select Delivery Charge</option>
+                                <option :value="charge.deliveryChargeAmount" v-for="(charge) in deliveryCharge">
+                                    {{charge.deliveryChargeName}} {{charge.deliveryChargeAmount}}
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -179,7 +182,7 @@
 
         data(){
             return{
-                SelectOption: 75,
+                SelectOption: 0,
                 profile_data: null,
                 submitLoading: false,
                 deliveryCharge: {

@@ -93,7 +93,7 @@
                                     {{product.name}}
                                 </div>
                                 <div class="text-secondary pb-3 pt-2 ps-3">
-                                    ${{product.price}}
+                                    {{currency}} {{product.price}}
                                 </div>
                                 <a class="btn btn-theme cart-position" @click="addToCart(product)">
                                     <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
@@ -120,7 +120,7 @@
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
-                                        <div class="text-success"> ${{product.price}} </div>
+                                        <div class="text-success"> {{currency}} {{product.price}} </div>
                                         <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
                                             Add To Cart
                                         </a>
@@ -142,7 +142,7 @@
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
-                                        <div class="text-success"> ${{product.price}} </div>
+                                        <div class="text-success"> {{currency}} {{product.price}} </div>
                                         <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
                                             Add To Cart
                                         </a>
@@ -164,7 +164,7 @@
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
-                                        <div class="text-success"> ${{product.price}} </div>
+                                        <div class="text-success"> {{currency}} {{product.price}} </div>
                                         <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
                                             Add To Cart
                                         </a>
@@ -193,7 +193,7 @@
                                     {{product.name}}
                                 </div>
                                 <div class="text-secondary pb-3 pt-2 ps-3">
-                                    ${{product.price}}
+                                    {{currency}} {{product.price}}
                                 </div>
                                 <a class="btn btn-theme cart-position" @click="addToCart(product)">
                                     <i class="bi bi-cart"></i> <span class="text-des"> Cart </span>
@@ -221,8 +221,8 @@
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
                                         <div class="d-flex align-items-center">
-                                            <div class="text-success"> ${{product.price}} </div>
-                                            <del class="text-secondary ms-2"> ${{product.price * 1.5}} </del>
+                                            <div class="text-success"> {{currency}} {{product.price}} </div>
+                                            <del class="text-secondary ms-2"> {{currency}} {{product.price * 1.5}} </del>
                                         </div>
                                         <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
                                             Add To Cart
@@ -246,8 +246,8 @@
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
                                         <div class="d-flex align-items-center">
-                                            <div class="text-success"> ${{product.price}} </div>
-                                            <del class="text-secondary ms-2"> ${{product.price * 1.5}} </del>
+                                            <div class="text-success"> {{currency}} {{product.price}} </div>
+                                            <del class="text-secondary ms-2"> {{currency}} {{product.price * 1.5}} </del>
                                         </div>
                                         <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
                                             Add To Cart
@@ -271,8 +271,8 @@
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
                                         <div class="d-flex align-items-center">
-                                            <div class="text-success"> ${{product.price}} </div>
-                                            <del class="text-secondary ms-2"> ${{product.price * 1.5}} </del>
+                                            <div class="text-success"> {{currency}} {{product.price}} </div>
+                                            <del class="text-secondary ms-2"> {{currency}} {{product.price * 1.5}} </del>
                                         </div>
                                         <a href="javascript:void(0)" class="btn btn-outline-success mt-2" @click="addToCart(product)">
                                             Add To Cart
@@ -324,6 +324,8 @@ import apiRoutes from "../../services/apiRoutes";
 
             return{
 
+                currency: '$',
+
                 categories: [],
 
                 sliders: [],
@@ -345,8 +347,6 @@ import apiRoutes from "../../services/apiRoutes";
             this.category_list();
 
             this.product_list();
-
-
 
         },
 
