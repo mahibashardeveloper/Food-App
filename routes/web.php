@@ -16,13 +16,19 @@ use App\Http\Controllers\FrontController;
 |
 */
 
-/* -------------------------- Authentication Controller ------------------------ */
+/* --------------------------
+    Authentication Controller
+------------------------ */
+
 Route::middleware('AdminLoginCheck')->get('/admin/auth/{any}', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin.auth');
 Route::middleware('AdminLoginCheck')->get('/admin/', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin');
 Route::middleware('AdminLoginCheck')->get('/admin/{any}', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin.any');
 Route::get('/admin', function (){ return redirect()->route('lvs.admin.any','dashboard'); });
 
-/* -------------------------- customer Controller ------------------------ */
+/* --------------------------
+    Customer Controller
+------------------------ */
+
 Route::middleware('CustomerLoginCheck')->get('/front/auth/{any}', [CustomerController::class, 'index'])->where('any', '.*')->name('lvs.front.auth');
 Route::middleware('CustomerLoginCheck')->get('/front/profile', [CustomerController::class, 'index'])->name('lvs.front.profile');
 Route::middleware('CustomerLoginCheck')->get('/front/my_account', [CustomerController::class, 'index'])->name('lvs.front.my_account');
@@ -33,8 +39,10 @@ Route::get('/front/{any}', [CustomerController::class, 'index'])->where('any', '
 Route::get('/front/', [CustomerController::class, 'index'])->where('any', '.*')->name('lvs.front');
 Route::get('/', function (){ return redirect()->route('lvs.front.any','home'); });
 
-/* -------------------------- Front controller ----------------------------------- */
+/* --------------------------
+    Front controller
+----------------------------------- */
+
 Route::prefix('globalSlider')->group(function () { Route::get('/list', [FrontController::class, 'slider_list']); } );
 Route::prefix('globalCategory')->group(function () { Route::get('/list', [FrontController::class, 'category_list']); } );
 Route::prefix('globalProduct')->group(function () { Route::get('/list', [FrontController::class, 'product_list']); } );
-Route::prefix('globalDeliveryCharge')->group(function () { Route::get('/list', [FrontController::class, 'deliveryCharge_list']); } );

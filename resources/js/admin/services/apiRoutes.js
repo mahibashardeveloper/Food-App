@@ -10,18 +10,6 @@ const apiRoutes = {
 
     reset: apiVersion + '/auth/reset',
 
-    // deliveryCharge
-
-    deliveryChargeCreate: apiVersion + '/deliveryCharge/create',
-
-    deliveryChargeList: apiVersion + '/deliveryCharge/list',
-
-    deliveryChargeSingle: apiVersion + '/deliveryCharge/single',
-
-    deliveryChargeUpdate: apiVersion + '/deliveryCharge/update',
-
-    deliveryChargeDelete: apiVersion + '/deliveryCharge/delete',
-
     // slider
 
     sliderCreate: apiVersion + '/slider/create',

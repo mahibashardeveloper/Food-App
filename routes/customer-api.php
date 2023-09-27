@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* ------------------------- Auth customer Controller --------------------------- */
+/* -------------------------
+    Auth customer Controller
+--------------------------- */
 
 Route::group(
     ['middleware' => ['CustomerAuth'], 'prefix' => 'auth'],
@@ -29,7 +31,9 @@ Route::group(
     }
 );
 
-/* ------------------------- customer Profile Controller --------------------------- */
+/* -------------------------
+    customer Profile Controller
+--------------------------- */
 
 Route::group(
     ['middleware' => ['CustomerAuthReq'], 'prefix' => 'profile'],
@@ -42,6 +46,10 @@ Route::group(
     }
 );
 
+/* -------------------------
+    Order Controller
+--------------------------- */
+
 Route::group(
     ['middleware' => ['CustomerAuthReq'], 'prefix' => 'order'],
     function () {
@@ -52,7 +60,9 @@ Route::group(
     }
 );
 
-/* ------------------------- Media Controller --------------------------- */
+/* -------------------------
+    Media Controller
+--------------------------- */
 
 Route::prefix('media')->group( function () {
     Route::post('/upload', [MediaController::class, 'upload'])->name('Customer.Media.Upload');

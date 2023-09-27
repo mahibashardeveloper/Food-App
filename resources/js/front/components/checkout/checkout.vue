@@ -28,51 +28,6 @@
                         No Cart Item Added
                     </div>
                 </div>
-                <div class="col-12 border p-3 border-dark-subtle" v-if="profile_data !== null && products.length >= 1">
-                    <div class="p-3 border">
-                        <div class="text-secondary">
-                            <label for="payment3" class="d-flex align-items-center">
-                                <input id="payment3" type="radio" name="payment" class="form-check-checkbox me-2">
-                                Cash on Delivery
-                            </label>
-                        </div>
-                    </div>
-                    <div class="p-3 border">
-                        <span class="fw-bold"> Present Address: </span> {{profile_data.address}}
-                    </div>
-                    <div class="px-2">
-                        <div class="row px-1">
-                            <div class="col-12 col-sm-6 border p-3">
-                                <div class="pb-3">
-                                    <div class="text-secondary">
-                                        <label for="payment1" class="d-flex align-items-center">
-                                            <input id="payment1" type="radio" name="payment" class="form-check-checkbox me-2">
-                                            Mobile Banking
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="pb-3">
-                                    First send payment into this number 01645820007 <br> to take OTP
-                                </div>
-                                <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle mb-2" placeholder="Nagad or Bkash">
-                                <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle" placeholder="OTP">
-                            </div>
-                            <div class="col-12 col-sm-6 border p-3">
-                                <div class="pb-3">
-                                    <label for="payment2" class="d-flex align-items-center">
-                                        <input id="payment2" type="radio" name="payment" class="form-check-checkbox me-2">
-                                        Online Banking
-                                    </label>
-                                </div>
-                                <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle mb-2" placeholder="Card Holder Name">
-                                <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle mb-2" placeholder="Card Number">
-                                <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle mb-2" placeholder="Expiry Date(MM/YY)">
-                                <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle mb-2" placeholder="PIN">
-                                <input type="text" name="" class="form-control shadow-none rounded-0 border-secondary-subtle mb-2" disabled :value="totalAmount">
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-4 p-3">
                 <div class="border px-2 overflow-hidden border-dark-subtle mb-4">
@@ -85,14 +40,9 @@
                         <div class="col-6 p-3 text-end">${{subTotal}}</div>
                     </div>
                     <div class="row border-bottom border-dark-subtle">
-                        <div class="col-6 p-3">Delivery Charge</div>
-                        <div class="col-6 p-3">
-                            <select class="p-0 form-select border-0 shadow-none rounded-0" v-model="SelectOption">
-                                <option value="0" selected>Select Delivery Charge</option>
-                                <option :value="charge.deliveryChargeAmount" v-for="(charge) in deliveryCharge">
-                                    {{charge.deliveryChargeName}} {{charge.deliveryChargeAmount}}
-                                </option>
-                            </select>
+                        <div class="col-6 p-3">Shipping Charge</div>
+                        <div class="col-6 p-3 text-end">
+                            {{deliveryCharge}}
                         </div>
                     </div>
                     <div class="row fw-bold">
@@ -175,20 +125,16 @@
 
             totalAmount() {
                 const subtotal = this.products.reduce((prev, current) => (current.price * current.quantity) + prev, 0);
-                return subtotal + parseInt(this.SelectOption);
+                return subtotal + parseInt(this.deliveryCharge);
             },
 
         },
 
         data(){
             return{
-                SelectOption: 0,
+                deliveryCharge: '75',
                 profile_data: null,
                 submitLoading: false,
-                deliveryCharge: {
-                    deliveryChargeName: '',
-                    deliveryChargeAmount: '',
-                },
                 core:window.core
             }
         },
@@ -196,7 +142,6 @@
         mounted() {
 
             this.getCartItems();
-            this.deliveryCharge_list();
 
             if(this.core.UserInfo != null){
                 this.getProfile();
@@ -292,16 +237,6 @@
                     this.logoutLoading = false;
                     if (res.status === 200) {
                         window.location.reload();
-                    }
-                })
-            },
-
-            deliveryCharge_list() {
-                this.loading = true;
-                apiService.GET(apiRoutes.globalDeliveryChargeList, (res) =>{
-                    this.loading = false;
-                    if(res.status === 200) {
-                        this.deliveryCharge = res.data.data;
                     }
                 })
             },

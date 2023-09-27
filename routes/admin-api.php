@@ -8,7 +8,7 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SliderController;
-use App\Http\Controllers\DeliveryController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,7 +20,9 @@ use App\Http\Controllers\DeliveryController;
 |
 */
 
-/* ------------------------- Auth Admin Controller --------------------------- */
+/* -------------------------
+    Auth Admin Controller
+--------------------------- */
 
 Route::group(
     ['middleware' => ['AdminAuth'], 'prefix' => 'auth'],
@@ -31,7 +33,9 @@ Route::group(
     }
 );
 
-/* ------------------------- Admin Profile Controller --------------------------- */
+/* -------------------------
+    Admin Profile Controller
+--------------------------- */
 
 Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'profile'],
@@ -44,6 +48,10 @@ Route::group(
     }
 );
 
+/* -------------------------
+    Admin Settings Controller
+--------------------------- */
+
 Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'settings'],
     function () {
@@ -53,7 +61,7 @@ Route::group(
 );
 
 /* -------------------------
-slider Controller
+    slider Controller
 --------------------------- */
 
 Route::prefix('slider')->group( function () {
@@ -65,7 +73,7 @@ Route::prefix('slider')->group( function () {
 });
 
 /* -------------------------
-Category Controller
+    Category Controller
 --------------------------- */
 
 Route::prefix('category')->group( function () {
@@ -77,7 +85,7 @@ Route::prefix('category')->group( function () {
 });
 
 /* -------------------------
-Product Controller
+    Product Controller
 --------------------------- */
 
 Route::prefix('product')->group( function () {
@@ -88,16 +96,8 @@ Route::prefix('product')->group( function () {
     Route::post('/delete', [ProductController::class, 'delete'])->name('Product.Delete');
 });
 
-Route::prefix('deliveryCharge')->group( function () {
-    Route::post('/create', [DeliveryController::class, 'create'])->name('DeliveryCharge.Create');
-    Route::post('/update', [DeliveryController::class, 'update'])->name('DeliveryCharge.Update');
-    Route::post('/list', [DeliveryController::class, 'list'])->name('DeliveryCharge.List');
-    Route::post('/single', [DeliveryController::class, 'single'])->name('DeliveryCharge.Single');
-    Route::post('/delete', [DeliveryController::class, 'delete'])->name('DeliveryCharge.Delete');
-});
-
 /* -------------------------
-Order Controller
+    Order Controller
 --------------------------- */
 
 Route::group(
@@ -109,7 +109,7 @@ Route::group(
 );
 
 /* -------------------------
-Customer Controller
+    Customer Controller
 --------------------------- */
 
 Route::group(
@@ -120,7 +120,7 @@ Route::group(
 );
 
 /* -------------------------
-Media Controller
+    Media Controller
 --------------------------- */
 
 Route::prefix('media')->group( function () {

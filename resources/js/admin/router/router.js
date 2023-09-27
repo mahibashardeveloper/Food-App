@@ -22,10 +22,6 @@ import slider from "../components/slider/slider.vue";
 
 import category from "../components/category/category.vue";
 
-// deliveryCharge
-
-import deliveryCharge from "../components/deliveryCharge/deliveryCharge.vue";
-
 // product
 
 import product from "../components/product/product.vue"
@@ -73,10 +69,6 @@ const routes = [
             // category
 
             {path: ROOT_URL + '/categories', name: 'category', component: category, meta: {title: 'categories'}},
-
-            // deliveryCharge
-
-            {path: ROOT_URL + '/deliveryCharges', name: 'deliveryCharge', component: deliveryCharge, meta: {title: 'deliveryCharges'}},
 
             // product
 
