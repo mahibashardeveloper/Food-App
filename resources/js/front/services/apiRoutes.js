@@ -44,6 +44,10 @@ const apiRoutes = {
 
     globalProductList: '/globalProduct/list',
 
+    // deliveryCharge
+
+    globalDeliveryChargeList: '/globalDeliveryCharge/list',
+
 }
 
 export default apiRoutes;

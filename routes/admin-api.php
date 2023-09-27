@@ -7,8 +7,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerController;
-use \App\Http\Controllers\SliderController;
-
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\DeliveryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -86,6 +86,14 @@ Route::prefix('product')->group( function () {
     Route::post('/list', [ProductController::class, 'list'])->name('Product.List');
     Route::post('/single', [ProductController::class, 'single'])->name('Product.Single');
     Route::post('/delete', [ProductController::class, 'delete'])->name('Product.Delete');
+});
+
+Route::prefix('deliveryCharge')->group( function () {
+    Route::post('/create', [DeliveryController::class, 'create'])->name('DeliveryCharge.Create');
+    Route::post('/update', [DeliveryController::class, 'update'])->name('DeliveryCharge.Update');
+    Route::post('/list', [DeliveryController::class, 'list'])->name('DeliveryCharge.List');
+    Route::post('/single', [DeliveryController::class, 'single'])->name('DeliveryCharge.Single');
+    Route::post('/delete', [DeliveryController::class, 'delete'])->name('DeliveryCharge.Delete');
 });
 
 /* -------------------------

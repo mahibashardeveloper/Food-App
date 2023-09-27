@@ -37,6 +37,9 @@
                 <router-link :to="{name:'category'}" class="sidebar-link" active-class="active" @click="remove">
                     Categories
                 </router-link>
+                <router-link :to="{name:'deliveryCharge'}" class="sidebar-link" active-class="active" @click="remove">
+                    Delivery Charges
+                </router-link>
                 <router-link :to="{name:'product'}" class="sidebar-link" active-class="active" @click="remove">
                     Products
                 </router-link>

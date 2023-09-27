@@ -88,8 +88,7 @@
                         <div class="col-6 p-3">Delivery Charge</div>
                         <div class="col-6 p-3">
                             <select class="p-0 form-select border-0 shadow-none rounded-0" v-model="SelectOption">
-                                <option value="75">Inside City 75</option>
-                                <option value="120">Outside City 120</option>
+                                <option v-for="(charge) in deliveryCharge" :value="charge.deliveryChargeAmount">{{charge.deliveryChargeName}} {{charge.deliveryChargeAmount}}</option>
                             </select>
                         </div>
                     </div>
@@ -183,6 +182,10 @@
                 SelectOption: 75,
                 profile_data: null,
                 submitLoading: false,
+                deliveryCharge: {
+                    deliveryChargeName: '',
+                    deliveryChargeAmount: '',
+                },
                 core:window.core
             }
         },
@@ -190,6 +193,7 @@
         mounted() {
 
             this.getCartItems();
+            this.deliveryCharge_list();
 
             if(this.core.UserInfo != null){
                 this.getProfile();
@@ -285,6 +289,16 @@
                     this.logoutLoading = false;
                     if (res.status === 200) {
                         window.location.reload();
+                    }
+                })
+            },
+
+            deliveryCharge_list() {
+                this.loading = true;
+                apiService.GET(apiRoutes.globalDeliveryChargeList, (res) =>{
+                    this.loading = false;
+                    if(res.status === 200) {
+                        this.deliveryCharge = res.data.data;
                     }
                 })
             },

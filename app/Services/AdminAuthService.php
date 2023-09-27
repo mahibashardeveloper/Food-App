@@ -220,6 +220,7 @@ class AdminAuthService
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
+
     }
 
 }

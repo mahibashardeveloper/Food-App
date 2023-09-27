@@ -37,3 +37,4 @@ Route::get('/', function (){ return redirect()->route('lvs.front.any','home'); }
 Route::prefix('globalSlider')->group(function () { Route::get('/list', [FrontController::class, 'slider_list']); } );
 Route::prefix('globalCategory')->group(function () { Route::get('/list', [FrontController::class, 'category_list']); } );
 Route::prefix('globalProduct')->group(function () { Route::get('/list', [FrontController::class, 'product_list']); } );
+Route::prefix('globalDeliveryCharge')->group(function () { Route::get('/list', [FrontController::class, 'deliveryCharge_list']); } );
