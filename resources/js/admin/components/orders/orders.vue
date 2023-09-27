@@ -58,13 +58,13 @@
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     Product Name
                 </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-1 py-2">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     Price
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-1 py-2">
                     Quantity
                 </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-1 py-2">
                     Total
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">

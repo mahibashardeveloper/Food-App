@@ -62,7 +62,7 @@
                     Phone Number
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 py-2">
-                    Action
+                    Address
                 </div>
             </div>
 

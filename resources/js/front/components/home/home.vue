@@ -5,7 +5,7 @@
             <div class="container py-5">
                 <div class="owl-carousel owl-theme slider-item">
                     <div class="item" v-for="(slider) in sliders" :key="slider.id">
-                        <img :src="'/storage/media/image/' + slider.avatar" class="img-fluid slider" alt="banner-1">
+                        <img :src="'/storage/media/image/' + slider.avatar" class="img-fluid slider rounded-5" alt="banner-1">
                     </div>
                 </div>
             </div>
