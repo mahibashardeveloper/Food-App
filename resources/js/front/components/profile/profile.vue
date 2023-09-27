@@ -1,6 +1,6 @@
 <template>
 
-    <div class="profile animation-content">
+    <div class="profile animation-content padding-top-content">
 
         <div class="container-fluid">
             <div class="customer-wrapper">

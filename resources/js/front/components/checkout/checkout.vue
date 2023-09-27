@@ -1,6 +1,6 @@
 <template>
 
-    <div class="container cart px-3">
+    <div class="container cart px-3 padding-top-content">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-8 p-3">
                 <div class="border px-2 mb-4 border-dark-subtle overflow-hidden">

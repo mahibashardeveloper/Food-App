@@ -29,6 +29,11 @@ class FrontController extends BaseController
         return response()->json($rv, 200);
     }
 
+    public function productList(Request $request){
+        $rv = FrontService::productList($request);
+        return response()->json($rv, 200);
+    }
+
     public function deliveryCharge_list(Request $request){
         $rv = FrontService::deliveryCharge_list($request);
         return response()->json($rv, 200);

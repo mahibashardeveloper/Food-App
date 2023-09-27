@@ -1,6 +1,6 @@
 <template>
 
-    <div class="authentication animation-content">
+    <div class="authentication animation-content padding-top-content">
 
         <div class="container">
 

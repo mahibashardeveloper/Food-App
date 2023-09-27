@@ -18,6 +18,9 @@
             <router-link :to="{name:'home'}" class="menu-link" active-class="active" @click="remove">
                 <i class="bi bi-house-door me-2"></i> Home
             </router-link>
+            <router-link :to="{name:'shop'}" class="menu-link" active-class="active" @click="remove">
+                <i class="bi bi-house-door me-2"></i> Shop
+            </router-link>
             <a href="javascript:void(0)" class="menu-link" @click="cartInfo">
                 <i class="bi bi-cart me-2"></i> Cart <span class="badge bg-dark p-2 ms-2"> {{ products.length }} </span>
             </a>

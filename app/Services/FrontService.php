@@ -47,6 +47,22 @@ class FrontService extends BaseController
         }
     }
 
+
+    public static function productList($request)
+    {
+        try {
+            $limit = $request->limit ?? 20;
+            $results = Products::with('category_info')->orderBy('id', 'asc');
+            if(isset($request->category_id) && !empty($request->category_id)){
+                $results->where('category_id', $request->category_id);
+            }
+            $paginatedData = $results->paginate($limit);
+            return ['status' => 200, 'data' => $paginatedData];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
     public static function deliveryCharge_list($request)
     {
         try {

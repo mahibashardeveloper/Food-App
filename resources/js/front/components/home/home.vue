@@ -1,6 +1,6 @@
 <template>
 
-    <div class="home animation-content">
+    <div class="home animation-content padding-top-content">
         <div class="w-100">
             <div class="container py-5">
                 <div class="owl-carousel owl-theme slider-item">
@@ -336,6 +336,11 @@ import apiRoutes from "../../services/apiRoutes";
 
                 addLoading: false,
 
+                formData:{
+                    limit: 60,
+                    page: 1,
+                },
+
             }
 
         },
@@ -382,7 +387,8 @@ import apiRoutes from "../../services/apiRoutes";
 
             product_list() {
                 this.loading = true;
-                apiService.GET(apiRoutes.globalProductList, (res) =>{
+                this.formData.page = this.current_page;
+                apiService.POST(apiRoutes.globalProductList2, this.formData, (res) =>{
                     this.loading = false;
                     if(res.status === 200) {
                         this.products = res.data.data;

@@ -8,6 +8,10 @@ import layout from "../components/layout/layout.vue";
 
 import home from "../components/home/home.vue";
 
+// shop ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+import shop from "../components/shop/shop.vue";
+
 // checkout ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 import checkout from "../components/checkout/checkout.vue";
@@ -57,6 +61,10 @@ const routes = [
             // home
 
             {path: ROOT_URL + '/home', name: 'home', component: home, meta: {title: 'home'} },
+
+            // shop
+
+            {path: ROOT_URL + '/shop', name: 'shop', component: shop, meta: {title: 'shop'} },
 
             // checkout
 
