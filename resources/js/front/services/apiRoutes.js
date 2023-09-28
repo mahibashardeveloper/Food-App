@@ -42,7 +42,6 @@ const apiRoutes = {
 
     // product
 
-    globalProductList: '/globalProduct/list',
     globalProductList2: '/globalProduct/list-2',
 
     // deliveryCharge

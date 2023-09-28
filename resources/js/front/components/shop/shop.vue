@@ -2,8 +2,9 @@
 
     <div class="container padding-top-content">
         <div class="row">
-            <div class="col-md-2 pb-4">
-                <div class="h4">Category List</div>
+            <div class="col-12 col-lg-2 pb-4 overflow-hidden">
+
+                <div class="h4 fw-bold">Category List</div>
 
                 <!-- page loading start -->
                 <div v-if="loading === true">
@@ -31,7 +32,7 @@
                 </a>
 
             </div>
-            <div class="col-md-10">
+            <div class="col-12 col-lg-10 overflow-hidden">
 
                 <!-- page loading start -->
                 <div v-if="productLoading === true">
@@ -49,7 +50,7 @@
                 </div>
                 <!-- page loading end -->
 
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4" v-if="productLoading === false">
+                <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4" v-if="productLoading === false">
                     <div v-for="(product) in products" :key="product.id">
                         <div class="text-start p-3 border mb-4">
                             <div class="overflow-hidden">
@@ -126,7 +127,7 @@
                 </div>
 
                 <div class="no-data-founded" v-if="productLoading === false && products.length === 0">
-                    No data founded
+                    No category related data founded
                 </div>
 
             </div>

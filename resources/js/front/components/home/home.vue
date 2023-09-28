@@ -58,10 +58,10 @@
             </div>
         </div>
 
-        <div class="w-100">
+        <div class="w-100" data-aos="fade-up">
             <div class="container py-5">
                 <div class="h3 fw-bold pb-3">Featured Categories</div>
-                <div class="owl-carousel owl-theme category-item" data-aos="fade-up">
+                <div class="owl-carousel owl-theme category-item">
                     <div v-for="(category) in displayedCategories" :key="category.id">
                         <div class="text-center p-3 border">
                             <div class="pt-3">
@@ -79,10 +79,10 @@
             </div>
         </div>
 
-        <div class="w-100">
+        <div class="w-100" data-aos="fade-up">
             <div class="container py-5">
                 <div class="h3 fw-bold pb-3">Popular Products</div>
-                <div class="owl-carousel owl-theme product-item" data-aos="fade-up">
+                <div class="owl-carousel owl-theme product-item">
                     <div v-for="(product) in getProductsInRange(1, 10)" :key="product.id">
                         <div class="text-start p-3 border">
                             <div class="overflow-hidden product">
@@ -179,10 +179,10 @@
             </div>
         </div>
 
-        <div class="w-100">
+        <div class="w-100" data-aos="fade-up">
             <div class="container py-5">
                 <div class="h3 fw-bold pb-3">Best Selling Products</div>
-                <div class="owl-carousel owl-theme product-item" data-aos="fade-up">
+                <div class="owl-carousel owl-theme product-item">
                     <div v-for="(product) in getProductsInRange(11, 20)" :key="product.id">
                         <div class="text-start p-3 border">
                             <div class="overflow-hidden product">
@@ -205,8 +205,8 @@
             </div>
         </div>
 
-        <div class="w-100">
-            <div class="container py-5" data-aos="fade-up">
+        <div class="w-100" data-aos="fade-up">
+            <div class="container py-5">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3">
 
                     <div class="p-1">
