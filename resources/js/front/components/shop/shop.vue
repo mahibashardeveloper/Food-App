@@ -22,11 +22,11 @@
                 </div>
                 <!-- page loading end -->
 
-                <a href="javascript:void(0)" class="text-decoration-none text-secondary py-2 d-block" @click="formData.category_id = ''; product_list(current_page = 0)">
-                    All
+                <a href="javascript:void(0)" class="text-decoration-none text-secondary py-2 d-inline-block d-lg-block p-3"
+                   @click="formData.category_id = ''; product_list(current_page = 0)"> All
                 </a>
 
-                <a href="javascript:void(0)" class="text-decoration-none text-secondary py-2 d-block"
+                <a href="javascript:void(0)" class="text-decoration-none text-secondary py-2 d-inline-block d-lg-block p-3"
                    v-for="(each) in categories" v-if="loading === false" @click="formData.category_id = each.id;
                    product_list(current_page = 0);"> {{each.name}}
                 </a>
@@ -50,7 +50,7 @@
                 </div>
                 <!-- page loading end -->
 
-                <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4" v-if="productLoading === false">
+                <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4" v-if="productLoading === false">
                     <div v-for="(product) in products" :key="product.id">
                         <div class="text-start p-3 border mb-4">
                             <div class="overflow-hidden">

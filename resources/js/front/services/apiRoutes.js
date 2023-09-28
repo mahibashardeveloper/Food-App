@@ -1,52 +1,50 @@
-const apiVersion = '/api/customer';
+const customerApi = '/api/customer';
+
+const listApi = '/api/list';
 
 const apiRoutes = {
 
     // Authentication
 
-    register: apiVersion + '/auth/register',
+    register: customerApi + '/auth/register',
 
-    login: apiVersion + '/auth/login',
+    login: customerApi + '/auth/login',
 
-    forgot: apiVersion + '/auth/forgot',
+    forgot: customerApi + '/auth/forgot',
 
-    reset: apiVersion + '/auth/reset',
+    reset: customerApi + '/auth/reset',
 
     // Profile
 
-    profile_details: apiVersion + '/profile/details',
+    profile_details: customerApi + '/profile/details',
 
-    profile_update: apiVersion + '/profile/update',
+    profile_update: customerApi + '/profile/update',
 
-    profile_password: apiVersion + '/profile/password',
+    profile_password: customerApi + '/profile/password',
 
-    logout: apiVersion + '/profile/logout',
+    logout: customerApi + '/profile/logout',
 
     // Order
 
-    OrderCreate: apiVersion + '/order/create',
+    OrderCreate: customerApi + '/order/create',
 
-    OrderList: apiVersion + '/order/list',
+    OrderList: customerApi + '/order/list',
 
     // Media
 
-    media: apiVersion + '/media/upload',
+    media: customerApi + '/media/upload',
 
     // slider
 
-    globalSliderList: '/globalSlider/list',
+    globalSliderList: listApi + '/globalSlider/list',
 
     // category
 
-    globalCategoryList: '/globalCategory/list',
+    globalCategoryList: listApi + '/globalCategory/list',
 
     // product
 
-    globalProductList2: '/globalProduct/list-2',
-
-    // deliveryCharge
-
-    globalDeliveryChargeList: '/globalDeliveryCharge/list',
+    globalProductList2: listApi + '/globalProduct/list-2',
 
 }
 
