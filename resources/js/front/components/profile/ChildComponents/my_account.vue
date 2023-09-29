@@ -38,9 +38,12 @@
         </div>
     </div>
 
-    <div class="p-2">
+    <div class="p-2 d-flex align-items-center">
         <a href="javascript:void(0)" class="btn btn-light fw-bold px-3 py-1 border" @click="openEditProfileModal">
             Edit Profile
+        </a>
+        <a href="javascript:void(0)" class="btn btn-light fw-bold px-3 py-1 border ms-4" @click="openEditPasswordModal">
+            Edit Password
         </a>
     </div>
 
@@ -72,6 +75,34 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary px-4 py-2" @click="closeEditProfileModal">Close</button>
+                        <button type="submit" class="btn btn-success px-4 py-2" v-if="updateProfileLoading === false" @click="updateProfile">Update</button>
+                        <button type="button" class="btn btn-success px-4 py-2" v-if="updateProfileLoading === true">Loading...</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editPasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">Edit Password</h1>
+                        <button type="button" class="btn-close shadow-none" @click="closeEditPasswordModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="password" class="form-label">password</label>
+                            <input type="text" name="password" class="form-control shadow-none" v-model="passwordParam.password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password_confirmation" class="form-label">password confirm</label>
+                            <input type="text" name="password_confirmation" class="form-control shadow-none" v-model="passwordParam.password_confirmation">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary px-4 py-2" @click="closeEditPasswordModal">Close</button>
                         <button type="submit" class="btn btn-success px-4 py-2" v-if="updateProfileLoading === false" @click="updateProfile">Update</button>
                         <button type="button" class="btn btn-success px-4 py-2" v-if="updateProfileLoading === true">Loading...</button>
                     </div>

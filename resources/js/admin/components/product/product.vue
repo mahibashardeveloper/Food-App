@@ -233,7 +233,7 @@
                             Product Category
                         </label>
                         <select name="user_id" id="user_id" v-model="productParam.category_id" class="form-select">
-                            <option selected disabled>Select Category Option</option>
+                            <option selected>Select Category Option</option>
                             <option :value="each.id" v-for="(each) in category">{{each.name}}
                                 <span v-if="each.category_info != null"> = {{ each.category_info.name }} </span>
                             </option>

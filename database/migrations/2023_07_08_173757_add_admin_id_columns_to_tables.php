@@ -19,10 +19,6 @@ return new class extends Migration
             $table->unsignedBigInteger('admin_id')->after('id');
             $table->foreign('admin_id')->references('id')->on('admins');
         });
-        Schema::table('delivery_charges', function (Blueprint $table) {
-            $table->unsignedBigInteger('admin_id')->after('id');
-            $table->foreign('admin_id')->references('id')->on('admins');
-        });
         Schema::table('products', function (Blueprint $table) {
             $table->unsignedBigInteger('admin_id')->after('id');
             $table->foreign('admin_id')->references('id')->on('admins');
@@ -39,10 +35,6 @@ return new class extends Migration
             $table->dropColumn('admin_id');
         });
         Schema::table('categories', function (Blueprint $table) {
-            $table->dropForeign(['admin_id']);
-            $table->dropColumn('admin_id');
-        });
-        Schema::table('delivery_charges', function (Blueprint $table) {
             $table->dropForeign(['admin_id']);
             $table->dropColumn('admin_id');
         });
