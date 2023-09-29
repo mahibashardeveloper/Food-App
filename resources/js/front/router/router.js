@@ -40,10 +40,6 @@ import my_account from "../components/profile/ChildComponents/my_account.vue";
 
 import order_history from "../components/profile/ChildComponents/order_history.vue";
 
-// newsletter
-
-import newsletter from "../components/profile/ChildComponents/newsletter.vue";
-
 // directory ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 const ROOT_URL = "/front";
@@ -91,8 +87,6 @@ const routes = [
                     {path: ROOT_URL + "/my_account", name: "my_account", component: my_account, meta: { title: "my_account" }},
 
                     {path: ROOT_URL + "/order_history", name: "order_history", component: order_history, meta: { title: "order_history" }},
-
-                    {path: ROOT_URL + "/newsletter", name: "newsletter", component: newsletter, meta: { title: "newsletter" }},
 
                 ]
 

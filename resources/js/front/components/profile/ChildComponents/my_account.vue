@@ -1,44 +1,35 @@
 <template>
 
-    <div class="row px-3">
-        <div class="p-2 col-12 col-sm-6 mb-3">
-            <div class="fw-bold mb-3">
+    <div class="row justify-content-center px-3">
+        <div class="col-md-6 text-center">
+            <div class="mb-3 fw-bold">
                 Full Name
             </div>
-            <div class="fw-bold text-secondary text-opacity-75">
+            <div class="mb-3">
                 {{ profile_data.full_name }}
             </div>
-        </div>
-
-        <div class="p-2 col-12 col-sm-6 mb-3">
-            <div class="fw-bold mb-3">
+            <div class="mb-3 fw-bold">
                 Email
             </div>
-            <div class="fw-bold text-secondary text-opacity-75">
+            <div class="mb-3">
                 {{ profile_data.email }}
             </div>
-        </div>
-
-        <div class="p-2 col-12 col-sm-6 mb-3">
-            <div class="fw-bold mb-3">
+            <div class="mb-3 fw-bold">
                 Phone Number
             </div>
-            <div class="fw-bold text-secondary text-opacity-75">
+            <div class="mb-3">
                 {{ profile_data.phone_number }}
             </div>
-        </div>
-
-        <div class="p-2 col-12 col-sm-6 mb-3">
-            <div class="fw-bold mb-3">
+            <div class="mb-3 fw-bold">
                 Address
             </div>
-            <div class="fw-bold text-secondary text-opacity-75">
+            <div class="mb-3">
                 {{ profile_data.address }}
             </div>
         </div>
     </div>
 
-    <div class="p-2 d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-center">
         <a href="javascript:void(0)" class="btn btn-light fw-bold px-3 py-1 border" @click="openEditProfileModal">
             Edit Profile
         </a>

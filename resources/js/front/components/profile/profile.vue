@@ -20,9 +20,6 @@
                         <router-link :to="{name: 'order_history'}" class="sub-link" @click="removeController">
                             Order History
                         </router-link>
-                        <router-link :to="{name: 'newsletter'}" class="sub-link" @click="removeController">
-                            NewsLetter
-                        </router-link>
                     </div>
                     <div class="customer-sidebar-footer">
                         <a href="javascript:void(0)" class="logout-btn" @click="logout">
