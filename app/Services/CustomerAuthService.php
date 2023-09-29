@@ -200,7 +200,10 @@ class CustomerAuthService
             $results = Customers::orderBy('id', 'desc');
             if (isset($keyword) && !empty($keyword)) {
                 $results->where(function ($q) use ($keyword) {
-                    $q->where('full_name', 'LIKE', '%' . $keyword . '%');
+                    $q->orWhere('full_name', 'LIKE', '%' . $keyword . '%');
+                    $q->orWhere('email', 'LIKE', '%' . $keyword . '%');
+                    $q->orWhere('phone_number', 'LIKE', '%' . $keyword . '%');
+                    $q->orWhere('address', 'LIKE', '%' . $keyword . '%');
                 });
             }
             $paginatedData = $results->paginate($limit);

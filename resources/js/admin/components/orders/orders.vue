@@ -61,17 +61,14 @@
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     Price
                 </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-1 py-2">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     Quantity
                 </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-1 py-2">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     Total
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     Status
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
-                    Payment
                 </div>
             </div>
 
@@ -88,11 +85,11 @@
                     <div class="marge">Price</div>
                     {{each.price}}
                 </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-1 py-2">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     <div class="marge">Quantity</div>
                     {{each.quantity}}
                 </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-1 py-2">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
                     <div class="marge">Total</div>
                     {{ each.price * each.quantity }}
                 </div>
@@ -107,10 +104,6 @@
                         <option value="6">Return</option>
                         <option value="7">Cancelled</option>
                     </select>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-2 py-2">
-                    <div class="marge">Payment</div>
-                    $75
                 </div>
             </div>
 
