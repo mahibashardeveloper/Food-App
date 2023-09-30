@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +32,6 @@ Route::middleware('CustomerLoginCheck')->get('/front/auth/{any}', [CustomerContr
 Route::middleware('CustomerLoginCheck')->get('/front/profile', [CustomerController::class, 'index'])->name('lvs.front.profile');
 Route::middleware('CustomerLoginCheck')->get('/front/my_account', [CustomerController::class, 'index'])->name('lvs.front.my_account');
 Route::middleware('CustomerLoginCheck')->get('/front/order_history', [CustomerController::class, 'index'])->name('lvs.front.order_history');
-Route::middleware('CustomerLoginCheck')->get('/front/newsletter', [CustomerController::class, 'index'])->name('lvs.front.newsletter');
 
 /* --------------------------
     Front Controller

@@ -58,6 +58,9 @@
                         <div class="p-3 border-bottom border-dark-subtle">
                             Phone Number: {{profile_data.phone_number}}
                         </div>
+                        <div class="p-3 border-bottom border-dark-subtle">
+                            Address: {{profile_data.address}}
+                        </div>
                         <div class="p-3 text-end fw-bold">
                             <router-link :to="{name:'home'}" class="d-inline-block text-decoration-none text-secondary" v-if="products.length === 0">
                                 Shopping Continue

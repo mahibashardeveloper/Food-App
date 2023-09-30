@@ -92,12 +92,7 @@
 
                 resetLoading: false,
 
-                resetParam: {
-                    email: '',
-                    code: '',
-                    password: '',
-                    password_confirmation: '',
-                },
+                resetParam: { email: '', code: '', password: '', password_confirmation: '' },
 
                 forgotType: 1,
 
@@ -105,9 +100,7 @@
 
                 forgotLoading: false,
 
-                forgotParam: {
-                    email: ''
-                }
+                forgotParam: { email: '' }
 
             }
 

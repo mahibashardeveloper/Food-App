@@ -63,10 +63,7 @@
 
                 error: null,
 
-                loginParam: {
-                    email: '',
-                    password: '',
-                },
+                loginParam: { email: '', password: '' },
 
             }
 

@@ -271,19 +271,9 @@
 
                 edit: false,
 
-                editParam: {
-                    company_name: '',
-                    first_name: '',
-                    last_name: '',
-                    email: '',
-                    phone_number: '',
-                    avatar: '',
-                },
+                editParam: { company_name: '', first_name: '', last_name: '', email: '', phone_number: '', avatar: '' },
 
-                passwordParam: {
-                    password: '',
-                    password_confirmation: '',
-                },
+                passwordParam: { password: '', password_confirmation: '' },
 
                 settingsLoading: false,
 
@@ -291,13 +281,7 @@
 
                 updateSettingsLoading: false,
 
-                editSettingsParam: {
-                    facebook: '',
-                    twitter: '',
-                    instagram: '',
-                    linkedin: '',
-                    youtube: '',
-                },
+                editSettingsParam: { facebook: '', twitter: '', instagram: '', linkedin: '', youtube: '' },
 
             }
 

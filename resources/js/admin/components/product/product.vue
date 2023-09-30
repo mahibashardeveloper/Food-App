@@ -313,25 +313,13 @@
 
                 category: [],
 
-                productParam: {
-                    id: '',
-                    avatar: '',
-                    name: '',
-                    price: '',
-                    category_id: '',
-                    description: '',
-                },
+                productParam: { avatar: '', name: '', price: '', category_id: '', description: '' },
 
-                deleteParam: {
-                    ids: []
-                },
+                deleteParam: { ids: [] },
 
                 tableData: [],
 
-                formData: {
-                    limit: 10,
-                    page: 1
-                },
+                formData: { limit: 10, page: 1 },
 
                 total_pages: 0,
 

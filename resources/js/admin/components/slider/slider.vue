@@ -173,22 +173,13 @@
 
                 slider: [],
 
-                sliderParam: {
-                    id: '',
-                    avatar: '',
-                    avatarFilePath: '',
-                },
+                sliderParam: { avatar: '', avatarFilePath: '' },
 
-                deleteParam: {
-                    ids: []
-                },
+                deleteParam: { ids: [] },
 
                 tableData: [],
 
-                formData: {
-                    limit: 10,
-                    page: 1
-                },
+                formData: { limit: 10, page: 1 },
 
                 total_pages: 0,
 

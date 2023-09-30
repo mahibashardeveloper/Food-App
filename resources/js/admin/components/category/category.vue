@@ -278,22 +278,13 @@
 
                 category: [],
 
-                categoryParam: {
-                    id: '',
-                    name: '',
-                    avatar: '',
-                },
+                categoryParam: { name: '', avatar: '' },
 
-                deleteParam: {
-                    ids: []
-                },
+                deleteParam: { ids: [] },
 
                 tableData: [],
 
-                formData: {
-                    limit: 10,
-                    page: 1
-                },
+                formData: { limit: 10, page: 1 },
 
                 total_pages: 0,
 
