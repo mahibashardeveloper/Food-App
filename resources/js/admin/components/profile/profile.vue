@@ -11,13 +11,13 @@
                         Profile
                     </div>
                     <div class="d-flex">
-                        <a href="javascript:void(0)" class="btn btn-theme profile me-3" @click="openSettingsModal">
+                        <a href="javascript:void(0)" class="btn btn-theme profile me-2" @click="openSettingsModal" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Edit Social Media">
                             <i class="bi bi-patch-check"></i>
                         </a>
-                        <a href="javascript:void(0)" class="btn btn-theme profile me-3" @click="openEditProfileModal">
+                        <a href="javascript:void(0)" class="btn btn-theme profile me-2" @click="openEditProfileModal" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Edit Profile">
                             <i class="bi bi-pencil-square"></i>
                         </a>
-                        <a href="javascript:void(0)" class="btn btn-theme profile" @click="openEditPasswordModal">
+                        <a href="javascript:void(0)" class="btn btn-theme profile" @click="openEditPasswordModal" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Edit Password">
                             <i class="bi bi-fingerprint"></i>
                         </a>
                     </div>
@@ -195,7 +195,7 @@
             <div class="modal-content p-3">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fw-bold fs-5" id="exampleModalLabel">
-                        Edit Settings
+                        Edit Social Media
                     </h1>
                     <button type="button" class="btn-close" @click="closeEditSettingsModal"></button>
                 </div>
@@ -288,6 +288,9 @@
         },
 
         mounted() {
+
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
             this.getProfile();
 

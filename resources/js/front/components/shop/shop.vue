@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-12 col-lg-2 pb-4 overflow-hidden">
 
-                <div class="h4 fw-bold">Category List</div>
+                <div class="h4 fw-bold ps-2">Category List</div>
 
                 <!-- page loading start -->
                 <div v-if="loading === true">
@@ -22,11 +22,11 @@
                 </div>
                 <!-- page loading end -->
 
-                <a href="javascript:void(0)" class="text-decoration-none text-secondary py-2 d-inline-block d-lg-block p-3"
+                <a href="javascript:void(0)" class="text-decoration-none text-secondary py-2 d-inline-block d-lg-block ps-2"
                    @click="formData.category_id = ''; product_list(current_page = 0)"> All
                 </a>
 
-                <a href="javascript:void(0)" class="text-decoration-none text-secondary py-2 d-inline-block d-lg-block p-3"
+                <a href="javascript:void(0)" class="text-decoration-none text-secondary py-2 d-inline-block d-lg-block ps-2"
                    v-for="(each) in categories" v-if="loading === false" @click="formData.category_id = each.id;
                    product_list(current_page = 0);"> {{each.name}}
                 </a>

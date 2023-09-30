@@ -66,8 +66,8 @@
                         <div class="text-center p-3 border">
                             <div class="pt-3">
                                 <div class="d-flex justify-content-center">
-                                    <div class="col-6 overflow-hidden product">
-                                        <img :src="'/storage/media/image/' + category.avatar" v-if="category.avatar !== null" class="img-fluid product-image-hover" alt="category">
+                                    <div class="col-6 overflow-hidden product rounded-4">
+                                        <img :src="'/storage/media/image/' + category.avatar" v-if="category.avatar !== null" class="img-fluid product-image-hover rounded-4" alt="category">
                                     </div>
                                 </div>
                                 <i class="bi bi-tag fs-1" v-if="category.avatar === null"></i>
@@ -86,8 +86,8 @@
                     <div v-for="(product) in getProductsInRange(1, 10)" :key="product.id">
                         <div class="text-start p-3 border">
                             <div class="overflow-hidden product">
-                                <div class="mb-3 overflow-hidden">
-                                    <img :src="'/storage/media/image/' + product.avatar" class="img-fluid product-image-hover" alt="product-1">
+                                <div class="mb-3 overflow-hidden rounded-4">
+                                    <img :src="'/storage/media/image/' + product.avatar" class="img-fluid product-image-hover rounded-4" alt="product-1">
                                 </div>
                                 <div class="fw-bold ps-3">
                                     {{product.name}}
@@ -114,9 +114,9 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Recently Added </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsInRange(1, 5)" :key="product.id">
+                                <div class="row ps-3 border-bottom py-3" v-for="(product) in getProductsInRange(1, 5)" :key="product.id">
                                     <div class="col-4 h-100">
-                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
+                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid rounded-4" alt="">
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
@@ -136,9 +136,9 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Trending Products </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsInRange(6, 10)" :key="product.id">
+                                <div class="row ps-3 border-bottom py-3" v-for="(product) in getProductsInRange(6, 10)" :key="product.id">
                                     <div class="col-4 h-100">
-                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
+                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid rounded-4" alt="">
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
@@ -158,9 +158,9 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Top Rated </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsInRange(11, 15)" :key="product.id">
+                                <div class="row ps-3 border-bottom py-3" v-for="(product) in getProductsInRange(11, 15)" :key="product.id">
                                     <div class="col-4 h-100">
-                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
+                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid rounded-4" alt="">
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
@@ -187,7 +187,7 @@
                         <div class="text-start p-3 border">
                             <div class="overflow-hidden product">
                                 <div class="mb-3 overflow-hidden">
-                                    <img :src="'/storage/media/image/' + product.avatar" class="img-fluid product-image-hover" alt="product-1">
+                                    <img :src="'/storage/media/image/' + product.avatar" class="img-fluid product-image-hover rounded-4" alt="product-1">
                                 </div>
                                 <div class="fw-bold ps-3">
                                     {{product.name}}
@@ -214,9 +214,9 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Arrivals </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(15, 19)" :key="product.id">
+                                <div class="row ps-3 border-bottom py-3" v-for="(product) in getProductsReversRand(15, 19)" :key="product.id">
                                     <div class="col-4 h-100">
-                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
+                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid rounded-4" alt="">
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
@@ -239,9 +239,9 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Products </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(20, 24)" :key="product.id">
+                                <div class="row ps-3 border-bottom py-3" v-for="(product) in getProductsReversRand(20, 24)" :key="product.id">
                                     <div class="col-4 h-100">
-                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
+                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid rounded-4" alt="">
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
@@ -264,9 +264,9 @@
                             <div class="h6 fw-bold border-bottom border-success-subtle pb-3"> Discount Recommended Products </div>
                             <div class="p-2">
 
-                                <div class="row ps-3 border-bottom pb-3" v-for="(product) in getProductsReversRand(25, 29)" :key="product.id">
+                                <div class="row ps-3 border-bottom py-3" v-for="(product) in getProductsReversRand(25, 29)" :key="product.id">
                                     <div class="col-4 h-100">
-                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid" alt="">
+                                        <img :src="'/storage/media/image/' + product.avatar" class="img-fluid rounded-4" alt="">
                                     </div>
                                     <div class="col-8 p-2">
                                         <div class="h6"> {{product.name}} </div>
@@ -379,7 +379,7 @@ import apiRoutes from "../../services/apiRoutes";
                     if(res.status === 200) {
                         this.categories = res.data.data;
                         setTimeout(() => {
-                            $('.category-item').owlCarousel( { loop:true, margin:0, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:4 }, 1000:{ items:6 } } } )
+                            $('.category-item').owlCarousel( { loop:true, margin:10, nav:false, autoplay:true, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:4 }, 1000:{ items:6 } } } )
                         }, 200)
                     }
                 })
@@ -393,7 +393,7 @@ import apiRoutes from "../../services/apiRoutes";
                     if(res.status === 200) {
                         this.products = res.data.data;
                         setTimeout(() => {
-                            $('.product-item').owlCarousel( { loop:true, margin:0, nav:false, autoplay:false, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:3 }, 1000:{ items:5 } } } )
+                            $('.product-item').owlCarousel( { loop:true, margin:10, nav:false, autoplay:false, dots: true, responsive:{ 0:{ items:2 }, 600:{ items:3 }, 1000:{ items:5 } } } )
                         }, 200)
                     }
                 })
