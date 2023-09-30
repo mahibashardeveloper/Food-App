@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DeliveryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use App\Http\Controllers\CustomerController;
 */
 
 /* --------------------------
-    Authentication Controller
+    Admin Authentication Controller
 ------------------------ */
 
 Route::middleware('AdminLoginCheck')->get('/admin/auth/{any}', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin.auth');
@@ -25,7 +26,16 @@ Route::middleware('AdminLoginCheck')->get('/admin/{any}', [AdminController::clas
 Route::get('/admin', function (){ return redirect()->route('lvs.admin.any','dashboard'); });
 
 /* --------------------------
-    Customer Controller
+    Delivery Authentication Controller
+------------------------ */
+
+Route::middleware('DeliveryLoginCheck')->get('/delivery/auth/{any}', [DeliveryController::class, 'index'])->where('any', '.*')->name('lvs.delivery.auth');
+Route::middleware('DeliveryLoginCheck')->get('/delivery/', [DeliveryController::class, 'index'])->where('any', '.*')->name('lvs.delivery');
+Route::middleware('DeliveryLoginCheck')->get('/delivery/{any}', [DeliveryController::class, 'index'])->where('any', '.*')->name('lvs.delivery.any');
+Route::get('/delivery', function (){ return redirect()->route('lvs.delivery.any','dashboard'); });
+
+/* --------------------------
+    Customer Authentication Controller
 ------------------------ */
 
 Route::middleware('CustomerLoginCheck')->get('/front/auth/{any}', [CustomerController::class, 'index'])->where('any', '.*')->name('lvs.front.auth');

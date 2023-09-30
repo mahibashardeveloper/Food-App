@@ -8,6 +8,9 @@ use App\Http\Middleware\AdminLoginCheck;
 use App\Http\Middleware\CustomerAuth;
 use App\Http\Middleware\CustomerAuthReq;
 use App\Http\Middleware\CustomerLoginCheck;
+use App\Http\Middleware\DeliveryAuth;
+use App\Http\Middleware\DeliveryAuthReq;
+use App\Http\Middleware\DeliveryLoginCheck;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -77,6 +80,10 @@ class Kernel extends HttpKernel
         'CustomerAuth' => CustomerAuth::class,
         'CustomerAuthReq' => CustomerAuthReq::class,
         'CustomerLoginCheck' => CustomerLoginCheck::class,
+
+        'DeliveryAuth' => DeliveryAuth::class,
+        'DeliveryAuthReq' => DeliveryAuthReq::class,
+        'DeliveryLoginCheck' => DeliveryLoginCheck::class,
 
     ];
 }

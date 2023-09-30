@@ -44,30 +44,14 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        'sub_admins' => [
-            'driver' => 'session',
-            'provider' => 'sub_admins',
-        ],
-        'vendors' => [
-            'driver' => 'session',
-            'provider' => 'vendors',
-        ],
-        'delivery_mans' => [
-            'driver' => 'session',
-            'provider' => 'delivery_mans',
-        ],
-        'merchants' => [
-            'driver' => 'session',
-            'provider' => 'merchants',
-        ],
-        'partners' => [
-            'driver' => 'session',
-            'provider' => 'partners',
-        ],
         'customers' => [
             'driver' => 'session',
             'provider' => 'customers',
-        ]
+        ],
+        'delivery' => [
+            'driver' => 'session',
+            'provider' => 'delivery',
+        ],
     ],
 
     /*
@@ -88,37 +72,17 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admins::class,
         ],
-        'sub_admins' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\SubAdmins::class,
-        ],
-        'vendors' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Vendors::class,
-        ],
-        'delivery_mans' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\deliveryMans::class,
-        ],
-        'merchants' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Merchants::class,
-        ],
-        'partners' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Partners::class,
-        ],
         'customers' => [
             'driver' => 'eloquent',
             'model' => App\Models\Customers::class,
+        ],
+        'delivery' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Delivery::class,
         ],
 
         // 'users' => [
