@@ -21,24 +21,12 @@
                 </div>
 
                 <div class="profile-body">
-                    <div class="d-flex justify-content-center">
-                        <div class="avatar">
-                            <img class="img-fluid" v-if="!profile_data.avatar" :src="'https://ui-avatars.com/api/?name='+profile_data.first_name" alt="profile-dummy">
-                            <img class="img-fluid" v-else :src="profile_data.media && profile_data.media.full_file_path" alt="profile">
-                        </div>
-                    </div>
                     <div class="pt-3">
-                        <div class="mb-3">
-                            Company Name.
-                        </div>
-                        <div class="mb-3 profile-info">
-                            {{ profile_data.company_name }}
-                        </div>
                         <div class="mb-3">
                             Full Name.
                         </div>
                         <div class="mb-3 profile-info">
-                            {{ profile_data.first_name }} {{ profile_data.last_name }}
+                            {{ profile_data.full_name }}
                         </div>
                         <div class="mb-3">
                             Email.
@@ -73,34 +61,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <label for="file-upload">
-                                <input type="file" class="d-none" id="file-upload" @change="attachFile($event)">
-                                <span v-if="editParam.avatar === null" class="modal-avatar">
-                                    <div class="text-center">
-                                        <div class="mb-2">
-                                            <i class="bi bi-card-image"></i>
-                                        </div>
-                                        Upload Image
-                                    </div>
-                                </span>
-                                <img class="img-fluid modal-avatar" v-if="editParam.avatar !== null" :src="editParam.avatarFilePath" alt="profile">
-                            </label>
-                        </div>
-                    </div>
-                    <div class="mb-3">
                         <label for="first_name" class="form-label">
-                            First Name
+                            full Name
                         </label>
-                        <input type="text" id="first_name" name="first_name" class="form-control" v-model="editParam.first_name">
-                        <div class="error-text" v-if="error != null && error.first_name !== undefined" v-text="error.first_name[0]"></div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="last_name" class="form-label">
-                            Last Name
-                        </label>
-                        <input type="text" id="last_name" name="last_name" class="form-control" v-model="editParam.last_name">
-                        <div class="error-text" v-if="error != null && error.last_name !== undefined" v-text="error.last_name[0]"></div>
+                        <input type="text" id="full_name" name="full_name" class="form-control" v-model="editParam.full_name">
+                        <div class="error-text" v-if="error != null && error.full_name !== undefined" v-text="error.full_name[0]"></div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">
@@ -115,13 +80,6 @@
                         </label>
                         <input type="text" id="phone_number" name="phone_number" class="form-control" v-model="editParam.phone_number">
                         <div class="error-text" v-if="error != null && error.phone_number !== undefined" v-text="error.phone_number[0]"></div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="company_name" class="form-label">
-                            Company Name
-                        </label>
-                        <input type="text" id="company_name" name="company_name" class="form-control" v-model="editParam.company_name">
-                        <div class="error-text" v-if="error != null && error.company_name !== undefined" v-text="error.company_name[0]"></div>
                     </div>
                 </div>
                 <div class="modal-footer border-0">
@@ -183,6 +141,7 @@
 import apiService from "../../services/apiServices";
 
 import apiRoutes from "../../services/apiRoutes.js";
+
 export default {
 
     data() {
@@ -198,7 +157,7 @@ export default {
 
             edit: false,
 
-            editParam: { company_name: '', first_name: '', last_name: '', email: '', phone_number: '', avatar: '' },
+            editParam: { full_name: '', email: '', phone_number: '', address: '' },
 
             passwordParam: { password: '', password_confirmation: '' },
 
@@ -213,32 +172,15 @@ export default {
 
         this.getProfile();
 
-        this.getSettings();
-
     },
 
     methods: {
-
-        attachFile(event) {
-            let file = event.target.files[0];
-            let formData = new FormData();
-            formData.append("file", file)
-            formData.append("media_type", 1);
-            apiService.UPLOAD(apiRoutes.media, formData, (res) => {
-                event.target.value = '';
-                if (res.status === 200) {
-                    this.editParam.avatarFilePath = res.data.full_file_path
-                    this.editParam.avatar = res.data.id
-                }
-            })
-        },
 
         openEditProfileModal() {
             const modal = new bootstrap.Modal("#editProfileModal", {keyboard: false, backdrop: 'static'});
             modal.show();
             this.edit = true;
             this.editParam = JSON.parse(JSON.stringify(this.profile_data));
-            this.editParam.avatarFilePath = this.editParam.media != null ? this.editParam.media.full_file_path : null
         },
 
         closeEditProfileModal() {

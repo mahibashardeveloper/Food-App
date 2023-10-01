@@ -22,7 +22,7 @@ class DeliveryLoginCheck
     public function handle($request, Closure $next, $guard = null)
     {
         $path = Request::route()->getName();
-        if (Auth::guard('delivery')->check()) {
+        if (Auth::guard('delivery_mans')->check()) {
             if($path == 'lvs.delivery.auth') {
                 return redirect()->route('lvs.delivery.any', 'dashboard');
             } else {

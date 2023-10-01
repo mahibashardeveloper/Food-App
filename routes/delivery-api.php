@@ -51,7 +51,7 @@ Route::group(
 Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'order'],
     function () {
-        Route::post('/list', [OrderController::class, 'order_list'])->name('Order.List');
-        Route::post('/status/change', [OrderController::class, 'changeStatus'])->name('Order.ChangeStatus');
+        Route::post('/list', [OrderController::class, 'order_list'])->name('Order_list.List');
+        Route::post('/status/change', [OrderController::class, 'changeStatus'])->name('Order_list.ChangeStatus');
     }
 );

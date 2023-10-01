@@ -16,5 +16,5 @@ export default defineComponent({
 })
 </script>
 <style lang="scss">
-@import "../../scss/admin/style";
+@import "../../scss/deliveryMan/style";
 </style>

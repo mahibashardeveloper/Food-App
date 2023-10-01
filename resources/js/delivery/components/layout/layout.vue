@@ -26,13 +26,8 @@
                 </div>
                 <div class="profile">
                     <div class="marge" @click="profileDropdownController">
-                        <div class="avatar">
-                            <img class="img-fluid" v-if="!profile_data.avatar" :src="'https://ui-avatars.com/api/?name='+profile_data.first_name" alt="profile-dummy">
-                            <img class="img-fluid" v-else :src="profile_data.media && profile_data.media.full_file_path" alt="profile">
-                        </div>
                         <div class="admin-info">
-                            <div class="name">{{profile_data.first_name}} {{profile_data.last_name}}</div>
-                            <div class="designation">{{profile_data.company_name}}</div>
+                            <div class="name">{{profile_data.email}}</div>
                         </div>
                     </div>
                     <div class="profile-dropdown-menu" :class="{active: isDropdownActive}">
@@ -60,81 +55,78 @@
 
 <script>
 
-import apiService from "../../services/apiServices";
+    import apiService from "../../services/apiServices";
 
-import apiRoutes from "../../services/apiRoutes.js";
+    import apiRoutes from "../../services/apiRoutes.js";
 
-export default {
+    export default {
 
-    data(){
+        data(){
 
-        return{
+            return{
 
-            isDropdownActive: false,
+                isDropdownActive: false,
 
-            isSidebarActive: false,
+                isSidebarActive: false,
 
-            logoutLoading: false,
+                logoutLoading: false,
 
-            profile_data: '',
+                profile_data: '',
 
-            profileDataLoading: false,
+                profileDataLoading: false,
 
-            isColorGearActive: false,
+            }
+
+        },
+
+        mounted() {
+
+            this.getProfile();
+
+        },
+
+        methods: {
+
+            sidebarController(){
+                this.isSidebarActive = !this.isSidebarActive;
+                this.isDropdownActive = false;
+                this.isColorGearActive = false;
+            },
+
+            profileDropdownController(){
+                this.isDropdownActive = !this.isDropdownActive;
+                this.isSidebarActive = false;
+                this.isColorGearActive = false;
+            },
+
+            remove(){
+                this.isDropdownActive = false;
+                this.isSidebarActive = false;
+            },
+
+            logout() {
+                this.logoutLoading = true;
+                apiService.GET(apiRoutes.logout, (res) => {
+                    this.logoutLoading = false;
+                    if (res.status === 200) {
+                        this.$toast.success('Logout Successful', { position: "top-right" });
+                        window.location.reload()
+                    }
+                })
+            },
+
+            getProfile() {
+                this.profileDataLoading = true;
+                apiService.GET(apiRoutes.profile_details, (res) => {
+                    this.profileDataLoading = false;
+                    if (res.status === 200) {
+                        this.profile_data = res.data;
+                    }
+                })
+            },
 
         }
 
-    },
-
-    mounted() {
-
-        this.getProfile();
-
-    },
-
-    methods: {
-
-        sidebarController(){
-            this.isSidebarActive = !this.isSidebarActive;
-            this.isDropdownActive = false;
-            this.isColorGearActive = false;
-        },
-
-        profileDropdownController(){
-            this.isDropdownActive = !this.isDropdownActive;
-            this.isSidebarActive = false;
-            this.isColorGearActive = false;
-        },
-
-        remove(){
-            this.isDropdownActive = false;
-            this.isSidebarActive = false;
-            this.isColorGearActive = false;
-        },
-
-        logout() {
-            this.logoutLoading = true;
-            apiService.GET(apiRoutes.logout, (res) => {
-                this.logoutLoading = false;
-                if (res.status === 200) {
-                    this.$toast.success('Logout Successful', { position: "top-right" });
-                    window.location.reload()
-                }
-            })
-        },
-
-        getProfile() {
-            this.profileDataLoading = true;
-            apiService.GET(apiRoutes.profile_details, (res) => {
-                this.profileDataLoading = false;
-                if (res.status === 200) {
-                    this.profile_data = res.data;
-                }
-            })
-        },
-
     }
-
-}
 
 </script>

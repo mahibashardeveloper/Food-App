@@ -46,6 +46,18 @@ const apiRoutes = {
 
     productDelete: apiVersion + '/product/delete',
 
+    // deliveryMan
+
+    deliveryManCreate: apiVersion + '/deliveryMan/create',
+
+    deliveryManList: apiVersion + '/deliveryMan/list',
+
+    deliveryManSingle: apiVersion + '/deliveryMan/single',
+
+    deliveryManUpdate: apiVersion + '/deliveryMan/update',
+
+    deliveryManDelete: apiVersion + '/deliveryMan/delete',
+
     // Profile
 
     profile_details: apiVersion + '/profile/details',

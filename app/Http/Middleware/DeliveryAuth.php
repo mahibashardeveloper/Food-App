@@ -17,7 +17,7 @@ class DeliveryAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::guard('delivery')->check()) {
+        if (!Auth::guard('delivery_mans')->check()) {
             return $next($request);
         }
         return response()->json(['status' => 403, 'msg' => 'You are already logged in.'], 403);

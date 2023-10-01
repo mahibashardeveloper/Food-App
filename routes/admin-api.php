@@ -8,6 +8,7 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\DeliveryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -116,6 +117,21 @@ Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'customer'],
     function () {
         Route::post('/list', [CustomerController::class, 'customer_list'])->name('Customer_List.List');
+    }
+);
+
+/* -------------------------
+    Delivery Man Controller
+--------------------------- */
+
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'deliveryMan'],
+    function () {
+        Route::post('/list', [DeliveryController::class, 'list'])->name('DeliveryMan_list.List');
+        Route::post('/create', [DeliveryController::class, 'create'])->name('DeliveryMan_list.Create');
+        Route::post('/single', [DeliveryController::class, 'single'])->name('DeliveryMan_create.Single');
+        Route::post('/update', [DeliveryController::class, 'update'])->name('DeliveryMan_update.Update');
+        Route::post('/delete', [DeliveryController::class, 'delete'])->name('DeliveryMan_delete.Delete');
     }
 );
 

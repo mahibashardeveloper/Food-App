@@ -30,6 +30,10 @@ import product from "../components/product/product.vue"
 
 import orders from "../components/orders/orders.vue";
 
+// delivery man
+
+import deliveryMans from "../components/deliveryman/deliveryman.vue";
+
 // customers
 
 import customers from "../components/customers/customers.vue";
@@ -77,6 +81,10 @@ const routes = [
             // customer
 
             {path: ROOT_URL + '/customers', name: 'customers', component: customers, meta: {title: 'customers'}},
+
+            // customer
+
+            {path: ROOT_URL + '/deliveryMans', name: 'deliveryMans', component: deliveryMans, meta: {title: 'deliveryMans'}},
 
             // orders
 

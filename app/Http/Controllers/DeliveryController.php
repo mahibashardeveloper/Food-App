@@ -16,6 +16,36 @@ class DeliveryController extends BaseController
 
     }
 
+    public function list(Request $request)
+    {
+        $rv = DeliveryAuthService::list($request);
+        return response()->json($rv, 200);
+    }
+
+    public function create(Request $request)
+    {
+        $rv = DeliveryAuthService::create($request);
+        return response()->json($rv, 200);
+    }
+
+    public function single(Request $request)
+    {
+        $rv = DeliveryAuthService::single($request);
+        return response()->json($rv, 200);
+    }
+
+    public function update(Request $request)
+    {
+        $rv = DeliveryAuthService::update($request);
+        return response()->json($rv, 200);
+    }
+
+    public function delete(Request $request)
+    {
+        $rv = DeliveryAuthService::delete($request);
+        return response()->json($rv, 200);
+    }
+
     public function login(Request $request){
         $rv = DeliveryAuthService::login($request);
         return response()->json($rv, 200);

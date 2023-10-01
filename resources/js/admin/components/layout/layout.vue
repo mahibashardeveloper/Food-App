@@ -46,6 +46,9 @@
                 <router-link :to="{name:'orders'}" class="sidebar-link" active-class="active" @click="remove">
                     Orders
                 </router-link>
+                <router-link :to="{name:'deliveryMans'}" class="sidebar-link" active-class="active" @click="remove">
+                    Delivery Mans
+                </router-link>
             </div>
         </div>
         <div class="section">

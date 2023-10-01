@@ -6,22 +6,6 @@
 
                 <div class="h4 fw-bold ps-2">Category List</div>
 
-                <!-- page loading start -->
-                <div v-if="loading === true">
-                    <h6 class="card-text placeholder-glow">
-                        <span class="p-2">
-                            <span class="placeholder col-12 py-3 mb-3"></span>
-                        </span>
-                        <span class="p-2">
-                            <span class="placeholder col-10 py-3 mb-3"></span>
-                        </span>
-                        <span class="p-2">
-                            <span class="placeholder col-8 py-3 mb-3"></span>
-                        </span>
-                    </h6>
-                </div>
-                <!-- page loading end -->
-
                 <a href="javascript:void(0)" class="text-decoration-none text-secondary py-2 d-inline-block d-lg-block ps-2"
                    @click="formData.category_id = ''; product_list(current_page = 0)"> All
                 </a>

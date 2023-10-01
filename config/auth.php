@@ -48,9 +48,9 @@ return [
             'driver' => 'session',
             'provider' => 'customers',
         ],
-        'delivery' => [
+        'delivery_mans' => [
             'driver' => 'session',
-            'provider' => 'delivery',
+            'provider' => 'delivery_mans',
         ],
     ],
 
@@ -80,9 +80,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Customers::class,
         ],
-        'delivery' => [
+        'delivery_mans' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Delivery::class,
+            'model' => App\Models\DeliveryMans::class,
         ],
 
         // 'users' => [
