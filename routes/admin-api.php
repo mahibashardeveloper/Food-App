@@ -43,7 +43,6 @@ Route::group(
     function () {
         Route::get('/details', [AdminController::class, 'profile_details'])->name('Admin.Profile.Details');
         Route::post('/update', [AdminController::class, 'profile_update'])->name('Admin.Profile.Update');
-        Route::get('/account_update', [AdminController::class, 'profile_account_update'])->name('Admin.Profile.Account_Update');
         Route::post('/password', [AdminController::class, 'profile_password'])->name('Admin.Profile.Password');
         Route::get('/logout', [AdminController::class, 'profile_logout'])->name('Admin.Profile.Logout');
     }

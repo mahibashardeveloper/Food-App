@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,13 +46,24 @@ Route::group(
 );
 
 /* -------------------------
+    Customer Controller
+--------------------------- */
+
+Route::group(
+    ['middleware' => ['DeliveryAuthReq'], 'prefix' => 'customer'],
+    function () {
+        Route::post('/list', [CustomerController::class, 'customer_list'])->name('Customer_info.List');
+    }
+);
+
+/* -------------------------
     Order Controller
 --------------------------- */
 
 Route::group(
-    ['middleware' => ['AdminAuthReq'], 'prefix' => 'order'],
+    ['middleware' => ['DeliveryAuthReq'], 'prefix' => 'order'],
     function () {
-        Route::post('/list', [OrderController::class, 'order_list'])->name('Order_list.List');
-        Route::post('/status/change', [OrderController::class, 'changeStatus'])->name('Order_list.ChangeStatus');
+        Route::post('/list', [OrderController::class, 'order_list'])->name('OrderList.List');
+        Route::post('/status/change', [OrderController::class, 'changeStatus'])->name('OrderStatus.ChangeStatus');
     }
 );

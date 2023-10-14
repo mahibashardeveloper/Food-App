@@ -26,6 +26,10 @@ const apiRoutes = {
 
     orderStatus: apiVersion + '/order/status/change',
 
+    // customer
+
+    customerList: apiVersion + '/customer/list',
+
     // Media
 
     media: apiVersion + '/media/upload',

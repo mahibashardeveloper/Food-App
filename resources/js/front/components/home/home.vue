@@ -15,7 +15,7 @@
             <div class="container py-5">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
                     <div class="p-3">
-                        <div class="p-3 border bg-white text-center rounded-2 shadow">
+                        <div class="p-3 bg-white text-center rounded-2 shadow">
                             <div class="mb-3">
                                 <i class="bi bi-tag fs-1 text-teal"></i>
                             </div>
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="p-3">
-                        <div class="p-3 border bg-white text-center rounded-2 shadow">
+                        <div class="p-3 bg-white text-center rounded-2 shadow">
                             <div class="mb-3">
                                 <i class="bi bi-recycle fs-1 text-teal"></i>
                             </div>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="p-3">
-                        <div class="p-3 border bg-white text-center rounded-2 shadow">
+                        <div class="p-3 bg-white text-center rounded-2 shadow">
                             <div class="mb-3">
                                 <i class="bi bi-file-earmark-ruled fs-1 text-teal"></i>
                             </div>
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="p-3">
-                        <div class="p-3 border bg-white text-center rounded-2 shadow">
+                        <div class="p-3 bg-white text-center rounded-2 shadow">
                             <div class="mb-3">
                                 <i class="bi bi-box-seam fs-1 text-teal"></i>
                             </div>
@@ -63,7 +63,7 @@
                 <div class="h3 fw-bold pb-3">Featured Categories</div>
                 <div class="owl-carousel owl-theme category-item">
                     <div v-for="(category) in displayedCategories" :key="category.id">
-                        <div class="text-center p-3 border">
+                        <div class="text-center p-3 border rounded-4">
                             <div class="pt-3">
                                 <div class="d-flex justify-content-center">
                                     <div class="col-6 overflow-hidden product rounded-4">

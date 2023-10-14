@@ -4,7 +4,7 @@
         <div class="sidebar" :class="{active: isSidebarActive}">
             <div class="sidebar-header">
                 <router-link :to="{name:'dashboard'}" class="logo">
-                    Admin Portal
+                    Delivery Portal
                 </router-link>
                 <a href="javascript:void(0)" class="close-icon" @click="remove">
                     <i class="bi bi-x-lg"></i>
@@ -12,7 +12,7 @@
             </div>
             <div class="sidebar-body">
                 <router-link :to="{name:'dashboard'}" class="sidebar-link" active-class="active" @click="remove">
-                    Dashboard
+                    Customers
                 </router-link>
                 <router-link :to="{name:'orders'}" class="sidebar-link" active-class="active" @click="remove">
                     Orders

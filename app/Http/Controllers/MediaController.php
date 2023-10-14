@@ -16,9 +16,4 @@ class MediaController extends BaseController
         return response()->json($rv, 200);
     }
 
-    public function delete(Request $request){
-        $rv = MediaService::delete($request);
-        return response()->json($rv, 200);
-    }
-
 }

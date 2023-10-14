@@ -35,10 +35,9 @@ class CustomerAuthService
             $user->phone_number = $request->phone_number;
             $user->address = $request->address;
             $user->save();
-            return ['status' => 200, 'msg' => 'Registration Complete.']; } catch (\Exception $e) {
-
+            return ['status' => 200, 'msg' => 'Registration Complete.'];
+        } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
-
         }
 
     }
